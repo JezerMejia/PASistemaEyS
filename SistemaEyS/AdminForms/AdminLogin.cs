@@ -30,5 +30,12 @@ namespace SistemaEyS.AdminForms
         {
             this.Close();
         }
+
+        protected void btnEnterOnClicked(object sender, EventArgs e)
+        {
+            AdminPanel adminPanel = new AdminPanel(this);
+            this.Hide();
+            adminPanel.Show();
+        }
     }
 }

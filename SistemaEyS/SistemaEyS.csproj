@@ -63,11 +63,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserForms\UserAssistanceForm.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.UserForms.UserAssistanceForm.cs" />
     <Compile Include="UserForms\UserLogin.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.UserForms.UserLogin.cs" />
     <Compile Include="AdminForms\AdminLogin.cs" />
+    <Compile Include="AdminForms\AdminPanel.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.AdminLogin.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.AdminPanel.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.UserForms.UserAssistanceForm.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.UserForms.UserLogin.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />

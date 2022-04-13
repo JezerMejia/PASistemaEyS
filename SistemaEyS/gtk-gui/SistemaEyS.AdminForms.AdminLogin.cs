@@ -188,6 +188,7 @@ namespace SistemaEyS.AdminForms
 			this.Show();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 			this.btnExit.Clicked += new global::System.EventHandler(this.btnExitOnClicked);
+			this.btnEnter.Clicked += new global::System.EventHandler(this.btnEnterOnClicked);
 		}
 	}
 }
