@@ -1,6 +1,7 @@
 ﻿using System;
 using Gtk;
 using SistemaEyS.UserForms;
+using SistemaEyS.AdminForms;
 
 public partial class MainWindow : Gtk.Window
 {
@@ -24,5 +25,8 @@ public partial class MainWindow : Gtk.Window
 
     protected void btnEnterAdminLoginOnClicked(object sender, EventArgs e)
     {
+        AdminLogin adminLoginWindow = new AdminLogin(this);
+        this.Hide();
+        adminLoginWindow.Show();
     }
 }

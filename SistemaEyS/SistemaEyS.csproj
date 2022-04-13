@@ -66,11 +66,13 @@
     <Compile Include="gtk-gui\SistemaEyS.UserForms.UserAssistanceForm.cs" />
     <Compile Include="UserForms\UserLogin.cs" />
     <Compile Include="gtk-gui\SistemaEyS.UserForms.UserLogin.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.Utils.NumericEntry.cs" />
+    <Compile Include="AdminForms\AdminLogin.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.AdminLogin.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
     <Folder Include="Utils\" />
+    <Folder Include="AdminForms\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SistemaEySLibrary\SistemaEySLibrary.csproj">
