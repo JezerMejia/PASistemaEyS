@@ -37,6 +37,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="NumericEntry.cs" />
+    <Compile Include="TabviewLabel.cs" />
+    <Compile Include="gtk-gui\SistemaEySLibrary.TabviewLabel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">

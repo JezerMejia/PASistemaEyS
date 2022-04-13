@@ -7,4 +7,35 @@
   <import>
     <widget-library name="../bin/Debug/SistemaEySLibrary.dll" internal="true" />
   </import>
+  <widget class="Gtk.Bin" id="SistemaEySLibrary.TabviewLabel" design-size="186 39">
+    <property name="MemberName" />
+    <property name="Visible">False</property>
+    <child>
+      <widget class="Gtk.HBox" id="hbox3">
+        <property name="MemberName" />
+        <child>
+          <widget class="Gtk.Label" id="label">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">label7</property>
+          </widget>
+          <packing>
+            <property name="Position">0</property>
+            <property name="AutoSize">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnIcon">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">Custom</property>
+            <signal name="Clicked" handler="btnIconOnClicked" />
+          </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="AutoSize">True</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
 </stetic-interface>
