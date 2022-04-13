@@ -149,6 +149,7 @@ namespace SistemaEyS.AdminForms
 			this.ntTabview.CanFocus = true;
 			this.ntTabview.Name = "ntTabview";
 			this.ntTabview.CurrentPage = 0;
+			this.ntTabview.EnablePopup = true;
 			this.ntTabview.Scrollable = true;
 			// Container child ntTabview.Gtk.Notebook+NotebookChild
 			this.alignment4 = new global::Gtk.Alignment(0.5F, 0.5F, 0F, 0F);
@@ -189,6 +190,7 @@ namespace SistemaEyS.AdminForms
 			this.Show();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 			this.closeAction.Activated += new global::System.EventHandler(this.actCloseOnActivated);
+			this.EmpleadosAction.Activated += new global::System.EventHandler(this.EmpleadosActionOnActivated);
 		}
 	}
 }

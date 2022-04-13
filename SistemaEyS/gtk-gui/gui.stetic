@@ -627,6 +627,7 @@ IT</property>
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Empleados</property>
         <property name="ShortLabel" translatable="yes">Empleados</property>
+        <signal name="Activated" handler="EmpleadosActionOnActivated" />
       </action>
       <action id="HorariosAction">
         <property name="Type">Action</property>
@@ -743,6 +744,7 @@ IT</property>
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="CurrentPage">0</property>
+                <property name="EnablePopup">True</property>
                 <property name="Scrollable">True</property>
                 <child>
                   <widget class="Gtk.Alignment" id="alignment4">
@@ -787,6 +789,32 @@ IT</property>
                 <property name="Position">1</property>
                 <property name="AutoSize">True</property>
               </packing>
+            </child>
+          </widget>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="Gtk.Bin" id="SistemaEyS.AdminForms.Panels.EmpleadosPanel" design-size="300 300">
+    <property name="MemberName" />
+    <property name="Visible">False</property>
+    <child>
+      <widget class="Gtk.Alignment" id="alignment5">
+        <property name="MemberName" />
+        <property name="LeftPadding">10</property>
+        <property name="TopPadding">10</property>
+        <property name="RightPadding">10</property>
+        <property name="BottomPadding">10</property>
+        <child>
+          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
+            <property name="MemberName" />
+            <property name="ShadowType">In</property>
+            <child>
+              <widget class="Gtk.NodeView" id="nodeview2">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="ShowScrollbars">True</property>
+              </widget>
             </child>
           </widget>
         </child>

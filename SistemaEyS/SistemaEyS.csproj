@@ -70,11 +70,14 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.AdminPanel.cs" />
     <Compile Include="gtk-gui\SistemaEyS.UserForms.UserAssistanceForm.cs" />
     <Compile Include="gtk-gui\SistemaEyS.UserForms.UserLogin.cs" />
+    <Compile Include="AdminForms\Panels\EmpleadosPanel.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Panels.EmpleadosPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
     <Folder Include="Utils\" />
     <Folder Include="AdminForms\" />
+    <Folder Include="AdminForms\Panels\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SistemaEySLibrary\SistemaEySLibrary.csproj">

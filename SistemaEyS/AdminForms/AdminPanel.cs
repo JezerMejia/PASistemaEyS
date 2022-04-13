@@ -1,5 +1,6 @@
 ﻿using System;
 using Gtk;
+using SistemaEySLibrary;
 namespace SistemaEyS.AdminForms
 {
     public partial class AdminPanel : Gtk.Window
@@ -53,6 +54,24 @@ namespace SistemaEyS.AdminForms
         protected void actCloseOnActivated(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        protected void EmpleadosActionOnActivated(object sender, EventArgs e)
+        {
+            Panels.EmpleadosPanel empleadosPanel = new Panels.EmpleadosPanel();
+            this.AddTab(this.ntTabview, empleadosPanel, "Empleados");
+        }
+
+        public void AddTab(Notebook notebook, Widget widget, string label)
+        {
+            TabviewLabel tabviewLabel = new TabviewLabel(label);
+            notebook.AppendPage(widget, tabviewLabel);
+            tabviewLabel.CloseClicked += delegate (object obj, EventArgs args)
+            {
+                this.ntTabview.RemovePage(notebook.PageNum(widget));
+            };
+            widget.Show();
+            tabviewLabel.Show();
         }
     }
 }
