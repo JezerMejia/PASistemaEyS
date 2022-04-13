@@ -1,0 +1,28 @@
+﻿using System;
+using Gtk;
+using SistemaEyS.UserForms;
+
+public partial class MainWindow : Gtk.Window
+{
+    public MainWindow() : base(Gtk.WindowType.Toplevel)
+    {
+        Build();
+    }
+
+    protected void OnDeleteEvent(object sender, DeleteEventArgs a)
+    {
+        Application.Quit();
+        a.RetVal = true;
+    }
+
+    protected void btnEnterUserLoginOnClicked(object sender, EventArgs e)
+    {
+        UserLogin userLoginWindow = new UserLogin(this);
+        this.Hide();
+        userLoginWindow.Show();
+    }
+
+    protected void btnEnterAdminLoginOnClicked(object sender, EventArgs e)
+    {
+    }
+}
