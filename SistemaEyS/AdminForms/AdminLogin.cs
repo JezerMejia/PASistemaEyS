@@ -25,5 +25,10 @@ namespace SistemaEyS.AdminForms
         {
             this.Close();
         }
+
+        protected void btnExitOnClicked(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

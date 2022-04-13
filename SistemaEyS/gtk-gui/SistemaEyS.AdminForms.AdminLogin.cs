@@ -28,6 +28,10 @@ namespace SistemaEyS.AdminForms
 
 		private global::Gtk.Alignment alignment11;
 
+		private global::Gtk.HBox hbox2;
+
+		private global::Gtk.Button btnExit;
+
 		private global::Gtk.Button btnEnter;
 
 		protected virtual void Build()
@@ -141,17 +145,38 @@ namespace SistemaEyS.AdminForms
 			this.alignment11 = new global::Gtk.Alignment(0.5F, 0.5F, 0F, 0F);
 			this.alignment11.Name = "alignment11";
 			// Container child alignment11.Gtk.Container+ContainerChild
+			this.hbox2 = new global::Gtk.HBox();
+			this.hbox2.Name = "hbox2";
+			this.hbox2.Homogeneous = true;
+			this.hbox2.Spacing = 20;
+			// Container child hbox2.Gtk.Box+BoxChild
+			this.btnExit = new global::Gtk.Button();
+			this.btnExit.CanFocus = true;
+			this.btnExit.Name = "btnExit";
+			this.btnExit.UseUnderline = true;
+			this.btnExit.Label = global::Mono.Unix.Catalog.GetString("Salir");
+			this.hbox2.Add(this.btnExit);
+			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.btnExit]));
+			w10.Position = 0;
+			w10.Expand = false;
+			w10.Fill = false;
+			// Container child hbox2.Gtk.Box+BoxChild
 			this.btnEnter = new global::Gtk.Button();
 			this.btnEnter.CanFocus = true;
 			this.btnEnter.Name = "btnEnter";
 			this.btnEnter.UseUnderline = true;
 			this.btnEnter.Label = global::Mono.Unix.Catalog.GetString("Entrar");
-			this.alignment11.Add(this.btnEnter);
-			this.vbox9.Add(this.alignment11);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.vbox9[this.alignment11]));
-			w11.Position = 3;
+			this.hbox2.Add(this.btnEnter);
+			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.btnEnter]));
+			w11.Position = 1;
+			w11.Expand = false;
 			w11.Fill = false;
-			w11.Padding = ((uint)(10));
+			this.alignment11.Add(this.hbox2);
+			this.vbox9.Add(this.alignment11);
+			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.vbox9[this.alignment11]));
+			w13.Position = 3;
+			w13.Fill = false;
+			w13.Padding = ((uint)(10));
 			this.alignment10.Add(this.vbox9);
 			this.Add(this.alignment10);
 			if ((this.Child != null))
@@ -162,6 +187,7 @@ namespace SistemaEyS.AdminForms
 			this.DefaultHeight = 326;
 			this.Show();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
+			this.btnExit.Clicked += new global::System.EventHandler(this.btnExitOnClicked);
 		}
 	}
 }

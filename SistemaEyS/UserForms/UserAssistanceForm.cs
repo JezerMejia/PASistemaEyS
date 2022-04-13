@@ -10,6 +10,20 @@ namespace SistemaEyS.UserForms
         {
             this.parent = parent;
             this.Build();
+            this.SetDateTimeTimeout();
+        }
+
+        protected void SetDateTimeTimeout()
+        {
+            this.UpdateDateTime();
+            GLib.Timeout.Add(500, this.UpdateDateTime);
+        }
+        protected bool UpdateDateTime()
+        {
+            DateTime dateTime = DateTime.Now;
+            string str = dateTime.ToString("yyyy-MM-dd h:mm:ss tt");
+            this.lbDateTime.Text = str;
+            return true;
         }
 
         public void Close()

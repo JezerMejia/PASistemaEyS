@@ -18,7 +18,7 @@ namespace SistemaEyS.UserForms
 
 		private global::Gtk.Label lbPassword;
 
-		private global::SistemaEySLibrary.NumericEntry numericentry2;
+		private global::SistemaEySLibrary.NumericEntry entPassword;
 
 		private global::Gtk.Alignment alignment11;
 
@@ -86,14 +86,14 @@ namespace SistemaEyS.UserForms
 			w4.Position = 0;
 			w4.Fill = false;
 			// Container child hbox14.Gtk.Box+BoxChild
-			this.numericentry2 = new global::SistemaEySLibrary.NumericEntry();
-			this.numericentry2.CanFocus = true;
-			this.numericentry2.Name = "numericentry2";
-			this.numericentry2.IsEditable = true;
-			this.numericentry2.WidthChars = 18;
-			this.numericentry2.InvisibleChar = '•';
-			this.hbox14.Add(this.numericentry2);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox14[this.numericentry2]));
+			this.entPassword = new global::SistemaEySLibrary.NumericEntry();
+			this.entPassword.CanFocus = true;
+			this.entPassword.Name = "entPassword";
+			this.entPassword.IsEditable = true;
+			this.entPassword.WidthChars = 18;
+			this.entPassword.InvisibleChar = '•';
+			this.hbox14.Add(this.entPassword);
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox14[this.entPassword]));
 			w5.Position = 1;
 			w5.Expand = false;
 			w5.Fill = false;
