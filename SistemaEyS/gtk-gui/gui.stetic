@@ -618,7 +618,7 @@ IT</property>
       </action>
       <action id="closeAction">
         <property name="Type">Action</property>
-        <property name="Label" translatable="yes">_Close</property>
+        <property name="Label" translatable="yes">Cerrar sesión</property>
         <property name="ShortLabel" translatable="yes">_Close</property>
         <property name="StockId">gtk-close</property>
         <signal name="Activated" handler="actCloseOnActivated" />
@@ -633,11 +633,13 @@ IT</property>
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Horarios</property>
         <property name="ShortLabel" translatable="yes">Horarios</property>
+        <signal name="Activated" handler="HorariosActionOnActivated" />
       </action>
       <action id="EntradasSalidasAction">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Entradas/Salidas</property>
         <property name="ShortLabel" translatable="yes">Entradas/Salidas</property>
+        <signal name="Activated" handler="EntradasSalidasActionOnActivated" />
       </action>
       <action id="EntradasSalidasAction1">
         <property name="Type">Action</property>
@@ -810,10 +812,11 @@ IT</property>
             <property name="MemberName" />
             <property name="ShadowType">In</property>
             <child>
-              <widget class="Gtk.NodeView" id="nodeview2">
+              <widget class="Gtk.TreeView" id="treeView">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="ShowScrollbars">True</property>
+                <property name="RulesHint">True</property>
               </widget>
             </child>
           </widget>

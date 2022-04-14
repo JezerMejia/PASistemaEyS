@@ -13,7 +13,6 @@ namespace SistemaEyS.AdminForms
             this.parent = parent;
             this.Build();
             this.SetDateTimeTimeout();
-            this.SetNtTabViewPages();
         }
         public void Close()
         {
@@ -35,20 +34,16 @@ namespace SistemaEyS.AdminForms
             this.lbDateTime.UseMarkup = true;
             return true;
         }
-
-        protected void SetNtTabViewPages()
+        public void AddTab(Notebook notebook, Widget widget, string label)
         {
-            for (int i = 0; i < 3; i++)
+            TabviewLabel tabviewLabel = new TabviewLabel(label);
+            notebook.AppendPage(widget, tabviewLabel);
+            tabviewLabel.CloseClicked += delegate (object obj, EventArgs args)
             {
-                string label = String.Format("Page {0}", i + 1);
-                this.ntTabview.AppendPage(new Button("UWU"), new Label(label));
-            }
-            this.ntTabview.ShowAll();
-        }
-
-        protected void OnDeleteEvent(object o, DeleteEventArgs args)
-        {
-            this.Close();
+                this.ntTabview.RemovePage(notebook.PageNum(widget));
+            };
+            widget.Show();
+            tabviewLabel.Show();
         }
 
         protected void actCloseOnActivated(object sender, EventArgs e)
@@ -62,16 +57,18 @@ namespace SistemaEyS.AdminForms
             this.AddTab(this.ntTabview, empleadosPanel, "Empleados");
         }
 
-        public void AddTab(Notebook notebook, Widget widget, string label)
+        protected void HorariosActionOnActivated(object sender, EventArgs e)
         {
-            TabviewLabel tabviewLabel = new TabviewLabel(label);
-            notebook.AppendPage(widget, tabviewLabel);
-            tabviewLabel.CloseClicked += delegate (object obj, EventArgs args)
-            {
-                this.ntTabview.RemovePage(notebook.PageNum(widget));
-            };
-            widget.Show();
-            tabviewLabel.Show();
+        }
+
+        protected void EntradasSalidasActionOnActivated(object sender, EventArgs e)
+        {
+        }
+
+        protected void OnDeleteEvent(object o, DeleteEventArgs args)
+        {
+            Application.Quit();
+            args.RetVal = true;
         }
     }
 }

@@ -81,7 +81,7 @@ namespace SistemaEyS.AdminForms
 			this.PerfilAction = new global::Gtk.Action("PerfilAction", global::Mono.Unix.Catalog.GetString("Perfil"), null, null);
 			this.PerfilAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Perfil");
 			w1.Add(this.PerfilAction, null);
-			this.closeAction = new global::Gtk.Action("closeAction", global::Mono.Unix.Catalog.GetString("_Close"), null, "gtk-close");
+			this.closeAction = new global::Gtk.Action("closeAction", global::Mono.Unix.Catalog.GetString("Cerrar sesión"), null, "gtk-close");
 			this.closeAction.ShortLabel = global::Mono.Unix.Catalog.GetString("_Close");
 			w1.Add(this.closeAction, null);
 			this.EmpleadosAction = new global::Gtk.Action("EmpleadosAction", global::Mono.Unix.Catalog.GetString("Empleados"), null, null);
@@ -191,6 +191,8 @@ namespace SistemaEyS.AdminForms
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 			this.closeAction.Activated += new global::System.EventHandler(this.actCloseOnActivated);
 			this.EmpleadosAction.Activated += new global::System.EventHandler(this.EmpleadosActionOnActivated);
+			this.HorariosAction.Activated += new global::System.EventHandler(this.HorariosActionOnActivated);
+			this.EntradasSalidasAction.Activated += new global::System.EventHandler(this.EntradasSalidasActionOnActivated);
 		}
 	}
 }
