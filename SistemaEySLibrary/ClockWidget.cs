@@ -9,6 +9,59 @@ namespace SistemaEySLibrary
         public int Height = 150;
         public ClockWidget()
         {
+            this.Realized += this.printColors;
+        }
+
+        string GdkColorToRGB(Gdk.Color color)
+        {
+            return $"{color.Red/257};{color.Green/257};{color.Blue/257}";
+        }
+
+        void printColors(Object sender, EventArgs args)
+        {
+            Gtk.Style style = this.Style;
+
+            Console.WriteLine("Base colors");
+            Gdk.Color[] colors = style.BaseColors;
+            int i = 0;
+            foreach (Gdk.Color color in colors)
+            {
+                Console.WriteLine($"{i}: {GdkColorToRGB(color)}");
+                i++;
+            }
+
+            Console.WriteLine("Light colors");
+            colors = style.LightColors;
+            i = 0;
+            foreach (Gdk.Color color in colors)
+            {
+                Console.WriteLine($"{i}: {GdkColorToRGB(color)}");
+                i++;
+            }
+            Console.WriteLine("Mid colors");
+            colors = style.MidColors;
+            i = 0;
+            foreach (Gdk.Color color in colors)
+            {
+                Console.WriteLine($"{i}: {GdkColorToRGB(color)}");
+                i++;
+            }
+            Console.WriteLine("Foregrounds colors");
+            colors = style.Foregrounds;
+            i = 0;
+            foreach (Gdk.Color color in colors)
+            {
+                Console.WriteLine($"{i}: {GdkColorToRGB(color)}");
+                i++;
+            }
+            Console.WriteLine("Background colors");
+            colors = style.Backgrounds;
+            i = 0;
+            foreach (Gdk.Color color in colors)
+            {
+                Console.WriteLine($"{i}: {GdkColorToRGB(color)}");
+                i++;
+            }
         }
 
         public void DrawClock()
@@ -42,7 +95,16 @@ namespace SistemaEySLibrary
                 ring.LineTo(point2);
                 ring.LineCap = LineCap.Round;
 
-                ring.SetSourceColor(new Cairo.Color(0.95, 0.95, 0.95));
+                Gtk.Style style = this.Style;
+                Gdk.Color color = style.Foregrounds[4];
+
+                ring.SetSourceColor(
+                    new Cairo.Color(
+                            color.Red / 65535f,
+                            color.Green / 65535f,
+                            color.Blue / 65535f
+                        )
+                    );
                 ring.Stroke();
 
                 ring.GetTarget().Dispose();
@@ -70,7 +132,16 @@ namespace SistemaEySLibrary
             line.LineTo(point2);
             line.LineCap = LineCap.Round;
 
-            line.SetSourceColor(new Cairo.Color(0.5, 0.1, 0.1));
+            Gtk.Style style = this.Style;
+            Gdk.Color color = style.BaseColors[3];
+
+            line.SetSourceColor(
+                new Cairo.Color(
+                        color.Red / 65535f,
+                        color.Green / 65535f,
+                        color.Blue / 65535f
+                    )
+                );
             line.Stroke();
 
             line.GetTarget().Dispose();
@@ -94,7 +165,16 @@ namespace SistemaEySLibrary
             line.LineTo(point2);
             line.LineCap = LineCap.Round;
 
-            line.SetSourceColor(new Cairo.Color(0.95, 0.95, 0.95));
+            Gtk.Style style = this.Style;
+            Gdk.Color color = style.Foregrounds[0];
+
+            line.SetSourceColor(
+                new Cairo.Color(
+                        color.Red / 65535f,
+                        color.Green / 65535f,
+                        color.Blue / 65535f
+                    )
+                );
             line.Stroke();
 
             line.GetTarget().Dispose();
@@ -103,26 +183,35 @@ namespace SistemaEySLibrary
         public void DrawSecondLine()
         {
             Gdk.Window drawingArea = this.GdkWindow;
-            Cairo.Context ring = Gdk.CairoHelper.Create(drawingArea);
+            Cairo.Context line = Gdk.CairoHelper.Create(drawingArea);
 
             Cairo.PointD point1, point2;
 
             point1 = new Cairo.PointD(0, 0);
             point2 = new Cairo.PointD(0, -this.Height * 2 / 5);
 
-            ring.Antialias = Cairo.Antialias.Default;
-            ring.Translate(75, 75);
-            ring.Rotate(CalculateSecondsToRadian());
-            ring.LineWidth = 2;
-            ring.MoveTo(point1);
-            ring.LineTo(point2);
-            ring.LineCap = LineCap.Round;
+            line.Antialias = Cairo.Antialias.Default;
+            line.Translate(75, 75);
+            line.Rotate(CalculateSecondsToRadian());
+            line.LineWidth = 2;
+            line.MoveTo(point1);
+            line.LineTo(point2);
+            line.LineCap = LineCap.Round;
 
-            ring.SetSourceColor(new Cairo.Color(0.95, 0.95, 0.95));
-            ring.Stroke();
+            Gtk.Style style = this.Style;
+            Gdk.Color color = style.Foregrounds[0];
 
-            ring.GetTarget().Dispose();
-            ring.Dispose();
+            line.SetSourceColor(
+                new Cairo.Color(
+                        color.Red / 65535f,
+                        color.Green / 65535f,
+                        color.Blue / 65535f
+                    )
+                );
+            line.Stroke();
+
+            line.GetTarget().Dispose();
+            line.Dispose();
         }
         protected double CalculateHoursToRadian()
         {
