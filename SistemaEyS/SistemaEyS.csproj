@@ -72,6 +72,9 @@
     <Compile Include="gtk-gui\SistemaEyS.UserForms.UserLogin.cs" />
     <Compile Include="AdminForms\Panels\EmpleadosPanel.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Panels.EmpleadosPanel.cs" />
+    <Compile Include="AdminForms\Panels\PanelTemplate.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Panels.PanelTemplate.cs" />
+    <Compile Include="AdminForms\Panels\HorariosPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
