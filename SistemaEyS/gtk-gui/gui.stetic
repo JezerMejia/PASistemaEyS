@@ -88,7 +88,7 @@
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="SistemaEyS.UserForms.UserAssistanceForm" design-size="517 306">
+  <widget class="Gtk.Window" id="SistemaEyS.UserForms.UserAssistanceForm" design-size="517 308">
     <property name="MemberName" />
     <property name="Title" translatable="yes">UserAssistanceForm</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -114,11 +114,17 @@
                     <child>
                       <widget class="Gtk.VBox" id="vbox3">
                         <property name="MemberName" />
-                        <property name="Spacing">6</property>
+                        <property name="Spacing">30</property>
                         <child>
-                          <widget class="Gtk.Label" id="label1">
+                          <widget class="Gtk.Alignment" id="alignment1">
                             <property name="MemberName" />
-                            <property name="LabelProp" translatable="yes">Reloj gigante</property>
+                            <property name="Xscale">0</property>
+                            <property name="Yscale">0</property>
+                            <child>
+                              <widget class="SistemaEySLibrary.ClockWidget" id="clockwidget1">
+                                <property name="MemberName" />
+                              </widget>
+                            </child>
                           </widget>
                           <packing>
                             <property name="Position">0</property>
@@ -589,7 +595,7 @@ IT</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.AdminPanel" design-size="589 300">
+  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.AdminPanel" design-size="590 300">
     <action-group name="Default">
       <action id="ArchivoAction">
         <property name="Type">Action</property>

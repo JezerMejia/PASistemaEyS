@@ -185,7 +185,7 @@ namespace SistemaEyS.AdminForms
 			{
 				this.Child.ShowAll();
 			}
-			this.DefaultWidth = 589;
+			this.DefaultWidth = 590;
 			this.DefaultHeight = 300;
 			this.Show();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
