@@ -5,6 +5,9 @@ namespace SistemaEySLibrary
     [System.ComponentModel.ToolboxItem(true)]
     public class ClockWidget : Gtk.DrawingArea
     {
+
+        // This is a tes from Leo Corea
+
         public int Width = 150;
         public int Height = 150;
         public ClockWidget()
