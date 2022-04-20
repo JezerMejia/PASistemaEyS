@@ -50,6 +50,11 @@
     <Reference Include="libstetic">
       <HintPath>..\..\..\..\..\usr\lib\monodevelop\AddIns\MonoDevelop.GtkCore\libstetic.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\DriverMySql\v4.8\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="Mono.Data.Sqlite" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -75,12 +80,15 @@
     <Compile Include="AdminForms\Panels\PanelTemplate.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Panels.PanelTemplate.cs" />
     <Compile Include="AdminForms\Panels\HorariosPanel.cs" />
+    <Compile Include="Connection\Connection.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
     <Folder Include="Utils\" />
     <Folder Include="AdminForms\" />
     <Folder Include="AdminForms\Panels\" />
+    <Folder Include="Connection\" />
+    <Folder Include="Database\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SistemaEySLibrary\SistemaEySLibrary.csproj">

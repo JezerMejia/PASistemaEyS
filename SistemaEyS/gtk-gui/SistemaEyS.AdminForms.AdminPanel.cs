@@ -60,6 +60,14 @@ namespace SistemaEyS.AdminForms
 
 		private global::Gtk.Label lbHome;
 
+		private global::Gtk.Fixed fixed1;
+
+		private global::Gtk.ScrolledWindow GtkScrolledWindow;
+
+		private global::Gtk.TreeView treeview;
+
+		private global::Gtk.Label label3;
+
 		protected virtual void Build()
 		{
 			global::Stetic.Gui.Initialize(this);
@@ -136,7 +144,7 @@ namespace SistemaEyS.AdminForms
 			this.vbox4.Name = "vbox4";
 			this.vbox4.Spacing = 6;
 			// Container child vbox4.Gtk.Box+BoxChild
-			this.UIManager.AddUiFromString(@"<ui><menubar name='menuBar'><menu name='ArchivoAction' action='ArchivoAction'><menuitem name='PerfilAction' action='PerfilAction'/><menuitem name='closeAction' action='closeAction'/></menu><menu name='TablasAction' action='TablasAction'><menuitem name='EmpleadosAction' action='EmpleadosAction'/><menuitem name='HorariosAction' action='HorariosAction'/><menuitem name='EntradasSalidasAction' action='EntradasSalidasAction'/></menu><menu name='ReportesAction' action='ReportesAction'><menuitem name='EntradasSalidasAction1' action='EntradasSalidasAction1'/><menuitem name='AtrasosAction' action='AtrasosAction'/><menuitem name='HorasTrabajadasAction' action='HorasTrabajadasAction'/><menuitem name='HorasExtrasAction' action='HorasExtrasAction'/><menuitem name='HorasSuplementariasAction' action='HorasSuplementariasAction'/><menuitem name='AusenciasAction' action='AusenciasAction'/><menuitem name='NovedadesAsistenciaAction' action='NovedadesAsistenciaAction'/><menuitem name='PermisosAction' action='PermisosAction'/></menu><menu name='AyudaAction' action='AyudaAction'><menuitem name='dialogInfoAction' action='dialogInfoAction'/><menuitem name='dialogQuestionAction' action='dialogQuestionAction'/></menu></menubar></ui>");
+			this.UIManager.AddUiFromString(@"<ui><menubar name='menuBar'><menu name='AyudaAction' action='AyudaAction'><menuitem name='dialogInfoAction' action='dialogInfoAction'/><menuitem name='dialogQuestionAction' action='dialogQuestionAction'/></menu><menu name='ArchivoAction' action='ArchivoAction'><menuitem name='PerfilAction' action='PerfilAction'/><menuitem name='closeAction' action='closeAction'/></menu><menu name='TablasAction' action='TablasAction'><menuitem name='EmpleadosAction' action='EmpleadosAction'/><menuitem name='HorariosAction' action='HorariosAction'/><menuitem name='EntradasSalidasAction' action='EntradasSalidasAction'/></menu><menu name='ReportesAction' action='ReportesAction'><menuitem name='EntradasSalidasAction1' action='EntradasSalidasAction1'/><menuitem name='AtrasosAction' action='AtrasosAction'/><menuitem name='HorasTrabajadasAction' action='HorasTrabajadasAction'/><menuitem name='HorasExtrasAction' action='HorasExtrasAction'/><menuitem name='HorasSuplementariasAction' action='HorasSuplementariasAction'/><menuitem name='AusenciasAction' action='AusenciasAction'/><menuitem name='NovedadesAsistenciaAction' action='NovedadesAsistenciaAction'/><menuitem name='PermisosAction' action='PermisosAction'/></menu></menubar></ui>");
 			this.menuBar = ((global::Gtk.MenuBar)(this.UIManager.GetWidget("/menuBar")));
 			this.menuBar.Name = "menuBar";
 			this.vbox4.Add(this.menuBar);
@@ -148,7 +156,7 @@ namespace SistemaEyS.AdminForms
 			this.ntTabview = new global::Gtk.Notebook();
 			this.ntTabview.CanFocus = true;
 			this.ntTabview.Name = "ntTabview";
-			this.ntTabview.CurrentPage = 0;
+			this.ntTabview.CurrentPage = 1;
 			this.ntTabview.EnablePopup = true;
 			this.ntTabview.Scrollable = true;
 			// Container child ntTabview.Gtk.Notebook+NotebookChild
@@ -176,17 +184,45 @@ namespace SistemaEyS.AdminForms
 			this.lbHome.LabelProp = global::Mono.Unix.Catalog.GetString("Inicio");
 			this.ntTabview.SetTabLabel(this.alignment4, this.lbHome);
 			this.lbHome.ShowAll();
+			// Container child ntTabview.Gtk.Notebook+NotebookChild
+			this.fixed1 = new global::Gtk.Fixed();
+			this.fixed1.Name = "fixed1";
+			this.fixed1.HasWindow = false;
+			// Container child fixed1.Gtk.Fixed+FixedChild
+			this.GtkScrolledWindow = new global::Gtk.ScrolledWindow();
+			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
+			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
+			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
+			this.treeview = new global::Gtk.TreeView();
+			this.treeview.WidthRequest = 250;
+			this.treeview.HeightRequest = 150;
+			this.treeview.CanFocus = true;
+			this.treeview.Name = "treeview";
+			this.GtkScrolledWindow.Add(this.treeview);
+			this.fixed1.Add(this.GtkScrolledWindow);
+			global::Gtk.Fixed.FixedChild w7 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.GtkScrolledWindow]));
+			w7.X = 156;
+			w7.Y = 87;
+			this.ntTabview.Add(this.fixed1);
+			global::Gtk.Notebook.NotebookChild w8 = ((global::Gtk.Notebook.NotebookChild)(this.ntTabview[this.fixed1]));
+			w8.Position = 1;
+			// Notebook tab
+			this.label3 = new global::Gtk.Label();
+			this.label3.Name = "label3";
+			this.label3.LabelProp = global::Mono.Unix.Catalog.GetString("page2");
+			this.ntTabview.SetTabLabel(this.fixed1, this.label3);
+			this.label3.ShowAll();
 			this.vbox4.Add(this.ntTabview);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.ntTabview]));
-			w6.Position = 1;
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.ntTabview]));
+			w9.Position = 1;
 			this.alignment1.Add(this.vbox4);
 			this.Add(this.alignment1);
 			if ((this.Child != null))
 			{
 				this.Child.ShowAll();
 			}
-			this.DefaultWidth = 590;
-			this.DefaultHeight = 300;
+			this.DefaultWidth = 554;
+			this.DefaultHeight = 323;
 			this.Show();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 			this.closeAction.Activated += new global::System.EventHandler(this.actCloseOnActivated);

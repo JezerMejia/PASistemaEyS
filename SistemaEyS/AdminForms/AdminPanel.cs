@@ -1,10 +1,21 @@
 ﻿using System;
 using Gtk;
 using SistemaEySLibrary;
+using System.Data;
+using Mono.Data.Sqlite;
+using MySql.Data.MySqlClient;
+
 namespace SistemaEyS.AdminForms
 {
     public partial class AdminPanel : Gtk.Window
     {
+        //DataBase
+        string connectionString;
+        string query;
+        SqliteCommand cmd;
+        SqliteConnection conn;
+        SqliteDataReader dr;
+
         protected Window parent;
         protected uint timeout;
         public AdminPanel(Window parent) :
@@ -13,6 +24,35 @@ namespace SistemaEyS.AdminForms
             this.parent = parent;
             this.Build();
             this.SetDateTimeTimeout();
+            connectionString = "Data Source=data.db;Version=3;New=true;Compress=True;";
+            conn = new SqliteConnection(connectionString);
+            query = "select id_user,nombres,apellidos,email from tbl_user";
+
+            try{
+
+                treeview.AppendColumn("id_user", new CellRendererText(), "text", 0);
+                treeview.AppendColumn("nombres", new CellRendererText(), "text", 1);
+                treeview.AppendColumn("apellidos", new CellRendererText(), "text", 2);
+                treeview.AppendColumn("email", new CellRendererText(), "text", 3);
+                ListStore data = new ListStore(typeof(string), typeof(string), typeof(string), typeof(string));
+                conn.Open();
+                cmd = new SqliteCommand(query, conn); dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    data.AppendValues(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString());
+                }
+
+                treeview.Model = data;
+                dr.Close();
+                conn.Close();
+
+
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
         public void Close()
         {
