@@ -15,7 +15,7 @@ public struct StoreObject
     public Gtk.CellRenderer cellRenderer;
 }
 
-namespace SistemaEyS.AdminForms.Panels
+namespace SistemaEyS.AdminForms.Tables
 {
     [System.ComponentModel.ToolboxItem(true)]
     public partial class PanelTemplate : Gtk.Bin
