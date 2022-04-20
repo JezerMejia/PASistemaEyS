@@ -1,21 +1,11 @@
 ﻿using System;
 using Gtk;
 using SistemaEySLibrary;
-using System.Data;
-using Mono.Data.Sqlite;
-using MySql.Data.MySqlClient;
 
 namespace SistemaEyS.AdminForms
 {
     public partial class AdminPanel : Gtk.Window
     {
-        //DataBase
-        string connectionString;
-        string query;
-        SqliteCommand cmd;
-        SqliteConnection conn;
-        SqliteDataReader dr;
-
         protected Window parent;
         protected uint timeout;
         public AdminPanel(Window parent) :
@@ -24,35 +14,6 @@ namespace SistemaEyS.AdminForms
             this.parent = parent;
             this.Build();
             this.SetDateTimeTimeout();
-            connectionString = "Data Source=data.db;Version=3;New=true;Compress=True;";
-            conn = new SqliteConnection(connectionString);
-            query = "select id_user,nombres,apellidos,email from tbl_user";
-
-            try{
-
-                treeview.AppendColumn("id_user", new CellRendererText(), "text", 0);
-                treeview.AppendColumn("nombres", new CellRendererText(), "text", 1);
-                treeview.AppendColumn("apellidos", new CellRendererText(), "text", 2);
-                treeview.AppendColumn("email", new CellRendererText(), "text", 3);
-                ListStore data = new ListStore(typeof(string), typeof(string), typeof(string), typeof(string));
-                conn.Open();
-                cmd = new SqliteCommand(query, conn); dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    data.AppendValues(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString());
-                }
-
-                treeview.Model = data;
-                dr.Close();
-                conn.Close();
-
-
-
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
         }
         public void Close()
         {
@@ -70,8 +31,9 @@ namespace SistemaEyS.AdminForms
         {
             DateTime dateTime = DateTime.Now;
             string str = dateTime.ToString("yyyy-MM-dd h:mm:ss tt");
-            this.lbDateTime.Markup = $"<span size=\"200%\" weight=\"bold\">{str}</span>";
+            this.lbDateTime.Markup = $"<span weight=\"bold\">{str}</span>";
             this.lbDateTime.UseMarkup = true;
+            this.clockwidget1.QueueDraw();
             return true;
         }
         public void AddTab(Notebook notebook, Widget widget, string label)
@@ -91,19 +53,19 @@ namespace SistemaEyS.AdminForms
             this.Close();
         }
 
-        protected void EmpleadosActionOnActivated(object sender, EventArgs e)
+        protected void TablasEmpleadosActionOnActivated(object sender, EventArgs e)
         {
-            Panels.EmpleadosPanel empleadosPanel = new Panels.EmpleadosPanel();
+            Tables.EmpleadosPanel empleadosPanel = new Tables.EmpleadosPanel();
             this.AddTab(this.ntTabview, empleadosPanel, "Empleados");
         }
 
-        protected void HorariosActionOnActivated(object sender, EventArgs e)
+        protected void TablasHorariosActionOnActivated(object sender, EventArgs e)
         {
-            Panels.HorariosPanel horariosPanel = new Panels.HorariosPanel();
+            Tables.HorariosPanel horariosPanel = new Tables.HorariosPanel();
             this.AddTab(this.ntTabview, horariosPanel, "Horarios");
         }
 
-        protected void EntradasSalidasActionOnActivated(object sender, EventArgs e)
+        protected void TablasEntradasSalidasActionOnActivated(object sender, EventArgs e)
         {
         }
 
@@ -111,6 +73,18 @@ namespace SistemaEyS.AdminForms
         {
             Application.Quit();
             args.RetVal = true;
+        }
+
+        protected void RolesOnActivated(object sender, EventArgs e)
+        {
+            AdminForms.Settings.UserRolSettings userRolSettings = new Settings.UserRolSettings();
+            userRolSettings.Show();
+        }
+
+        protected void AjustesCargosOnActivated(object sender, EventArgs e)
+        {
+            AdminForms.Settings.CargosSettings cargosSettings = new Settings.CargosSettings();
+            cargosSettings.Show();
         }
     }
 }
