@@ -44,6 +44,14 @@ namespace SistemaEyS.AdminForms
 
 		private global::Gtk.Action dialogQuestionAction;
 
+		private global::Gtk.Action AjustesAction;
+
+		private global::Gtk.Action RolesAction;
+
+		private global::Gtk.Action CargosAction;
+
+		private global::Gtk.Action HorariosAction1;
+
 		private global::Gtk.Alignment alignment1;
 
 		private global::Gtk.VBox vbox4;
@@ -56,17 +64,11 @@ namespace SistemaEyS.AdminForms
 
 		private global::Gtk.VBox vbox5;
 
+		private global::SistemaEySLibrary.ClockWidget clockwidget1;
+
 		private global::Gtk.Label lbDateTime;
 
 		private global::Gtk.Label lbHome;
-
-		private global::Gtk.Fixed fixed1;
-
-		private global::Gtk.ScrolledWindow GtkScrolledWindow;
-
-		private global::Gtk.TreeView treeview;
-
-		private global::Gtk.Label label3;
 
 		protected virtual void Build()
 		{
@@ -131,6 +133,18 @@ namespace SistemaEyS.AdminForms
 			this.dialogQuestionAction = new global::Gtk.Action("dialogQuestionAction", global::Mono.Unix.Catalog.GetString("SistemaEyS"), null, "gtk-dialog-question");
 			this.dialogQuestionAction.ShortLabel = global::Mono.Unix.Catalog.GetString("SistemaEyS");
 			w1.Add(this.dialogQuestionAction, null);
+			this.AjustesAction = new global::Gtk.Action("AjustesAction", global::Mono.Unix.Catalog.GetString("Ajustes"), null, null);
+			this.AjustesAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Ajustes");
+			w1.Add(this.AjustesAction, null);
+			this.RolesAction = new global::Gtk.Action("RolesAction", global::Mono.Unix.Catalog.GetString("Roles"), null, null);
+			this.RolesAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Roles");
+			w1.Add(this.RolesAction, null);
+			this.CargosAction = new global::Gtk.Action("CargosAction", global::Mono.Unix.Catalog.GetString("Cargos"), null, null);
+			this.CargosAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Cargos");
+			w1.Add(this.CargosAction, null);
+			this.HorariosAction1 = new global::Gtk.Action("HorariosAction1", global::Mono.Unix.Catalog.GetString("Horarios"), null, null);
+			this.HorariosAction1.ShortLabel = global::Mono.Unix.Catalog.GetString("Horarios");
+			w1.Add(this.HorariosAction1, null);
 			this.UIManager.InsertActionGroup(w1, 0);
 			this.AddAccelGroup(this.UIManager.AccelGroup);
 			this.Name = "SistemaEyS.AdminForms.AdminPanel";
@@ -144,7 +158,7 @@ namespace SistemaEyS.AdminForms
 			this.vbox4.Name = "vbox4";
 			this.vbox4.Spacing = 6;
 			// Container child vbox4.Gtk.Box+BoxChild
-			this.UIManager.AddUiFromString(@"<ui><menubar name='menuBar'><menu name='AyudaAction' action='AyudaAction'><menuitem name='dialogInfoAction' action='dialogInfoAction'/><menuitem name='dialogQuestionAction' action='dialogQuestionAction'/></menu><menu name='ArchivoAction' action='ArchivoAction'><menuitem name='PerfilAction' action='PerfilAction'/><menuitem name='closeAction' action='closeAction'/></menu><menu name='TablasAction' action='TablasAction'><menuitem name='EmpleadosAction' action='EmpleadosAction'/><menuitem name='HorariosAction' action='HorariosAction'/><menuitem name='EntradasSalidasAction' action='EntradasSalidasAction'/></menu><menu name='ReportesAction' action='ReportesAction'><menuitem name='EntradasSalidasAction1' action='EntradasSalidasAction1'/><menuitem name='AtrasosAction' action='AtrasosAction'/><menuitem name='HorasTrabajadasAction' action='HorasTrabajadasAction'/><menuitem name='HorasExtrasAction' action='HorasExtrasAction'/><menuitem name='HorasSuplementariasAction' action='HorasSuplementariasAction'/><menuitem name='AusenciasAction' action='AusenciasAction'/><menuitem name='NovedadesAsistenciaAction' action='NovedadesAsistenciaAction'/><menuitem name='PermisosAction' action='PermisosAction'/></menu></menubar></ui>");
+			this.UIManager.AddUiFromString(@"<ui><menubar name='menuBar'><menu name='ArchivoAction' action='ArchivoAction'><menuitem name='PerfilAction' action='PerfilAction'/><menuitem name='closeAction' action='closeAction'/></menu><menu name='TablasAction' action='TablasAction'><menuitem name='EmpleadosAction' action='EmpleadosAction'/><menuitem name='HorariosAction' action='HorariosAction'/><menuitem name='EntradasSalidasAction' action='EntradasSalidasAction'/></menu><menu name='ReportesAction' action='ReportesAction'><menuitem name='EntradasSalidasAction1' action='EntradasSalidasAction1'/><menuitem name='AtrasosAction' action='AtrasosAction'/><menuitem name='HorasTrabajadasAction' action='HorasTrabajadasAction'/><menuitem name='HorasExtrasAction' action='HorasExtrasAction'/><menuitem name='HorasSuplementariasAction' action='HorasSuplementariasAction'/><menuitem name='AusenciasAction' action='AusenciasAction'/><menuitem name='NovedadesAsistenciaAction' action='NovedadesAsistenciaAction'/><menuitem name='PermisosAction' action='PermisosAction'/></menu><menu name='AjustesAction' action='AjustesAction'><menuitem name='RolesAction' action='RolesAction'/><menuitem name='CargosAction' action='CargosAction'/><menuitem name='HorariosAction1' action='HorariosAction1'/></menu><menu name='AyudaAction' action='AyudaAction'><menuitem name='dialogInfoAction' action='dialogInfoAction'/><menuitem name='dialogQuestionAction' action='dialogQuestionAction'/></menu></menubar></ui>");
 			this.menuBar = ((global::Gtk.MenuBar)(this.UIManager.GetWidget("/menuBar")));
 			this.menuBar.Name = "menuBar";
 			this.vbox4.Add(this.menuBar);
@@ -156,7 +170,7 @@ namespace SistemaEyS.AdminForms
 			this.ntTabview = new global::Gtk.Notebook();
 			this.ntTabview.CanFocus = true;
 			this.ntTabview.Name = "ntTabview";
-			this.ntTabview.CurrentPage = 1;
+			this.ntTabview.CurrentPage = 0;
 			this.ntTabview.EnablePopup = true;
 			this.ntTabview.Scrollable = true;
 			// Container child ntTabview.Gtk.Notebook+NotebookChild
@@ -167,15 +181,23 @@ namespace SistemaEyS.AdminForms
 			this.vbox5.Name = "vbox5";
 			this.vbox5.Spacing = 6;
 			// Container child vbox5.Gtk.Box+BoxChild
+			this.clockwidget1 = new global::SistemaEySLibrary.ClockWidget();
+			this.clockwidget1.Name = "clockwidget1";
+			this.vbox5.Add(this.clockwidget1);
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.clockwidget1]));
+			w3.Position = 0;
+			w3.Expand = false;
+			w3.Fill = false;
+			// Container child vbox5.Gtk.Box+BoxChild
 			this.lbDateTime = new global::Gtk.Label();
 			this.lbDateTime.Name = "lbDateTime";
 			this.lbDateTime.LabelProp = global::Mono.Unix.Catalog.GetString("<span size=\"200%\" weight=\"bold\">DATETIME</span>");
 			this.lbDateTime.UseMarkup = true;
 			this.vbox5.Add(this.lbDateTime);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.lbDateTime]));
-			w3.Position = 1;
-			w3.Expand = false;
-			w3.Fill = false;
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.lbDateTime]));
+			w4.Position = 1;
+			w4.Expand = false;
+			w4.Fill = false;
 			this.alignment4.Add(this.vbox5);
 			this.ntTabview.Add(this.alignment4);
 			// Notebook tab
@@ -184,51 +206,25 @@ namespace SistemaEyS.AdminForms
 			this.lbHome.LabelProp = global::Mono.Unix.Catalog.GetString("Inicio");
 			this.ntTabview.SetTabLabel(this.alignment4, this.lbHome);
 			this.lbHome.ShowAll();
-			// Container child ntTabview.Gtk.Notebook+NotebookChild
-			this.fixed1 = new global::Gtk.Fixed();
-			this.fixed1.Name = "fixed1";
-			this.fixed1.HasWindow = false;
-			// Container child fixed1.Gtk.Fixed+FixedChild
-			this.GtkScrolledWindow = new global::Gtk.ScrolledWindow();
-			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
-			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
-			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
-			this.treeview = new global::Gtk.TreeView();
-			this.treeview.WidthRequest = 250;
-			this.treeview.HeightRequest = 150;
-			this.treeview.CanFocus = true;
-			this.treeview.Name = "treeview";
-			this.GtkScrolledWindow.Add(this.treeview);
-			this.fixed1.Add(this.GtkScrolledWindow);
-			global::Gtk.Fixed.FixedChild w7 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.GtkScrolledWindow]));
-			w7.X = 156;
-			w7.Y = 87;
-			this.ntTabview.Add(this.fixed1);
-			global::Gtk.Notebook.NotebookChild w8 = ((global::Gtk.Notebook.NotebookChild)(this.ntTabview[this.fixed1]));
-			w8.Position = 1;
-			// Notebook tab
-			this.label3 = new global::Gtk.Label();
-			this.label3.Name = "label3";
-			this.label3.LabelProp = global::Mono.Unix.Catalog.GetString("page2");
-			this.ntTabview.SetTabLabel(this.fixed1, this.label3);
-			this.label3.ShowAll();
 			this.vbox4.Add(this.ntTabview);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.ntTabview]));
-			w9.Position = 1;
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.ntTabview]));
+			w7.Position = 1;
 			this.alignment1.Add(this.vbox4);
 			this.Add(this.alignment1);
 			if ((this.Child != null))
 			{
 				this.Child.ShowAll();
 			}
-			this.DefaultWidth = 554;
-			this.DefaultHeight = 323;
+			this.DefaultWidth = 650;
+			this.DefaultHeight = 335;
 			this.Show();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 			this.closeAction.Activated += new global::System.EventHandler(this.actCloseOnActivated);
-			this.EmpleadosAction.Activated += new global::System.EventHandler(this.EmpleadosActionOnActivated);
-			this.HorariosAction.Activated += new global::System.EventHandler(this.HorariosActionOnActivated);
-			this.EntradasSalidasAction.Activated += new global::System.EventHandler(this.EntradasSalidasActionOnActivated);
+			this.EmpleadosAction.Activated += new global::System.EventHandler(this.TablasEmpleadosActionOnActivated);
+			this.HorariosAction.Activated += new global::System.EventHandler(this.TablasHorariosActionOnActivated);
+			this.EntradasSalidasAction.Activated += new global::System.EventHandler(this.TablasEntradasSalidasActionOnActivated);
+			this.RolesAction.Activated += new global::System.EventHandler(this.RolesOnActivated);
+			this.CargosAction.Activated += new global::System.EventHandler(this.AjustesCargosOnActivated);
 		}
 	}
 }
