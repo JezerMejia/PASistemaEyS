@@ -30,31 +30,36 @@
     <Reference Include="System" />
     <Reference Include="gtk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
     </Reference>
     <Reference Include="gdk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
     </Reference>
     <Reference Include="glib-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <SpecificVersion>False</SpecificVersion>
+      <Package>glib-sharp-2.0</Package>
     </Reference>
     <Reference Include="glade-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="pango-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
     </Reference>
     <Reference Include="atk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
     </Reference>
     <Reference Include="Mono.Posix" />
     <Reference Include="libstetic">
       <HintPath>..\..\..\..\..\usr\lib\monodevelop\AddIns\MonoDevelop.GtkCore\libstetic.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data">
-      <HintPath>..\..\..\DriverMySql\v4.8\MySql.Data.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="Mono.Data.Sqlite" />
+    <Reference Include="MySql.Data">
+      <HintPath>..\Libraries\MySql.Data.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -75,20 +80,25 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.AdminPanel.cs" />
     <Compile Include="gtk-gui\SistemaEyS.UserForms.UserAssistanceForm.cs" />
     <Compile Include="gtk-gui\SistemaEyS.UserForms.UserLogin.cs" />
-    <Compile Include="AdminForms\Panels\EmpleadosPanel.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Panels.EmpleadosPanel.cs" />
-    <Compile Include="AdminForms\Panels\PanelTemplate.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Panels.PanelTemplate.cs" />
-    <Compile Include="AdminForms\Panels\HorariosPanel.cs" />
+    <Compile Include="AdminForms\Tables\EmpleadosPanel.cs" />
+    <Compile Include="AdminForms\Tables\PanelTemplate.cs" />
+    <Compile Include="AdminForms\Tables\HorariosPanel.cs" />
     <Compile Include="Connection\Connection.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.PanelTemplate.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpleadosPanel.cs" />
+    <Compile Include="AdminForms\Settings\UserRolSettings.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.UserRolSettings.cs" />
+    <Compile Include="AdminForms\Settings\CargosSettings.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.CargosSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
     <Folder Include="Utils\" />
     <Folder Include="AdminForms\" />
-    <Folder Include="AdminForms\Panels\" />
+    <Folder Include="AdminForms\Tables\" />
     <Folder Include="Connection\" />
     <Folder Include="Database\" />
+    <Folder Include="AdminForms\Settings\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SistemaEySLibrary\SistemaEySLibrary.csproj">
