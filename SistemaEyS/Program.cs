@@ -14,6 +14,7 @@ namespace SistemaEyS
             MainWindow win = new MainWindow();
             win.Show();
             Application.Run();
+            con1.CerrarConexion();
         }
     }
 }
