@@ -83,22 +83,25 @@
     <Compile Include="AdminForms\Tables\EmpleadosPanel.cs" />
     <Compile Include="AdminForms\Tables\PanelTemplate.cs" />
     <Compile Include="AdminForms\Tables\HorariosPanel.cs" />
-    <Compile Include="Connection\Connection.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.PanelTemplate.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpleadosPanel.cs" />
     <Compile Include="AdminForms\Settings\UserRolSettings.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.UserRolSettings.cs" />
     <Compile Include="AdminForms\Settings\CargosSettings.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.CargosSettings.cs" />
+    <Compile Include="Database\Connection\Connection.cs" />
+    <Compile Include="Database\Datos\Dt_tlb_user.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
     <Folder Include="Utils\" />
     <Folder Include="AdminForms\" />
     <Folder Include="AdminForms\Tables\" />
-    <Folder Include="Connection\" />
     <Folder Include="Database\" />
     <Folder Include="AdminForms\Settings\" />
+    <Folder Include="Entidades\" />
+    <Folder Include="Database\Connection\" />
+    <Folder Include="Database\Datos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SistemaEySLibrary\SistemaEySLibrary.csproj">

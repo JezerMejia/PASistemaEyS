@@ -18,21 +18,6 @@ CREATE SCHEMA IF NOT EXISTS `Seguridad` DEFAULT CHARACTER SET utf8 ;
 USE `Seguridad` ;
 
 -- -----------------------------------------------------
--- Table `Seguridad`.`tbl_rol`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Seguridad`.`tbl_rol` (
-  `id_rol` INT(11) NOT NULL AUTO_INCREMENT,
-  `rol` VARCHAR(50) NOT NULL,
-  `estado` INT(11) NOT NULL,
-  PRIMARY KEY (`id_rol`),
-  UNIQUE INDEX `id_rol_UNIQUE` (`id_rol` ASC) VISIBLE,
-  UNIQUE INDEX `rol_UNIQUE` (`rol` ASC) VISIBLE)
-ENGINE = InnoDB
-AUTO_INCREMENT = 3
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
 -- Table `Seguridad`.`tbl_user`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Seguridad`.`tbl_user` (
@@ -47,15 +32,24 @@ CREATE TABLE IF NOT EXISTS `Seguridad`.`tbl_user` (
   PRIMARY KEY (`id_user`),
   UNIQUE INDEX `id_user_UNIQUE` (`id_user` ASC) VISIBLE,
   UNIQUE INDEX `user_UNIQUE` (`user` ASC) VISIBLE,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
-  INDEX `fk_tbl_user_tbl_rol1_idx` (`apellidos` ASC) VISIBLE,
-  CONSTRAINT `fk_tbl_user_tbl_rol1`
-    FOREIGN KEY (`apellidos`)
-    REFERENCES `Seguridad`.`tbl_rol` (`id_rol`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 16
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `Seguridad`.`tbl_rol`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Seguridad`.`tbl_rol` (
+  `id_rol` INT(11) NOT NULL AUTO_INCREMENT,
+  `rol` VARCHAR(50) NOT NULL,
+  `estado` INT(11) NOT NULL,
+  PRIMARY KEY (`id_rol`),
+  UNIQUE INDEX `id_rol_UNIQUE` (`id_rol` ASC) VISIBLE,
+  UNIQUE INDEX `rol_UNIQUE` (`rol` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8;
 
 
