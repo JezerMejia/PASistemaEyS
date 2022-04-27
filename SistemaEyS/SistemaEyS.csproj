@@ -60,6 +60,12 @@
     <Reference Include="MySql.Data">
       <HintPath>..\Libraries\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Ubiety.Logging.Core">
+      <HintPath>..\packages\Ubiety.Logging.Core.1.2.2\lib\net452\Ubiety.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Ubiety.Dns.Core">
+      <HintPath>..\packages\Ubiety.Dns.Core.4.2.2\lib\netstandard2.0\Ubiety.Dns.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -108,6 +114,9 @@
       <Project>{F436967E-1584-4DDC-A721-E03140A8D58F}</Project>
       <Name>SistemaEySLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
