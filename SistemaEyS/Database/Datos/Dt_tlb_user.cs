@@ -16,8 +16,7 @@ namespace SistemaEyS.Datos
 
         public Gtk.ListStore listStore;
 
-        Conexion conn = new Conexion();
-        MessageDialog ms = null;
+        Conexion conn = Conexion.OpenConnection();
         StringBuilder sb = new StringBuilder();
 
         public ListStore listarUsuarios()
@@ -27,10 +26,9 @@ namespace SistemaEyS.Datos
 
             IDataReader idr = null;
             sb.Clear();
-            sb.Append("SELECT * FROM Seguridad.VwUser;");
+            sb.Append("SELECT * FROM Seguridad.tbl_user;");
             try
             {
-                conn.AbrirConexion();
                 idr = conn.Leer(CommandType.Text, sb.ToString());
 
                 while (idr.Read())
@@ -42,17 +40,20 @@ namespace SistemaEyS.Datos
             }
             catch (Exception e)
             {
-                ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
                     ButtonsType.Ok, e.Message);
                 ms.Run();
                 ms.Destroy();
-                throw;
             }
             finally
             {
-                idr.Close();
-                conn.CerrarConexion();
+                if (idr != null && !idr.IsClosed)
+                {
+                    idr.Close();
+                }
+                conn.CloseConnection();
             }
+            return datos;
         }
         public Dt_tlb_user()
         {

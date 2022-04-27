@@ -7,80 +7,78 @@ namespace SistemadeControldeAsistencia.datos
 {
     public class Conexion
     {
-        #region atributos 
-        private String cadena = String.Empty;
-        private MySqlConnection con { get; set; }
-        private MySqlCommand sqlcomand { get; set; }
+        #region atributes
+        private MySqlConnection conn { get; set; }
+        private MySqlCommand sqlCommand { get; set; }
         private IDataReader idr { get; set; }
+        static private Conexion instance = null;
         #endregion
 
         #region metodos
         public String CadenaConexion()
         {
-            MySqlConnectionStringBuilder sb = new MySqlConnectionStringBuilder();
-            sb.Server = "localhost";
-            sb.Database = "Seguridad";
-            sb.UserID = "root";
-            sb.Password = "Usuario123.";
+            MySqlConnectionStringBuilder sb = new MySqlConnectionStringBuilder
+            {
+                Server = "localhost",
+                Database = "Seguridad",
+                UserID = "root",
+                Password = "Usuario123."
+            };
             return sb.ConnectionString;
         }//fin del metodo
 
-
-        public void AbrirConexion()
+        static public Conexion OpenConnection()
         {
+            if (Conexion.instance != null) return Conexion.instance;
+            Conexion conexion = new Conexion();
+
             MessageDialog ms = null;
-            if (con.State == ConnectionState.Open)
+
+            conexion.conn.ConnectionString = conexion.CadenaConexion();
+            try
             {
-                return;
+                conexion.conn.Open();
+                ms = new MessageDialog(null, DialogFlags.Modal,
+                    MessageType.Info, ButtonsType.Ok, "Se abrió la conexión a la BD Seguridad");
+                ms.Run();
+                ms.Destroy();
+            } catch (Exception e)
+            {
+                ms = new MessageDialog(null, DialogFlags.Modal,
+                    MessageType.Error, ButtonsType.Ok, e.Message);
+                ms.Run();
+                ms.Destroy();
+                Console.WriteLine("Error al conectar a la Base de Datos: " + e);
             }
-            else
-            {
-                con.ConnectionString = cadena;
-                try
-                {
-                    con.Open();
 
-                    ms = new MessageDialog(null, DialogFlags.Modal,
-                        MessageType.Info, ButtonsType.Ok, "Se abrio la conexion a la BD Seguridad");
-                    ms.Run();
-                    ms.Destroy();
-                    Console.WriteLine("Se conectó a la BD Seguridad");
-                }
-                catch (Exception e)
-                {
-                    ms = new MessageDialog(null, DialogFlags.Modal,
-                        MessageType.Error, ButtonsType.Ok, e.Message);
-                    ms.Run();
-                    ms.Destroy();
-                    Console.WriteLine("ERROR: " + e);
-                }//fin try-catch
-            }//fin if-else
-        }//fin del metodo
+            Conexion.instance = conexion;
+            return conexion;
+        }
 
 
-        public void CerrarConexion()
+        public void CloseConnection()
         {
-            if (con.State == ConnectionState.Closed)
+            if (this.conn.State == ConnectionState.Closed)
             {
                 return;
-            }
-            else
+            } else
             {
-                con.Close();
+                this.conn.Close();
+                Conexion.instance = null;
             }
         }//fin del metodo
 
 
         public IDataReader Leer(CommandType ct, string consulta)
         {
-            idr = null;
-            sqlcomand.Connection = con;
-            sqlcomand.CommandType = ct;
-            sqlcomand.CommandText = consulta;
+            this.idr = null;
+            this.sqlCommand.Connection = conn;
+            this.sqlCommand.CommandType = ct;
+            this.sqlCommand.CommandText = consulta;
 
             try
             {
-                idr = sqlcomand.ExecuteReader();
+                this.idr = this.sqlCommand.ExecuteReader();
             }
             catch
             {
@@ -93,13 +91,13 @@ namespace SistemadeControldeAsistencia.datos
         public Int32 Ejecutar(CommandType ct, string consulta)
         {
             int retorno = 0;
-            sqlcomand.Connection = con;
-            sqlcomand.CommandType = ct;
-            sqlcomand.CommandText = consulta;
+            this.sqlCommand.Connection = conn;
+            this.sqlCommand.CommandType = ct;
+            this.sqlCommand.CommandText = consulta;
 
             try
             {
-                retorno = sqlcomand.ExecuteNonQuery();
+                retorno = this.sqlCommand.ExecuteNonQuery();
             }
             catch
             {
@@ -111,11 +109,10 @@ namespace SistemadeControldeAsistencia.datos
 
 
         #region constructor 
-        public Conexion()
+        private Conexion()
         {
-            cadena = CadenaConexion();
-            con = new MySqlConnection();
-            sqlcomand = new MySqlCommand();
+            conn = new MySqlConnection();
+            sqlCommand = new MySqlCommand();
         }
         #endregion
 
