@@ -52,6 +52,12 @@ namespace SistemaEyS.AdminForms
 
 		private global::Gtk.Action HorariosAction1;
 
+		private global::Gtk.Action SolicitudesDeVacacionesAction;
+
+		private global::Gtk.Action GruposAction;
+
+		private global::Gtk.Action DepartamentosAction;
+
 		private global::Gtk.Alignment alignment1;
 
 		private global::Gtk.VBox vbox4;
@@ -145,6 +151,15 @@ namespace SistemaEyS.AdminForms
 			this.HorariosAction1 = new global::Gtk.Action("HorariosAction1", global::Mono.Unix.Catalog.GetString("Horarios"), null, null);
 			this.HorariosAction1.ShortLabel = global::Mono.Unix.Catalog.GetString("Horarios");
 			w1.Add(this.HorariosAction1, null);
+			this.SolicitudesDeVacacionesAction = new global::Gtk.Action("SolicitudesDeVacacionesAction", global::Mono.Unix.Catalog.GetString("Solicitudes de Vacaciones"), null, null);
+			this.SolicitudesDeVacacionesAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Solicitudes de Vacaciones");
+			w1.Add(this.SolicitudesDeVacacionesAction, null);
+			this.GruposAction = new global::Gtk.Action("GruposAction", global::Mono.Unix.Catalog.GetString("Grupos"), null, null);
+			this.GruposAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Grupos");
+			w1.Add(this.GruposAction, null);
+			this.DepartamentosAction = new global::Gtk.Action("DepartamentosAction", global::Mono.Unix.Catalog.GetString("Departamentos"), null, null);
+			this.DepartamentosAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Departamentos");
+			w1.Add(this.DepartamentosAction, null);
 			this.UIManager.InsertActionGroup(w1, 0);
 			this.AddAccelGroup(this.UIManager.AccelGroup);
 			this.Name = "SistemaEyS.AdminForms.AdminPanel";
@@ -158,7 +173,27 @@ namespace SistemaEyS.AdminForms
 			this.vbox4.Name = "vbox4";
 			this.vbox4.Spacing = 6;
 			// Container child vbox4.Gtk.Box+BoxChild
-			this.UIManager.AddUiFromString(@"<ui><menubar name='menuBar'><menu name='ArchivoAction' action='ArchivoAction'><menuitem name='PerfilAction' action='PerfilAction'/><menuitem name='closeAction' action='closeAction'/></menu><menu name='TablasAction' action='TablasAction'><menuitem name='EmpleadosAction' action='EmpleadosAction'/><menuitem name='HorariosAction' action='HorariosAction'/><menuitem name='EntradasSalidasAction' action='EntradasSalidasAction'/></menu><menu name='ReportesAction' action='ReportesAction'><menuitem name='EntradasSalidasAction1' action='EntradasSalidasAction1'/><menuitem name='AtrasosAction' action='AtrasosAction'/><menuitem name='HorasTrabajadasAction' action='HorasTrabajadasAction'/><menuitem name='HorasExtrasAction' action='HorasExtrasAction'/><menuitem name='HorasSuplementariasAction' action='HorasSuplementariasAction'/><menuitem name='AusenciasAction' action='AusenciasAction'/><menuitem name='NovedadesAsistenciaAction' action='NovedadesAsistenciaAction'/><menuitem name='PermisosAction' action='PermisosAction'/></menu><menu name='AjustesAction' action='AjustesAction'><menuitem name='RolesAction' action='RolesAction'/><menuitem name='CargosAction' action='CargosAction'/><menuitem name='HorariosAction1' action='HorariosAction1'/></menu><menu name='AyudaAction' action='AyudaAction'><menuitem name='dialogInfoAction' action='dialogInfoAction'/><menuitem name='dialogQuestionAction' action='dialogQuestionAction'/></menu></menubar></ui>");
+			this.UIManager.AddUiFromString("<ui><menubar name=\'menuBar\'><menu name=\'ArchivoAction\' action=\'ArchivoAction\'><me" +
+					"nuitem name=\'PerfilAction\' action=\'PerfilAction\'/><menuitem name=\'closeAction\' a" +
+					"ction=\'closeAction\'/></menu><menu name=\'TablasAction\' action=\'TablasAction\'><men" +
+					"uitem name=\'EmpleadosAction\' action=\'EmpleadosAction\'/><menuitem name=\'HorariosA" +
+					"ction\' action=\'HorariosAction\'/><menuitem name=\'EntradasSalidasAction\' action=\'E" +
+					"ntradasSalidasAction\'/><menuitem name=\'SolicitudesDeVacacionesAction\' action=\'So" +
+					"licitudesDeVacacionesAction\'/><menuitem name=\'DepartamentosAction\' action=\'Depar" +
+					"tamentosAction\'/></menu><menu name=\'ReportesAction\' action=\'ReportesAction\'><men" +
+					"uitem name=\'EntradasSalidasAction1\' action=\'EntradasSalidasAction1\'/><menuitem n" +
+					"ame=\'AtrasosAction\' action=\'AtrasosAction\'/><menuitem name=\'HorasTrabajadasActio" +
+					"n\' action=\'HorasTrabajadasAction\'/><menuitem name=\'HorasExtrasAction\' action=\'Ho" +
+					"rasExtrasAction\'/><menuitem name=\'HorasSuplementariasAction\' action=\'HorasSuplem" +
+					"entariasAction\'/><menuitem name=\'AusenciasAction\' action=\'AusenciasAction\'/><men" +
+					"uitem name=\'NovedadesAsistenciaAction\' action=\'NovedadesAsistenciaAction\'/><menu" +
+					"item name=\'PermisosAction\' action=\'PermisosAction\'/></menu><menu name=\'AjustesAc" +
+					"tion\' action=\'AjustesAction\'><menuitem name=\'RolesAction\' action=\'RolesAction\'/>" +
+					"<menuitem name=\'CargosAction\' action=\'CargosAction\'/><menuitem name=\'HorariosAct" +
+					"ion1\' action=\'HorariosAction1\'/><menuitem name=\'GruposAction\' action=\'GruposActi" +
+					"on\'/></menu><menu name=\'AyudaAction\' action=\'AyudaAction\'><menuitem name=\'dialog" +
+					"InfoAction\' action=\'dialogInfoAction\'/><menuitem name=\'dialogQuestionAction\' act" +
+					"ion=\'dialogQuestionAction\'/></menu></menubar></ui>");
 			this.menuBar = ((global::Gtk.MenuBar)(this.UIManager.GetWidget("/menuBar")));
 			this.menuBar.Name = "menuBar";
 			this.vbox4.Add(this.menuBar);
