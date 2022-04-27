@@ -1,9 +1,13 @@
 ﻿using System;
+using SistemaEyS.Datos;
+
 namespace SistemaEyS.AdminForms.Tables
 {
     [System.ComponentModel.ToolboxItem(true)]
     public class HorariosPanel : PanelTemplate
     {
+        Dt_tlb_horario dtus = new Dt_tlb_horario();
+
         public HorariosPanel()
         {
             StoreObject[] storeObjects = {
@@ -17,10 +21,7 @@ namespace SistemaEyS.AdminForms.Tables
 
             this.SetTreeViewColumns(this.treeView, storeObjects);
 
-            this.listStore = (Gtk.ListStore)this.treeView.Model;
-
-            this.listStore.AppendValues("000031725", "Jezer", "Mejía", "", "81211855", "jezer.mejia13523@est.uca.edu.ni");
-            this.listStore.AppendValues("000031231", "Juan", "Juan", "", "81921935", "juan.juan23214@est.uca.edu.ni");
+            this.treeView.Model = dtus.listarHorarios();
         }
     }
 }
