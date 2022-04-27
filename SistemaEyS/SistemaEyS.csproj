@@ -90,13 +90,13 @@
     <Compile Include="AdminForms\Tables\PanelTemplate.cs" />
     <Compile Include="AdminForms\Tables\HorariosPanel.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.PanelTemplate.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpleadosPanel.cs" />
     <Compile Include="AdminForms\Settings\UserRolSettings.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.UserRolSettings.cs" />
     <Compile Include="AdminForms\Settings\CargosSettings.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.CargosSettings.cs" />
     <Compile Include="Database\Connection\Connection.cs" />
     <Compile Include="Database\Datos\Dt_tlb_user.cs" />
+    <Compile Include="Database\Datos\Dt_tlb_horario.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />

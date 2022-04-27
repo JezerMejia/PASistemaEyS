@@ -11,7 +11,7 @@ using SistemaEyS.Datos;
 
 namespace SistemaEyS.Datos
 {
-    public class Dt_tlb_user
+    public class Dt_tlb_horario
     {
 
         public Gtk.ListStore listStore;
@@ -19,14 +19,14 @@ namespace SistemaEyS.Datos
         Conexion conn = Conexion.OpenConnection();
         StringBuilder sb = new StringBuilder();
 
-        public ListStore listarUsuarios()
+        public ListStore listarHorarios()
         {
             ListStore datos = new ListStore(typeof(string), typeof(string),
             typeof(string), typeof(string), typeof(string), typeof(string));
 
             IDataReader idr = null;
             sb.Clear();
-            sb.Append("SELECT * FROM Seguridad.tbl_user;");
+            sb.Append("SELECT * FROM Seguridad.tbl_horario;");
             try
             {
                 idr = conn.Leer(CommandType.Text, sb.ToString());
@@ -54,7 +54,7 @@ namespace SistemaEyS.Datos
             }
             return datos;
         }
-        public Dt_tlb_user()
+        public Dt_tlb_horario()
         {
         }
     }
