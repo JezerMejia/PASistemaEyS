@@ -16,7 +16,7 @@ namespace SistemaEyS.Datos
 
         public Gtk.ListStore listStore;
 
-        Conexion conn = Conexion.OpenConnection();
+        ConnectionSeg conn = ConnectionSeg.OpenConnection();
         StringBuilder sb = new StringBuilder();
 
         public ListStore listarUsuarios()
@@ -29,7 +29,7 @@ namespace SistemaEyS.Datos
             sb.Append("SELECT * FROM Seguridad.tbl_user;");
             try
             {
-                idr = conn.Leer(CommandType.Text, sb.ToString());
+                idr = conn.Read(CommandType.Text, sb.ToString());
 
                 while (idr.Read())
                 {
