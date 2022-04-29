@@ -96,14 +96,14 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.CargosSettings.cs" />
     <Compile Include="Database\Connection\Connection.cs" />
     <Compile Include="Database\Connection\ConnectionEyS.cs" />
-    <Compile Include="Database\Datos\Dt_tlb_user.cs" />
-    <Compile Include="Database\Datos\Dt_tlb_horario.cs" />
-    <Compile Include="Database\Datos\Dt_tbl_entradaSalida.cs" />
     <Compile Include="AdminForms\Tables\EntradaSalida.cs" />
-    <Compile Include="Database\Datos\Dt_tbl_solicitudVacaciones.cs" />
     <Compile Include="AdminForms\Tables\SolicitudVacaciones.cs" />
     <Compile Include="AdminForms\Settings\HorarioSenttings.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.HorarioSenttings.cs" />
+    <Compile Include="Database\DatosEyS\Dt_tbl_entradaSalida.cs" />
+    <Compile Include="Database\DatosEyS\Dt_tbl_solicitudVacaciones.cs" />
+    <Compile Include="Database\DatosEyS\Dt_tlb_horario.cs" />
+    <Compile Include="Database\DatosEyS\Dt_tlb_user.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
@@ -114,7 +114,8 @@
     <Folder Include="AdminForms\Settings\" />
     <Folder Include="Entidades\" />
     <Folder Include="Database\Connection\" />
-    <Folder Include="Database\Datos\" />
+    <Folder Include="Database\DatosEyS\" />
+    <Folder Include="Database\DatosSeguridad\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SistemaEySLibrary\SistemaEySLibrary.csproj">
