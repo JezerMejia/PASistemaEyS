@@ -67,6 +67,14 @@ namespace SistemaEyS.AdminForms
 
         protected void TablasEntradasSalidasActionOnActivated(object sender, EventArgs e)
         {
+            Tables.entradaSalidaPanel EntradaSalidaPanel = new Tables.entradaSalidaPanel();
+            this.AddTab(this.ntTabview, EntradaSalidaPanel, "Entrada/Salida");
+        }
+
+        protected void TablasSolicitudVacacionesActionOnActivated(object sender, EventArgs e)
+        {
+            Tables.solicitudVacacionesPanel SolicitudVacaciones = new Tables.solicitudVacacionesPanel();
+            this.AddTab(this.ntTabview, SolicitudVacaciones, "Solicitudes de vacaciones");
         }
 
         protected void OnDeleteEvent(object o, DeleteEventArgs args)
@@ -86,5 +94,6 @@ namespace SistemaEyS.AdminForms
             AdminForms.Settings.CargosSettings cargosSettings = new Settings.CargosSettings();
             cargosSettings.Show();
         }
+
     }
 }
