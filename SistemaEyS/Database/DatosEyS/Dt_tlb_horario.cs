@@ -6,8 +6,7 @@ using Gtk;
 using MySql.Data;
 using System.Text;
 using System.Collections.Generic;
-using SistemadeControldeAsistencia.datos;
-using SistemaEyS.Datos;
+using SistemaEyS.Database.Connection;
 
 namespace SistemaEyS.Datos
 {
