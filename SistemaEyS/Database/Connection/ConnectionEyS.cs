@@ -3,29 +3,29 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using Gtk;
 
-namespace SistemadeControldeAsistencia.datos
+namespace SistemaEyS.Database.Connection
 {
-    public class ConnectionSeg
+    public class ConnectionEyS
     {
         private MySqlConnection conn { get; set; }
-        static private ConnectionSeg instance = null;
+        static private ConnectionEyS instance = null;
 
         public String CadenaConexion()
         {
             MySqlConnectionStringBuilder sb = new MySqlConnectionStringBuilder
             {
                 Server = "localhost",
-                Database = "Seguridad",
+                Database = "BDSistemaEyS",
                 UserID = "root",
                 Password = "Usuario123."
             };
             return sb.ConnectionString;
         }
 
-        static public ConnectionSeg OpenConnection()
+        static public ConnectionEyS OpenConnection()
         {
-            if (ConnectionSeg.instance != null) return ConnectionSeg.instance;
-            ConnectionSeg conexion = new ConnectionSeg();
+            if (ConnectionEyS.instance != null) return ConnectionEyS.instance;
+            ConnectionEyS conexion = new ConnectionEyS();
             conexion.conn.ConnectionString = conexion.CadenaConexion();
 
             MessageDialog ms;
@@ -33,7 +33,7 @@ namespace SistemadeControldeAsistencia.datos
             {
                 conexion.conn.Open();
                 ms = new MessageDialog(null, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok, "Se abrió la conexión a la BD Seguridad");
+                    MessageType.Info, ButtonsType.Ok, "Se abrió la conexión a la BD SistemaEyS");
                 ms.Run();
                 ms.Destroy();
             }
@@ -46,10 +46,9 @@ namespace SistemadeControldeAsistencia.datos
                 Console.WriteLine("Error al conectar a la Base de Datos: " + e);
             }
 
-            ConnectionSeg.instance = conexion;
+            ConnectionEyS.instance = conexion;
             return conexion;
         }
-
 
         public void CloseConnection()
         {
@@ -59,10 +58,9 @@ namespace SistemadeControldeAsistencia.datos
             } else
             {
                 this.conn.Close();
-                ConnectionSeg.instance = null;
+                ConnectionEyS.instance = null;
             }
         }
-
 
         public IDataReader Read(CommandType ct, string query)
         {
@@ -86,7 +84,6 @@ namespace SistemadeControldeAsistencia.datos
             return IDR;
         }
 
-
         public Int32 Execute(CommandType ct, string query)
         {
             Int32 value = 0;
@@ -109,12 +106,9 @@ namespace SistemadeControldeAsistencia.datos
 
             return value;
         }
-
-        private ConnectionSeg()
+        private ConnectionEyS()
         {
-            conn = new MySqlConnection();
+            this.conn = new MySqlConnection();
         }
-
     }
-
 }

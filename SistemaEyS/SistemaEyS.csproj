@@ -95,6 +95,7 @@
     <Compile Include="AdminForms\Settings\CargosSettings.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.CargosSettings.cs" />
     <Compile Include="Database\Connection\Connection.cs" />
+    <Compile Include="Database\Connection\ConnectionEyS.cs" />
     <Compile Include="Database\Datos\Dt_tlb_user.cs" />
     <Compile Include="Database\Datos\Dt_tlb_horario.cs" />
     <Compile Include="Database\Datos\Dt_tbl_entradaSalida.cs" />
