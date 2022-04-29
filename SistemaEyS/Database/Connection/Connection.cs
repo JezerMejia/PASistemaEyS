@@ -3,7 +3,7 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using Gtk;
 
-namespace SistemadeControldeAsistencia.datos
+namespace SistemaEyS.Database.Connection
 {
     public class ConnectionSeg
     {
@@ -51,14 +51,14 @@ namespace SistemadeControldeAsistencia.datos
         }
 
 
-        public void CloseConnection()
+        static public void CloseConnection()
         {
-            if (this.conn.State == ConnectionState.Closed)
+            if (ConnectionSeg.instance.conn.State == ConnectionState.Closed)
             {
                 return;
             } else
             {
-                this.conn.Close();
+                ConnectionSeg.instance.conn.Close();
                 ConnectionSeg.instance = null;
             }
         }

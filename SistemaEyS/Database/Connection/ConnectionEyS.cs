@@ -50,14 +50,15 @@ namespace SistemaEyS.Database.Connection
             return conexion;
         }
 
-        public void CloseConnection()
+        static public void CloseConnection()
         {
-            if (this.conn.State == ConnectionState.Closed)
+            if (ConnectionEyS.instance.conn.State == ConnectionState.Closed)
             {
                 return;
-            } else
+            }
+            else
             {
-                this.conn.Close();
+                ConnectionEyS.instance.conn.Close();
                 ConnectionEyS.instance = null;
             }
         }
