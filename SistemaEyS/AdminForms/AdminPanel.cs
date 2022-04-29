@@ -1,6 +1,7 @@
 ﻿using System;
 using Gtk;
 using SistemaEySLibrary;
+using SistemaEyS.Database.Connection;
 
 namespace SistemaEyS.AdminForms
 {
@@ -18,6 +19,7 @@ namespace SistemaEyS.AdminForms
         public void Close()
         {
             GLib.Source.Remove(this.timeout);
+            ConnectionSeg.CloseConnection();
             this.Destroy();
             this.parent.Show();
         }

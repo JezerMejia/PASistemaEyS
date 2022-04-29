@@ -9,13 +9,13 @@ namespace SistemaEyS
         public static void Main(string[] args)
         {
             Application.Init();
-            ConnectionEyS connectionEyS = ConnectionEyS.OpenConnection();
+            ConnectionEyS.OpenConnection();
 
             MainWindow win = new MainWindow();
             win.Show();
             Application.Run();
 
-            connectionEyS.CloseConnection();
+            ConnectionEyS.CloseConnection();
         }
     }
 }
