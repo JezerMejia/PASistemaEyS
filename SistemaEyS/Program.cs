@@ -1,6 +1,6 @@
 ﻿using System;
 using Gtk;
-using SistemadeControldeAsistencia.datos;
+using SistemaEyS.Database.Connection;
 
 namespace SistemaEyS
 {
@@ -9,11 +9,13 @@ namespace SistemaEyS
         public static void Main(string[] args)
         {
             Application.Init();
-            Conexion con1 = Conexion.OpenConnection();
+            ConnectionEyS connectionEyS = ConnectionEyS.OpenConnection();
+
             MainWindow win = new MainWindow();
             win.Show();
             Application.Run();
-            con1.CloseConnection();
+
+            connectionEyS.CloseConnection();
         }
     }
 }
