@@ -97,6 +97,12 @@
     <Compile Include="Database\Connection\Connection.cs" />
     <Compile Include="Database\Datos\Dt_tlb_user.cs" />
     <Compile Include="Database\Datos\Dt_tlb_horario.cs" />
+    <Compile Include="Database\Datos\Dt_tbl_entradaSalida.cs" />
+    <Compile Include="AdminForms\Tables\EntradaSalida.cs" />
+    <Compile Include="Database\Datos\Dt_tbl_solicitudVacaciones.cs" />
+    <Compile Include="AdminForms\Tables\SolicitudVacaciones.cs" />
+    <Compile Include="AdminForms\Settings\HorarioSenttings.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.HorarioSenttings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
