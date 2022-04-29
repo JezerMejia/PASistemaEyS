@@ -114,7 +114,6 @@ namespace SistemaEyS.Database.Connection
         {
             conn = new MySqlConnection();
         }
-
     }
 
 }

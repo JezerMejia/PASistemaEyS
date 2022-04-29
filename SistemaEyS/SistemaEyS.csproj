@@ -94,7 +94,7 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.UserRolSettings.cs" />
     <Compile Include="AdminForms\Settings\CargosSettings.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.CargosSettings.cs" />
-    <Compile Include="Database\Connection\Connection.cs" />
+    <Compile Include="Database\Connection\ConnectionSeg.cs" />
     <Compile Include="Database\Connection\ConnectionEyS.cs" />
     <Compile Include="AdminForms\Tables\EntradaSalida.cs" />
     <Compile Include="AdminForms\Tables\SolicitudVacaciones.cs" />
@@ -112,7 +112,6 @@
     <Folder Include="AdminForms\Tables\" />
     <Folder Include="Database\" />
     <Folder Include="AdminForms\Settings\" />
-    <Folder Include="Entidades\" />
     <Folder Include="Database\Connection\" />
     <Folder Include="Database\DatosEyS\" />
     <Folder Include="Database\DatosSeguridad\" />
