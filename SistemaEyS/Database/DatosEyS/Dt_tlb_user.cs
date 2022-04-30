@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Data;
-using Mono.Data.Sqlite;
-using MySql.Data.MySqlClient;
 using Gtk;
-using MySql.Data;
 using System.Text;
-using System.Collections.Generic;
 using SistemaEyS.Database.Connection;
 
 namespace SistemaEyS.Datos
