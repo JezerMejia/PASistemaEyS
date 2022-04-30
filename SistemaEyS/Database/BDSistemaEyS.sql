@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Departamento` (
   `idDepartamento` INT NOT NULL AUTO_INCREMENT,
   `nombreDepartamento` VARCHAR(25) CHARACTER SET 'utf8' NULL DEFAULT NULL,
   `descripcionDepartamento` VARCHAR(100) CHARACTER SET 'utf8' NULL DEFAULT NULL,
-  `extensionDepartamento` VARCHAR(50) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `extensionDepartamento` VARCHAR(5) CHARACTER SET 'utf8' NULL DEFAULT NULL,
   PRIMARY KEY (`idDepartamento`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
@@ -88,20 +88,20 @@ DROP TABLE IF EXISTS `BDSistemaEyS`.`Horario` ;
 
 CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Horario` (
   `idHorario` INT NOT NULL AUTO_INCREMENT,
-  `lunesInicio` DATETIME NULL DEFAULT NULL,
-  `lunesSalida` DATETIME NULL DEFAULT NULL,
-  `martesInicio` DATETIME NULL DEFAULT NULL,
-  `MartesSalida` DATETIME NULL DEFAULT NULL,
-  `miercolesInicio` DATETIME NULL DEFAULT NULL,
-  `miercolesSalida` DATETIME NULL DEFAULT NULL,
-  `juevesInicio` DATETIME NULL DEFAULT NULL,
-  `juevesSalida` DATETIME NULL DEFAULT NULL,
-  `viernesInicio` DATETIME NULL DEFAULT NULL,
-  `viernesSalida` DATETIME NULL DEFAULT NULL,
-  `sabadoInicio` DATETIME NULL DEFAULT NULL,
-  `sabadoFin` DATETIME NULL DEFAULT NULL,
-  `domingoFin` DATETIME NULL DEFAULT NULL,
-  `domingoInicio` DATETIME NULL DEFAULT NULL,
+  `lunesInicio` TIME NULL DEFAULT NULL,
+  `lunesSalida` TIME NULL DEFAULT NULL,
+  `martesInicio` TIME NULL DEFAULT NULL,
+  `MartesSalida` TIME NULL DEFAULT NULL,
+  `miercolesInicio` TIME NULL DEFAULT NULL,
+  `miercolesSalida` TIME NULL DEFAULT NULL,
+  `juevesInicio` TIME NULL DEFAULT NULL,
+  `juevesSalida` TIME NULL DEFAULT NULL,
+  `viernesInicio` TIME NULL DEFAULT NULL,
+  `viernesSalida` TIME NULL DEFAULT NULL,
+  `sabadoInicio` TIME NULL DEFAULT NULL,
+  `sabadoSalida` TIME NULL DEFAULT NULL,
+  `domingoInicio` TIME NULL DEFAULT NULL,
+  `domingoSalida` TIME NULL DEFAULT NULL,
   PRIMARY KEY (`idHorario`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
