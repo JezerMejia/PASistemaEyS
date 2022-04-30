@@ -12,11 +12,20 @@ namespace SistemaEyS.AdminForms.Tables
         {
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
-                new StoreObject("Nombre", typeof(string), "text", new Gtk.CellRendererText()),
-                new StoreObject("Apellido", typeof(string), "text", new Gtk.CellRendererText()),
-                new StoreObject("Dirección", typeof(string), "text", new Gtk.CellRendererText()),
-                new StoreObject("Teléfono", typeof(string), "text", new Gtk.CellRendererText()),
-                new StoreObject("Email", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Lunes - Inicio", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Lunes - Fin", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Martes - Inicio", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Martes - Fin", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Miércoles - Inicio", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Miércoles - Fin", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Jueves - Inicio", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Jueves - Fin", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Viernes - Inicio", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Viernes - Fin", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Sábado - Inicio", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Sábado - Fin", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Domingo - Inicio", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Domingo - Fin", typeof(string), "text", new Gtk.CellRendererText()),
             };
 
             this.SetTreeViewColumns(this.treeView, storeObjects);

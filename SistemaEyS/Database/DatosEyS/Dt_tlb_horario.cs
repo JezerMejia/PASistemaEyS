@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Data;
-using Mono.Data.Sqlite;
-using MySql.Data.MySqlClient;
 using Gtk;
-using MySql.Data;
 using System.Text;
-using System.Collections.Generic;
 using SistemaEyS.Database.Connection;
 
 namespace SistemaEyS.Datos
@@ -15,25 +11,41 @@ namespace SistemaEyS.Datos
 
         public Gtk.ListStore listStore;
 
-        ConnectionSeg conn = ConnectionSeg.OpenConnection();
+        ConnectionEyS conn = ConnectionEyS.OpenConnection();
         StringBuilder sb = new StringBuilder();
 
         public ListStore listarHorarios()
         {
-            ListStore datos = new ListStore(typeof(string), typeof(string),
-            typeof(string), typeof(string), typeof(string), typeof(string));
+            ListStore datos = new ListStore(
+                typeof(string), typeof(string),
+                typeof(string), typeof(string),
+                typeof(string), typeof(string),
+                typeof(string), typeof(string),
+                typeof(string), typeof(string),
+                typeof(string), typeof(string),
+                typeof(string), typeof(string),
+                typeof(string), typeof(string)
+            );
 
             IDataReader idr = null;
             sb.Clear();
-            sb.Append("SELECT * FROM Seguridad.tbl_horario;");
+            sb.Append("SELECT * FROM BDSistemaEyS.horario;");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());
 
                 while (idr.Read())
                 {
-                    datos.AppendValues(idr[0].ToString(), idr[1].ToString(),
-                        idr[2].ToString(), idr[3].ToString(), idr[4].ToString(), idr[5].ToString());
+                    datos.AppendValues(
+                        idr[0].ToString(), // ID
+                        idr[1].ToString(), idr[2].ToString(), // Lunes
+                        idr[3].ToString(), idr[4].ToString(), // Martes
+                        idr[5].ToString(), idr[6].ToString(), // Miércoles
+                        idr[7].ToString(), idr[8].ToString(), // Jueves
+                        idr[9].ToString(), idr[10].ToString(), // Viernes
+                        idr[11].ToString(), idr[12].ToString(), // Sábado
+                        idr[13].ToString(), idr[14].ToString() // Domingo
+                    );
                 }
                 return datos;
             }
