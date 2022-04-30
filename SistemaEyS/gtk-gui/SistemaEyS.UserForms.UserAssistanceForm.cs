@@ -187,6 +187,7 @@ namespace SistemaEyS.UserForms
 			this.DefaultHeight = 308;
 			this.Show();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
+			this.btnMarkEntry.Clicked += new global::System.EventHandler(this.btnMarkEntryOnClicked);
 			this.btnExit.Clicked += new global::System.EventHandler(this.btnExitOnClicked);
 		}
 	}

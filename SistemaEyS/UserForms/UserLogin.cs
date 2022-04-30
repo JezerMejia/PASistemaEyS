@@ -79,9 +79,11 @@ namespace SistemaEyS.UserForms
                 return;
             }
 
-            UserAssistanceForm assistanceForm = new UserAssistanceForm(this);
+            UserAssistanceForm assistanceForm = new UserAssistanceForm(this, idEmpleado);
             assistanceForm.Show();
             this.Hide();
+            this.entPassword.Text = "";
+            this.entUser.Text = "";
         }
     }
 }

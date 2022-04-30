@@ -1,16 +1,23 @@
 ﻿using System;
+using System.Data;
+using System.Text;
 using Gtk;
+using SistemaEyS.Database.Connection;
+
 namespace SistemaEyS.UserForms
 {
     public partial class UserAssistanceForm : Gtk.Window
     {
         protected Window parent;
         protected uint timeout;
+        protected string idEmpleado;
+        ConnectionEyS conn = ConnectionEyS.OpenConnection();
 
-        public UserAssistanceForm(Window parent) :
+        public UserAssistanceForm(Window parent, string idEmpleado) :
                 base(Gtk.WindowType.Toplevel)
         {
             this.parent = parent;
+            this.idEmpleado = idEmpleado;
             this.Build();
             this.SetDateTimeTimeout();
         }
@@ -29,6 +36,35 @@ namespace SistemaEyS.UserForms
             return true;
         }
 
+        private bool MarkAssitanceEnter()
+        {
+            StringBuilder sb = new StringBuilder();
+            bool value = false;
+
+            DateTime now = DateTime.Now;
+
+            sb.Clear();
+            sb.Append($"INSERT INTO BDSistemaEyS.Asistencia (fechaHoraEntrada, idEmpleado) " +
+                    $"VALUES ('{now.ToString("yyyy-MM-dd H:mm:ss")}', {this.idEmpleado});"
+                    );
+            try
+            {
+                value = conn.Execute(CommandType.Text, sb.ToString()) != 0;
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal,
+                    MessageType.Info, ButtonsType.Ok, "Marcado de entrada exitoso");
+                ms.Run();
+                ms.Destroy();
+            }
+            catch (Exception e)
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                    ButtonsType.Ok, e.Message);
+                ms.Run();
+                ms.Destroy();
+            }
+            return value;
+        }
+
         public void Close()
         {
             GLib.Source.Remove(this.timeout);
@@ -44,6 +80,11 @@ namespace SistemaEyS.UserForms
         protected void btnExitOnClicked(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        protected void btnMarkEntryOnClicked(object sender, EventArgs e)
+        {
+            this.MarkAssitanceEnter();
         }
     }
 }

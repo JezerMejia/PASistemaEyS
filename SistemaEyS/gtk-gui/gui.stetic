@@ -4,6 +4,8 @@
     <images-root-path>..</images-root-path>
   </configuration>
   <import>
+    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <widget-library name="../../SistemaEySLibrary/bin/Debug/SistemaEySLibrary.dll" />
     <widget-library name="../bin/Debug/SistemaEyS.exe" internal="true" />
   </import>
   <widget class="Gtk.Window" id="MainWindow" design-size="432 254">
@@ -188,6 +190,7 @@
                                 <property name="Type">TextOnly</property>
                                 <property name="Label" translatable="yes">Marcar Entrada</property>
                                 <property name="UseUnderline">True</property>
+                                <signal name="Clicked" handler="btnMarkEntryOnClicked" />
                               </widget>
                               <packing>
                                 <property name="Position">0</property>
