@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Data;
-using Mono.Data.Sqlite;
-using MySql.Data.MySqlClient;
 using Gtk;
-using MySql.Data;
 using System.Text;
 using SistemaEyS.Database.Connection;
 
@@ -14,25 +11,36 @@ namespace SistemaEyS.Datos
 
         public Gtk.ListStore listStore;
 
-        ConnectionSeg conn = ConnectionSeg.OpenConnection();
+        ConnectionEyS conn = ConnectionEyS.OpenConnection();
         StringBuilder sb = new StringBuilder();
 
         public ListStore listarsolicitudVacaciones()
         {
-            ListStore datos = new ListStore(typeof(string), typeof(string),
-            typeof(string), typeof(string), typeof(string), typeof(string));
+            ListStore datos = new ListStore(
+                typeof(string), typeof(string),
+                typeof(string), typeof(string),
+                typeof(string), typeof(string)
+            );
+
+            Console.WriteLine("UWU");
 
             IDataReader idr = null;
             sb.Clear();
-            sb.Append("SELECT * FROM Seguridad.tbl_solVacaciones;");
+            sb.Append("SELECT * FROM BDSistemaEyS.SolVacaciones;");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());
 
                 while (idr.Read())
                 {
-                    datos.AppendValues(idr[0].ToString(), idr[1].ToString(),
-                        idr[2].ToString(), idr[3].ToString(), idr[4].ToString(), idr[5].ToString());
+                    datos.AppendValues(
+                        idr[0].ToString(), // ID
+                        idr[3].ToString(), // ID Empleado
+                        idr[1].ToString(), // Fecha de Solicitud
+                        idr[2].ToString(), // Descripción
+                        idr[4].ToString(), // Inicio
+                        idr[5].ToString() // Fin
+                    );
                 }
                 return datos;
             }

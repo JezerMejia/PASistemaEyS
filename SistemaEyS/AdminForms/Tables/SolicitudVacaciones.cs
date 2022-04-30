@@ -1,5 +1,4 @@
 ﻿using System;
-using Gtk;
 using SistemaEyS.Datos;
 
 namespace SistemaEyS.AdminForms.Tables
@@ -14,12 +13,11 @@ namespace SistemaEyS.AdminForms.Tables
         {
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
-                new StoreObject("User", typeof(string), "text", new Gtk.CellRendererText()),
-                new StoreObject("Nombre", typeof(string), "text", new Gtk.CellRendererText()),
-                new StoreObject("Apellido", typeof(string), "text", new Gtk.CellRendererText()),
-                new StoreObject("Dirección", typeof(string), "text", new Gtk.CellRendererText()),
-                new StoreObject("Teléfono", typeof(string), "text", new Gtk.CellRendererText()),
-                new StoreObject("Email", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("ID Empleado", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Fecha Solicitud", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Descripción", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Inicio", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Fin", typeof(string), "text", new Gtk.CellRendererText()),
             };
             this.SetTreeViewColumns(treeView, storeObjects);
 
