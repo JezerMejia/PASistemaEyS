@@ -10,7 +10,7 @@ using SistemaEyS.Database.Connection;
 
 namespace SistemaEyS.Datos
 {
-    public class Dt_tlb_entradaSalida
+    public class Dt_tlb_asistencia
     {
 
         public Gtk.ListStore listStore;
@@ -25,7 +25,7 @@ namespace SistemaEyS.Datos
 
             IDataReader idr = null;
             sb.Clear();
-            sb.Append("SELECT * FROM Seguridad.entradaSalida;");
+            sb.Append("SELECT * FROM BDSistemaEyS.Asistencia;");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());
@@ -53,7 +53,7 @@ namespace SistemaEyS.Datos
             }
             return datos;
         }
-        public Dt_tlb_entradaSalida()
+        public Dt_tlb_asistencia()
         {
         }
     }
