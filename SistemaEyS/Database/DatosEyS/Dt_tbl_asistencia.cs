@@ -33,8 +33,8 @@ namespace SistemaEyS.Datos
                     datos.AppendValues(
                         idr[0].ToString(), // ID
                         idr[3].ToString(), // ID Empleado
-                        idr[1].ToString(), // Inicio
-                        idr[2].ToString() // Fin
+                        idr[2].ToString(), // Inicio
+                        idr[1].ToString() // Fin
                     );
                 }
                 return datos;
