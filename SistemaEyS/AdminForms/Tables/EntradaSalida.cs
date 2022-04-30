@@ -8,8 +8,7 @@ namespace SistemaEyS.AdminForms.Tables
 
     public partial class entradaSalidaPanel : PanelTemplate
     {
-        Dt_tlb_entradaSalida dtus = new Dt_tlb_entradaSalida();
-
+        Dt_tlb_asistencia dtus = new Dt_tlb_asistencia();
         public entradaSalidaPanel()
         {
             StoreObject[] storeObjects = {
