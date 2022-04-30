@@ -1,164 +1,194 @@
-/*
- * ER/Studio Data Architect SQL Code Generation
- * Project :      Modelo Control de Asistencia de Empleados.DM1
- *
- * Date Created : viernes, 22 de abril de 2022 11:03:10 p.m.
- * Target DBMS : Microsoft SQL Server 2017
- */
+-- MySQL Workbench Forward Engineering
 
-USE master;
-CREATE DATABASE BDSistemaEyS;
-USE BDSistemaEyS;
-/* 
- * TABLE: Administraciones 
- */
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
-CREATE TABLE Administraciones(
-    idAdministrador     int             AUTO_INCREMENT,
-    primerNombre        nvarchar(25)    NOT NULL,
-    segundoNombre       nvarchar(25)    NOT NULL,
-    primerApellido      nvarchar(25)    NOT NULL,
-    segundoApellido     nvarchar(25)    NOT NULL,
-    rolAdministrador    nvarchar(50)    NOT NULL,
-    CONSTRAINT PK8 PRIMARY KEY NONCLUSTERED (idAdministrador)
-);
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema BDSistemaEyS
+-- -----------------------------------------------------
 
-/* 
- * TABLE: Asistencia 
- */
+-- -----------------------------------------------------
+-- Schema BDSistemaEyS
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `BDSistemaEyS` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `BDSistemaEyS` ;
 
-CREATE TABLE Asistencia(
-    idAsistencia        int         AUTO_INCREMENT,
-    fechaHoraSalida     datetime    NOT NULL,
-    fechaHoraEntrada    datetime    NOT NULL,
-    idEmpleado          int         NOT NULL,
-    CONSTRAINT PK4 PRIMARY KEY NONCLUSTERED (idAsistencia)
-);
+-- -----------------------------------------------------
+-- Table `BDSistemaEyS`.`Administraciones`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `BDSistemaEyS`.`Administraciones` ;
 
-/* 
- * TABLE: Cargo 
- */
-
-CREATE TABLE Cargo(
-    idCargo             int              AUTO_INCREMENT,
-    nombreCargo         nvarchar(25)     NOT NULL,
-    descripcionCargo    nvarchar(100)    NOT NULL,
-    CONSTRAINT PK2 PRIMARY KEY NONCLUSTERED (idCargo)
-);
-
-/* 
- * TABLE: Departamento 
- */
-
-CREATE TABLE Departamento(
-    idDepartamento             int              AUTO_INCREMENT,
-    nombreDepartamento         nvarchar(25)     NULL,
-    descripcionDepartamento    nvarchar(100)    NULL,
-    extensionDepartamento      nvarchar(50)     NULL,
-    CONSTRAINT PK3 PRIMARY KEY NONCLUSTERED (idDepartamento)
-);
-
-/* 
- * TABLE: Empleado 
- */
-
-CREATE TABLE Empleado(
-    idEmpleado         int             AUTO_INCREMENT,
-    primerNombre       nvarchar(25)    NOT NULL,
-    segundoNombre      nvarchar(25)    NOT NULL,
-    primerApellido     nvarchar(25)    NOT NULL,
-    segundoApellido    nvarchar(25)    NOT NULL,
-    fechaIngreso       datetime        NULL,
-    cedulaEmpleado     float           NULL,
-    idCargo            int             NOT NULL,
-    idDepartamento     int             NOT NULL,
-    idHorario          int             NOT NULL,
-    idGrupo            int             NOT NULL,
-    CONSTRAINT PK1 PRIMARY KEY NONCLUSTERED (idEmpleado)
-);
-
-/* 
- * TABLE: Grupos 
- */
-
-CREATE TABLE Grupos(
-    idGrupo             int              AUTO_INCREMENT,
-    nombreGrupo         nvarchar(25)     NOT NULL,
-    descripcionGrupo    nvarchar(100)    NOT NULL,
-    CONSTRAINT PK6 PRIMARY KEY NONCLUSTERED (idGrupo)
-);
-
-/* 
- * TABLE: Horario 
- */
-
-CREATE TABLE Horario(
-    idHorario          int         AUTO_INCREMENT,
-    lunesInicio        datetime    NOT NULL,
-    lunesSalida        datetime    NULL,
-    martesInicio       datetime    NULL,
-    MartesSalida       datetime    NULL,
-    miercolesInicio    datetime    NULL,
-    miercolesSalida    datetime    NULL,
-    juevesInicio       datetime    NULL,
-    juevesSalida       datetime    NULL,
-    viernesInicio      datetime    NULL,
-    viernesSalida      datetime    NULL,
-    sabadoInicio       datetime    NULL,
-    sabadoFin          datetime    NULL,
-    domingoFin         datetime    NULL,
-    domingoInicio      datetime    NULL,
-    CONSTRAINT PK5 PRIMARY KEY NONCLUSTERED (idHorario)
-);
-
-/* 
- * TABLE: SolVacaciones 
- */
-
-CREATE TABLE SolVacaciones(
-    idSolVacaciones    int              AUTO_INCREMENT,
-    fechaSol           datetime         NULL,
-    descripcionSol     nvarchar(100)    NOT NULL,
-    idEmpleado         int              NOT NULL,
-    CONSTRAINT PK7 PRIMARY KEY NONCLUSTERED (idSolVacaciones)
-);
-
-/* 
- * TABLE: Asistencia 
- */
-
-ALTER TABLE Asistencia ADD CONSTRAINT RefEmpleado5 
-    FOREIGN KEY (idEmpleado)
-    REFERENCES Empleado(idEmpleado);
+CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Administraciones` (
+  `idAdministrador` INT NOT NULL AUTO_INCREMENT,
+  `primerNombre` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
+  `segundoNombre` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
+  `primerApellido` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
+  `segundoApellido` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
+  `rolAdministrador` VARCHAR(50) CHARACTER SET 'utf8' NOT NULL,
+  PRIMARY KEY (`idAdministrador`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
-/* 
- * TABLE: Empleado 
- */
+-- -----------------------------------------------------
+-- Table `BDSistemaEyS`.`Cargo`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `BDSistemaEyS`.`Cargo` ;
 
-ALTER TABLE Empleado ADD CONSTRAINT RefCargo3 
-    FOREIGN KEY (idCargo)
-    REFERENCES Cargo(idCargo);
-
-ALTER TABLE Empleado ADD CONSTRAINT RefDepartamento4 
-    FOREIGN KEY (idDepartamento)
-    REFERENCES Departamento(idDepartamento);
-
-ALTER TABLE Empleado ADD CONSTRAINT RefHorario6 
-    FOREIGN KEY (idHorario)
-    REFERENCES Horario(idHorario);
-
-ALTER TABLE Empleado ADD CONSTRAINT RefGrupos7 
-    FOREIGN KEY (idGrupo)
-    REFERENCES Grupos(idGrupo);
+CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Cargo` (
+  `idCargo` INT NOT NULL AUTO_INCREMENT,
+  `nombreCargo` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
+  `descripcionCargo` VARCHAR(100) CHARACTER SET 'utf8' NOT NULL,
+  PRIMARY KEY (`idCargo`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
-/* 
- * TABLE: SolVacaciones 
- */
+-- -----------------------------------------------------
+-- Table `BDSistemaEyS`.`Departamento`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `BDSistemaEyS`.`Departamento` ;
 
-ALTER TABLE SolVacaciones ADD CONSTRAINT RefEmpleado8 
-    FOREIGN KEY (idEmpleado)
-    REFERENCES Empleado(idEmpleado);
+CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Departamento` (
+  `idDepartamento` INT NOT NULL AUTO_INCREMENT,
+  `nombreDepartamento` VARCHAR(25) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `descripcionDepartamento` VARCHAR(100) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `extensionDepartamento` VARCHAR(50) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  PRIMARY KEY (`idDepartamento`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
+-- -----------------------------------------------------
+-- Table `BDSistemaEyS`.`Grupos`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `BDSistemaEyS`.`Grupos` ;
+
+CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Grupos` (
+  `idGrupo` INT NOT NULL AUTO_INCREMENT,
+  `nombreGrupo` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
+  `descripcionGrupo` VARCHAR(100) CHARACTER SET 'utf8' NOT NULL,
+  PRIMARY KEY (`idGrupo`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `BDSistemaEyS`.`Horario`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `BDSistemaEyS`.`Horario` ;
+
+CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Horario` (
+  `idHorario` INT NOT NULL AUTO_INCREMENT,
+  `lunesInicio` DATETIME NULL DEFAULT NULL,
+  `lunesSalida` DATETIME NULL DEFAULT NULL,
+  `martesInicio` DATETIME NULL DEFAULT NULL,
+  `MartesSalida` DATETIME NULL DEFAULT NULL,
+  `miercolesInicio` DATETIME NULL DEFAULT NULL,
+  `miercolesSalida` DATETIME NULL DEFAULT NULL,
+  `juevesInicio` DATETIME NULL DEFAULT NULL,
+  `juevesSalida` DATETIME NULL DEFAULT NULL,
+  `viernesInicio` DATETIME NULL DEFAULT NULL,
+  `viernesSalida` DATETIME NULL DEFAULT NULL,
+  `sabadoInicio` DATETIME NULL DEFAULT NULL,
+  `sabadoFin` DATETIME NULL DEFAULT NULL,
+  `domingoFin` DATETIME NULL DEFAULT NULL,
+  `domingoInicio` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`idHorario`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `BDSistemaEyS`.`Empleado`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `BDSistemaEyS`.`Empleado` ;
+
+CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Empleado` (
+  `idEmpleado` INT NOT NULL AUTO_INCREMENT,
+  `primerNombre` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
+  `segundoNombre` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
+  `primerApellido` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
+  `segundoApellido` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
+  `fechaIngreso` DATETIME NULL DEFAULT NULL,
+  `cedulaEmpleado` VARCHAR(14) NULL,
+  `idCargo` INT NULL,
+  `idDepartamento` INT NULL,
+  `idHorario` INT NULL,
+  `idGrupo` INT NULL,
+  PRIMARY KEY (`idEmpleado`),
+  INDEX `RefCargo3` (`idCargo` ASC) VISIBLE,
+  INDEX `RefDepartamento4` (`idDepartamento` ASC) VISIBLE,
+  INDEX `RefHorario6` (`idHorario` ASC) VISIBLE,
+  INDEX `RefGrupos7` (`idGrupo` ASC) VISIBLE,
+  CONSTRAINT `RefCargo3`
+    FOREIGN KEY (`idCargo`)
+    REFERENCES `BDSistemaEyS`.`Cargo` (`idCargo`),
+  CONSTRAINT `RefDepartamento4`
+    FOREIGN KEY (`idDepartamento`)
+    REFERENCES `BDSistemaEyS`.`Departamento` (`idDepartamento`),
+  CONSTRAINT `RefGrupos7`
+    FOREIGN KEY (`idGrupo`)
+    REFERENCES `BDSistemaEyS`.`Grupos` (`idGrupo`),
+  CONSTRAINT `RefHorario6`
+    FOREIGN KEY (`idHorario`)
+    REFERENCES `BDSistemaEyS`.`Horario` (`idHorario`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `BDSistemaEyS`.`Asistencia`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `BDSistemaEyS`.`Asistencia` ;
+
+CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Asistencia` (
+  `idAsistencia` INT NOT NULL AUTO_INCREMENT,
+  `fechaHoraSalida` DATETIME NULL,
+  `fechaHoraEntrada` DATETIME NULL,
+  `idEmpleado` INT NOT NULL,
+  PRIMARY KEY (`idAsistencia`),
+  INDEX `RefEmpleado5` (`idEmpleado` ASC) VISIBLE,
+  CONSTRAINT `RefEmpleado5`
+    FOREIGN KEY (`idEmpleado`)
+    REFERENCES `BDSistemaEyS`.`Empleado` (`idEmpleado`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `BDSistemaEyS`.`SolVacaciones`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `BDSistemaEyS`.`SolVacaciones` ;
+
+CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`SolVacaciones` (
+  `idSolVacaciones` INT NOT NULL AUTO_INCREMENT,
+  `fechaSol` DATETIME NOT NULL,
+  `descripcionSol` VARCHAR(100) CHARACTER SET 'utf8' NOT NULL,
+  `idEmpleado` INT NOT NULL,
+  `FechaHoraInicio` DATETIME NOT NULL,
+  `FechaHoraFin` DATETIME NOT NULL,
+  PRIMARY KEY (`idSolVacaciones`),
+  INDEX `RefEmpleado8` (`idEmpleado` ASC) VISIBLE,
+  CONSTRAINT `RefEmpleado8`
+    FOREIGN KEY (`idEmpleado`)
+    REFERENCES `BDSistemaEyS`.`Empleado` (`idEmpleado`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
