@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Data;
-using Mono.Data.Sqlite;
-using MySql.Data.MySqlClient;
 using Gtk;
-using MySql.Data;
 using System.Text;
-using System.Collections.Generic;
 using SistemaEyS.Database.Connection;
 
 namespace SistemaEyS.Datos
@@ -15,13 +11,15 @@ namespace SistemaEyS.Datos
 
         public Gtk.ListStore listStore;
 
-        ConnectionSeg conn = ConnectionSeg.OpenConnection();
+        ConnectionEyS conn = ConnectionEyS.OpenConnection();
         StringBuilder sb = new StringBuilder();
 
         public ListStore listarentradaSalida()
         {
-            ListStore datos = new ListStore(typeof(string), typeof(string),
-            typeof(string), typeof(string), typeof(string), typeof(string));
+            ListStore datos = new ListStore(
+                typeof(string), typeof(string),
+                typeof(string), typeof(string)
+            );
 
             IDataReader idr = null;
             sb.Clear();
@@ -32,8 +30,12 @@ namespace SistemaEyS.Datos
 
                 while (idr.Read())
                 {
-                    datos.AppendValues(idr[0].ToString(), idr[1].ToString(),
-                        idr[2].ToString(), idr[3].ToString(), idr[4].ToString(), idr[5].ToString());
+                    datos.AppendValues(
+                        idr[0].ToString(), // ID
+                        idr[3].ToString(), // ID Empleado
+                        idr[1].ToString(), // Inicio
+                        idr[2].ToString() // Fin
+                    );
                 }
                 return datos;
             }
