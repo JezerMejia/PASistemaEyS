@@ -40,7 +40,7 @@ namespace SistemaEyS.Database.Connection
             catch (Exception e)
             {
                 ms = new MessageDialog(null, DialogFlags.Modal,
-                    MessageType.Error, ButtonsType.Ok, "Error al conectar a la Base de Datos: " + e.Message);
+                    MessageType.Error, ButtonsType.Ok, "Error al conectar a la Base de Datos de Seguridad: " + e.Message);
                 ms.Run();
                 ms.Destroy();
                 Console.WriteLine("Error al conectar a la Base de Datos: " + e);
@@ -53,6 +53,9 @@ namespace SistemaEyS.Database.Connection
 
         static public void CloseConnection()
         {
+            if (ConnectionSeg.instance == null) {
+                return;
+            }
             if (ConnectionSeg.instance.conn.State == ConnectionState.Closed)
             {
                 return;
