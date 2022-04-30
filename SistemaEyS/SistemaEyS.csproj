@@ -100,10 +100,11 @@
     <Compile Include="AdminForms\Tables\SolicitudVacaciones.cs" />
     <Compile Include="AdminForms\Settings\HorarioSenttings.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.HorarioSenttings.cs" />
-    <Compile Include="Database\DatosEyS\Dt_tbl_entradaSalida.cs" />
+    <Compile Include="Database\DatosEyS\Dt_tbl_asistencia.cs" />
     <Compile Include="Database\DatosEyS\Dt_tbl_solicitudVacaciones.cs" />
     <Compile Include="Database\DatosEyS\Dt_tlb_horario.cs" />
     <Compile Include="Database\DatosEyS\Dt_tlb_user.cs" />
+    <Compile Include="Database\DatosEyS\Dt_tlb_empleado.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
