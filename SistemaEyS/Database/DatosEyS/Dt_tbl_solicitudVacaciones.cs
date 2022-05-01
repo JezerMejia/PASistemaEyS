@@ -14,7 +14,7 @@ namespace SistemaEyS.Datos
         ConnectionEyS conn = ConnectionEyS.OpenConnection();
         StringBuilder sb = new StringBuilder();
 
-        public ListStore listarsolicitudVacaciones()
+        public ListStore listarSolicitudVacaciones()
         {
             ListStore datos = new ListStore(
                 typeof(string), typeof(string),

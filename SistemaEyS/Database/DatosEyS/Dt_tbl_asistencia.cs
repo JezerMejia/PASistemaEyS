@@ -14,7 +14,7 @@ namespace SistemaEyS.Datos
         ConnectionEyS conn = ConnectionEyS.OpenConnection();
         StringBuilder sb = new StringBuilder();
 
-        public ListStore listarentradaSalida()
+        public ListStore listarEntradaSalida()
         {
             ListStore datos = new ListStore(
                 typeof(string), typeof(string),
