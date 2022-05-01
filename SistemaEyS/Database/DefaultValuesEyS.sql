@@ -40,12 +40,14 @@ VALUES (
 INSERT INTO Empleado (
 idEmpleado, primerNombre, segundoNombre,
 primerApellido, segundoApellido, fechaIngreso,
-cedulaEmpleado, idCargo, idDepartamento, idHorario
+password, cedulaEmpleado,
+idCargo, idDepartamento, idHorario
 )
 VALUES (
 29812, "Juan", "Ezequiel",
 "Pérez", "Jiménez", "2022-04-29",
-"0010405021900A", 1, 1, 1
+"1212", "0010405021900A",
+1, 1, 1
 );
 INSERT INTO Asistencia (
 fechaAsistencia, HoraEntrada, horaSalida, idEmpleado
