@@ -18,7 +18,7 @@ public struct StoreObject
 namespace SistemaEyS.AdminForms.Tables
 {
     [System.ComponentModel.ToolboxItem(true)]
-    public partial class PanelTemplate : Gtk.Bin
+    public partial class ViewTableTemplate : Gtk.Bin
     {
         public Gtk.ListStore listStore;
         public Gtk.TreeView treeView { 
@@ -27,7 +27,7 @@ namespace SistemaEyS.AdminForms.Tables
                 return this.treeview1;
             }
         }
-        public PanelTemplate()
+        public ViewTableTemplate()
         {
             this.Build();
         }

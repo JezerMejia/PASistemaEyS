@@ -4,12 +4,12 @@ using SistemaEyS.Datos;
 
 namespace SistemaEyS.AdminForms.Tables
 {
-    [System.ComponentModel.ToolboxItem(true)]
-
-    public partial class EmpleadosPanel :PanelTemplate
+    public partial class EmpleadosPanel : Gtk.Bin
     {
+        Dt_tlb_empleado dtus = new Dt_tlb_empleado();
         public EmpleadosPanel()
         {
+            this.Build();
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Nombre", typeof(string), "text", new Gtk.CellRendererText()),
@@ -22,10 +22,14 @@ namespace SistemaEyS.AdminForms.Tables
                 new StoreObject("ID Horario", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Grupo", typeof(string), "text", new Gtk.CellRendererText()),
             };
-            this.SetTreeViewColumns(treeView, storeObjects);
+            this.viewTable.SetTreeViewColumns(this.viewTable.treeView, storeObjects);
 
-            Dt_tlb_empleado dtus = new Dt_tlb_empleado();
-            this.treeView.Model = dtus.listarUsuarios();
+            this.viewTable.treeView.Model = dtus.listarUsuarios();
+        }
+
+        protected void btnUpdateOnClicked(object sender, EventArgs e)
+        {
+            this.viewTable.treeView.Model = dtus.listarUsuarios();
         }
     }
 }

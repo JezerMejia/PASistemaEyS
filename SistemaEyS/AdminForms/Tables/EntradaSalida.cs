@@ -3,13 +3,12 @@ using SistemaEyS.Datos;
 
 namespace SistemaEyS.AdminForms.Tables
 {
-    [System.ComponentModel.ToolboxItem(true)]
-
-    public partial class entradaSalidaPanel : PanelTemplate
+    public partial class entradaSalidaPanel : Gtk.Bin
     {
         Dt_tlb_asistencia dtus = new Dt_tlb_asistencia();
         public entradaSalidaPanel()
         {
+            this.Build();
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("ID Empleado", typeof(string), "text", new Gtk.CellRendererText()),
@@ -17,9 +16,14 @@ namespace SistemaEyS.AdminForms.Tables
                 new StoreObject("Entrada", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Salida", typeof(string), "text", new Gtk.CellRendererText()),
             };
-            this.SetTreeViewColumns(treeView, storeObjects);
+            this.tableView.SetTreeViewColumns(this.tableView.treeView, storeObjects);
 
-            this.treeView.Model = dtus.listarentradaSalida();
+            this.tableView.treeView.Model = dtus.listarEntradaSalida();
+        }
+
+        protected void btnUpdateOnClicked(object sender, EventArgs e)
+        {
+            this.tableView.treeView.Model = dtus.listarEntradaSalida();
         }
     }
 }

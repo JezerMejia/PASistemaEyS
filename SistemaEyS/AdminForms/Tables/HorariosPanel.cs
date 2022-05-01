@@ -3,13 +3,13 @@ using SistemaEyS.Datos;
 
 namespace SistemaEyS.AdminForms.Tables
 {
-    [System.ComponentModel.ToolboxItem(true)]
-    public class HorariosPanel : PanelTemplate
+    public partial class HorariosPanel : Gtk.Bin
     {
         Dt_tlb_horario dtus = new Dt_tlb_horario();
 
         public HorariosPanel()
         {
+            this.Build();
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Lunes - Inicio", typeof(string), "text", new Gtk.CellRendererText()),
@@ -28,9 +28,14 @@ namespace SistemaEyS.AdminForms.Tables
                 new StoreObject("Domingo - Fin", typeof(string), "text", new Gtk.CellRendererText()),
             };
 
-            this.SetTreeViewColumns(this.treeView, storeObjects);
+            this.tableView.SetTreeViewColumns(this.tableView.treeView, storeObjects);
 
-            this.treeView.Model = dtus.listarHorarios();
+            this.tableView.treeView.Model = dtus.listarHorarios();
+        }
+
+        protected void btnUpdateOnClicked(object sender, EventArgs e)
+        {
+            this.tableView.treeView.Model = dtus.listarHorarios();
         }
     }
 }
