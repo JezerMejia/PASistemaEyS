@@ -206,6 +206,7 @@
                                 <property name="Type">TextOnly</property>
                                 <property name="Label" translatable="yes">Marcar Salida</property>
                                 <property name="UseUnderline">True</property>
+                                <signal name="Clicked" handler="btnMarkExitOnClicked" />
                               </widget>
                               <packing>
                                 <property name="Position">1</property>

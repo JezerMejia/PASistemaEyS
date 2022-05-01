@@ -44,8 +44,9 @@ namespace SistemaEyS.UserForms
             DateTime now = DateTime.Now;
 
             sb.Clear();
-            sb.Append($"INSERT INTO BDSistemaEyS.Asistencia (fechaHoraEntrada, idEmpleado) " +
-                    $"VALUES ('{now.ToString("yyyy-MM-dd H:mm:ss")}', {this.idEmpleado});"
+            sb.Append($"INSERT INTO BDSistemaEyS.Asistencia (fechaAsistencia, idEmpleado) " +
+                    $"VALUES ('{now.ToString("yyyy-MM-dd")}', {this.idEmpleado}) " +
+                    $"ON DUPLICATE KEY UPDATE horaEntrada='{now.ToString("H:mm:ss")}';"
                     );
             try
             {
@@ -58,7 +59,36 @@ namespace SistemaEyS.UserForms
             catch (Exception e)
             {
                 MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, e.Message);
+                    ButtonsType.Ok, "Error al marcar la entrada: " + e.Message);
+                ms.Run();
+                ms.Destroy();
+            }
+            return value;
+        }
+        private bool MarkAssitanceExit()
+        {
+            StringBuilder sb = new StringBuilder();
+            bool value = false;
+
+            DateTime now = DateTime.Now;
+
+            sb.Clear();
+            sb.Append($"INSERT INTO BDSistemaEyS.Asistencia (fechaAsistencia, idEmpleado) " +
+                    $"VALUES ('{now.ToString("yyyy-MM-dd")}', {this.idEmpleado}) " +
+                    $"ON DUPLICATE KEY UPDATE horaSalida='{now.ToString("H:mm:ss")}';"
+                    );
+            try
+            {
+                value = conn.Execute(CommandType.Text, sb.ToString()) != 0;
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal,
+                    MessageType.Info, ButtonsType.Ok, "Marcado de salida exitoso");
+                ms.Run();
+                ms.Destroy();
+            }
+            catch (Exception e)
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                    ButtonsType.Ok, "Error al marcar la salida: " + e.Message);
                 ms.Run();
                 ms.Destroy();
             }
@@ -85,6 +115,11 @@ namespace SistemaEyS.UserForms
         protected void btnMarkEntryOnClicked(object sender, EventArgs e)
         {
             this.MarkAssitanceEnter();
+        }
+
+        protected void btnMarkExitOnClicked(object sender, EventArgs e)
+        {
+            this.MarkAssitanceExit();
         }
     }
 }

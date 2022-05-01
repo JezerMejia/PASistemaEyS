@@ -188,6 +188,7 @@ namespace SistemaEyS.UserForms
 			this.Show();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 			this.btnMarkEntry.Clicked += new global::System.EventHandler(this.btnMarkEntryOnClicked);
+			this.btnMarkExit.Clicked += new global::System.EventHandler(this.btnMarkExitOnClicked);
 			this.btnExit.Clicked += new global::System.EventHandler(this.btnExitOnClicked);
 		}
 	}
