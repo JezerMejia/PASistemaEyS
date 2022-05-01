@@ -29,7 +29,8 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Administraciones` (
   `primerApellido` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
   `segundoApellido` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
   `rolAdministrador` VARCHAR(50) CHARACTER SET 'utf8' NOT NULL,
-  PRIMARY KEY (`idAdministrador`))
+  PRIMARY KEY (`idAdministrador`),
+  UNIQUE INDEX `idAdministrador_UNIQUE` (`idAdministrador` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -44,7 +45,8 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Cargo` (
   `idCargo` INT NOT NULL AUTO_INCREMENT,
   `nombreCargo` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
   `descripcionCargo` VARCHAR(100) CHARACTER SET 'utf8' NOT NULL,
-  PRIMARY KEY (`idCargo`))
+  PRIMARY KEY (`idCargo`),
+  UNIQUE INDEX `idCargo_UNIQUE` (`idCargo` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -60,7 +62,8 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Departamento` (
   `nombreDepartamento` VARCHAR(25) CHARACTER SET 'utf8' NULL DEFAULT NULL,
   `descripcionDepartamento` VARCHAR(100) CHARACTER SET 'utf8' NULL DEFAULT NULL,
   `extensionDepartamento` VARCHAR(5) CHARACTER SET 'utf8' NULL DEFAULT NULL,
-  PRIMARY KEY (`idDepartamento`))
+  PRIMARY KEY (`idDepartamento`),
+  UNIQUE INDEX `idDepartamento_UNIQUE` (`idDepartamento` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -75,7 +78,8 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Grupos` (
   `idGrupo` INT NOT NULL AUTO_INCREMENT,
   `nombreGrupo` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
   `descripcionGrupo` VARCHAR(100) CHARACTER SET 'utf8' NOT NULL,
-  PRIMARY KEY (`idGrupo`))
+  PRIMARY KEY (`idGrupo`),
+  UNIQUE INDEX `idGrupo_UNIQUE` (`idGrupo` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -102,7 +106,8 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Horario` (
   `sabadoSalida` TIME NULL DEFAULT NULL,
   `domingoInicio` TIME NULL DEFAULT NULL,
   `domingoSalida` TIME NULL DEFAULT NULL,
-  PRIMARY KEY (`idHorario`))
+  PRIMARY KEY (`idHorario`),
+  UNIQUE INDEX `idHorario_UNIQUE` (`idHorario` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -131,6 +136,7 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Empleado` (
   INDEX `RefDepartamento4` (`idDepartamento` ASC) VISIBLE,
   INDEX `RefHorario6` (`idHorario` ASC) VISIBLE,
   INDEX `RefGrupos7` (`idGrupo` ASC) VISIBLE,
+  UNIQUE INDEX `idEmpleado_UNIQUE` (`idEmpleado` ASC) VISIBLE,
   CONSTRAINT `RefCargo3`
     FOREIGN KEY (`idCargo`)
     REFERENCES `BDSistemaEyS`.`Cargo` (`idCargo`),
@@ -161,6 +167,8 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Asistencia` (
   `idEmpleado` INT NOT NULL,
   PRIMARY KEY (`idAsistencia`),
   INDEX `RefEmpleado5` (`idEmpleado` ASC) VISIBLE,
+  UNIQUE INDEX `idAsistencia_UNIQUE` (`idAsistencia` ASC) VISIBLE,
+  UNIQUE INDEX `fechaAsistencia_UNIQUE` (`fechaAsistencia` ASC) VISIBLE,
   CONSTRAINT `RefEmpleado5`
     FOREIGN KEY (`idEmpleado`)
     REFERENCES `BDSistemaEyS`.`Empleado` (`idEmpleado`))
@@ -183,6 +191,7 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`SolVacaciones` (
   `FechaHoraFin` DATETIME NOT NULL,
   PRIMARY KEY (`idSolVacaciones`),
   INDEX `RefEmpleado8` (`idEmpleado` ASC) VISIBLE,
+  UNIQUE INDEX `idSolVacaciones_UNIQUE` (`idSolVacaciones` ASC) VISIBLE,
   CONSTRAINT `RefEmpleado8`
     FOREIGN KEY (`idEmpleado`)
     REFERENCES `BDSistemaEyS`.`Empleado` (`idEmpleado`))
