@@ -199,6 +199,33 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
+USE `BDSistemaEyS` ;
+
+-- -----------------------------------------------------
+-- Placeholder table for view `BDSistemaEyS`.`vwEmpleado`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`vwEmpleado` (`ID` INT, `Nombre` INT, `Apellido` INT, `Ingreso` INT, `Cédula` INT, `Contraseña` INT, `Cargo` INT, `Departamento` INT, `"ID Horario"` INT, `Grupo` INT);
+
+-- -----------------------------------------------------
+-- View `BDSistemaEyS`.`vwEmpleado`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `BDSistemaEyS`.`vwEmpleado`;
+DROP VIEW IF EXISTS `BDSistemaEyS`.`vwEmpleado` ;
+USE `BDSistemaEyS`;
+CREATE  OR REPLACE VIEW `vwEmpleado` AS
+SELECT
+idEmpleado as ID,
+CONCAT(primernombre, " ", segundoNombre) as Nombre,
+CONCAT(primerApellido, " ", segundoApellido) as Apellido,
+fechaIngreso as Ingreso,
+cedulaEmpleado as Cédula,
+password as Contraseña,
+(SELECT nombreCargo FROM BDSistemaEyS.Cargo WHERE idCargo = idCargo) as Cargo,
+(SELECT nombreDepartamento FROM BDSistemaEyS.Departamento WHERE idDepartamento = idDepartamento) as Departamento,
+idHorario as "ID Horario",
+(SELECT nombreGrupo FROM BDSistemaEyS.Grupos WHERE idGrupo = idGrupo) as Grupo
+FROM
+BDSistemaEyS.Empleado;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
