@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Data;
-using Mono.Data.Sqlite;
-using MySql.Data.MySqlClient;
 using Gtk;
-using MySql.Data;
 using System.Text;
-using System.Collections.Generic;
 using SistemaEyS.Database.Connection;
 
 namespace SistemaEyS.Datos
@@ -20,13 +16,16 @@ namespace SistemaEyS.Datos
 
         public ListStore listarUsuarios()
         {
-            ListStore datos = new ListStore(typeof(string), typeof(string),
-            typeof(string), typeof(string), typeof(string), typeof(string),
-            typeof(string), typeof(string), typeof(string));
+            ListStore datos = new ListStore(
+                typeof(string), typeof(string), typeof(string),
+                typeof(string), typeof(string), typeof(string),
+                typeof(string), typeof(string), typeof(string),
+                typeof(string)
+            );
 
             IDataReader idr = null;
             sb.Clear();
-            sb.Append("SELECT * FROM BDSistemaEyS.Empleado;");
+            sb.Append("SELECT * FROM BDSistemaEyS.vwEmpleado;");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());
@@ -35,14 +34,15 @@ namespace SistemaEyS.Datos
                 {
                     datos.AppendValues(
                         idr[0].ToString(), // ID
-                        idr[1].ToString() + " " + idr[2].ToString(), // Nombre
-                        idr[3].ToString() + " " + idr[4].ToString(), // Apellido
-                        idr[5].ToString(), // FechaIngreso
-                        idr[6].ToString(), // CedulaEmpleado
-                        idr[7].ToString(), // Cargo
-                        idr[8].ToString(), // Departamento
-                        idr[9].ToString(), // Horario
-                        idr[10].ToString() // Grupo
+                        idr[1].ToString(), // Nombre
+                        idr[2].ToString(), // Apellido
+                        idr[3].ToString(), // FechaIngreso
+                        idr[4].ToString(), // CedulaEmpleado
+                        idr[5].ToString(), // Contraseña
+                        idr[6].ToString(), // Cargo
+                        idr[7].ToString(), // Departamento
+                        idr[8].ToString(), // ID Horario
+                        idr[9].ToString()  // Grupo
                     );
                 }
                 return datos;
