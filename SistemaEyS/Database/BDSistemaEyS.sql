@@ -155,8 +155,9 @@ DROP TABLE IF EXISTS `BDSistemaEyS`.`Asistencia` ;
 
 CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Asistencia` (
   `idAsistencia` INT NOT NULL AUTO_INCREMENT,
-  `fechaHoraSalida` DATETIME NULL,
-  `fechaHoraEntrada` DATETIME NULL,
+  `fechaAsistencia` DATE NOT NULL,
+  `horaEntrada` TIME NULL,
+  `HoraSalida` TIME NULL,
   `idEmpleado` INT NOT NULL,
   PRIMARY KEY (`idAsistencia`),
   INDEX `RefEmpleado5` (`idEmpleado` ASC) VISIBLE,

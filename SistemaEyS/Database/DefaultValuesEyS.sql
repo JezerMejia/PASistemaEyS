@@ -48,9 +48,9 @@ VALUES (
 "0010405021900A", 1, 1, 1
 );
 INSERT INTO Asistencia (
-fechaHoraEntrada, fechaHoraSalida, idEmpleado
+fechaAsistencia, HoraEntrada, horaSalida, idEmpleado
 )
 VALUES (
-"2022-04-30 8:10", "2022-04-30 13:45",
+"2022-04-30", "8:10", "13:45",
 29812
 );
