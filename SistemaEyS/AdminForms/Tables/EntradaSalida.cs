@@ -13,6 +13,7 @@ namespace SistemaEyS.AdminForms.Tables
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("ID Empleado", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Fecha", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Entrada", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Salida", typeof(string), "text", new Gtk.CellRendererText()),
             };

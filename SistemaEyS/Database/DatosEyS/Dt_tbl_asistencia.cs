@@ -18,7 +18,8 @@ namespace SistemaEyS.Datos
         {
             ListStore datos = new ListStore(
                 typeof(string), typeof(string),
-                typeof(string), typeof(string)
+                typeof(string), typeof(string),
+                typeof(string)
             );
 
             IDataReader idr = null;
@@ -32,9 +33,10 @@ namespace SistemaEyS.Datos
                 {
                     datos.AppendValues(
                         idr[0].ToString(), // ID
-                        idr[3].ToString(), // ID Empleado
-                        idr[2].ToString(), // Inicio
-                        idr[1].ToString() // Fin
+                        idr[4].ToString(), // ID Empleado
+                        idr.GetDateTime(1).ToString("yyyy-MM-dd"), // Fecha
+                        idr[2].ToString(), // Entrada
+                        idr[3].ToString() // Salida
                     );
                 }
                 return datos;
