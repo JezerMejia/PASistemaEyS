@@ -28,6 +28,14 @@ namespace SistemaEyS.UserForms
 
         private bool LogIn(string user, string password)
         {
+            if (string.IsNullOrWhiteSpace(user))
+            {
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
+                    ButtonsType.Ok, "Ingrese un ID de empleado");
+                ms.Run();
+                ms.Destroy();
+                return false;
+            }
             StringBuilder sb = new StringBuilder();
             IDataReader idr = null;
             bool value = false;
