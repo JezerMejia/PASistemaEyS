@@ -8,13 +8,27 @@ namespace SistemaEyS.AdminForms.Tables
 
 		private global::SistemaEyS.AdminForms.Tables.ViewTableTemplate viewTable;
 
-		private global::Gtk.HBox hbox1;
+		private global::Gtk.HBox hbox18;
 
-		private global::Gtk.Button btnAdd;
+		private global::Gtk.HBox hbox19;
 
-		private global::Gtk.Button btnDelete;
+		private global::Gtk.Alignment alignment21;
 
-		private global::Gtk.Button btnUpdate;
+		private global::Gtk.Button button10;
+
+		private global::Gtk.Alignment alignment20;
+
+		private global::Gtk.Button button9;
+
+		private global::Gtk.HBox hbox21;
+
+		private global::Gtk.Alignment alignment19;
+
+		private global::Gtk.Button button8;
+
+		private global::Gtk.Alignment alignment18;
+
+		private global::Gtk.Button button7;
 
 		protected virtual void Build()
 		{
@@ -34,57 +48,100 @@ namespace SistemaEyS.AdminForms.Tables
 			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.viewTable]));
 			w1.Position = 0;
 			// Container child vbox1.Gtk.Box+BoxChild
-			this.hbox1 = new global::Gtk.HBox();
-			this.hbox1.Name = "hbox1";
-			this.hbox1.Spacing = 6;
-			// Container child hbox1.Gtk.Box+BoxChild
-			this.btnAdd = new global::Gtk.Button();
-			this.btnAdd.CanFocus = true;
-			this.btnAdd.Name = "btnAdd";
-			this.btnAdd.UseUnderline = true;
-			this.btnAdd.Label = global::Mono.Unix.Catalog.GetString("Añadir");
-			this.hbox1.Add(this.btnAdd);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.btnAdd]));
-			w2.PackType = ((global::Gtk.PackType)(1));
-			w2.Position = 0;
-			w2.Expand = false;
-			w2.Fill = false;
-			// Container child hbox1.Gtk.Box+BoxChild
-			this.btnDelete = new global::Gtk.Button();
-			this.btnDelete.CanFocus = true;
-			this.btnDelete.Name = "btnDelete";
-			this.btnDelete.UseUnderline = true;
-			this.btnDelete.Label = global::Mono.Unix.Catalog.GetString("Eliminar");
-			this.hbox1.Add(this.btnDelete);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.btnDelete]));
-			w3.PackType = ((global::Gtk.PackType)(1));
-			w3.Position = 1;
+			this.hbox18 = new global::Gtk.HBox();
+			this.hbox18.Name = "hbox18";
+			this.hbox18.Spacing = 6;
+			// Container child hbox18.Gtk.Box+BoxChild
+			this.hbox19 = new global::Gtk.HBox();
+			this.hbox19.Name = "hbox19";
+			this.hbox19.Spacing = 6;
+			// Container child hbox19.Gtk.Box+BoxChild
+			this.alignment21 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
+			this.alignment21.Name = "alignment21";
+			// Container child alignment21.Gtk.Container+ContainerChild
+			this.button10 = new global::Gtk.Button();
+			this.button10.CanFocus = true;
+			this.button10.Name = "button10";
+			this.button10.UseUnderline = true;
+			this.button10.Label = global::Mono.Unix.Catalog.GetString("Añadir");
+			this.alignment21.Add(this.button10);
+			this.hbox19.Add(this.alignment21);
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.alignment21]));
+			w3.Position = 0;
 			w3.Expand = false;
 			w3.Fill = false;
-			// Container child hbox1.Gtk.Box+BoxChild
-			this.btnUpdate = new global::Gtk.Button();
-			this.btnUpdate.CanFocus = true;
-			this.btnUpdate.Name = "btnUpdate";
-			this.btnUpdate.UseUnderline = true;
-			this.btnUpdate.Label = global::Mono.Unix.Catalog.GetString("Actualizar");
-			this.hbox1.Add(this.btnUpdate);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.btnUpdate]));
-			w4.PackType = ((global::Gtk.PackType)(1));
-			w4.Position = 2;
-			w4.Expand = false;
-			w4.Fill = false;
-			this.vbox1.Add(this.hbox1);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.hbox1]));
+			// Container child hbox19.Gtk.Box+BoxChild
+			this.alignment20 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
+			this.alignment20.Name = "alignment20";
+			// Container child alignment20.Gtk.Container+ContainerChild
+			this.button9 = new global::Gtk.Button();
+			this.button9.CanFocus = true;
+			this.button9.Name = "button9";
+			this.button9.UseUnderline = true;
+			this.button9.Label = global::Mono.Unix.Catalog.GetString("Actualizar");
+			this.alignment20.Add(this.button9);
+			this.hbox19.Add(this.alignment20);
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.alignment20]));
 			w5.Position = 1;
 			w5.Expand = false;
 			w5.Fill = false;
+			this.hbox18.Add(this.hbox19);
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox18[this.hbox19]));
+			w6.Position = 0;
+			w6.Expand = false;
+			w6.Fill = false;
+			// Container child hbox18.Gtk.Box+BoxChild
+			this.hbox21 = new global::Gtk.HBox();
+			this.hbox21.Name = "hbox21";
+			this.hbox21.Spacing = 6;
+			// Container child hbox21.Gtk.Box+BoxChild
+			this.alignment19 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
+			this.alignment19.Name = "alignment19";
+			// Container child alignment19.Gtk.Container+ContainerChild
+			this.button8 = new global::Gtk.Button();
+			this.button8.CanFocus = true;
+			this.button8.Name = "button8";
+			this.button8.UseUnderline = true;
+			this.button8.Label = global::Mono.Unix.Catalog.GetString("Validar");
+			this.alignment19.Add(this.button8);
+			this.hbox21.Add(this.alignment19);
+			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox21[this.alignment19]));
+			w8.Position = 0;
+			w8.Expand = false;
+			w8.Fill = false;
+			// Container child hbox21.Gtk.Box+BoxChild
+			this.alignment18 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
+			this.alignment18.Name = "alignment18";
+			// Container child alignment18.Gtk.Container+ContainerChild
+			this.button7 = new global::Gtk.Button();
+			this.button7.CanFocus = true;
+			this.button7.Name = "button7";
+			this.button7.UseUnderline = true;
+			this.button7.Label = global::Mono.Unix.Catalog.GetString("Eliminar");
+			this.alignment18.Add(this.button7);
+			this.hbox21.Add(this.alignment18);
+			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox21[this.alignment18]));
+			w10.Position = 1;
+			w10.Expand = false;
+			w10.Fill = false;
+			this.hbox18.Add(this.hbox21);
+			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox18[this.hbox21]));
+			w11.Position = 1;
+			w11.Expand = false;
+			w11.Fill = false;
+			this.vbox1.Add(this.hbox18);
+			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.hbox18]));
+			w12.Position = 1;
+			w12.Expand = false;
+			w12.Fill = false;
 			this.Add(this.vbox1);
 			if ((this.Child != null))
 			{
 				this.Child.ShowAll();
 			}
 			this.Hide();
-			this.btnUpdate.Clicked += new global::System.EventHandler(this.btnUpdateOnClicked);
+			this.button10.Clicked += new global::System.EventHandler(this.OnButton10Clicked);
+			this.button8.Clicked += new global::System.EventHandler(this.OnButton8Clicked);
 		}
 	}
 }

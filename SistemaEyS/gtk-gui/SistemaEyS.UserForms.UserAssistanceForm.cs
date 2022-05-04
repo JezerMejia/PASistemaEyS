@@ -58,7 +58,6 @@ namespace SistemaEyS.UserForms
 			this.mainVerticalBox.Spacing = 6;
 			// Container child mainVerticalBox.Gtk.Box+BoxChild
 			this.alignment9 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
-			this.alignment9.Name = "alignment9";
 			// Container child alignment9.Gtk.Container+ContainerChild
 			this.vbox8 = new global::Gtk.VBox();
 			this.vbox8.Name = "vbox8";
