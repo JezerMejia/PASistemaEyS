@@ -109,8 +109,6 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.HorariosPanel.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.ViewTableTemplate.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.solicitudVacacionesPanel.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.Window.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.btnAdd.cs" />
     <Compile Include="AdminForms\Tables\EmpPanelBtn\AddBtn.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.AddBtn.cs" />
     <Compile Include="AdminForms\Tables\EmpPanelBtn\ValidBtn.cs" />
