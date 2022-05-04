@@ -1,24 +1,28 @@
 ﻿using System;
-using Cairo;
+using Cairo; //Cairo is a low-level 2D vector drawing library.
 namespace SistemaEySLibrary
 {
     [System.ComponentModel.ToolboxItem(true)]
     public class ClockWidget : Gtk.DrawingArea
     {
 
-        // This is a tes from Leo Corea
-
+      
+        //Se establece el tamanio
         public int Width = 150;
         public int Height = 150;
+
+        //Se inicia la clase clockWidget
         public ClockWidget()
         {
             this.Realized += this.printColors;
         }
 
+        //Transformacion de clolores GDK a RGB
         string GdkColorToRGB(Gdk.Color color)
         {
             return $"{color.Red/257};{color.Green/257};{color.Blue/257}";
         }
+
 
         void printColors(Object sender, EventArgs args)
         {
@@ -67,6 +71,8 @@ namespace SistemaEySLibrary
             }
         }
 
+
+        // Se dibuja el reloj en pantalla
         public void DrawClock()
         {
             this.GdkWindow.Clear();
@@ -75,9 +81,12 @@ namespace SistemaEySLibrary
             this.DrawMinuteLine();
             this.DrawSecondLine();
         }
+
+        // se dibuja el anillo
         protected void DrawRing()
         {
             int clockAmount = 0;
+            // Se define la rotacion que esta en cero
             double rotateAmount = 0;
             Gdk.Window drawingArea = this.GdkWindow;
 
@@ -85,15 +94,19 @@ namespace SistemaEySLibrary
             {
                 Cairo.Context ring = Gdk.CairoHelper.Create(drawingArea);
 
+                //Se crean los PointD (x,y)
                 Cairo.PointD point1, point2;
 
+                //Se mueven los puntos
                 point1 = new Cairo.PointD(this.Width * 2 / 5, 0);
                 point2 = new Cairo.PointD(this.Width * 7 / 15, 0);
 
+                // La area de dibujo debe estar a la mitad
                 ring.Antialias = Cairo.Antialias.Default;
                 ring.Translate(this.Width / 2, this.Height / 2);
                 ring.Rotate(rotateAmount);
-                ring.LineWidth = 3;
+                ring.LineWidth = 3; // ancho de la linea
+                //Se mueve desde el punto 1 al punto 2
                 ring.MoveTo(point1);
                 ring.LineTo(point2);
                 ring.LineCap = LineCap.Round;
@@ -171,7 +184,7 @@ namespace SistemaEySLibrary
             Gtk.Style style = this.Style;
             Gdk.Color color = style.Foregrounds[0];
 
-            line.SetSourceColor(
+            line.SetSourceColor( //Color del probrama
                 new Cairo.Color(
                         color.Red / 65535f,
                         color.Green / 65535f,
