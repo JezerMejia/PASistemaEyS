@@ -20,6 +20,41 @@ namespace SistemaEyS.UserForms
             this.idEmpleado = idEmpleado;
             this.Build();
             this.SetDateTimeTimeout();
+
+            this.lbWelcome.Text = $"¡Bienvenido, {this.GetNameEmpleado()}!";
+        }
+
+        protected string GetNameEmpleado()
+        {
+            StringBuilder sb = new StringBuilder();
+            string value = "";
+            IDataReader idr = null;
+
+            sb.Clear();
+            sb.Append($"SELECT Nombre FROM BDSistemaEyS.vwEmpleado " +
+                    $"WHERE ID = {this.idEmpleado};"
+                    );
+            try
+            {
+                idr = conn.Read(CommandType.Text, sb.ToString());
+                if (!idr.Read()) throw new Exception("Empleado no encontrado");
+                value = idr[0].ToString();
+            }
+            catch (Exception e)
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                    ButtonsType.Ok, "Error al obtener el nombre del empleado: " + e.Message);
+                ms.Run();
+                ms.Destroy();
+            }
+            finally
+            {
+                if (idr != null && !idr.IsClosed)
+                {
+                    idr.Close();
+                }
+            }
+            return value;
         }
 
         protected void SetDateTimeTimeout()
@@ -44,8 +79,8 @@ namespace SistemaEyS.UserForms
             DateTime now = DateTime.Now;
 
             sb.Clear();
-            sb.Append($"INSERT INTO BDSistemaEyS.Asistencia (fechaAsistencia, idEmpleado) " +
-                    $"VALUES ('{now.ToString("yyyy-MM-dd")}', {this.idEmpleado}) " +
+            sb.Append($"INSERT INTO BDSistemaEyS.Asistencia (fechaAsistencia, horaEntrada, idEmpleado) " +
+                    $"VALUES ('{now.ToString("yyyy-MM-dd")}', '{now.ToString("H:mm:ss")}', {this.idEmpleado}) " +
                     $"ON DUPLICATE KEY UPDATE horaEntrada='{now.ToString("H:mm:ss")}';"
                     );
             try
@@ -73,8 +108,8 @@ namespace SistemaEyS.UserForms
             DateTime now = DateTime.Now;
 
             sb.Clear();
-            sb.Append($"INSERT INTO BDSistemaEyS.Asistencia (fechaAsistencia, idEmpleado) " +
-                    $"VALUES ('{now.ToString("yyyy-MM-dd")}', {this.idEmpleado}) " +
+            sb.Append($"INSERT INTO BDSistemaEyS.Asistencia (fechaAsistencia, horaSalida, idEmpleado) " +
+                    $"VALUES ('{now.ToString("yyyy-MM-dd")}', '{now.ToString("H:mm:ss")}', {this.idEmpleado}) " +
                     $"ON DUPLICATE KEY UPDATE horaSalida='{now.ToString("H:mm:ss")}';"
                     );
             try
