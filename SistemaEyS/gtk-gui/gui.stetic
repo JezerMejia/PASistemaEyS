@@ -1215,95 +1215,42 @@ T.I.</property>
     <property name="MemberName" />
     <property name="Visible">False</property>
     <child>
-      <widget class="Gtk.VBox" id="vbox1">
+      <widget class="Gtk.Alignment" id="alignment2">
         <property name="MemberName" />
-        <property name="Spacing">6</property>
+        <property name="LeftPadding">5</property>
+        <property name="TopPadding">5</property>
+        <property name="RightPadding">5</property>
+        <property name="BottomPadding">6</property>
+        <property name="BorderWidth">10</property>
         <child>
-          <widget class="SistemaEyS.AdminForms.Tables.ViewTableTemplate" id="viewTable">
-            <property name="MemberName" />
-            <property name="Events">ButtonPressMask</property>
-          </widget>
-          <packing>
-            <property name="Position">0</property>
-            <property name="AutoSize">True</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.HBox" id="hbox18">
+          <widget class="Gtk.VBox" id="vbox1">
             <property name="MemberName" />
             <property name="Spacing">6</property>
+            <property name="BorderWidth">1</property>
             <child>
-              <widget class="Gtk.HBox" id="hbox19">
+              <widget class="SistemaEyS.AdminForms.Tables.ViewTableTemplate" id="viewTable">
                 <property name="MemberName" />
-                <property name="Spacing">6</property>
-                <child>
-                  <widget class="Gtk.Alignment" id="alignment21">
-                    <property name="MemberName" />
-                    <child>
-                      <widget class="Gtk.Button" id="button10">
-                        <property name="MemberName" />
-                        <property name="CanFocus">True</property>
-                        <property name="Type">TextOnly</property>
-                        <property name="Label" translatable="yes">Añadir</property>
-                        <property name="UseUnderline">True</property>
-                        <signal name="Clicked" handler="OnButton10Clicked" />
-                      </widget>
-                    </child>
-                  </widget>
-                  <packing>
-                    <property name="Position">0</property>
-                    <property name="AutoSize">True</property>
-                    <property name="Expand">False</property>
-                    <property name="Fill">False</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="Gtk.Alignment" id="alignment20">
-                    <property name="MemberName" />
-                    <child>
-                      <widget class="Gtk.Button" id="button9">
-                        <property name="MemberName" />
-                        <property name="CanFocus">True</property>
-                        <property name="Type">TextOnly</property>
-                        <property name="Label" translatable="yes">Actualizar</property>
-                        <property name="UseUnderline">True</property>
-                      </widget>
-                    </child>
-                  </widget>
-                  <packing>
-                    <property name="Position">1</property>
-                    <property name="AutoSize">True</property>
-                    <property name="Expand">False</property>
-                    <property name="Fill">False</property>
-                  </packing>
-                </child>
+                <property name="Events">ButtonPressMask</property>
               </widget>
               <packing>
                 <property name="Position">0</property>
                 <property name="AutoSize">True</property>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
               </packing>
             </child>
             <child>
-              <widget class="Gtk.HBox" id="hbox21">
+              <widget class="Gtk.HBox" id="hbox2">
                 <property name="MemberName" />
                 <property name="Spacing">6</property>
                 <child>
-                  <widget class="Gtk.Alignment" id="alignment19">
+                  <widget class="Gtk.Button" id="button1">
                     <property name="MemberName" />
-                    <child>
-                      <widget class="Gtk.Button" id="button8">
-                        <property name="MemberName" />
-                        <property name="CanFocus">True</property>
-                        <property name="Type">TextOnly</property>
-                        <property name="Label" translatable="yes">Validar</property>
-                        <property name="UseUnderline">True</property>
-                        <signal name="Clicked" handler="OnButton8Clicked" />
-                      </widget>
-                    </child>
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextOnly</property>
+                    <property name="Label" translatable="yes">Eliminar</property>
+                    <property name="UseUnderline">True</property>
                   </widget>
                   <packing>
+                    <property name="PackType">End</property>
                     <property name="Position">0</property>
                     <property name="AutoSize">True</property>
                     <property name="Expand">False</property>
@@ -1311,20 +1258,51 @@ T.I.</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Alignment" id="alignment18">
+                  <widget class="Gtk.Button" id="button2">
                     <property name="MemberName" />
-                    <child>
-                      <widget class="Gtk.Button" id="button7">
-                        <property name="MemberName" />
-                        <property name="CanFocus">True</property>
-                        <property name="Type">TextOnly</property>
-                        <property name="Label" translatable="yes">Eliminar</property>
-                        <property name="UseUnderline">True</property>
-                      </widget>
-                    </child>
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextOnly</property>
+                    <property name="Label" translatable="yes">Validar</property>
+                    <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="btnValidateOnClicked" />
                   </widget>
                   <packing>
+                    <property name="PackType">End</property>
                     <property name="Position">1</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Button" id="button3">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextOnly</property>
+                    <property name="Label" translatable="yes">Actualizar</property>
+                    <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="btnUpdateOnClicked" />
+                  </widget>
+                  <packing>
+                    <property name="PackType">End</property>
+                    <property name="Position">2</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Button" id="button4">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextOnly</property>
+                    <property name="Label" translatable="yes">Añadir</property>
+                    <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="btnAddOnClicked" />
+                  </widget>
+                  <packing>
+                    <property name="PackType">End</property>
+                    <property name="Position">3</property>
                     <property name="AutoSize">True</property>
                     <property name="Expand">False</property>
                     <property name="Fill">False</property>
@@ -1336,15 +1314,10 @@ T.I.</property>
                 <property name="AutoSize">True</property>
                 <property name="Expand">False</property>
                 <property name="Fill">False</property>
+                <property name="Padding">1</property>
               </packing>
             </child>
           </widget>
-          <packing>
-            <property name="Position">1</property>
-            <property name="AutoSize">True</property>
-            <property name="Expand">False</property>
-            <property name="Fill">False</property>
-          </packing>
         </child>
       </widget>
     </child>

@@ -33,14 +33,14 @@ namespace SistemaEyS.AdminForms.Tables
             this.viewTable.treeView.Model = dtus.listarUsuarios();
         }
 
-        protected void OnButton10Clicked(object sender, EventArgs e)
+        protected void btnAddOnClicked(object sender, EventArgs e)
         {
             AddBtn ab = new AddBtn();
             ab.Show();
 
         }
 
-        protected void OnButton8Clicked(object sender, EventArgs e)
+        protected void btnValidateOnClicked(object sender, EventArgs e)
         {
             ValidBtn vb = new ValidBtn();
             vb.Show();
