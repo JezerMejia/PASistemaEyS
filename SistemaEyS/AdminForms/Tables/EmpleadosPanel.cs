@@ -8,9 +8,12 @@ namespace SistemaEyS.AdminForms.Tables
     public partial class EmpleadosPanel : Gtk.Bin
     {
         Dt_tlb_empleado dtus = new Dt_tlb_empleado();
+        AddBtn ab = new AddBtn();
+
         public EmpleadosPanel()
         {
             this.Build();
+            ab.Hide();
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Nombre", typeof(string), "text", new Gtk.CellRendererText()),
@@ -35,9 +38,7 @@ namespace SistemaEyS.AdminForms.Tables
 
         protected void btnAddOnClicked(object sender, EventArgs e)
         {
-            AddBtn ab = new AddBtn();
             ab.Show();
-
         }
 
         protected void btnValidateOnClicked(object sender, EventArgs e)

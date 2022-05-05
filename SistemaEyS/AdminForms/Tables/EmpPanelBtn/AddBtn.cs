@@ -8,6 +8,10 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
+            this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
+            {
+                args.RetVal = this.HideOnDelete();
+            };
         }
 
         protected void OnButton4Clicked(object sender, EventArgs e)
@@ -15,8 +19,6 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             MessageDialog mensaje = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, "Ha cancelado");
             mensaje.Run();
             mensaje.Destroy();
-            this.Hide();
-
         }
     }
 }
