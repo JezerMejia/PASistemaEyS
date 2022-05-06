@@ -29,7 +29,7 @@ namespace SistemaEyS.DatosEyS
 
             IDataReader idr = null;
             sb.Clear();
-            sb.Append("SELECT * FROM BDSistemaEyS.horario;");
+            sb.Append("SELECT * FROM BDSistemaEyS.Horario;");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());

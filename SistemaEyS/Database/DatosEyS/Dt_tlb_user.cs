@@ -56,22 +56,27 @@ namespace SistemaEyS.DatosEyS
 
         public ListStore cbxEUsers()
         {
-            ListStore datos = new ListStore(typeof(string), typeof(string), typeof(string), typeof(string), typeof(string));
+            ListStore datos = new ListStore(
+                    typeof(string),
+                    typeof(string),
+                    typeof(string),
+                    typeof(string),
+                    typeof(string)
+                );
             //ListStore datos = new ListStore(typeof(string));
-            IDataReader dr = null;
+            IDataReader idr = null;
             sb.Clear();
-            sb.Append("SELECT id_user, user FROM tbl_user WHERE estado<>3;");
+            sb.Append("SELECT id_user, user FROM Seguridad.tbl_user WHERE estado<>3;");
             try
             {
-                ConnectionSeg.OpenConnection();
-                dr = conn.Read(CommandType.Text, sb.ToString());
-                while (dr.Read())
+                idr = conn.Read(CommandType.Text, sb.ToString());
+                while (idr.Read())
                 {
-
-                    datos.AppendValues(dr[0].ToString(), dr[1].ToString());
-                    //datos.AppendValues(dr[1].ToString());
-                }//fin de while
-                return datos;
+                    datos.AppendValues(
+                        idr[0].ToString(),
+                        idr[1].ToString()
+                        );
+                }
             }
             catch (Exception e)
             {
@@ -79,14 +84,17 @@ namespace SistemaEyS.DatosEyS
                     ButtonsType.Ok, e.Message);
                 ms.Run();
                 ms.Destroy();
-                throw;
             }
             finally
             {
-                dr.Close();
+                if (idr != null && !idr.IsClosed)
+                {
+                    idr.Close();
+                }
                 ConnectionSeg.CloseConnection();
             }
-        }//fin del metodo
+            return datos;
+        }
 
         public Dt_tlb_user()
         {

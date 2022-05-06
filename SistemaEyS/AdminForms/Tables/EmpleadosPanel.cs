@@ -16,10 +16,6 @@ namespace SistemaEyS.AdminForms.Tables
         {
             this.Build();
 
-            ab.Hide();
-            acb.Hide();
-            delb.Hide();
-
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Nombre", typeof(string), "text", new Gtk.CellRendererText()),
@@ -37,7 +33,7 @@ namespace SistemaEyS.AdminForms.Tables
             this.viewTable.treeView.Model = dtus.listarUsuarios();
         }
 
-      protected void btnUpdateOnClicked(object sender, EventArgs e)
+        protected void btnUpdateOnClicked(object sender, EventArgs e)
         {
             this.viewTable.treeView.Model = dtus.listarUsuarios();
         }
@@ -54,14 +50,14 @@ namespace SistemaEyS.AdminForms.Tables
         {
             //ActBtn acb = new ActBtn();
             acb.Show();
-        
+            acb.Present();
         }
 
         protected void OnButton1Clicked(object sender, EventArgs e)
         {
             //DelBtn delb = new DelBtn();
             delb.Show();
-
+            delb.Present();
         }
 
     }
