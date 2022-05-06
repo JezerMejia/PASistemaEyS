@@ -58,12 +58,8 @@ namespace SistemaEyS.DatosEyS
         {
             ListStore datos = new ListStore(
                     typeof(string),
-                    typeof(string),
-                    typeof(string),
-                    typeof(string),
                     typeof(string)
                 );
-            //ListStore datos = new ListStore(typeof(string));
             IDataReader idr = null;
             sb.Clear();
             sb.Append("SELECT id_user, user FROM Seguridad.tbl_user WHERE estado<>3;");
@@ -91,7 +87,6 @@ namespace SistemaEyS.DatosEyS
                 {
                     idr.Close();
                 }
-                ConnectionSeg.CloseConnection();
             }
             return datos;
         }
