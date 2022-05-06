@@ -4,7 +4,7 @@ using Gtk;
 using System.Text;
 using SistemaEyS.Database.Connection;
 
-namespace SistemaEyS.DatosEyS
+namespace SistemaEyS.DatosSeguridad
 {
     public class Dt_tlb_user
     {
@@ -16,8 +16,16 @@ namespace SistemaEyS.DatosEyS
 
         public ListStore listarUsuarios()
         {
-            ListStore datos = new ListStore(typeof(string), typeof(string),
-            typeof(string), typeof(string), typeof(string), typeof(string));
+            ListStore datos = new ListStore(
+                typeof(string),
+                typeof(string),
+                typeof(string),
+                typeof(string),
+                typeof(string),
+                typeof(string),
+                typeof(string),
+                typeof(string)
+                );
 
             IDataReader idr = null;
             sb.Clear();
@@ -25,12 +33,18 @@ namespace SistemaEyS.DatosEyS
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());
-                    
-
                 while (idr.Read())
                 {
-                    datos.AppendValues(idr[0].ToString(), idr[1].ToString(),
-                        idr[2].ToString(), idr[3].ToString(), idr[4].ToString(), idr[5].ToString());
+                    datos.AppendValues(
+                        idr[0].ToString(), // ID Usuario
+                        idr[1].ToString(), // Usario
+                        idr[2].ToString(), // Contraseña
+                        idr[3].ToString(), // Nombres
+                        idr[4].ToString(), // Apellidos
+                        idr[5].ToString(), // Email
+                        idr[6].ToString(), // Contraseña temp
+                        idr[7].ToString()  // Estado
+                        );
                 }
                 return datos;
             }
@@ -50,9 +64,6 @@ namespace SistemaEyS.DatosEyS
             }
             return datos;
         }
-
-        //POINT 
-
 
         public ListStore cbxEUsers()
         {

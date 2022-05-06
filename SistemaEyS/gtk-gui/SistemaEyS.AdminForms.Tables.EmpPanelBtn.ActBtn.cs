@@ -227,6 +227,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.DefaultWidth = 340;
 			this.DefaultHeight = 248;
 			this.Show();
+			this.comboboxentry2.Changed += new global::System.EventHandler(this.ComboBoxOnChanged);
 		}
 	}
 }

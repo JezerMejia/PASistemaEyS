@@ -86,6 +86,8 @@ namespace SistemaEyS.AdminForms.Seguridad
 
 		private global::Gtk.Entry entry1;
 
+		private global::SistemaEyS.AdminForms.Tables.ViewTableTemplate viewTable;
+
 		protected virtual void Build()
 		{
 			global::Stetic.Gui.Initialize(this);
@@ -431,17 +433,24 @@ namespace SistemaEyS.AdminForms.Seguridad
 			w38.Position = 0;
 			w38.Expand = false;
 			w38.Fill = false;
-			this.vbox1.Add(this.vbox2);
-			global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.vbox2]));
+			// Container child vbox2.Gtk.Box+BoxChild
+			this.viewTable = new global::SistemaEyS.AdminForms.Tables.ViewTableTemplate();
+			this.viewTable.Events = ((global::Gdk.EventMask)(256));
+			this.viewTable.Name = "viewTable";
+			this.vbox2.Add(this.viewTable);
+			global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.viewTable]));
 			w39.Position = 1;
+			this.vbox1.Add(this.vbox2);
+			global::Gtk.Box.BoxChild w40 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.vbox2]));
+			w40.Position = 1;
 			this.alignment1.Add(this.vbox1);
 			this.Add(this.alignment1);
 			if ((this.Child != null))
 			{
 				this.Child.ShowAll();
 			}
-			this.DefaultWidth = 534;
-			this.DefaultHeight = 390;
+			this.DefaultWidth = 550;
+			this.DefaultHeight = 400;
 			this.Show();
 		}
 	}

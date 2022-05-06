@@ -53,7 +53,6 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.alignment8.BorderWidth = ((uint)(10));
 			// Container child alignment8.Gtk.Container+ContainerChild
 			this.vbox8 = new global::Gtk.VBox();
-			this.vbox8.Name = "vbox8";
 			this.vbox8.Spacing = 6;
 			// Container child vbox8.Gtk.Box+BoxChild
 			this.alignment11 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
@@ -108,7 +107,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.entry8 = new global::Gtk.Entry();
 			this.entry8.CanFocus = true;
 			this.entry8.Name = "entry8";
-			this.entry8.IsEditable = true;
+			this.entry8.IsEditable = false;
 			this.entry8.InvisibleChar = '•';
 			this.hbox19.Add(this.entry8);
 			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.entry8]));
@@ -136,7 +135,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.entry9 = new global::Gtk.Entry();
 			this.entry9.CanFocus = true;
 			this.entry9.Name = "entry9";
-			this.entry9.IsEditable = true;
+			this.entry9.IsEditable = false;
 			this.entry9.InvisibleChar = '•';
 			this.hbox20.Add(this.entry9);
 			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox20[this.entry9]));
@@ -199,6 +198,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.DefaultWidth = 302;
 			this.DefaultHeight = 241;
 			this.Show();
+			this.comboboxentry3.Changed += new global::System.EventHandler(this.ComboBoxOnChanged);
 		}
 	}
 }

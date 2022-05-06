@@ -94,7 +94,6 @@
     <Compile Include="Database\DatosEyS\Dt_tbl_asistencia.cs" />
     <Compile Include="Database\DatosEyS\Dt_tbl_solicitudVacaciones.cs" />
     <Compile Include="Database\DatosEyS\Dt_tlb_horario.cs" />
-    <Compile Include="Database\DatosEyS\Dt_tlb_user.cs" />
     <Compile Include="Database\DatosEyS\Dt_tlb_empleado.cs" />
     <Compile Include="gtk-gui\MainWindow.cs" />
     <Compile Include="gtk-gui\SistemaEyS.UserForms.UserAssistanceForm.cs" />
@@ -120,6 +119,7 @@
     <Compile Include="AdminForms\Seguridad\UserSeguridad.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Seguridad.UserSeguridad.cs" />
 
+    <Compile Include="Database\DatosSeguridad\Dt_tlb_user.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />

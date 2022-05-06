@@ -4,7 +4,7 @@
     <images-root-path>..</images-root-path>
   </configuration>
   <import>
-
+    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../../SistemaEySLibrary/bin/Debug/SistemaEySLibrary.dll" />
     <widget-library name="../bin/Debug/SistemaEyS.exe" internal="true" />
   </import>
@@ -1283,17 +1283,34 @@ T.I.</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Button" id="button3">
+                  <widget class="Gtk.Button" id="button7">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Type">TextOnly</property>
                     <property name="Label" translatable="yes">Actualizar</property>
                     <property name="UseUnderline">True</property>
-                    <signal name="Clicked" handler="OnButton3Clicked" />
+                    <signal name="Clicked" handler="btnUpdateOnClicked" />
                   </widget>
                   <packing>
                     <property name="PackType">End</property>
                     <property name="Position">1</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Button" id="button3">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextOnly</property>
+                    <property name="Label" translatable="yes">Editar</property>
+                    <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="OnButton3Clicked" />
+                  </widget>
+                  <packing>
+                    <property name="PackType">End</property>
+                    <property name="Position">2</property>
                     <property name="AutoSize">True</property>
                     <property name="Expand">False</property>
                     <property name="Fill">False</property>
@@ -1310,7 +1327,7 @@ T.I.</property>
                   </widget>
                   <packing>
                     <property name="PackType">End</property>
-                    <property name="Position">2</property>
+                    <property name="Position">3</property>
                     <property name="AutoSize">True</property>
                     <property name="Expand">False</property>
                     <property name="Fill">False</property>
@@ -2005,6 +2022,7 @@ T.I.</property>
                             <property name="MemberName" />
                             <property name="IsTextCombo">True</property>
                             <property name="Items" translatable="yes" />
+                            <signal name="Changed" handler="ComboBoxOnChanged" />
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -2244,6 +2262,7 @@ T.I.</property>
                                 <property name="MemberName" />
                                 <property name="IsTextCombo">True</property>
                                 <property name="Items" translatable="yes" />
+                                <signal name="Changed" handler="ComboBoxOnChanged" />
                               </widget>
                               <packing>
                                 <property name="Position">1</property>
@@ -2280,7 +2299,7 @@ T.I.</property>
                               <widget class="Gtk.Entry" id="entry8">
                                 <property name="MemberName" />
                                 <property name="CanFocus">True</property>
-                                <property name="IsEditable">True</property>
+                                <property name="IsEditable">False</property>
                                 <property name="InvisibleChar">•</property>
                               </widget>
                               <packing>
@@ -2317,7 +2336,7 @@ T.I.</property>
                               <widget class="Gtk.Entry" id="entry9">
                                 <property name="MemberName" />
                                 <property name="CanFocus">True</property>
-                                <property name="IsEditable">True</property>
+                                <property name="IsEditable">False</property>
                                 <property name="InvisibleChar">•</property>
                               </widget>
                               <packing>

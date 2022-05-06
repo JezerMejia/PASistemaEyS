@@ -59,6 +59,5 @@ namespace SistemaEyS.AdminForms.Tables
             delb.Show();
             delb.Present();
         }
-
     }
 }
