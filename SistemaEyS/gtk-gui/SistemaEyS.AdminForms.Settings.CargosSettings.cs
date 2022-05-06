@@ -57,7 +57,6 @@ namespace SistemaEyS.AdminForms.Settings
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.label5 = new global::Gtk.Label();
 			this.label5.Name = "label5";
-			this.label5.LabelProp = global::Mono.Unix.Catalog.GetString("label5");
 			this.hbox4.Add(this.label5);
 			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.label5]));
 			w1.Position = 0;
