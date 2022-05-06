@@ -14,8 +14,6 @@ namespace SistemaEyS.AdminForms.Tables
 
 		private global::Gtk.Button button1;
 
-		private global::Gtk.Button button2;
-
 		private global::Gtk.Button button3;
 
 		private global::Gtk.Button button4;
@@ -63,29 +61,17 @@ namespace SistemaEyS.AdminForms.Tables
 			w2.Expand = false;
 			w2.Fill = false;
 			// Container child hbox2.Gtk.Box+BoxChild
-			this.button2 = new global::Gtk.Button();
-			this.button2.CanFocus = true;
-			this.button2.Name = "button2";
-			this.button2.UseUnderline = true;
-			this.button2.Label = global::Mono.Unix.Catalog.GetString("Validar");
-			this.hbox2.Add(this.button2);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.button2]));
-			w3.PackType = ((global::Gtk.PackType)(1));
-			w3.Position = 1;
-			w3.Expand = false;
-			w3.Fill = false;
-			// Container child hbox2.Gtk.Box+BoxChild
 			this.button3 = new global::Gtk.Button();
 			this.button3.CanFocus = true;
 			this.button3.Name = "button3";
 			this.button3.UseUnderline = true;
 			this.button3.Label = global::Mono.Unix.Catalog.GetString("Actualizar");
 			this.hbox2.Add(this.button3);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.button3]));
-			w4.PackType = ((global::Gtk.PackType)(1));
-			w4.Position = 2;
-			w4.Expand = false;
-			w4.Fill = false;
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.button3]));
+			w3.PackType = ((global::Gtk.PackType)(1));
+			w3.Position = 1;
+			w3.Expand = false;
+			w3.Fill = false;
 			// Container child hbox2.Gtk.Box+BoxChild
 			this.button4 = new global::Gtk.Button();
 			this.button4.CanFocus = true;
@@ -93,17 +79,17 @@ namespace SistemaEyS.AdminForms.Tables
 			this.button4.UseUnderline = true;
 			this.button4.Label = global::Mono.Unix.Catalog.GetString("Añadir");
 			this.hbox2.Add(this.button4);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.button4]));
-			w5.PackType = ((global::Gtk.PackType)(1));
-			w5.Position = 3;
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.button4]));
+			w4.PackType = ((global::Gtk.PackType)(1));
+			w4.Position = 2;
+			w4.Expand = false;
+			w4.Fill = false;
+			this.vbox1.Add(this.hbox2);
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.hbox2]));
+			w5.Position = 1;
 			w5.Expand = false;
 			w5.Fill = false;
-			this.vbox1.Add(this.hbox2);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.hbox2]));
-			w6.Position = 1;
-			w6.Expand = false;
-			w6.Fill = false;
-			w6.Padding = ((uint)(1));
+			w5.Padding = ((uint)(1));
 			this.alignment2.Add(this.vbox1);
 			this.Add(this.alignment2);
 			if ((this.Child != null))
@@ -112,8 +98,8 @@ namespace SistemaEyS.AdminForms.Tables
 			}
 			this.Hide();
 			this.button4.Clicked += new global::System.EventHandler(this.btnAddOnClicked);
-			this.button3.Clicked += new global::System.EventHandler(this.btnUpdateOnClicked);
-			this.button2.Clicked += new global::System.EventHandler(this.btnValidateOnClicked);
+			this.button3.Clicked += new global::System.EventHandler(this.OnButton3Clicked);
+			this.button1.Clicked += new global::System.EventHandler(this.OnButton1Clicked);
 		}
 	}
 }
