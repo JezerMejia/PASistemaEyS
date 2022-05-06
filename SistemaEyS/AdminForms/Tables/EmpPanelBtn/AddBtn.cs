@@ -8,6 +8,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
+            this.Hide();
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
             {
                 args.RetVal = this.HideOnDelete();

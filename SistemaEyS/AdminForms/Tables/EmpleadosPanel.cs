@@ -13,7 +13,6 @@ namespace SistemaEyS.AdminForms.Tables
         public EmpleadosPanel()
         {
             this.Build();
-            ab.Hide();
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Nombre", typeof(string), "text", new Gtk.CellRendererText()),
@@ -39,6 +38,7 @@ namespace SistemaEyS.AdminForms.Tables
         protected void btnAddOnClicked(object sender, EventArgs e)
         {
             ab.Show();
+            ab.Present();
         }
 
         protected void btnValidateOnClicked(object sender, EventArgs e)
