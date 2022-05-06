@@ -111,8 +111,12 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.solicitudVacacionesPanel.cs" />
     <Compile Include="AdminForms\Tables\EmpPanelBtn\AddBtn.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.AddBtn.cs" />
-    <Compile Include="AdminForms\Tables\EmpPanelBtn\ValidBtn.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.ValidBtn.cs" />
+    
+   
+    <Compile Include="AdminForms\Tables\EmpPanelBtn\ActBtn.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.ActBtn.cs" />
+    <Compile Include="AdminForms\Tables\EmpPanelBtn\DelBtn.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.DelBtn.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
