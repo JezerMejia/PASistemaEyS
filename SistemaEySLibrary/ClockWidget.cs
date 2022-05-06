@@ -7,7 +7,7 @@ namespace SistemaEySLibrary
     {
 
       
-        //Se establece el tamanio
+        //Se establece el tamaño
         public int Width = 150;
         public int Height = 150;
 
