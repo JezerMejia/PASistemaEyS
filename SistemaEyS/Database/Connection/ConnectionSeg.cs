@@ -7,7 +7,7 @@ namespace SistemaEyS.Database.Connection
 {
     public class ConnectionSeg
     {
-        private MySqlConnection conn { get; set; }
+        public MySqlConnection conn { get; set; }
         static private ConnectionSeg instance = null;
 
         public String CadenaConexion()
@@ -53,13 +53,15 @@ namespace SistemaEyS.Database.Connection
 
         static public void CloseConnection()
         {
-            if (ConnectionSeg.instance == null) {
+            if (ConnectionSeg.instance == null)
+            {
                 return;
             }
             if (ConnectionSeg.instance.conn.State == ConnectionState.Closed)
             {
                 return;
-            } else
+            }
+            else
             {
                 ConnectionSeg.instance.conn.Close();
                 ConnectionSeg.instance = null;
