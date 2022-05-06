@@ -56,6 +56,12 @@ namespace SistemaEyS.AdminForms
 
 		private global::Gtk.Action SolicitudDeVacacionesAction;
 
+		private global::Gtk.Action SeguridadAction;
+
+		private global::Gtk.Action UsuariosAction;
+
+		private global::Gtk.Action OpcionesDeRolAction;
+
 		private global::Gtk.Alignment alignment1;
 
 		private global::Gtk.VBox vbox4;
@@ -155,6 +161,15 @@ namespace SistemaEyS.AdminForms
 			this.SolicitudDeVacacionesAction = new global::Gtk.Action("SolicitudDeVacacionesAction", global::Mono.Unix.Catalog.GetString("Solicitud de vacaciones"), null, null);
 			this.SolicitudDeVacacionesAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Solicitud de vacaciones");
 			w1.Add(this.SolicitudDeVacacionesAction, null);
+			this.SeguridadAction = new global::Gtk.Action("SeguridadAction", global::Mono.Unix.Catalog.GetString("Seguridad"), null, null);
+			this.SeguridadAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Seguridad");
+			w1.Add(this.SeguridadAction, null);
+			this.UsuariosAction = new global::Gtk.Action("UsuariosAction", global::Mono.Unix.Catalog.GetString("Usuarios"), null, null);
+			this.UsuariosAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Usuarios");
+			w1.Add(this.UsuariosAction, null);
+			this.OpcionesDeRolAction = new global::Gtk.Action("OpcionesDeRolAction", global::Mono.Unix.Catalog.GetString("Opciones de rol"), null, null);
+			this.OpcionesDeRolAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Opciones de rol");
+			w1.Add(this.OpcionesDeRolAction, null);
 			this.UIManager.InsertActionGroup(w1, 0);
 			this.AddAccelGroup(this.UIManager.AccelGroup);
 			this.Name = "SistemaEyS.AdminForms.AdminPanel";
@@ -182,12 +197,14 @@ namespace SistemaEyS.AdminForms
 					"rasSuplementariasAction\'/><menuitem name=\'AusenciasAction\' action=\'AusenciasActi" +
 					"on\'/><menuitem name=\'NovedadesAsistenciaAction\' action=\'NovedadesAsistenciaActio" +
 					"n\'/><menuitem name=\'PermisosAction\' action=\'PermisosAction\'/></menu><menu name=\'" +
-					"AjustesAction\' action=\'AjustesAction\'><menuitem name=\'RolesAction\' action=\'Roles" +
-					"Action\'/><menuitem name=\'CargosAction\' action=\'CargosAction\'/><menuitem name=\'Ho" +
-					"rariosAction1\' action=\'HorariosAction1\'/></menu><menu name=\'AyudaAction\' action=" +
-					"\'AyudaAction\'><menuitem name=\'dialogInfoAction\' action=\'dialogInfoAction\'/><menu" +
-					"item name=\'dialogQuestionAction\' action=\'dialogQuestionAction\'/></menu></menubar" +
-					"></ui>");
+					"AjustesAction\' action=\'AjustesAction\'><menuitem name=\'CargosAction\' action=\'Carg" +
+					"osAction\'/><menuitem name=\'HorariosAction1\' action=\'HorariosAction1\'/></menu><me" +
+					"nu name=\'SeguridadAction\' action=\'SeguridadAction\'><menuitem name=\'UsuariosActio" +
+					"n\' action=\'UsuariosAction\'/><menuitem name=\'RolesAction\' action=\'RolesAction\'/><" +
+					"menuitem name=\'OpcionesDeRolAction\' action=\'OpcionesDeRolAction\'/></menu><menu n" +
+					"ame=\'AyudaAction\' action=\'AyudaAction\'><menuitem name=\'dialogInfoAction\' action=" +
+					"\'dialogInfoAction\'/><menuitem name=\'dialogQuestionAction\' action=\'dialogQuestion" +
+					"Action\'/></menu></menubar></ui>");
 			this.menuBar = ((global::Gtk.MenuBar)(this.UIManager.GetWidget("/menuBar")));
 			this.menuBar.Name = "menuBar";
 			this.vbox4.Add(this.menuBar);
@@ -252,10 +269,11 @@ namespace SistemaEyS.AdminForms
 			this.EmpleadosAction.Activated += new global::System.EventHandler(this.TablasEmpleadosActionOnActivated);
 			this.HorariosAction.Activated += new global::System.EventHandler(this.TablasHorariosActionOnActivated);
 			this.EntradasSalidasAction.Activated += new global::System.EventHandler(this.TablasEntradasSalidasActionOnActivated);
-			this.RolesAction.Activated += new global::System.EventHandler(this.RolesOnActivated);
+			this.RolesAction.Activated += new global::System.EventHandler(this.SeguridadRolesOnActivated);
 			this.CargosAction.Activated += new global::System.EventHandler(this.AjustesCargosOnActivated);
 			this.SolicitudesDeVacacionesAction.Activated += new global::System.EventHandler(this.TablasSolicitudVacacionesActionOnActivated);
 			this.SolicitudDeVacacionesAction.Activated += new global::System.EventHandler(this.TablasSolicitudVacacionesActionOnActivated);
+			this.UsuariosAction.Activated += new global::System.EventHandler(this.SeguridadUsuariosOnActivated);
 		}
 	}
 }

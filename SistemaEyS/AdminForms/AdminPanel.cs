@@ -1,6 +1,7 @@
 ﻿using System;
 using Gtk;
 using SistemaEySLibrary;
+using SistemaEyS.AdminForms.Seguridad;
 using SistemaEyS.Database.Connection;
 
 namespace SistemaEyS.AdminForms
@@ -85,7 +86,7 @@ namespace SistemaEyS.AdminForms
             args.RetVal = true;
         }
 
-        protected void RolesOnActivated(object sender, EventArgs e)
+        protected void SeguridadRolesOnActivated(object sender, EventArgs e)
         {
             AdminForms.Settings.UserRolSettings userRolSettings = new Settings.UserRolSettings();
             userRolSettings.Show();
@@ -97,5 +98,10 @@ namespace SistemaEyS.AdminForms
             cargosSettings.Show();
         }
 
+        protected void SeguridadUsuariosOnActivated(object sender, EventArgs e)
+        {
+            UserSeguridad userSeguridad = new UserSeguridad();
+            userSeguridad.Show();
+        }
     }
 }

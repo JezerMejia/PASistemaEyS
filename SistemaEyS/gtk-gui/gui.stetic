@@ -4,7 +4,7 @@
     <images-root-path>..</images-root-path>
   </configuration>
   <import>
-    <widget-library name="../../../../../../usr/lib/monodevelop/AddIns/MonoDevelop.GtkCore/libstetic.dll" />
+    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../../SistemaEySLibrary/bin/Debug/SistemaEySLibrary.dll" />
     <widget-library name="../bin/Debug/SistemaEyS.exe" internal="true" />
   </import>
@@ -709,7 +709,7 @@ IT</property>
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Roles</property>
         <property name="ShortLabel" translatable="yes">Roles</property>
-        <signal name="Activated" handler="RolesOnActivated" />
+        <signal name="Activated" handler="SeguridadRolesOnActivated" />
       </action>
       <action id="CargosAction">
         <property name="Type">Action</property>
@@ -787,9 +787,13 @@ IT</property>
                     <node type="Menuitem" action="PermisosAction" />
                   </node>
                   <node type="Menu" action="AjustesAction">
-                    <node type="Menuitem" action="RolesAction" />
                     <node type="Menuitem" action="CargosAction" />
                     <node type="Menuitem" action="HorariosAction1" />
+                  </node>
+                  <node type="Menu" action="SeguridadAction">
+                    <node type="Menuitem" action="UsuariosAction" />
+                    <node type="Menuitem" action="RolesAction" />
+                    <node type="Menuitem" action="OpcionesDeRolAction" />
                   </node>
                   <node type="Menu" action="AyudaAction">
                     <node type="Menuitem" action="dialogInfoAction" />
