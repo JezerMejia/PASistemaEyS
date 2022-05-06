@@ -13,8 +13,10 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
+
             Random r = new Random();
             entry1.Text = Convert.ToString(r.Next(1000, 10000));
+            this.Hide();
 
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
             {

@@ -15,10 +15,11 @@ namespace SistemaEyS.AdminForms.Tables
         public EmpleadosPanel()
         {
             this.Build();
+
             ab.Hide();
             acb.Hide();
             delb.Hide();
-            
+
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Nombre", typeof(string), "text", new Gtk.CellRendererText()),
@@ -46,6 +47,7 @@ namespace SistemaEyS.AdminForms.Tables
         {
             //AddBtn ab = new AddBtn();
             ab.Show();
+            ab.Present();
         }
 
         protected void OnButton3Clicked(object sender, EventArgs e)

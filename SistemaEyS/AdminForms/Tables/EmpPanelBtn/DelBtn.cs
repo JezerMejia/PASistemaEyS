@@ -12,6 +12,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
+            this.Hide();
             llenarcbxUser();
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
             {
