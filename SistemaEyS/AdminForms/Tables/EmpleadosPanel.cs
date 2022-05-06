@@ -1,6 +1,6 @@
 ﻿using System;
 using Gtk;
-using SistemaEyS.Datos;
+using SistemaEyS.DatosEyS;
 using SistemaEyS.AdminForms.Tables.EmpPanelBtn;
 
 namespace SistemaEyS.AdminForms.Tables
@@ -9,11 +9,16 @@ namespace SistemaEyS.AdminForms.Tables
     {
         Dt_tlb_empleado dtus = new Dt_tlb_empleado();
         AddBtn ab = new AddBtn();
+        ActBtn acb = new ActBtn();
+        DelBtn delb = new DelBtn();
 
         public EmpleadosPanel()
         {
             this.Build();
             ab.Hide();
+            acb.Hide();
+            delb.Hide();
+            
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Nombre", typeof(string), "text", new Gtk.CellRendererText()),
@@ -31,20 +36,31 @@ namespace SistemaEyS.AdminForms.Tables
             this.viewTable.treeView.Model = dtus.listarUsuarios();
         }
 
-        protected void btnUpdateOnClicked(object sender, EventArgs e)
+      protected void btnUpdateOnClicked(object sender, EventArgs e)
         {
             this.viewTable.treeView.Model = dtus.listarUsuarios();
         }
 
+
         protected void btnAddOnClicked(object sender, EventArgs e)
         {
+            //AddBtn ab = new AddBtn();
             ab.Show();
         }
 
-        protected void btnValidateOnClicked(object sender, EventArgs e)
+        protected void OnButton3Clicked(object sender, EventArgs e)
         {
-            ValidBtn vb = new ValidBtn();
-            vb.Show();
+            //ActBtn acb = new ActBtn();
+            acb.Show();
+        
         }
+
+        protected void OnButton1Clicked(object sender, EventArgs e)
+        {
+            //DelBtn delb = new DelBtn();
+            delb.Show();
+
+        }
+
     }
 }
