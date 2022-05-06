@@ -123,8 +123,8 @@ namespace SistemaEyS.UserForms
 			{
 				this.Child.ShowAll();
 			}
-			this.DefaultWidth = 415;
-			this.DefaultHeight = 302;
+			this.DefaultWidth = 302;
+			this.DefaultHeight = 261;
 			this.Show();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 			this.btnEnter.Clicked += new global::System.EventHandler(this.btnEnterOnClicked);
