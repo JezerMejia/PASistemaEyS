@@ -68,6 +68,8 @@ namespace SistemaEyS.AdminForms
 
 		private global::Gtk.VBox vbox5;
 
+		private global::Gtk.Alignment alignment14;
+
 		private global::SistemaEySLibrary.ClockWidget clockwidget1;
 
 		private global::Gtk.Label lbDateTime;
@@ -210,23 +212,27 @@ namespace SistemaEyS.AdminForms
 			this.vbox5.Name = "vbox5";
 			this.vbox5.Spacing = 6;
 			// Container child vbox5.Gtk.Box+BoxChild
+			this.alignment14 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
+			this.alignment14.Name = "alignment14";
+			// Container child alignment14.Gtk.Container+ContainerChild
 			this.clockwidget1 = new global::SistemaEySLibrary.ClockWidget();
 			this.clockwidget1.Name = "clockwidget1";
-			this.vbox5.Add(this.clockwidget1);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.clockwidget1]));
-			w3.Position = 0;
-			w3.Expand = false;
-			w3.Fill = false;
+			this.alignment14.Add(this.clockwidget1);
+			this.vbox5.Add(this.alignment14);
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.alignment14]));
+			w4.Position = 0;
+			w4.Expand = false;
+			w4.Fill = false;
 			// Container child vbox5.Gtk.Box+BoxChild
 			this.lbDateTime = new global::Gtk.Label();
 			this.lbDateTime.Name = "lbDateTime";
 			this.lbDateTime.LabelProp = global::Mono.Unix.Catalog.GetString("<span size=\"200%\" weight=\"bold\">DATETIME</span>");
 			this.lbDateTime.UseMarkup = true;
 			this.vbox5.Add(this.lbDateTime);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.lbDateTime]));
-			w4.Position = 1;
-			w4.Expand = false;
-			w4.Fill = false;
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.lbDateTime]));
+			w5.Position = 1;
+			w5.Expand = false;
+			w5.Fill = false;
 			this.alignment4.Add(this.vbox5);
 			this.ntTabview.Add(this.alignment4);
 			// Notebook tab
@@ -236,8 +242,8 @@ namespace SistemaEyS.AdminForms
 			this.ntTabview.SetTabLabel(this.alignment4, this.lbHome);
 			this.lbHome.ShowAll();
 			this.vbox4.Add(this.ntTabview);
-			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.ntTabview]));
-			w7.Position = 1;
+			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.ntTabview]));
+			w8.Position = 1;
 			this.alignment1.Add(this.vbox4);
 			this.Add(this.alignment1);
 			if ((this.Child != null))
