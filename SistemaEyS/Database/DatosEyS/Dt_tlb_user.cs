@@ -4,7 +4,7 @@ using Gtk;
 using System.Text;
 using SistemaEyS.Database.Connection;
 
-namespace SistemaEyS.Datos
+namespace SistemaEyS.DatosEyS
 {
     public class Dt_tlb_user
     {
@@ -25,6 +25,7 @@ namespace SistemaEyS.Datos
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());
+                    
 
                 while (idr.Read())
                 {
@@ -49,6 +50,44 @@ namespace SistemaEyS.Datos
             }
             return datos;
         }
+
+        //POINT 
+
+
+        public ListStore cbxEUsers()
+        {
+            ListStore datos = new ListStore(typeof(string), typeof(string), typeof(string), typeof(string), typeof(string));
+            //ListStore datos = new ListStore(typeof(string));
+            IDataReader dr = null;
+            sb.Clear();
+            sb.Append("SELECT id_user, user FROM tbl_user WHERE estado<>3;");
+            try
+            {
+                ConnectionSeg.OpenConnection();
+                dr = conn.Read(CommandType.Text, sb.ToString());
+                while (dr.Read())
+                {
+
+                    datos.AppendValues(dr[0].ToString(), dr[1].ToString());
+                    //datos.AppendValues(dr[1].ToString());
+                }//fin de while
+                return datos;
+            }
+            catch (Exception e)
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                    ButtonsType.Ok, e.Message);
+                ms.Run();
+                ms.Destroy();
+                throw;
+            }
+            finally
+            {
+                dr.Close();
+                ConnectionSeg.CloseConnection();
+            }
+        }//fin del metodo
+
         public Dt_tlb_user()
         {
         }
