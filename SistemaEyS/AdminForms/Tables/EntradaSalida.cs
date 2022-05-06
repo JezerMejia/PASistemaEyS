@@ -1,5 +1,5 @@
 ﻿using System;
-using SistemaEyS.Datos;
+using SistemaEyS.DatosEyS;
 
 namespace SistemaEyS.AdminForms.Tables
 {
