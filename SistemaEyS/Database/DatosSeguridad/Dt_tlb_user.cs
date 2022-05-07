@@ -65,6 +65,9 @@ namespace SistemaEyS.DatosSeguridad
             return datos;
         }
 
+
+        //Seguridad
+
         public ListStore cbxEUsers()
         {
             ListStore datos = new ListStore(
