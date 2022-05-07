@@ -41,21 +41,23 @@ namespace SistemaEyS.AdminForms.Tables
 
         protected void btnAddOnClicked(object sender, EventArgs e)
         {
-            //AddBtn ab = new AddBtn();
+            //AddBtn
             ab.Show();
             ab.Present();
+            ab.idRandom();
+          
         }
 
         protected void OnButton3Clicked(object sender, EventArgs e)
         {
-            //ActBtn acb = new ActBtn();
+            //ActBtn
             acb.Show();
             acb.Present();
         }
 
         protected void OnButton1Clicked(object sender, EventArgs e)
         {
-            //DelBtn delb = new DelBtn();
+            //DelBtn
             delb.Show();
             delb.Present();
         }
