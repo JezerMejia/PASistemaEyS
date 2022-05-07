@@ -7,7 +7,7 @@ namespace SistemaEyS.Database.Connection
 {
     public class ConnectionEyS
     {
-        private MySqlConnection conn { get; set; }
+        public MySqlConnection conn { get; set; }
         static private ConnectionEyS instance = null;
 
         public String CadenaConexion()
