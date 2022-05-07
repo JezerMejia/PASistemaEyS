@@ -53,6 +53,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.alignment8.BorderWidth = ((uint)(10));
 			// Container child alignment8.Gtk.Container+ContainerChild
 			this.vbox8 = new global::Gtk.VBox();
+			this.vbox8.Name = "vbox8";
 			this.vbox8.Spacing = 6;
 			// Container child vbox8.Gtk.Box+BoxChild
 			this.alignment11 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
