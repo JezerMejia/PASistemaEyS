@@ -13,9 +13,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
-
-            Random r = new Random();
-            entry1.Text = Convert.ToString(r.Next(1000, 10000));
+            idRandom();
             this.Hide();
 
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
@@ -34,21 +32,61 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
         protected void OnButton2Clicked(object sender, EventArgs e)
         {
 
-            ConnectionSeg conecction = ConnectionSeg.OpenConnection();
 
-            String Query = "INSERT INTO tbl_user (id_user, user, pwd, nombres, apellidos, email, pwd_temp, estado) VALUES ('" + entry1.Text + "','" + entry2.Text + "' , '"
-                            + entry3.Text + "' , '" + entry4.Text + "' , '" + entry5.Text + "' , '" + entry6.Text + "' , '" + entry7.Text + "' , '" + entry8.Text + "');";
+            ConnectionEyS conecction = ConnectionEyS.OpenConnection();
 
-            MySqlCommand command = new MySqlCommand(Query, conecction.conn);
-            conecction.Execute(CommandType.Text,Query);
-          
-            ConnectionSeg.CloseConnection();
+            if (!(
+                    entry1.Text.Length == 0 || 
+                    entry2.Text.Length == 0 || 
+                    entry3.Text.Length == 0 ||
+                    entry4.Text.Length == 0 ||
+                    entry5.Text.Length == 0 ||
+                    entry6.Text.Length == 0
+                ))
+            {
 
-            MessageDialog mensaje = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, "Agregado");
-            mensaje.Run();
-            mensaje.Destroy();
+                //No change to BDSistemaEyS.Empleado, only Empleado :c.
+                String Query = "INSERT INTO Empleado (idEmpleado, primerNombre, segundoNombre, primerApellido, segundoApellido, password) VALUES ('" + entry1.Text + "','" + entry2.Text + "' , '"
+                                + entry3.Text + "' , '" + entry4.Text + "' , '" + entry5.Text + "' , '" + entry6.Text + "');";
 
-           
+                MySqlCommand command = new MySqlCommand(Query, conecction.conn);
+                conecction.Execute(CommandType.Text, Query);
+
+                ConnectionEyS.CloseConnection();
+
+                MessageDialog mensaje = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, "Agregado");
+                mensaje.Run();
+                mensaje.Destroy();
+                cleanBtn();
+
+            }
+            else
+            {
+                MessageDialog mensaje = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, "No pueden haber datos vacios");
+                mensaje.Run();
+                mensaje.Destroy();
+                cleanBtn();
+            }
         }
+
+        // Funcion to clean all entrys
+        public void cleanBtn()
+        {
+            entry1.Text = "";
+            entry2.Text = "";
+            entry3.Text = "";
+            entry4.Text = "";
+            entry5.Text = "";
+            entry6.Text = "";
+        }
+
+        //Generate a idRandom
+        public void idRandom()
+        {
+            entry1.Text = "";
+            Random r = new Random();
+            entry1.Text = Convert.ToString(r.Next(10000, 100000));
+        }
+
     }
 }
