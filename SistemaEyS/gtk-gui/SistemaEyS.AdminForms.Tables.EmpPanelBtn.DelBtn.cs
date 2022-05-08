@@ -16,29 +16,29 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
 		private global::Gtk.HBox hbox18;
 
-		private global::Gtk.Label label9;
+		private global::Gtk.ComboBoxEntry CmbxEntry;
 
-		private global::Gtk.ComboBoxEntry comboboxentry3;
+		private global::Gtk.Label label9;
 
 		private global::Gtk.HBox hbox19;
 
-		private global::Gtk.Label label10;
+		private global::Gtk.Entry TxtName;
 
-		private global::Gtk.Entry entry8;
+		private global::Gtk.Label label10;
 
 		private global::Gtk.HBox hbox20;
 
-		private global::Gtk.Label label11;
+		private global::Gtk.Entry TxtLastName;
 
-		private global::Gtk.Entry entry9;
+		private global::Gtk.Label label11;
 
 		private global::Gtk.Alignment alignment12;
 
 		private global::Gtk.HBox hbox17;
 
-		private global::Gtk.Button button7;
+		private global::Gtk.Button BtnAccept;
 
-		private global::Gtk.Button button6;
+		private global::Gtk.Button BtnCancel;
 
 		protected virtual void Build()
 		{
@@ -70,19 +70,21 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.hbox18.Name = "hbox18";
 			this.hbox18.Spacing = 6;
 			// Container child hbox18.Gtk.Box+BoxChild
-			this.label9 = new global::Gtk.Label();
-			this.label9.Name = "label9";
-			this.label9.LabelProp = global::Mono.Unix.Catalog.GetString("ID");
-			this.hbox18.Add(this.label9);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox18[this.label9]));
+			this.CmbxEntry = global::Gtk.ComboBoxEntry.NewText();
+			this.CmbxEntry.Name = "CmbxEntry";
+			this.hbox18.Add(this.CmbxEntry);
+			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox18[this.CmbxEntry]));
+			w1.PackType = ((global::Gtk.PackType)(1));
 			w1.Position = 0;
 			w1.Expand = false;
 			w1.Fill = false;
 			// Container child hbox18.Gtk.Box+BoxChild
-			this.comboboxentry3 = global::Gtk.ComboBoxEntry.NewText();
-			this.comboboxentry3.Name = "comboboxentry3";
-			this.hbox18.Add(this.comboboxentry3);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox18[this.comboboxentry3]));
+			this.label9 = new global::Gtk.Label();
+			this.label9.Name = "label9";
+			this.label9.LabelProp = global::Mono.Unix.Catalog.GetString("ID:");
+			this.hbox18.Add(this.label9);
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox18[this.label9]));
+			w2.PackType = ((global::Gtk.PackType)(1));
 			w2.Position = 1;
 			w2.Expand = false;
 			w2.Fill = false;
@@ -96,24 +98,27 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.hbox19.Name = "hbox19";
 			this.hbox19.Spacing = 6;
 			// Container child hbox19.Gtk.Box+BoxChild
-			this.label10 = new global::Gtk.Label();
-			this.label10.Name = "label10";
-			this.label10.LabelProp = global::Mono.Unix.Catalog.GetString("Nombre");
-			this.hbox19.Add(this.label10);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.label10]));
+			this.TxtName = new global::Gtk.Entry();
+			this.TxtName.CanFocus = true;
+			this.TxtName.Name = "TxtName";
+			this.TxtName.IsEditable = false;
+			this.TxtName.WidthChars = 25;
+			this.TxtName.InvisibleChar = '•';
+			this.hbox19.Add(this.TxtName);
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.TxtName]));
+			w4.PackType = ((global::Gtk.PackType)(1));
 			w4.Position = 0;
 			w4.Expand = false;
-			w4.Fill = false;
 			// Container child hbox19.Gtk.Box+BoxChild
-			this.entry8 = new global::Gtk.Entry();
-			this.entry8.CanFocus = true;
-			this.entry8.Name = "entry8";
-			this.entry8.IsEditable = false;
-			this.entry8.InvisibleChar = '•';
-			this.hbox19.Add(this.entry8);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.entry8]));
+			this.label10 = new global::Gtk.Label();
+			this.label10.Name = "label10";
+			this.label10.LabelProp = global::Mono.Unix.Catalog.GetString("Nombre:");
+			this.hbox19.Add(this.label10);
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.label10]));
+			w5.PackType = ((global::Gtk.PackType)(1));
 			w5.Position = 1;
 			w5.Expand = false;
+			w5.Fill = false;
 			this.vbox9.Add(this.hbox19);
 			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox9[this.hbox19]));
 			w6.Position = 1;
@@ -124,24 +129,27 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.hbox20.Name = "hbox20";
 			this.hbox20.Spacing = 6;
 			// Container child hbox20.Gtk.Box+BoxChild
-			this.label11 = new global::Gtk.Label();
-			this.label11.Name = "label11";
-			this.label11.LabelProp = global::Mono.Unix.Catalog.GetString("Apellido");
-			this.hbox20.Add(this.label11);
-			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox20[this.label11]));
+			this.TxtLastName = new global::Gtk.Entry();
+			this.TxtLastName.CanFocus = true;
+			this.TxtLastName.Name = "TxtLastName";
+			this.TxtLastName.IsEditable = false;
+			this.TxtLastName.WidthChars = 25;
+			this.TxtLastName.InvisibleChar = '•';
+			this.hbox20.Add(this.TxtLastName);
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox20[this.TxtLastName]));
+			w7.PackType = ((global::Gtk.PackType)(1));
 			w7.Position = 0;
 			w7.Expand = false;
-			w7.Fill = false;
 			// Container child hbox20.Gtk.Box+BoxChild
-			this.entry9 = new global::Gtk.Entry();
-			this.entry9.CanFocus = true;
-			this.entry9.Name = "entry9";
-			this.entry9.IsEditable = false;
-			this.entry9.InvisibleChar = '•';
-			this.hbox20.Add(this.entry9);
-			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox20[this.entry9]));
+			this.label11 = new global::Gtk.Label();
+			this.label11.Name = "label11";
+			this.label11.LabelProp = global::Mono.Unix.Catalog.GetString("Apellido:");
+			this.hbox20.Add(this.label11);
+			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox20[this.label11]));
+			w8.PackType = ((global::Gtk.PackType)(1));
 			w8.Position = 1;
 			w8.Expand = false;
+			w8.Fill = false;
 			this.vbox9.Add(this.hbox20);
 			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox9[this.hbox20]));
 			w9.Position = 2;
@@ -163,24 +171,24 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.hbox17.Name = "hbox17";
 			this.hbox17.Spacing = 10;
 			// Container child hbox17.Gtk.Box+BoxChild
-			this.button7 = new global::Gtk.Button();
-			this.button7.CanFocus = true;
-			this.button7.Name = "button7";
-			this.button7.UseUnderline = true;
-			this.button7.Label = global::Mono.Unix.Catalog.GetString("Aceptar");
-			this.hbox17.Add(this.button7);
-			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.hbox17[this.button7]));
+			this.BtnAccept = new global::Gtk.Button();
+			this.BtnAccept.CanFocus = true;
+			this.BtnAccept.Name = "BtnAccept";
+			this.BtnAccept.UseUnderline = true;
+			this.BtnAccept.Label = global::Mono.Unix.Catalog.GetString("Aceptar");
+			this.hbox17.Add(this.BtnAccept);
+			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.hbox17[this.BtnAccept]));
 			w13.Position = 0;
 			w13.Expand = false;
 			w13.Fill = false;
 			// Container child hbox17.Gtk.Box+BoxChild
-			this.button6 = new global::Gtk.Button();
-			this.button6.CanFocus = true;
-			this.button6.Name = "button6";
-			this.button6.UseUnderline = true;
-			this.button6.Label = global::Mono.Unix.Catalog.GetString("Cancelar");
-			this.hbox17.Add(this.button6);
-			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.hbox17[this.button6]));
+			this.BtnCancel = new global::Gtk.Button();
+			this.BtnCancel.CanFocus = true;
+			this.BtnCancel.Name = "BtnCancel";
+			this.BtnCancel.UseUnderline = true;
+			this.BtnCancel.Label = global::Mono.Unix.Catalog.GetString("Cancelar");
+			this.hbox17.Add(this.BtnCancel);
+			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.hbox17[this.BtnCancel]));
 			w14.Position = 1;
 			w14.Expand = false;
 			w14.Fill = false;
@@ -199,8 +207,9 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.DefaultWidth = 302;
 			this.DefaultHeight = 241;
 			this.Show();
-			this.comboboxentry3.Changed += new global::System.EventHandler(this.ComboBoxOnChanged);
-			this.button7.Clicked += new global::System.EventHandler(this.OnButton7Clicked);
+			this.CmbxEntry.Changed += new global::System.EventHandler(this.ComboBoxOnChanged);
+			this.BtnAccept.Clicked += new global::System.EventHandler(this.BtnAcceptOnClicked);
+			this.BtnCancel.Clicked += new global::System.EventHandler(this.BtnCancelOnClicked);
 		}
 	}
 }

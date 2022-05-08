@@ -16,39 +16,46 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
+            this.CmbxEntry.Entry.WidthChars = 22;
             this.Hide();
-            this.datos = dtus.listarUsuarios();
-            llenarcbxUser();
+            this.UpdateData();
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
             {
                 args.RetVal = this.HideOnDelete();
             };
         }
 
-
-        protected void llenarcbxUser()
+        public void UpdateData()
         {
+            this.datos = dtus.listarUsuarios();
+            this.FillComboboxModel();
+        }
+
+        protected void FillComboboxModel()
+        {
+            ListStore store = (ListStore) this.CmbxEntry.Model;
+            store.Clear();
             TreeIter iter;
-            if (datos.GetIterFirst(out iter))
+            if (this.datos.GetIterFirst(out iter))
             {
                 do
                 {
-                    this.comboboxentry3.InsertText(
-                        Convert.ToInt32(datos.GetValue(iter, 0)),
-                        (String) datos.GetValue(iter, 0)
+                    this.CmbxEntry.InsertText(
+                        Convert.ToInt32(this.datos.GetValue(iter, 0)),
+                        (String) this.datos.GetValue(iter, 0)
                     );
                 }
-                while (datos.IterNext(ref iter));
+                while (this.datos.IterNext(ref iter));
             }
 
-            comboboxentry3.Entry.Completion = new EntryCompletion();
-            comboboxentry3.Entry.Completion.Model = datos;
-            comboboxentry3.Entry.Completion.TextColumn = 0;
+            this.CmbxEntry.Entry.Completion = new EntryCompletion();
+            this.CmbxEntry.Entry.Completion.Model = this.datos;
+            this.CmbxEntry.Entry.Completion.TextColumn = 0;
         }
 
         protected void ComboBoxOnChanged(object sender, EventArgs e)
         {
-            string id = this.comboboxentry3.ActiveText;
+            string id = this.CmbxEntry.ActiveText;
 
             TreeIter iter;
             if (datos.GetIterFirst(out iter))
@@ -57,40 +64,68 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 {
                     if (id == (string) datos.GetValue(iter, 0))
                     {
-                        this.entry8.Text = (string) datos.GetValue(iter, 1);
-                        this.entry9.Text = (string)datos.GetValue(iter, 2);
+                        this.TxtName.Text = (string) datos.GetValue(iter, 1);
+                        this.TxtLastName.Text = (string)datos.GetValue(iter, 2);
                         return;
+                    } else
+                    {
+                        this.TxtName.Text = "";
+                        this.TxtLastName.Text = "";
                     }
                 }
                 while (datos.IterNext(ref iter));
             }
         }
 
-        protected void OnButton7Clicked(object sender, EventArgs e)
+        protected void BtnAcceptOnClicked(object sender, EventArgs args)
         {
-            ConnectionEyS conecction = ConnectionEyS.OpenConnection();
-            
+            ConnectionEyS connection = ConnectionEyS.OpenConnection();
+            string idEmpleado = this.CmbxEntry.ActiveText;
 
-            String Query = "DELETE FROM BDSistemaEyS.Empleado WHERE idEmpleado = "+comboboxentry3.ActiveText;
+            if (string.IsNullOrWhiteSpace(idEmpleado))
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Warning,
+                    ButtonsType.Ok, "Ingrese un ID válido");
+                ms.Run();
+                ms.Destroy();
+                return;
+            }
 
-            MySqlCommand command = new MySqlCommand(Query, conecction.conn);
-            conecction.Execute(CommandType.Text, Query);
+            String Query = "DELETE FROM BDSistemaEyS.Empleado WHERE idEmpleado = " +
+                $"{idEmpleado};";
 
-            ConnectionEyS.CloseConnection();
-
-            MessageDialog mensaje = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, "Eliminado");
-            mensaje.Run();
-            mensaje.Destroy();
-            cleanBtn();
-
+            try
+            {
+                connection.Execute(CommandType.Text, Query);
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
+                    ButtonsType.Ok, "Eliminado");
+                ms.Run();
+                ms.Destroy();
+                ClearInput();
+            }
+            catch (Exception e)
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                    ButtonsType.Ok, e.Message);
+                ms.Run();
+                ms.Destroy();
+            }
         }
 
-        public void cleanBtn()
+        protected void BtnCancelOnClicked(object sender, EventArgs e)
         {
-            entry8.Text = "";
-            entry9.Text = "";
+            this.ClearInput();
+            this.Hide();
         }
 
+        // Clear all Entry
+        public void ClearInput()
+        {
+            this.CmbxEntry.Active = -1;
+            this.CmbxEntry.Entry.Text = "";
+            this.TxtName.Text = "";
+            this.TxtLastName.Text = "";
+        }
 
     }
 }

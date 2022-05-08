@@ -13,7 +13,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
-            idRandom();
+            SetIDRandom();
             this.Hide();
 
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
@@ -22,71 +22,70 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             };
         }
 
-        protected void OnButton4Clicked(object sender, EventArgs e)
+        protected void BtnAddOnClicked(object sender, EventArgs args)
         {
-            MessageDialog mensaje = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, "Ha cancelado");
-            mensaje.Run();
-            mensaje.Destroy();
-        }
+            ConnectionEyS connection = ConnectionEyS.OpenConnection();
 
-        protected void OnButton2Clicked(object sender, EventArgs e)
-        {
-
-
-            ConnectionEyS conecction = ConnectionEyS.OpenConnection();
-
-            if (!(
-                    entry1.Text.Length == 0 || 
-                    entry2.Text.Length == 0 || 
-                    entry3.Text.Length == 0 ||
-                    entry4.Text.Length == 0 ||
-                    entry5.Text.Length == 0 ||
-                    entry6.Text.Length == 0
-                ))
+            if (string.IsNullOrWhiteSpace(TxtID.Text) ||
+                string.IsNullOrWhiteSpace(TxtName.Text) ||
+                string.IsNullOrWhiteSpace(TxtPIN.Text)
+                )
             {
-
-                //No change to BDSistemaEyS.Empleado, only Empleado :c.
-                String Query = "INSERT INTO Empleado (idEmpleado, primerNombre, segundoNombre, primerApellido, segundoApellido, password) VALUES ('" + entry1.Text + "','" + entry2.Text + "' , '"
-                                + entry3.Text + "' , '" + entry4.Text + "' , '" + entry5.Text + "' , '" + entry6.Text + "');";
-
-                MySqlCommand command = new MySqlCommand(Query, conecction.conn);
-                conecction.Execute(CommandType.Text, Query);
-
-                ConnectionEyS.CloseConnection();
-
-                MessageDialog mensaje = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, "Agregado");
-                mensaje.Run();
-                mensaje.Destroy();
-                cleanBtn();
-
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
+                    ButtonsType.Ok, "No puede haber datos vacíos");
+                ms.Run();
+                ms.Destroy();
+                ClearInput();
+                return;
             }
-            else
+
+            string Query = "INSERT INTO BDSistemaEyS.Empleado (" +
+                    "idEmpleado, primerNombre, segundoNombre, " +
+                    "primerApellido, segundoApellido, password) " +
+                    "VALUES (" +
+                    $"{TxtID.Text}, '{TxtName.Text}', '{TxtSecondName.Text}'," +
+                    $"'{TxtLastName.Text}', '{TxtSecondLastName.Text}', '{TxtPIN.Text}');";
+
+            try
             {
-                MessageDialog mensaje = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, "No pueden haber datos vacios");
-                mensaje.Run();
-                mensaje.Destroy();
-                cleanBtn();
+                connection.Execute(CommandType.Text, Query);
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
+                    ButtonsType.Ok, "Agregado");
+                ms.Run();
+                ms.Destroy();
+                ClearInput();
+            }
+            catch (Exception e)
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                    ButtonsType.Ok, e.Message);
+                ms.Run();
+                ms.Destroy();
             }
         }
 
-        // Funcion to clean all entrys
-        public void cleanBtn()
+        protected void BtnCancelOnClicked(object sender, EventArgs e)
         {
-            entry1.Text = "";
-            entry2.Text = "";
-            entry3.Text = "";
-            entry4.Text = "";
-            entry5.Text = "";
-            entry6.Text = "";
+            this.ClearInput();
+            this.Hide();
         }
 
-        //Generate a idRandom
-        public void idRandom()
+        // Clear all Entry
+        public void ClearInput()
         {
-            entry1.Text = "";
+            this.TxtID.Text = "";
+            this.TxtName.Text = "";
+            this.TxtSecondName.Text = "";
+            this.TxtLastName.Text = "";
+            this.TxtSecondLastName.Text = "";
+            this.TxtPIN.Text = "";
+        }
+
+        // Set the ID as a random number
+        public void SetIDRandom()
+        {
             Random r = new Random();
-            entry1.Text = Convert.ToString(r.Next(10000, 100000));
+            this.TxtID.Text = Convert.ToString(r.Next(10000, 100000));
         }
-
     }
 }

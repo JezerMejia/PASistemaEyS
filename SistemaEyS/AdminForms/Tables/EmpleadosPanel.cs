@@ -44,7 +44,7 @@ namespace SistemaEyS.AdminForms.Tables
             //AddBtn
             ab.Show();
             ab.Present();
-            ab.idRandom();
+            ab.SetIDRandom();
           
         }
 
@@ -58,6 +58,7 @@ namespace SistemaEyS.AdminForms.Tables
         protected void OnButton1Clicked(object sender, EventArgs e)
         {
             //DelBtn
+            delb.UpdateData();
             delb.Show();
             delb.Present();
         }
