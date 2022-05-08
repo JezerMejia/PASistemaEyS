@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Data;
 using Gtk;
+using MySql.Data.MySqlClient;
+using SistemaEyS.Database.Connection;
 using SistemaEyS.DatosEyS;
 namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 {
@@ -40,7 +43,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
             comboboxentry3.Entry.Completion = new EntryCompletion();
             comboboxentry3.Entry.Completion.Model = datos;
-            comboboxentry3.Entry.Completion.TextColumn = 1;
+            comboboxentry3.Entry.Completion.TextColumn = 0;
         }
 
         protected void ComboBoxOnChanged(object sender, EventArgs e)
@@ -62,5 +65,32 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 while (datos.IterNext(ref iter));
             }
         }
+
+        protected void OnButton7Clicked(object sender, EventArgs e)
+        {
+            ConnectionEyS conecction = ConnectionEyS.OpenConnection();
+            
+
+            String Query = "DELETE FROM BDSistemaEyS.Empleado WHERE idEmpleado = "+comboboxentry3.ActiveText;
+
+            MySqlCommand command = new MySqlCommand(Query, conecction.conn);
+            conecction.Execute(CommandType.Text, Query);
+
+            ConnectionEyS.CloseConnection();
+
+            MessageDialog mensaje = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, "Eliminado");
+            mensaje.Run();
+            mensaje.Destroy();
+            cleanBtn();
+
+        }
+
+        public void cleanBtn()
+        {
+            entry8.Text = "";
+            entry9.Text = "";
+        }
+
+
     }
 }
