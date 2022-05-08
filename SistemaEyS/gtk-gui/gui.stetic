@@ -2314,6 +2314,7 @@ T.I.</property>
                         <property name="Type">TextOnly</property>
                         <property name="Label" translatable="yes">Aceptar</property>
                         <property name="UseUnderline">True</property>
+                        <signal name="Clicked" handler="OnButton7Clicked" />
                       </widget>
                       <packing>
                         <property name="Position">0</property>
