@@ -38,7 +38,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
             comboboxentry2.Entry.Completion = new EntryCompletion();
             comboboxentry2.Entry.Completion.Model = datos;
-            comboboxentry2.Entry.Completion.TextColumn = 1;
+            comboboxentry2.Entry.Completion.TextColumn = 0;
         }
 
         protected void ComboBoxOnChanged(object sender, EventArgs e)
