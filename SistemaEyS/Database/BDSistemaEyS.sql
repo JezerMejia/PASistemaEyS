@@ -214,18 +214,25 @@ DROP VIEW IF EXISTS `BDSistemaEyS`.`vwEmpleado` ;
 USE `BDSistemaEyS`;
 CREATE  OR REPLACE VIEW `vwEmpleado` AS
 SELECT
-idEmpleado as ID,
-CONCAT(primernombre, " ", segundoNombre) as Nombre,
-CONCAT(primerApellido, " ", segundoApellido) as Apellido,
-fechaIngreso as Ingreso,
-cedulaEmpleado as Cédula,
-password as Contraseña,
-(SELECT nombreCargo FROM BDSistemaEyS.Cargo WHERE idCargo = idCargo) as Cargo,
-(SELECT nombreDepartamento FROM BDSistemaEyS.Departamento WHERE idDepartamento = idDepartamento) as Departamento,
+Empleado.idEmpleado as ID,
+CONCAT(Empleado.primernombre, " ", Empleado.segundoNombre) as Nombre,
+CONCAT(Empleado.primerApellido, " ", Empleado.segundoApellido) as Apellido,
+Empleado.fechaIngreso as Ingreso,
+Empleado.cedulaEmpleado as Cédula,
+Empleado.password as Contraseña,
+Cargo.nombreCargo as Cargo,
+Departamento.nombreDepartamento as Departamento,
 idHorario as "ID Horario",
-(SELECT nombreGrupo FROM BDSistemaEyS.Grupos WHERE idGrupo = idGrupo) as Grupo
+Grupos.nombreGrupo as Grupo
 FROM
-BDSistemaEyS.Empleado;
+BDSistemaEyS.Empleado as Empleado
+LEFT JOIN
+BDSistemaEyS.Departamento as Departamento ON Empleado.idDepartamento = Departamento.idDepartamento
+LEFT JOIN
+BDSistemaEyS.Cargo as Cargo ON Empleado.idCargo = Cargo.idCargo
+LEFT JOIN
+BDSistemaEyS.Grupos as Grupos ON Empleado.idGrupo = Grupos.idGrupo
+;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
