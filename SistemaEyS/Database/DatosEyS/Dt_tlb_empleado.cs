@@ -14,7 +14,7 @@ namespace SistemaEyS.DatosEyS
         ConnectionEyS conn = ConnectionEyS.OpenConnection();
         StringBuilder sb = new StringBuilder();
 
-        public ListStore listarUsuarios()
+        public ListStore listarUsuariosVista()
         {
             ListStore datos = new ListStore(
                 typeof(string), typeof(string), typeof(string),
@@ -63,6 +63,62 @@ namespace SistemaEyS.DatosEyS
             }
             return datos;
         }
+
+
+        // ListStore table empleado
+
+        public ListStore listarUsuarios()
+        {
+            ListStore datos = new ListStore(
+                typeof(string), typeof(string), typeof(string),
+                typeof(string), typeof(string), typeof(string),
+                typeof(string), typeof(string), typeof(string),
+                typeof(string), typeof(string), typeof(string)
+            );
+
+            IDataReader idr = null;
+            sb.Clear();
+            sb.Append("SELECT * FROM BDSistemaEyS.Empleado;");
+            try
+            {
+                idr = conn.Read(CommandType.Text, sb.ToString());
+
+                while (idr.Read())
+                {
+                    datos.AppendValues(
+                        idr[0].ToString(), // ID
+                        idr[1].ToString(), // primerNombre
+                        idr[2].ToString(), // segundoNombre
+                        idr[3].ToString(), // primerApellido
+                        idr[4].ToString(), // segundoApellido
+                        idr[5].ToString(), // fechaIngreso
+                        idr[6].ToString(), // cedulaEmpleado
+                        idr[7].ToString(), // Contraseña
+                        idr[8].ToString(), // idcargo
+                        idr[9].ToString(),  // idDepartamento
+                        idr[10].ToString(), // idHorario
+                        idr[11].ToString()  // idGrupo
+                    );
+                }
+                return datos;
+            }
+            catch (Exception e)
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                    ButtonsType.Ok, e.Message);
+                ms.Run();
+                ms.Destroy();
+            }
+            finally
+            {
+                if (idr != null && !idr.IsClosed)
+                {
+                    idr.Close();
+                }
+            }
+            return datos;
+        }
+
         public Dt_tlb_empleado()
         {
         }
