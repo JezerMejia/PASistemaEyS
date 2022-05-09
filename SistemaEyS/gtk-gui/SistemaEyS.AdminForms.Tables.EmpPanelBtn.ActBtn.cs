@@ -14,7 +14,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
 		private global::Gtk.HBox hbox13;
 
-		private global::Gtk.ComboBoxEntry CmbxEntry;
+		private global::SistemaEySLibrary.ComboBoxNumericEntry CmbxEntry;
 
 		private global::Gtk.Label label5;
 
@@ -130,7 +130,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.hbox13.Name = "hbox13";
 			this.hbox13.Spacing = 6;
 			// Container child hbox13.Gtk.Box+BoxChild
-			this.CmbxEntry = global::Gtk.ComboBoxEntry.NewText();
+			this.CmbxEntry = new global::SistemaEySLibrary.ComboBoxNumericEntry();
 			this.CmbxEntry.Name = "CmbxEntry";
 			this.hbox13.Add(this.CmbxEntry);
 			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox13[this.CmbxEntry]));

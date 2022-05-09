@@ -14,6 +14,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
+            //this.CmbxEntry = SistemaEySLibrary.ComboBoxNumericEntry.NewText();
             this.CmbxEntry.Entry.WidthChars = 16;
             this.Hide();
             this.datos = dtus.listarUsuarios();

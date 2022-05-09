@@ -16,7 +16,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
 		private global::Gtk.HBox hbox2;
 
-		private global::Gtk.Button button3;
+		private global::Gtk.Button BtnNewIDUpdate;
 
 		private global::Gtk.Entry TxtID;
 
@@ -91,15 +91,15 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.hbox2.Name = "hbox2";
 			this.hbox2.Spacing = 6;
 			// Container child hbox2.Gtk.Box+BoxChild
-			this.button3 = new global::Gtk.Button();
-			this.button3.CanFocus = true;
-			this.button3.Name = "button3";
-			this.button3.UseUnderline = true;
+			this.BtnNewIDUpdate = new global::Gtk.Button();
+			this.BtnNewIDUpdate.CanFocus = true;
+			this.BtnNewIDUpdate.Name = "BtnNewIDUpdate";
+			this.BtnNewIDUpdate.UseUnderline = true;
 			global::Gtk.Image w1 = new global::Gtk.Image();
 			w1.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-refresh", global::Gtk.IconSize.Menu);
-			this.button3.Image = w1;
-			this.hbox2.Add(this.button3);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.button3]));
+			this.BtnNewIDUpdate.Image = w1;
+			this.hbox2.Add(this.BtnNewIDUpdate);
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.BtnNewIDUpdate]));
 			w2.PackType = ((global::Gtk.PackType)(1));
 			w2.Position = 0;
 			w2.Expand = false;
@@ -346,6 +346,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.DefaultWidth = 415;
 			this.DefaultHeight = 312;
 			this.Show();
+			this.BtnNewIDUpdate.Clicked += new global::System.EventHandler(this.BtnNewIDUpdateOnClicked);
 			this.BtnAdd.Clicked += new global::System.EventHandler(this.BtnAddOnClicked);
 			this.BtnCancel.Clicked += new global::System.EventHandler(this.BtnCancelOnClicked);
 		}
