@@ -78,50 +78,85 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
             ConnectionEyS connection = ConnectionEyS.OpenConnection();
 
+            string idEmpleado = this.comboboxentry2.ActiveText;
 
-            if (comboboxentry2.Active.Equals(-1)) {
-
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, "Escoga un empleado");
+            if (string.IsNullOrWhiteSpace(idEmpleado))
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
+                        ButtonsType.Ok, "Seleccione un ID de empleado");
                 ms.Run();
                 ms.Destroy();
-
-            }
-            else {
-            
-
-                String Query = "UPDATE BDSistemaEyS.Empleado SET idEmpleado = '" + newId.Text + 
-                                                         "', primerNombre='"+ name.Text +
-                                                         "', segundoNombre= '"+ secondName.Text +
-                                                         "', primerApellido= '"+ surname.Text +
-                                                         "', segundoApellido= '"+ secondSurname.Text +
-                                                         "', cedulaEmpleado= '"+ Icard.Text+
-                                                         "', password= '"+ password.Text +
-                                                         "', idCargo= '" + idCar.Text +
-                                                         "', idDepartamento= '" + idDep.Text +
-                                                         "', idHorario= '" + idHor.Text +
-                                                         "', idGrupo= '" + idGroup.Text +
-                                                         "'WHERE (idEmpleado = '" + comboboxentry2.ActiveText + "');";
-
-
-                try
-                {
-                    connection.Execute(CommandType.Text, Query);
-                    MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
-                        ButtonsType.Ok, "Guardado");
-                    ms.Run();
-                    ms.Destroy();
-                    ClearInput();
-                }
-                catch (Exception ex)
-                {
-                    MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
-                        ButtonsType.Ok, ex.Message);
-                    ms.Run();
-                    ms.Destroy();
-                }
-                  
             }
 
+            string modifiedQuery = "";
+
+            if (!string.IsNullOrWhiteSpace(this.newId.Text))
+            {
+                modifiedQuery += $"idEmpleado = {this.newId.Text}, ";
+            }
+            if (!string.IsNullOrWhiteSpace(this.name.Text))
+            {
+                modifiedQuery += $"primerNombre = '{this.name.Text}', ";
+            }
+            if (!string.IsNullOrWhiteSpace(this.secondName.Text))
+            {
+                modifiedQuery += $"segundoNombre = '{this.secondName.Text}', ";
+            }
+            if (!string.IsNullOrWhiteSpace(this.surname.Text))
+            {
+                modifiedQuery += $"primerApellido = '{this.surname.Text}', ";
+            }
+            if (!string.IsNullOrWhiteSpace(this.secondSurname.Text))
+            {
+                modifiedQuery += $"segundoApellido = '{this.secondSurname.Text}', ";
+            }
+            if (!string.IsNullOrWhiteSpace(this.Icard.Text))
+            {
+                modifiedQuery += $"cedulaEmpleado = '{this.Icard.Text}', ";
+            }
+            if (!string.IsNullOrWhiteSpace(this.password.Text))
+            {
+                modifiedQuery += $"password = '{this.password.Text}', ";
+            }
+            if (!string.IsNullOrWhiteSpace(this.idCar.Text))
+            {
+                modifiedQuery += $"idCargo = '{this.idCar.Text}', ";
+            }
+            if (!string.IsNullOrWhiteSpace(this.idDep.Text))
+            {
+                modifiedQuery += $"idDepartamento = '{this.idDep.Text}', ";
+            }
+            if (!string.IsNullOrWhiteSpace(this.idHor.Text))
+            {
+                modifiedQuery += $"idHorario = {this.idHor.Text}, ";
+            }
+            if (!string.IsNullOrWhiteSpace(this.idGroup.Text))
+            {
+                modifiedQuery += $"idGrupo = {this.idGroup.Text}, ";
+            }
+
+            modifiedQuery = modifiedQuery.Trim();
+            if (modifiedQuery.EndsWith(","))
+                modifiedQuery = modifiedQuery.Remove(modifiedQuery.Length - 1);
+
+            string Query = $"UPDATE BDSistemaEyS.Empleado SET {modifiedQuery} " +
+                $"WHERE idEmpleado = {idEmpleado};";
+            try
+            {
+                connection.Execute(CommandType.Text, Query);
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
+                    ButtonsType.Ok, "Guardado");
+                ms.Run();
+                ms.Destroy();
+                ClearInput();
+            }
+            catch (Exception ex)
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                    ButtonsType.Ok, ex.Message);
+                ms.Run();
+                ms.Destroy();
+            }
         }
 
         public void ClearInput()
