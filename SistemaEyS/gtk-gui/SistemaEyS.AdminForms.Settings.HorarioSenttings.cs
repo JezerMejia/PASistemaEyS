@@ -15,7 +15,6 @@ namespace SistemaEyS.AdminForms.Settings
 			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 			// Container child SistemaEyS.AdminForms.Settings.HorarioSenttings.Gtk.Container+ContainerChild
 			this.vbox1 = new global::Gtk.VBox();
-			this.vbox1.Name = "vbox1";
 			this.vbox1.Spacing = 6;
 			this.Add(this.vbox1);
 			if ((this.Child != null))
