@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using Gtk;
-using MySql.Data.MySqlClient;
 using SistemaEyS.Database.Connection;
 using SistemaEyS.DatosEyS;
 namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
@@ -15,23 +14,24 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
+            this.CmbxEntry.Entry.WidthChars = 16;
             this.Hide();
             this.datos = dtus.listarUsuarios();
-            llenarcbxUser();
+            this.FillComboboxModel();
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
             {
                 args.RetVal = this.HideOnDelete();
             };
         }
 
-        protected void llenarcbxUser()
+        protected void FillComboboxModel()
         {
             TreeIter iter;
             if (datos.GetIterFirst(out iter))
             {
                 do
                 {
-                    this.comboboxentry2.InsertText(
+                    this.CmbxEntry.InsertText(
                         Convert.ToInt32(datos.GetValue(iter, 0)),
                         (String)datos.GetValue(iter, 0)
                     );
@@ -39,14 +39,14 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 while (datos.IterNext(ref iter));
             }
 
-            comboboxentry2.Entry.Completion = new EntryCompletion();
-            comboboxentry2.Entry.Completion.Model = datos;
-            comboboxentry2.Entry.Completion.TextColumn = 0;
+            this.CmbxEntry.Entry.Completion = new EntryCompletion();
+            this.CmbxEntry.Entry.Completion.Model = datos;
+            this.CmbxEntry.Entry.Completion.TextColumn = 0;
         }
 
         protected void ComboBoxOnChanged(object sender, EventArgs e)
         {
-            string id = this.comboboxentry2.ActiveText;
+            string id = this.CmbxEntry.ActiveText;
 
             TreeIter iter;
             if (datos.GetIterFirst(out iter))
@@ -67,18 +67,31 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                         this.idHor.Text = (string)datos.GetValue(iter, 10);
                         this.idGroup.Text = (string)datos.GetValue(iter, 11);
                         return;
+                    } else
+                    {
+                        this.name.Text = "";
+                        this.secondName.Text = "";
+                        this.surname.Text = "";
+                        this.secondSurname.Text = "";
+                        this.dIngress.Text = "";
+                        this.Icard.Text = "";
+                        this.password.Text = "";
+                        this.idCar.Text = "";
+                        this.idDep.Text = "";
+                        this.idHor.Text = "";
+                        this.idGroup.Text = "";
                     }
                 }
                 while (datos.IterNext(ref iter));
             }
         }
 
-        protected void OnButton5Clicked(object sender, EventArgs e)
+        protected void BtnAcceptOnClicked(object sender, EventArgs e)
         {
 
             ConnectionEyS connection = ConnectionEyS.OpenConnection();
 
-            string idEmpleado = this.comboboxentry2.ActiveText;
+            string idEmpleado = this.CmbxEntry.ActiveText;
 
             if (string.IsNullOrWhiteSpace(idEmpleado))
             {
@@ -161,8 +174,8 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
         public void ClearInput()
         {
-            this.comboboxentry2.Active = -1;
-            this.comboboxentry2.Entry.Text = "";
+            this.CmbxEntry.Active = -1;
+            this.CmbxEntry.Entry.Text = "";
             this.newId.Text = "";
             this.name.Text = "";
             this.secondName.Text = "";
@@ -180,10 +193,15 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             this.newId.Text = Convert.ToString(r.Next(10000, 100000));
         }
 
-        protected void OnButton4Clicked(object sender, EventArgs e)
+        protected void BtnCancelOnClicked(object sender, EventArgs e)
         {
             this.ClearInput();
             this.Hide();
+        }
+
+        protected void BtnNewIDUpdateOnClicked(object sender, EventArgs e)
+        {
+            this.SetIDRandom();
         }
     }
 }

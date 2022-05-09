@@ -16,7 +16,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
-            this.CmbxEntry.Entry.WidthChars = 22;
+            this.CmbxEntry.Entry.WidthChars = 21;
             this.Hide();
             this.UpdateData();
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
@@ -65,7 +65,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                     if (id == (string) datos.GetValue(iter, 0))
                     {
                         this.TxtName.Text = (string) datos.GetValue(iter, 1);
-                        this.TxtLastName.Text = (string)datos.GetValue(iter, 2);
+                        this.TxtLastName.Text = (string) datos.GetValue(iter, 2);
                         return;
                     } else
                     {
