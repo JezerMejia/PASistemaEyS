@@ -27,7 +27,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
         public void UpdateData()
         {
-            this.datos = dtus.listarUsuarios();
+            this.datos = dtus.listarUsuariosVista();
             this.FillComboboxModel();
         }
 
