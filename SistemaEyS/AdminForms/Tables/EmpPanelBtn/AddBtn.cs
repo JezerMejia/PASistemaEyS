@@ -87,5 +87,10 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             Random r = new Random();
             this.TxtID.Text = Convert.ToString(r.Next(10000, 100000));
         }
+
+        protected void BtnNewIDUpdateOnClicked(object sender, EventArgs e)
+        {
+            this.SetIDRandom();
+        }
     }
 }
