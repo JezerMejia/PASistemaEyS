@@ -53,6 +53,7 @@
     <Compile Include="TabviewLabel.cs" />
     <Compile Include="gtk-gui\SistemaEySLibrary.TabviewLabel.cs" />
     <Compile Include="ClockWidget.cs" />
+    <Compile Include="ComboboxNumericEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
