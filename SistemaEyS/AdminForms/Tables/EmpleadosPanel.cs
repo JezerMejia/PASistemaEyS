@@ -53,6 +53,7 @@ namespace SistemaEyS.AdminForms.Tables
             //ActBtn
             acb.Show();
             acb.Present();
+            acb.SetIDRandom();
         }
 
         protected void OnButton1Clicked(object sender, EventArgs e)
