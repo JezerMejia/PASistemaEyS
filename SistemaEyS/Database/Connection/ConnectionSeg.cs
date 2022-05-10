@@ -34,6 +34,7 @@ namespace SistemaEyS.Database.Connection
                 conexion.conn.Open();
                 ms = new MessageDialog(null, DialogFlags.Modal,
                     MessageType.Info, ButtonsType.Ok, "Se abrió la conexión a la BD Seguridad");
+                ms.SetPosition(WindowPosition.Center);
                 ms.Run();
                 ms.Destroy();
             }
@@ -41,6 +42,7 @@ namespace SistemaEyS.Database.Connection
             {
                 ms = new MessageDialog(null, DialogFlags.Modal,
                     MessageType.Error, ButtonsType.Ok, "Error al conectar a la Base de Datos de Seguridad: " + e.Message);
+                ms.SetPosition(WindowPosition.Center);
                 ms.Run();
                 ms.Destroy();
                 Console.WriteLine("Error al conectar a la Base de Datos: " + e);
