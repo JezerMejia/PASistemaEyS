@@ -3,10 +3,10 @@ using SistemaEyS.DatosEyS;
 
 namespace SistemaEyS.AdminForms.Tables
 {
-    public partial class entradaSalidaPanel : Gtk.Bin
+    public partial class EntradaSalidaView : Gtk.Bin
     {
         Dt_tlb_asistencia dtus = new Dt_tlb_asistencia();
-        public entradaSalidaPanel()
+        public EntradaSalidaView()
         {
             this.Build();
             StoreObject[] storeObjects = {

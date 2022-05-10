@@ -3,11 +3,11 @@ using SistemaEyS.DatosEyS;
 
 namespace SistemaEyS.AdminForms.Tables
 {
-    public partial class HorariosPanel : Gtk.Bin
+    public partial class HorarioView : Gtk.Bin
     {
         Dt_tlb_horario dtus = new Dt_tlb_horario();
 
-        public HorariosPanel()
+        public HorarioView()
         {
             this.Build();
             StoreObject[] storeObjects = {

@@ -5,11 +5,11 @@ namespace SistemaEyS.AdminForms.Tables
 {
     [System.ComponentModel.ToolboxItem(true)]
 
-    public partial class solicitudVacacionesPanel : Gtk.Bin
+    public partial class SolVacacionesView : Gtk.Bin
     {
         Dt_tlb_solicitudVacaciones dtus = new Dt_tlb_solicitudVacaciones();
 
-        public solicitudVacacionesPanel()
+        public SolVacacionesView()
         {
             this.Build();
             StoreObject[] storeObjects = {

@@ -81,15 +81,14 @@
     <Compile Include="UserForms\UserLogin.cs" />
     <Compile Include="AdminForms\AdminLogin.cs" />
     <Compile Include="AdminForms\AdminPanel.cs" />
-    <Compile Include="AdminForms\Tables\EmpleadosPanel.cs" />
+    <Compile Include="AdminForms\Tables\EmpleadosView.cs" />
     <Compile Include="AdminForms\Tables\ViewTableTemplate.cs" />
-    <Compile Include="AdminForms\Tables\HorariosPanel.cs" />
+    <Compile Include="AdminForms\Tables\HorarioView.cs" />
     <Compile Include="AdminForms\Settings\UserRolSettings.cs" />
     <Compile Include="AdminForms\Settings\CargosSettings.cs" />
     <Compile Include="Database\Connection\ConnectionSeg.cs" />
     <Compile Include="Database\Connection\ConnectionEyS.cs" />
-    <Compile Include="AdminForms\Tables\EntradaSalida.cs" />
-    <Compile Include="AdminForms\Tables\SolicitudVacaciones.cs" />
+    <Compile Include="AdminForms\Tables\EntradaSalidaView.cs" />
     <Compile Include="AdminForms\Settings\HorarioSenttings.cs" />
     <Compile Include="Database\DatosEyS\Dt_tbl_asistencia.cs" />
     <Compile Include="Database\DatosEyS\Dt_tbl_solicitudVacaciones.cs" />
@@ -103,11 +102,7 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.UserRolSettings.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.CargosSettings.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.HorarioSenttings.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpleadosPanel.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.entradaSalidaPanel.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.HorariosPanel.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.ViewTableTemplate.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.solicitudVacacionesPanel.cs" />
     <Compile Include="AdminForms\Tables\EmpPanelBtn\AddDialog.cs" />
     <Compile Include="AdminForms\Tables\EmpPanelBtn\UpdateDialog.cs" />
     <Compile Include="AdminForms\Tables\EmpPanelBtn\DeleteDialog.cs" />
@@ -118,6 +113,11 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.AddDialog.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.UpdateDialog.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.DeleteDialog.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EntradaSalidaView.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpleadosView.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.HorarioView.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.SolVacacionesView.cs" />
+    <Compile Include="AdminForms\Tables\SolVacacionesView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />

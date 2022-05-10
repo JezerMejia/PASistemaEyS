@@ -1235,7 +1235,7 @@ T.I.</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Bin" id="SistemaEyS.AdminForms.Tables.EmpleadosPanel" design-size="505 300">
+  <widget class="Gtk.Bin" id="SistemaEyS.AdminForms.Tables.EmpleadosView" design-size="505 300">
     <property name="MemberName" />
     <property name="Visible">False</property>
     <child>
@@ -1347,7 +1347,7 @@ T.I.</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Bin" id="SistemaEyS.AdminForms.Tables.entradaSalidaPanel" design-size="497 354">
+  <widget class="Gtk.Bin" id="SistemaEyS.AdminForms.Tables.EntradaSalidaView" design-size="497 354">
     <property name="MemberName" />
     <property name="Visible">False</property>
     <child>
@@ -1405,7 +1405,7 @@ T.I.</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Bin" id="SistemaEyS.AdminForms.Tables.HorariosPanel" design-size="400 300">
+  <widget class="Gtk.Bin" id="SistemaEyS.AdminForms.Tables.HorarioView" design-size="400 300">
     <property name="MemberName" />
     <property name="Visible">False</property>
     <child>
@@ -1511,7 +1511,7 @@ T.I.</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Bin" id="SistemaEyS.AdminForms.Tables.solicitudVacacionesPanel" design-size="400 300">
+  <widget class="Gtk.Bin" id="SistemaEyS.AdminForms.Tables.SolVacacionesView" design-size="433 300">
     <property name="MemberName" />
     <property name="Visible">False</property>
     <child>

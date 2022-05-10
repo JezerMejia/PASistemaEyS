@@ -5,14 +5,14 @@ using SistemaEyS.AdminForms.Tables.EmpPanelBtn;
 
 namespace SistemaEyS.AdminForms.Tables
 {
-    public partial class EmpleadosPanel : Gtk.Bin
+    public partial class EmpleadosView : Gtk.Bin
     {
         Dt_tlb_empleado dtus = new Dt_tlb_empleado();
         AddDialog addBtn = new AddDialog();
         UpdateDialog actBtn = new UpdateDialog();
         DeleteDialog delBtn = new DeleteDialog();
 
-        public EmpleadosPanel()
+        public EmpleadosView()
         {
             this.Build();
 

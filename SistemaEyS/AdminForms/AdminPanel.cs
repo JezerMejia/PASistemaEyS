@@ -58,25 +58,25 @@ namespace SistemaEyS.AdminForms
 
         protected void TablasEmpleadosActionOnActivated(object sender, EventArgs e)
         {
-            Tables.EmpleadosPanel empleadosPanel = new Tables.EmpleadosPanel();
+            Tables.EmpleadosView empleadosPanel = new Tables.EmpleadosView();
             this.AddTab(this.ntTabview, empleadosPanel, "Empleados");
         }
 
         protected void TablasHorariosActionOnActivated(object sender, EventArgs e)
         {
-            Tables.HorariosPanel horariosPanel = new Tables.HorariosPanel();
+            Tables.HorarioView horariosPanel = new Tables.HorarioView();
             this.AddTab(this.ntTabview, horariosPanel, "Horarios");
         }
 
         protected void TablasEntradasSalidasActionOnActivated(object sender, EventArgs e)
         {
-            Tables.entradaSalidaPanel EntradaSalidaPanel = new Tables.entradaSalidaPanel();
+            Tables.EntradaSalidaView EntradaSalidaPanel = new Tables.EntradaSalidaView();
             this.AddTab(this.ntTabview, EntradaSalidaPanel, "Entrada/Salida");
         }
 
         protected void TablasSolicitudVacacionesActionOnActivated(object sender, EventArgs e)
         {
-            Tables.solicitudVacacionesPanel SolicitudVacaciones = new Tables.solicitudVacacionesPanel();
+            Tables.SolVacacionesView SolicitudVacaciones = new Tables.SolVacacionesView();
             this.AddTab(this.ntTabview, SolicitudVacaciones, "Solicitudes de vacaciones");
         }
 
