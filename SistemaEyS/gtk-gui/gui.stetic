@@ -10,8 +10,8 @@
   </import>
   <widget class="Gtk.Window" id="MainWindow" design-size="432 254">
     <property name="MemberName" />
-    <property name="Title" translatable="yes">MainWindow</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="Title" translatable="yes">Sistema EyS</property>
+    <property name="WindowPosition">Center</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
       <widget class="Gtk.Alignment" id="alignment12">
@@ -89,8 +89,8 @@
   </widget>
   <widget class="Gtk.Window" id="SistemaEyS.UserForms.UserAssistanceForm" design-size="517 308">
     <property name="MemberName" />
-    <property name="Title" translatable="yes">UserAssistanceForm</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="Title" translatable="yes">Empleado | Marcado de Asistencia</property>
+    <property name="WindowPosition">Center</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
       <widget class="Gtk.Alignment" id="mainLayout">
@@ -282,8 +282,8 @@
   </widget>
   <widget class="Gtk.Window" id="SistemaEyS.UserForms.UserLogin" design-size="302 261">
     <property name="MemberName" />
-    <property name="Title" translatable="yes">UserLogin</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="Title" translatable="yes">Empleado | Login</property>
+    <property name="WindowPosition">Center</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
       <widget class="Gtk.Alignment" id="alignment10">
@@ -406,8 +406,8 @@
   </widget>
   <widget class="Gtk.Window" id="SistemaEyS.AdminForms.AdminLogin" design-size="448 326">
     <property name="MemberName" />
-    <property name="Title" translatable="yes">AdminLogin</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="Title" translatable="yes">Administrador | Login</property>
+    <property name="WindowPosition">Center</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
       <widget class="Gtk.Alignment" id="alignment10">
@@ -752,8 +752,8 @@ IT</property>
       </action>
     </action-group>
     <property name="MemberName" />
-    <property name="Title" translatable="yes">AdminPanel</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="Title" translatable="yes">Administrador | Panel</property>
+    <property name="WindowPosition">Center</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
       <widget class="Gtk.Alignment" id="alignment1">
@@ -1591,8 +1591,8 @@ T.I.</property>
   </widget>
   <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Tables.EmpPanelBtn.AddBtn" design-size="415 312">
     <property name="MemberName" />
-    <property name="Title" translatable="yes">AddBtn</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="Title" translatable="yes">Añadir Empleado</property>
+    <property name="WindowPosition">Mouse</property>
     <child>
       <widget class="Gtk.Alignment" id="alignment1">
         <property name="MemberName" />
@@ -1955,8 +1955,8 @@ T.I.</property>
   </widget>
   <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Tables.EmpPanelBtn.ActBtn" design-size="591 379">
     <property name="MemberName" />
-    <property name="Title" translatable="yes">ActBtn</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="Title" translatable="yes">Actualizar Empleado</property>
+    <property name="WindowPosition">Mouse</property>
     <child>
       <widget class="Gtk.Alignment" id="alignment5">
         <property name="MemberName" />
@@ -2598,8 +2598,8 @@ T.I.</property>
   </widget>
   <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Tables.EmpPanelBtn.DelBtn" design-size="302 241">
     <property name="MemberName" />
-    <property name="Title" translatable="yes">DelBtn</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="Title" translatable="yes">Eliminar Empleado</property>
+    <property name="WindowPosition">Mouse</property>
     <child>
       <widget class="Gtk.Alignment" id="alignment8">
         <property name="MemberName" />

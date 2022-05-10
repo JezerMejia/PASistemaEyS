@@ -45,8 +45,8 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			global::Stetic.Gui.Initialize(this);
 			// Widget SistemaEyS.AdminForms.Tables.EmpPanelBtn.DelBtn
 			this.Name = "SistemaEyS.AdminForms.Tables.EmpPanelBtn.DelBtn";
-			this.Title = global::Mono.Unix.Catalog.GetString("DelBtn");
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.Title = global::Mono.Unix.Catalog.GetString("Eliminar Empleado");
+			this.WindowPosition = ((global::Gtk.WindowPosition)(2));
 			// Container child SistemaEyS.AdminForms.Tables.EmpPanelBtn.DelBtn.Gtk.Container+ContainerChild
 			this.alignment8 = new global::Gtk.Alignment(0.5F, 0.5F, 0F, 0F);
 			this.alignment8.Name = "alignment8";

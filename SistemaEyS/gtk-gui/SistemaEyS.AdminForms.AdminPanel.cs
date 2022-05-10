@@ -175,8 +175,8 @@ namespace SistemaEyS.AdminForms
 			this.UIManager.InsertActionGroup(w1, 0);
 			this.AddAccelGroup(this.UIManager.AccelGroup);
 			this.Name = "SistemaEyS.AdminForms.AdminPanel";
-			this.Title = global::Mono.Unix.Catalog.GetString("AdminPanel");
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.Title = global::Mono.Unix.Catalog.GetString("Administrador | Panel");
+			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Container child SistemaEyS.AdminForms.AdminPanel.Gtk.Container+ContainerChild
 			this.alignment1 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
 			this.alignment1.Name = "alignment1";

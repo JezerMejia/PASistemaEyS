@@ -107,8 +107,8 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			global::Stetic.Gui.Initialize(this);
 			// Widget SistemaEyS.AdminForms.Tables.EmpPanelBtn.ActBtn
 			this.Name = "SistemaEyS.AdminForms.Tables.EmpPanelBtn.ActBtn";
-			this.Title = global::Mono.Unix.Catalog.GetString("ActBtn");
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.Title = global::Mono.Unix.Catalog.GetString("Actualizar Empleado");
+			this.WindowPosition = ((global::Gtk.WindowPosition)(2));
 			// Container child SistemaEyS.AdminForms.Tables.EmpPanelBtn.ActBtn.Gtk.Container+ContainerChild
 			this.alignment5 = new global::Gtk.Alignment(0.5F, 0.5F, 0F, 0F);
 			this.alignment5.Name = "alignment5";

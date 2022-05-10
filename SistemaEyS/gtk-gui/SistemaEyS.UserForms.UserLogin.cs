@@ -29,8 +29,8 @@ namespace SistemaEyS.UserForms
 			global::Stetic.Gui.Initialize(this);
 			// Widget SistemaEyS.UserForms.UserLogin
 			this.Name = "SistemaEyS.UserForms.UserLogin";
-			this.Title = global::Mono.Unix.Catalog.GetString("UserLogin");
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.Title = global::Mono.Unix.Catalog.GetString("Empleado | Login");
+			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Container child SistemaEyS.UserForms.UserLogin.Gtk.Container+ContainerChild
 			this.alignment10 = new global::Gtk.Alignment(0.5F, 0.5F, 0F, 0F);
 			this.alignment10.Name = "alignment10";

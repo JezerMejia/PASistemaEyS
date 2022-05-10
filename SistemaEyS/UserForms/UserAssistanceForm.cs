@@ -42,7 +42,7 @@ namespace SistemaEyS.UserForms
             }
             catch (Exception e)
             {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
                     ButtonsType.Ok, "Error al obtener el nombre del empleado: " + e.Message);
                 ms.Run();
                 ms.Destroy();
@@ -86,14 +86,14 @@ namespace SistemaEyS.UserForms
             try
             {
                 value = conn.Execute(CommandType.Text, sb.ToString()) != 0;
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal,
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Info, ButtonsType.Ok, "Marcado de entrada exitoso");
                 ms.Run();
                 ms.Destroy();
             }
             catch (Exception e)
             {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
                     ButtonsType.Ok, "Error al marcar la entrada: " + e.Message);
                 ms.Run();
                 ms.Destroy();
@@ -115,14 +115,14 @@ namespace SistemaEyS.UserForms
             try
             {
                 value = conn.Execute(CommandType.Text, sb.ToString()) != 0;
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal,
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Info, ButtonsType.Ok, "Marcado de salida exitoso");
                 ms.Run();
                 ms.Destroy();
             }
             catch (Exception e)
             {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
                     ButtonsType.Ok, "Error al marcar la salida: " + e.Message);
                 ms.Run();
                 ms.Destroy();

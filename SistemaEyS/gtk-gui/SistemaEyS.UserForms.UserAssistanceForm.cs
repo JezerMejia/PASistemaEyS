@@ -43,8 +43,8 @@ namespace SistemaEyS.UserForms
 			global::Stetic.Gui.Initialize(this);
 			// Widget SistemaEyS.UserForms.UserAssistanceForm
 			this.Name = "SistemaEyS.UserForms.UserAssistanceForm";
-			this.Title = global::Mono.Unix.Catalog.GetString("UserAssistanceForm");
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.Title = global::Mono.Unix.Catalog.GetString("Empleado | Marcado de Asistencia");
+			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Container child SistemaEyS.UserForms.UserAssistanceForm.Gtk.Container+ContainerChild
 			this.mainLayout = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
 			this.mainLayout.Name = "mainLayout";

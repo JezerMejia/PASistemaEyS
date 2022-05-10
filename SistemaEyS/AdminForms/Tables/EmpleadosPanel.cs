@@ -8,9 +8,9 @@ namespace SistemaEyS.AdminForms.Tables
     public partial class EmpleadosPanel : Gtk.Bin
     {
         Dt_tlb_empleado dtus = new Dt_tlb_empleado();
-        AddBtn ab = new AddBtn();
-        ActBtn acb = new ActBtn();
-        DelBtn delb = new DelBtn();
+        AddBtn addBtn = new AddBtn();
+        ActBtn actBtn = new ActBtn();
+        DelBtn delBtn = new DelBtn();
 
         public EmpleadosPanel()
         {
@@ -42,26 +42,26 @@ namespace SistemaEyS.AdminForms.Tables
         protected void btnAddOnClicked(object sender, EventArgs e)
         {
             //AddBtn
-            ab.Show();
-            ab.Present();
-            ab.SetIDRandom();
+            addBtn.Show();
+            addBtn.Present();
+            addBtn.SetIDRandom();
           
         }
 
         protected void OnButton3Clicked(object sender, EventArgs e)
         {
             //ActBtn
-            acb.Show();
-            acb.Present();
-            acb.SetIDRandom();
+            actBtn.Show();
+            actBtn.Present();
+            actBtn.SetIDRandom();
         }
 
         protected void OnButton1Clicked(object sender, EventArgs e)
         {
             //DelBtn
-            delb.UpdateData();
-            delb.Show();
-            delb.Present();
+            delBtn.UpdateData();
+            delBtn.Show();
+            delBtn.Present();
         }
     }
 }

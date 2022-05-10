@@ -24,6 +24,7 @@ namespace SistemaEyS.AdminForms.Tables
 			this.Name = "SistemaEyS.AdminForms.Tables.HorariosPanel";
 			// Container child SistemaEyS.AdminForms.Tables.HorariosPanel.Gtk.Container+ContainerChild
 			this.vbox1 = new global::Gtk.VBox();
+			this.vbox1.Name = "vbox1";
 			this.vbox1.Spacing = 6;
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.tableView = new global::SistemaEyS.AdminForms.Tables.ViewTableTemplate();

@@ -39,8 +39,8 @@ namespace SistemaEyS.AdminForms
 			global::Stetic.Gui.Initialize(this);
 			// Widget SistemaEyS.AdminForms.AdminLogin
 			this.Name = "SistemaEyS.AdminForms.AdminLogin";
-			this.Title = global::Mono.Unix.Catalog.GetString("AdminLogin");
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.Title = global::Mono.Unix.Catalog.GetString("Administrador | Login");
+			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Container child SistemaEyS.AdminForms.AdminLogin.Gtk.Container+ContainerChild
 			this.alignment10 = new global::Gtk.Alignment(0.5F, 0.5F, 0F, 0F);
 			this.alignment10.Name = "alignment10";
