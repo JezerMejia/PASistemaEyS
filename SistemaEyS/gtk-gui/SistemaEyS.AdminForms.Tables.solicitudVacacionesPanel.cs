@@ -6,7 +6,7 @@ namespace SistemaEyS.AdminForms.Tables
 	{
 		private global::Gtk.VBox vbox1;
 
-		private global::SistemaEyS.AdminForms.Tables.ViewTableTemplate tableView;
+		private global::SistemaEyS.AdminForms.Tables.ViewTableTemplate viewTable;
 
 		private global::Gtk.HBox hbox1;
 
@@ -27,11 +27,11 @@ namespace SistemaEyS.AdminForms.Tables
 			this.vbox1.Name = "vbox1";
 			this.vbox1.Spacing = 6;
 			// Container child vbox1.Gtk.Box+BoxChild
-			this.tableView = new global::SistemaEyS.AdminForms.Tables.ViewTableTemplate();
-			this.tableView.Events = ((global::Gdk.EventMask)(256));
-			this.tableView.Name = "tableView";
-			this.vbox1.Add(this.tableView);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.tableView]));
+			this.viewTable = new global::SistemaEyS.AdminForms.Tables.ViewTableTemplate();
+			this.viewTable.Events = ((global::Gdk.EventMask)(256));
+			this.viewTable.Name = "viewTable";
+			this.vbox1.Add(this.viewTable);
+			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.viewTable]));
 			w1.Position = 0;
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.hbox1 = new global::Gtk.HBox();

@@ -8,9 +8,9 @@ namespace SistemaEyS.AdminForms.Tables
     public partial class EmpleadosPanel : Gtk.Bin
     {
         Dt_tlb_empleado dtus = new Dt_tlb_empleado();
-        AddBtn addBtn = new AddBtn();
-        ActBtn actBtn = new ActBtn();
-        DelBtn delBtn = new DelBtn();
+        AddDialog addBtn = new AddDialog();
+        UpdateDialog actBtn = new UpdateDialog();
+        DeleteDialog delBtn = new DeleteDialog();
 
         public EmpleadosPanel()
         {

@@ -5,12 +5,12 @@ using SistemaEyS.Database.Connection;
 using SistemaEyS.DatosEyS;
 namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 {
-    public partial class ActBtn : Gtk.Window
+    public partial class UpdateDialog : Gtk.Window
     {
         Dt_tlb_empleado dtus = new Dt_tlb_empleado();
         ListStore datos;
 
-        public ActBtn() :
+        public UpdateDialog() :
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();

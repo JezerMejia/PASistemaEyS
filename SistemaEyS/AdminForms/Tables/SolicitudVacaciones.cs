@@ -20,9 +20,9 @@ namespace SistemaEyS.AdminForms.Tables
                 new StoreObject("Inicio", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Fin", typeof(string), "text", new Gtk.CellRendererText()),
             };
-            this.tableView.SetTreeViewColumns(this.tableView.treeView, storeObjects);
+            this.viewTable.SetTreeViewColumns(this.viewTable.treeView, storeObjects);
 
-            this.tableView.treeView.Model = dtus.listarSolicitudVacaciones();
+            this.viewTable.treeView.Model = dtus.listarSolicitudVacaciones();
         }
     }
 }

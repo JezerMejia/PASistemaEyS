@@ -16,14 +16,14 @@ namespace SistemaEyS.AdminForms.Tables
                 new StoreObject("Entrada", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Salida", typeof(string), "text", new Gtk.CellRendererText()),
             };
-            this.tableView.SetTreeViewColumns(this.tableView.treeView, storeObjects);
+            this.viewTable.SetTreeViewColumns(this.viewTable.treeView, storeObjects);
 
-            this.tableView.treeView.Model = dtus.listarEntradaSalida();
+            this.viewTable.treeView.Model = dtus.listarEntradaSalida();
         }
 
         protected void btnUpdateOnClicked(object sender, EventArgs e)
         {
-            this.tableView.treeView.Model = dtus.listarEntradaSalida();
+            this.viewTable.treeView.Model = dtus.listarEntradaSalida();
         }
     }
 }

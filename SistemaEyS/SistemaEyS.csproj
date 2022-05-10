@@ -108,18 +108,16 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.HorariosPanel.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.ViewTableTemplate.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.solicitudVacacionesPanel.cs" />
-    <Compile Include="AdminForms\Tables\EmpPanelBtn\AddBtn.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.AddBtn.cs" />
-
-    <Compile Include="AdminForms\Tables\EmpPanelBtn\ActBtn.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.ActBtn.cs" />
-    <Compile Include="AdminForms\Tables\EmpPanelBtn\DelBtn.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.DelBtn.cs" />
-    
+    <Compile Include="AdminForms\Tables\EmpPanelBtn\AddDialog.cs" />
+    <Compile Include="AdminForms\Tables\EmpPanelBtn\UpdateDialog.cs" />
+    <Compile Include="AdminForms\Tables\EmpPanelBtn\DeleteDialog.cs" />
     <Compile Include="AdminForms\Seguridad\UserSeguridad.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Seguridad.UserSeguridad.cs" />
 
     <Compile Include="Database\DatosSeguridad\Dt_tlb_user.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.AddDialog.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.UpdateDialog.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.DeleteDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />

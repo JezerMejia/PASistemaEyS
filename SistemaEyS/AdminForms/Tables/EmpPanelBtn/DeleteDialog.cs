@@ -6,13 +6,13 @@ using SistemaEyS.Database.Connection;
 using SistemaEyS.DatosEyS;
 namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 {
-    public partial class DelBtn : Gtk.Window
+    public partial class DeleteDialog : Gtk.Window
     {
 
         Dt_tlb_empleado dtus = new Dt_tlb_empleado();
         ListStore datos;
 
-        public DelBtn() :
+        public DeleteDialog() :
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();

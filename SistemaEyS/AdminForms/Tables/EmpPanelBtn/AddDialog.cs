@@ -7,9 +7,9 @@ using SistemaEySLibrary;
 
 namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 {
-    public partial class AddBtn : Gtk.Window
+    public partial class AddDialog : Gtk.Window
     {
-        public AddBtn() :
+        public AddDialog() :
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
