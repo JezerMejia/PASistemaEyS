@@ -4,6 +4,7 @@
     <images-root-path>..</images-root-path>
   </configuration>
   <import>
+    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../../SistemaEySLibrary/bin/Debug/SistemaEySLibrary.dll" />
     <widget-library name="../bin/Debug/SistemaEyS.exe" internal="true" />
   </import>
@@ -3323,6 +3324,7 @@ Contraseña:</property>
                         <property name="IsEditable">True</property>
                         <property name="WidthChars">30</property>
                         <property name="InvisibleChar">●</property>
+                        <signal name="Changed" handler="TxtSearchOnChanged" />
                       </widget>
                       <packing>
                         <property name="Position">1</property>

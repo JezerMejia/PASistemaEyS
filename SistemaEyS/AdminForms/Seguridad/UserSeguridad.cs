@@ -9,7 +9,8 @@ namespace SistemaEyS.AdminForms.Seguridad
     public partial class UserSeguridad : Gtk.Window
     {
         Dt_tlb_user dt_user = new Dt_tlb_user();
-        ListStore datos;
+        TreeModelFilter datos;
+        TreeModelFilterVisibleFunc modelFilterVisibleFunc;
         int SelectedID = -1;
 
         public UserSeguridad() :
@@ -18,10 +19,14 @@ namespace SistemaEyS.AdminForms.Seguridad
             this.Build();
             this.Hide();
 
-            this.datos = dt_user.listarUsuarios();
+            this.modelFilterVisibleFunc = new TreeModelFilterVisibleFunc(this.TreeModelFilterVisible);
+
+            this.datos = new TreeModelFilter(dt_user.listarUsuarios(), null);
+            this.datos.VisibleFunc = this.modelFilterVisibleFunc;
 
             this.viewTable.SearchEntry = this.TxtSearch;
-            this.viewTable.SearchColumn = 1;
+            this.viewTable.SearchEqualFunc = new TreeViewSearchEqualFunc(this.ViewTableEqualFunc);
+            
             this.CmbxID.Entry.WidthChars = 16;
 
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
@@ -222,7 +227,8 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         protected void BtnUpdateOnClicked(object sender, EventArgs e)
         {
-            this.datos = this.dt_user.listarUsuarios();
+            this.datos = new TreeModelFilter(dt_user.listarUsuarios(), null);
+            this.datos.VisibleFunc = this.modelFilterVisibleFunc;
             this.viewTable.Model = this.datos;
             this.FillComboboxModel();
         }
@@ -264,6 +270,47 @@ namespace SistemaEyS.AdminForms.Seguridad
                 }
                 while (datos.IterNext(ref iter));
             }
+        }
+
+        protected bool ViewTableEqualFunc(TreeModel model, int column, string key, TreeIter iter)
+        {
+            for (int i = 0; i < model.NColumns; i++)
+            {
+                string value = (string)model.GetValue(iter, i);
+                if (value.ToLower().Contains(key.ToLower()))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)
+        {
+            TreePath path = model.GetPath(iter);
+            Console.WriteLine($"'{this.TxtSearch.Text}' at '{path.ToString()}'");
+            if (string.IsNullOrWhiteSpace(this.TxtSearch.Text))
+            {
+                Console.WriteLine("Empty search");
+                return true;
+            }
+            for (int i = 0; i < model.NColumns; i++)
+            {
+                string value = (string)model.GetValue(iter, i);
+                Console.WriteLine($"\t{i}: '{value}'");
+                if (value.ToLower().Contains(this.TxtSearch.Text.ToLower()))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        protected void TxtSearchOnChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine($"Changed: '{this.TxtSearch.Text}'");
+            this.datos.Refilter();
         }
     }
 }
