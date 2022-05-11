@@ -3368,7 +3368,7 @@ Contraseña:</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Tables.HorPanelBtn.AddDialogHor" design-size="478 492">
+  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Tables.HorPanelBtn.AddDialogHor" design-size="478 496">
     <property name="MemberName" />
     <property name="Title" translatable="yes">AddDialogHor</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -3443,40 +3443,48 @@ Contraseña:</property>
                       <widget class="Gtk.Alignment" id="alignment30">
                         <property name="MemberName" />
                         <child>
-                          <widget class="Gtk.Alignment" id="alignment32">
+                          <widget class="Gtk.HBox" id="hbox28">
                             <property name="MemberName" />
-                            <property name="Xscale">0</property>
-                            <property name="Yscale">0</property>
-                            <property name="BorderWidth">10</property>
+                            <property name="Spacing">6</property>
                             <child>
-                              <widget class="Gtk.HBox" id="hbox27">
+                              <widget class="Gtk.Alignment" id="alignment34">
                                 <property name="MemberName" />
-                                <property name="Spacing">150</property>
+                                <property name="Xscale">0</property>
+                                <property name="Yscale">0</property>
+                                <property name="LeftPadding">150</property>
                                 <child>
-                                  <widget class="Gtk.Label" id="label17">
+                                  <widget class="Gtk.Label" id="label20">
                                     <property name="MemberName" />
                                     <property name="LabelProp" translatable="yes">Entrada</property>
                                   </widget>
-                                  <packing>
-                                    <property name="Position">0</property>
-                                    <property name="AutoSize">True</property>
-                                    <property name="Expand">False</property>
-                                    <property name="Fill">False</property>
-                                  </packing>
                                 </child>
+                              </widget>
+                              <packing>
+                                <property name="Position">0</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="Gtk.Alignment" id="alignment33">
+                                <property name="MemberName" />
+                                <property name="Xscale">0</property>
+                                <property name="Yscale">0</property>
+                                <property name="LeftPadding">135</property>
                                 <child>
-                                  <widget class="Gtk.Label" id="label18">
+                                  <widget class="Gtk.Label" id="label19">
                                     <property name="MemberName" />
                                     <property name="LabelProp" translatable="yes">Salida</property>
                                   </widget>
-                                  <packing>
-                                    <property name="Position">1</property>
-                                    <property name="AutoSize">True</property>
-                                    <property name="Expand">False</property>
-                                    <property name="Fill">False</property>
-                                  </packing>
                                 </child>
                               </widget>
+                              <packing>
+                                <property name="Position">1</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
                             </child>
                           </widget>
                         </child>
