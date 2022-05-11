@@ -3403,7 +3403,7 @@ Contraseña:</property>
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
                             <child>
-                              <widget class="Gtk.Entry" id="entry9">
+                              <widget class="Gtk.Entry" id="idHor">
                                 <property name="MemberName" />
                                 <property name="CanFocus">True</property>
                                 <property name="IsEditable">True</property>
@@ -3504,7 +3504,7 @@ Contraseña:</property>
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
                             <child>
-                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry8">
+                              <widget class="Gtk.ComboBoxEntry" id="lunesSal">
                                 <property name="MemberName" />
                                 <property name="IsTextCombo">True</property>
                                 <property name="Items" translatable="yes">8:00
@@ -3517,7 +3517,6 @@ Contraseña:</property>
 15:00
 16:00
 17:00</property>
-                                <property name="Active">3</property>
                               </widget>
                               <packing>
                                 <property name="PackType">End</property>
@@ -3528,7 +3527,7 @@ Contraseña:</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry1">
+                              <widget class="Gtk.ComboBoxEntry" id="lunesIni">
                                 <property name="MemberName" />
                                 <property name="IsTextCombo">True</property>
                                 <property name="Items" translatable="yes">8:00
@@ -3541,7 +3540,6 @@ Contraseña:</property>
 15:00
 16:00
 17:00</property>
-                                <property name="Active">0</property>
                               </widget>
                               <packing>
                                 <property name="PackType">End</property>
@@ -3582,7 +3580,7 @@ Contraseña:</property>
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
                             <child>
-                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry9">
+                              <widget class="Gtk.ComboBoxEntry" id="martesSal">
                                 <property name="MemberName" />
                                 <property name="IsTextCombo">True</property>
                                 <property name="Items" translatable="yes">8:00
@@ -3605,7 +3603,7 @@ Contraseña:</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry2">
+                              <widget class="Gtk.ComboBoxEntry" id="martesIni">
                                 <property name="MemberName" />
                                 <property name="IsTextCombo">True</property>
                                 <property name="Items" translatable="yes">8:00
@@ -3658,7 +3656,7 @@ Contraseña:</property>
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
                             <child>
-                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry10">
+                              <widget class="Gtk.ComboBoxEntry" id="miercolesSal">
                                 <property name="MemberName" />
                                 <property name="IsTextCombo">True</property>
                                 <property name="Items" translatable="yes">8:00
@@ -3681,7 +3679,7 @@ Contraseña:</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry3">
+                              <widget class="Gtk.ComboBoxEntry" id="miercolesIni">
                                 <property name="MemberName" />
                                 <property name="IsTextCombo">True</property>
                                 <property name="Items" translatable="yes">8:00
@@ -3734,7 +3732,7 @@ Contraseña:</property>
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
                             <child>
-                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry11">
+                              <widget class="Gtk.ComboBoxEntry" id="juevesSal">
                                 <property name="MemberName" />
                                 <property name="IsTextCombo">True</property>
                                 <property name="Items" translatable="yes">8:00
@@ -3757,7 +3755,7 @@ Contraseña:</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry4">
+                              <widget class="Gtk.ComboBoxEntry" id="juevesIni">
                                 <property name="MemberName" />
                                 <property name="IsTextCombo">True</property>
                                 <property name="Items" translatable="yes">8:00
@@ -3810,7 +3808,7 @@ Contraseña:</property>
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
                             <child>
-                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry12">
+                              <widget class="Gtk.ComboBoxEntry" id="viernesSal">
                                 <property name="MemberName" />
                                 <property name="IsTextCombo">True</property>
                                 <property name="Items" translatable="yes">8:00
@@ -3833,7 +3831,7 @@ Contraseña:</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry5">
+                              <widget class="Gtk.ComboBoxEntry" id="viernesIni">
                                 <property name="MemberName" />
                                 <property name="IsTextCombo">True</property>
                                 <property name="Items" translatable="yes">8:00
@@ -3886,7 +3884,7 @@ Contraseña:</property>
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
                             <child>
-                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry13">
+                              <widget class="Gtk.ComboBoxEntry" id="sabadoSal">
                                 <property name="MemberName" />
                                 <property name="IsTextCombo">True</property>
                                 <property name="Items" translatable="yes">8:00
@@ -3909,7 +3907,7 @@ Contraseña:</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry6">
+                              <widget class="Gtk.ComboBoxEntry" id="sabadoIni">
                                 <property name="MemberName" />
                                 <property name="IsTextCombo">True</property>
                                 <property name="Items" translatable="yes">8:00
@@ -3962,7 +3960,7 @@ Contraseña:</property>
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
                             <child>
-                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry14">
+                              <widget class="Gtk.ComboBoxEntry" id="domingoSal">
                                 <property name="MemberName" />
                                 <property name="IsTextCombo">True</property>
                                 <property name="Items" translatable="yes">8:00
@@ -3985,7 +3983,7 @@ Contraseña:</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry7">
+                              <widget class="Gtk.ComboBoxEntry" id="domingoIni">
                                 <property name="MemberName" />
                                 <property name="IsTextCombo">True</property>
                                 <property name="Items" translatable="yes">8:00
@@ -4049,7 +4047,7 @@ Contraseña:</property>
                 <child>
                   <widget class="Gtk.HBox" id="hbox7">
                     <property name="MemberName" />
-                    <property name="Spacing">6</property>
+                    <property name="Spacing">10</property>
                     <child>
                       <widget class="Gtk.Button" id="button15">
                         <property name="MemberName" />
@@ -4073,6 +4071,7 @@ Contraseña:</property>
                         <property name="Type">TextOnly</property>
                         <property name="Label" translatable="yes">Cancelar</property>
                         <property name="UseUnderline">True</property>
+                        <signal name="Clicked" handler="OnButton13Clicked" />
                       </widget>
                       <packing>
                         <property name="Position">1</property>
