@@ -3368,7 +3368,7 @@ Contraseña:</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Tables.HorPanelBtn.AddDialogHor" design-size="284 449">
+  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Tables.HorPanelBtn.AddDialogHor" design-size="478 492">
     <property name="MemberName" />
     <property name="Title" translatable="yes">AddDialogHor</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -3440,6 +3440,55 @@ Contraseña:</property>
                       </packing>
                     </child>
                     <child>
+                      <widget class="Gtk.Alignment" id="alignment30">
+                        <property name="MemberName" />
+                        <child>
+                          <widget class="Gtk.Alignment" id="alignment32">
+                            <property name="MemberName" />
+                            <property name="Xscale">0</property>
+                            <property name="Yscale">0</property>
+                            <property name="BorderWidth">10</property>
+                            <child>
+                              <widget class="Gtk.HBox" id="hbox27">
+                                <property name="MemberName" />
+                                <property name="Spacing">150</property>
+                                <child>
+                                  <widget class="Gtk.Label" id="label17">
+                                    <property name="MemberName" />
+                                    <property name="LabelProp" translatable="yes">Entrada</property>
+                                  </widget>
+                                  <packing>
+                                    <property name="Position">0</property>
+                                    <property name="AutoSize">True</property>
+                                    <property name="Expand">False</property>
+                                    <property name="Fill">False</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <widget class="Gtk.Label" id="label18">
+                                    <property name="MemberName" />
+                                    <property name="LabelProp" translatable="yes">Salida</property>
+                                  </widget>
+                                  <packing>
+                                    <property name="Position">1</property>
+                                    <property name="AutoSize">True</property>
+                                    <property name="Expand">False</property>
+                                    <property name="Fill">False</property>
+                                  </packing>
+                                </child>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="Position">1</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                    <child>
                       <widget class="Gtk.Alignment" id="alignment23">
                         <property name="MemberName" />
                         <child>
@@ -3447,7 +3496,85 @@ Contraseña:</property>
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
                             <child>
+                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry8">
+                                <property name="MemberName" />
+                                <property name="IsTextCombo">True</property>
+                                <property name="Items" translatable="yes">8:00
+9:00
+10:00
+11:00
+12:00
+13:00
+14:00
+15:00
+16:00
+17:00</property>
+                                <property name="Active">3</property>
+                              </widget>
+                              <packing>
+                                <property name="PackType">End</property>
+                                <property name="Position">0</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
+                            <child>
                               <widget class="Gtk.ComboBoxEntry" id="comboboxentry1">
+                                <property name="MemberName" />
+                                <property name="IsTextCombo">True</property>
+                                <property name="Items" translatable="yes">8:00
+9:00
+10:00
+11:00
+12:00
+13:00
+14:00
+15:00
+16:00
+17:00</property>
+                                <property name="Active">0</property>
+                              </widget>
+                              <packing>
+                                <property name="PackType">End</property>
+                                <property name="Position">1</property>
+                                <property name="AutoSize">False</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="Gtk.Label" id="label9">
+                                <property name="MemberName" />
+                                <property name="LabelProp" translatable="yes">Lunes:</property>
+                              </widget>
+                              <packing>
+                                <property name="PackType">End</property>
+                                <property name="Position">2</property>
+                                <property name="AutoSize">False</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
+                          </widget>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="Position">2</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.Alignment" id="alignment24">
+                        <property name="MemberName" />
+                        <child>
+                          <widget class="Gtk.HBox" id="hbox20">
+                            <property name="MemberName" />
+                            <property name="Spacing">6</property>
+                            <child>
+                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry9">
                                 <property name="MemberName" />
                                 <property name="IsTextCombo">True</property>
                                 <property name="Items" translatable="yes">8:00
@@ -3464,41 +3591,11 @@ Contraseña:</property>
                               <packing>
                                 <property name="PackType">End</property>
                                 <property name="Position">0</property>
-                                <property name="AutoSize">False</property>
+                                <property name="AutoSize">True</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
                               </packing>
                             </child>
-                            <child>
-                              <widget class="Gtk.Label" id="label9">
-                                <property name="MemberName" />
-                                <property name="LabelProp" translatable="yes">Lunes:</property>
-                              </widget>
-                              <packing>
-                                <property name="PackType">End</property>
-                                <property name="Position">1</property>
-                                <property name="AutoSize">False</property>
-                                <property name="Expand">False</property>
-                                <property name="Fill">False</property>
-                              </packing>
-                            </child>
-                          </widget>
-                        </child>
-                      </widget>
-                      <packing>
-                        <property name="Position">1</property>
-                        <property name="AutoSize">True</property>
-                        <property name="Expand">False</property>
-                        <property name="Fill">False</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <widget class="Gtk.Alignment" id="alignment24">
-                        <property name="MemberName" />
-                        <child>
-                          <widget class="Gtk.HBox" id="hbox20">
-                            <property name="MemberName" />
-                            <property name="Spacing">6</property>
                             <child>
                               <widget class="Gtk.ComboBoxEntry" id="comboboxentry2">
                                 <property name="MemberName" />
@@ -3516,7 +3613,7 @@ Contraseña:</property>
                               </widget>
                               <packing>
                                 <property name="PackType">End</property>
-                                <property name="Position">0</property>
+                                <property name="Position">1</property>
                                 <property name="AutoSize">False</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
@@ -3529,7 +3626,7 @@ Contraseña:</property>
                               </widget>
                               <packing>
                                 <property name="PackType">End</property>
-                                <property name="Position">1</property>
+                                <property name="Position">2</property>
                                 <property name="AutoSize">True</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
@@ -3539,7 +3636,7 @@ Contraseña:</property>
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">2</property>
+                        <property name="Position">3</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
@@ -3552,6 +3649,29 @@ Contraseña:</property>
                           <widget class="Gtk.HBox" id="hbox21">
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
+                            <child>
+                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry10">
+                                <property name="MemberName" />
+                                <property name="IsTextCombo">True</property>
+                                <property name="Items" translatable="yes">8:00
+9:00
+10:00
+11:00
+12:00
+13:00
+14:00
+15:00
+16:00
+17:00</property>
+                              </widget>
+                              <packing>
+                                <property name="PackType">End</property>
+                                <property name="Position">0</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
                             <child>
                               <widget class="Gtk.ComboBoxEntry" id="comboboxentry3">
                                 <property name="MemberName" />
@@ -3569,7 +3689,7 @@ Contraseña:</property>
                               </widget>
                               <packing>
                                 <property name="PackType">End</property>
-                                <property name="Position">0</property>
+                                <property name="Position">1</property>
                                 <property name="AutoSize">False</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
@@ -3582,7 +3702,7 @@ Contraseña:</property>
                               </widget>
                               <packing>
                                 <property name="PackType">End</property>
-                                <property name="Position">1</property>
+                                <property name="Position">2</property>
                                 <property name="AutoSize">True</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
@@ -3592,7 +3712,7 @@ Contraseña:</property>
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">3</property>
+                        <property name="Position">4</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
@@ -3605,6 +3725,29 @@ Contraseña:</property>
                           <widget class="Gtk.HBox" id="hbox22">
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
+                            <child>
+                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry11">
+                                <property name="MemberName" />
+                                <property name="IsTextCombo">True</property>
+                                <property name="Items" translatable="yes">8:00
+9:00
+10:00
+11:00
+12:00
+13:00
+14:00
+15:00
+16:00
+17:00</property>
+                              </widget>
+                              <packing>
+                                <property name="PackType">End</property>
+                                <property name="Position">0</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
                             <child>
                               <widget class="Gtk.ComboBoxEntry" id="comboboxentry4">
                                 <property name="MemberName" />
@@ -3622,7 +3765,7 @@ Contraseña:</property>
                               </widget>
                               <packing>
                                 <property name="PackType">End</property>
-                                <property name="Position">0</property>
+                                <property name="Position">1</property>
                                 <property name="AutoSize">False</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
@@ -3635,7 +3778,7 @@ Contraseña:</property>
                               </widget>
                               <packing>
                                 <property name="PackType">End</property>
-                                <property name="Position">1</property>
+                                <property name="Position">2</property>
                                 <property name="AutoSize">True</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
@@ -3645,7 +3788,7 @@ Contraseña:</property>
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">4</property>
+                        <property name="Position">5</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
@@ -3658,6 +3801,29 @@ Contraseña:</property>
                           <widget class="Gtk.HBox" id="hbox23">
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
+                            <child>
+                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry12">
+                                <property name="MemberName" />
+                                <property name="IsTextCombo">True</property>
+                                <property name="Items" translatable="yes">8:00
+9:00
+10:00
+11:00
+12:00
+13:00
+14:00
+15:00
+16:00
+17:00</property>
+                              </widget>
+                              <packing>
+                                <property name="PackType">End</property>
+                                <property name="Position">0</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
                             <child>
                               <widget class="Gtk.ComboBoxEntry" id="comboboxentry5">
                                 <property name="MemberName" />
@@ -3675,7 +3841,7 @@ Contraseña:</property>
                               </widget>
                               <packing>
                                 <property name="PackType">End</property>
-                                <property name="Position">0</property>
+                                <property name="Position">1</property>
                                 <property name="AutoSize">False</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
@@ -3688,7 +3854,7 @@ Contraseña:</property>
                               </widget>
                               <packing>
                                 <property name="PackType">End</property>
-                                <property name="Position">1</property>
+                                <property name="Position">2</property>
                                 <property name="AutoSize">True</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
@@ -3698,7 +3864,7 @@ Contraseña:</property>
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">5</property>
+                        <property name="Position">6</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
@@ -3711,6 +3877,29 @@ Contraseña:</property>
                           <widget class="Gtk.HBox" id="hbox24">
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
+                            <child>
+                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry13">
+                                <property name="MemberName" />
+                                <property name="IsTextCombo">True</property>
+                                <property name="Items" translatable="yes">8:00
+9:00
+10:00
+11:00
+12:00
+13:00
+14:00
+15:00
+16:00
+17:00</property>
+                              </widget>
+                              <packing>
+                                <property name="PackType">End</property>
+                                <property name="Position">0</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
                             <child>
                               <widget class="Gtk.ComboBoxEntry" id="comboboxentry6">
                                 <property name="MemberName" />
@@ -3728,7 +3917,7 @@ Contraseña:</property>
                               </widget>
                               <packing>
                                 <property name="PackType">End</property>
-                                <property name="Position">0</property>
+                                <property name="Position">1</property>
                                 <property name="AutoSize">False</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
@@ -3741,7 +3930,7 @@ Contraseña:</property>
                               </widget>
                               <packing>
                                 <property name="PackType">End</property>
-                                <property name="Position">1</property>
+                                <property name="Position">2</property>
                                 <property name="AutoSize">True</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
@@ -3751,7 +3940,7 @@ Contraseña:</property>
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">6</property>
+                        <property name="Position">7</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
@@ -3764,6 +3953,29 @@ Contraseña:</property>
                           <widget class="Gtk.HBox" id="hbox25">
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
+                            <child>
+                              <widget class="Gtk.ComboBoxEntry" id="comboboxentry14">
+                                <property name="MemberName" />
+                                <property name="IsTextCombo">True</property>
+                                <property name="Items" translatable="yes">8:00
+9:00
+10:00
+11:00
+12:00
+13:00
+14:00
+15:00
+16:00
+17:00</property>
+                              </widget>
+                              <packing>
+                                <property name="PackType">End</property>
+                                <property name="Position">0</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
                             <child>
                               <widget class="Gtk.ComboBoxEntry" id="comboboxentry7">
                                 <property name="MemberName" />
@@ -3781,7 +3993,7 @@ Contraseña:</property>
                               </widget>
                               <packing>
                                 <property name="PackType">End</property>
-                                <property name="Position">0</property>
+                                <property name="Position">1</property>
                                 <property name="AutoSize">False</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
@@ -3794,7 +4006,7 @@ Contraseña:</property>
                               </widget>
                               <packing>
                                 <property name="PackType">End</property>
-                                <property name="Position">1</property>
+                                <property name="Position">2</property>
                                 <property name="AutoSize">True</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
@@ -3804,7 +4016,7 @@ Contraseña:</property>
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">7</property>
+                        <property name="Position">8</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
