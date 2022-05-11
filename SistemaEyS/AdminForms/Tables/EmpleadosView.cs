@@ -45,12 +45,12 @@ namespace SistemaEyS.AdminForms.Tables
             addBtn.Show();
             addBtn.Present();
             addBtn.SetIDRandom();
-          
         }
 
         protected void OnButton3Clicked(object sender, EventArgs e)
         {
             //ActBtn
+            actBtn.UpdateData();
             actBtn.Show();
             actBtn.Present();
             actBtn.SetIDRandom();

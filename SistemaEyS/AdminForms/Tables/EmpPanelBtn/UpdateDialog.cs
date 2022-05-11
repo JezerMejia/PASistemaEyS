@@ -17,16 +17,23 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             //this.CmbxEntry = SistemaEySLibrary.ComboBoxNumericEntry.NewText();
             this.CmbxEntry.Entry.WidthChars = 16;
             this.Hide();
-            this.datos = dtus.listarUsuarios();
-            this.FillComboboxModel();
+            this.UpdateData();
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
             {
                 args.RetVal = this.HideOnDelete();
             };
         }
 
+        public void UpdateData()
+        {
+            this.datos = dtus.listarUsuarios();
+            this.FillComboboxModel();
+        }
+
         protected void FillComboboxModel()
         {
+            ListStore store = (ListStore)this.CmbxEntry.Model;
+            store.Clear();
             TreeIter iter;
             if (datos.GetIterFirst(out iter))
             {

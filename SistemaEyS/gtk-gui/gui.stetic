@@ -4,6 +4,7 @@
     <images-root-path>..</images-root-path>
   </configuration>
   <import>
+    <widget-library name="../../../../../../usr/lib/monodevelop/AddIns/MonoDevelop.GtkCore/libstetic.dll" />
     <widget-library name="../../SistemaEySLibrary/bin/Debug/SistemaEySLibrary.dll" />
     <widget-library name="../bin/Debug/SistemaEyS.exe" internal="true" />
   </import>
@@ -1955,7 +1956,7 @@ T.I.</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Tables.EmpPanelBtn.UpdateDialog" design-size="591 379">
+  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Tables.EmpPanelBtn.UpdateDialog" design-size="643 379">
     <property name="MemberName" />
     <property name="Title" translatable="yes">Actualizar Empleado</property>
     <property name="WindowPosition">Mouse</property>
