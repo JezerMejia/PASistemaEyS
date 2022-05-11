@@ -121,7 +121,6 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.label1.Name = "label1";
 			this.label1.Xalign = 1F;
 			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString("ID:");
-			this.label1.Justify = ((global::Gtk.Justification)(1));
 			this.hbox2.Add(this.label1);
 			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.label1]));
 			w4.PackType = ((global::Gtk.PackType)(1));
