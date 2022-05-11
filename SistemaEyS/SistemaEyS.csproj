@@ -117,6 +117,8 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.HorarioView.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.SolVacacionesView.cs" />
     <Compile Include="AdminForms\Tables\SolVacacionesView.cs" />
+    <Compile Include="AdminForms\Tables\HorPanelBtn\AddDialogHor.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.HorPanelBtn.AddDialogHor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
@@ -130,6 +132,7 @@
     <Folder Include="Database\DatosSeguridad\" />
     <Folder Include="AdminForms\Tables\EmpPanelBtn\" />
     <Folder Include="AdminForms\Seguridad\" />
+    <Folder Include="AdminForms\Tables\HorPanelBtn\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SistemaEySLibrary\SistemaEySLibrary.csproj">
