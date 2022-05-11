@@ -18,21 +18,16 @@ public struct StoreObject
 namespace SistemaEyS.AdminForms.Tables
 {
     [System.ComponentModel.ToolboxItem(true)]
-    public partial class ViewTableTemplate : Gtk.Bin
+    public class ViewTableTemplate : Gtk.TreeView
     {
         public Gtk.ListStore listStore;
-        public Gtk.TreeView treeView { 
-            get
-            {
-                return this.treeview1;
-            }
-        }
-        public ViewTableTemplate()
+
+        public ViewTableTemplate() : base()
         {
-            this.Build();
+            
         }
 
-        internal protected void SetTreeViewColumns(Gtk.TreeView treeView, StoreObject[] storeObject)
+        internal protected void SetTreeViewColumns(StoreObject[] storeObject)
         {
             Type[] types = new Type[storeObject.Length];
             for (int i = 0; i < types.Length; i++)
@@ -40,13 +35,13 @@ namespace SistemaEyS.AdminForms.Tables
                 types[i] = storeObject[i].type;
             }
             this.listStore = new Gtk.ListStore(types);
-            treeView.Model = this.listStore;
-            treeView.ShowAll();
+            this.Model = this.listStore;
+            this.ShowAll();
 
             for (int i = 0; i < types.Length; i++)
             {
                 StoreObject obj = storeObject[i];
-                treeView.AppendColumn(obj.name, obj.cellRenderer, obj.col_type, i);
+                this.AppendColumn(obj.name, obj.cellRenderer, obj.col_type, i);
             }
         }
     }

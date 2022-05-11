@@ -1,9 +1,13 @@
 ﻿using System;
 using Gtk;
+using SistemaEyS.DatosSeguridad;
+
 namespace SistemaEyS.AdminForms.Seguridad
 {
     public partial class UserSeguridad : Gtk.Window
     {
+        Dt_tlb_user dt_user = new Dt_tlb_user();
+
         public UserSeguridad() :
                 base(Gtk.WindowType.Toplevel)
         {
@@ -25,9 +29,21 @@ namespace SistemaEyS.AdminForms.Seguridad
                 new StoreObject("Contraseña temporal", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Estado", typeof(string), "text", new Gtk.CellRendererText()),
             };
-            //this.viewTable.SetTreeViewColumns(this.viewTable.treeView, storeObjects);
+            this.viewTable.SetTreeViewColumns(storeObjects);
 
-            //this.viewTable.treeView.Model = dtus.listarUsuarios();
+            this.viewTable.Model = dt_user.listarUsuarios();
+        }
+
+        protected void BtnAddOnClicked(object sender, EventArgs e)
+        {
+        }
+
+        protected void BtnEditOnClicked(object sender, EventArgs e)
+        {
+        }
+
+        protected void BtnRemoveOnClicked(object sender, EventArgs e)
+        {
         }
     }
 }

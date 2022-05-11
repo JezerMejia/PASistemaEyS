@@ -102,7 +102,6 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.UserRolSettings.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.CargosSettings.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.HorarioSenttings.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.ViewTableTemplate.cs" />
     <Compile Include="AdminForms\Tables\EmpPanelBtn\AddDialog.cs" />
     <Compile Include="AdminForms\Tables\EmpPanelBtn\UpdateDialog.cs" />
     <Compile Include="AdminForms\Tables\EmpPanelBtn\DeleteDialog.cs" />

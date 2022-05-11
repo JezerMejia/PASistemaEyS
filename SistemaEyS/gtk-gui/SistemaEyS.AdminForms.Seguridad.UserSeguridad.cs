@@ -18,7 +18,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 
 		private global::Gtk.Label label3;
 
-		private global::Gtk.Entry entry3;
+		private global::Gtk.Entry TxtName;
 
 		private global::Gtk.HBox hbox9;
 
@@ -26,7 +26,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 
 		private global::Gtk.Label label5;
 
-		private global::Gtk.Entry entry7;
+		private global::Gtk.Entry TxtLastname;
 
 		private global::Gtk.HBox hbox10;
 
@@ -34,7 +34,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 
 		private global::Gtk.Label label6;
 
-		private global::Gtk.Entry entry8;
+		private global::Gtk.Entry TxtEmail;
 
 		private global::Gtk.HBox hbox11;
 
@@ -42,7 +42,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 
 		private global::Gtk.Label label7;
 
-		private global::Gtk.Entry entry9;
+		private global::Gtk.Entry TxtEmailConfirm;
 
 		private global::Gtk.VBox vbox6;
 
@@ -52,7 +52,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 
 		private global::Gtk.Label label10;
 
-		private global::Gtk.Entry entry12;
+		private global::Gtk.Entry TxtUser;
 
 		private global::Gtk.HBox hbox12;
 
@@ -60,7 +60,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 
 		private global::Gtk.Label label8;
 
-		private global::Gtk.Entry entry10;
+		private global::Gtk.Entry TxtPassword;
 
 		private global::Gtk.HBox hbox13;
 
@@ -68,15 +68,15 @@ namespace SistemaEyS.AdminForms.Seguridad
 
 		private global::Gtk.Label label9;
 
-		private global::Gtk.Entry entry11;
+		private global::Gtk.Entry TxtPasswordConfirm;
 
 		private global::Gtk.HBox hbox15;
 
-		private global::Gtk.Button button1;
+		private global::Gtk.Button BtnRemove;
 
-		private global::Gtk.Button button3;
+		private global::Gtk.Button BtnEdit;
 
-		private global::Gtk.Button button5;
+		private global::Gtk.Button BtnAdd;
 
 		private global::Gtk.VBox vbox2;
 
@@ -84,7 +84,9 @@ namespace SistemaEyS.AdminForms.Seguridad
 
 		private global::Gtk.Label label1;
 
-		private global::Gtk.Entry entry1;
+		private global::Gtk.Entry TxtSearch;
+
+		private global::Gtk.ScrolledWindow GtkScrolledWindow;
 
 		private global::SistemaEyS.AdminForms.Tables.ViewTableTemplate viewTable;
 
@@ -104,7 +106,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.alignment1.BottomPadding = ((uint)(10));
 			// Container child alignment1.Gtk.Container+ContainerChild
 			this.vbox1 = new global::Gtk.VBox();
-			this.vbox1.Spacing = 6;
+			this.vbox1.Spacing = 16;
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.hbox3 = new global::Gtk.HBox();
 			this.hbox3.Name = "hbox3";
@@ -132,14 +134,14 @@ namespace SistemaEyS.AdminForms.Seguridad
 			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.alignment2]));
 			w2.Position = 0;
 			// Container child hbox5.Gtk.Box+BoxChild
-			this.entry3 = new global::Gtk.Entry();
-			this.entry3.CanFocus = true;
-			this.entry3.Name = "entry3";
-			this.entry3.IsEditable = true;
-			this.entry3.WidthChars = 20;
-			this.entry3.InvisibleChar = '●';
-			this.hbox5.Add(this.entry3);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.entry3]));
+			this.TxtName = new global::Gtk.Entry();
+			this.TxtName.CanFocus = true;
+			this.TxtName.Name = "TxtName";
+			this.TxtName.IsEditable = true;
+			this.TxtName.WidthChars = 20;
+			this.TxtName.InvisibleChar = '●';
+			this.hbox5.Add(this.TxtName);
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.TxtName]));
 			w3.Position = 1;
 			w3.Expand = false;
 			w3.Fill = false;
@@ -165,14 +167,14 @@ namespace SistemaEyS.AdminForms.Seguridad
 			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox9[this.alignment6]));
 			w6.Position = 0;
 			// Container child hbox9.Gtk.Box+BoxChild
-			this.entry7 = new global::Gtk.Entry();
-			this.entry7.CanFocus = true;
-			this.entry7.Name = "entry7";
-			this.entry7.IsEditable = true;
-			this.entry7.WidthChars = 20;
-			this.entry7.InvisibleChar = '●';
-			this.hbox9.Add(this.entry7);
-			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox9[this.entry7]));
+			this.TxtLastname = new global::Gtk.Entry();
+			this.TxtLastname.CanFocus = true;
+			this.TxtLastname.Name = "TxtLastname";
+			this.TxtLastname.IsEditable = true;
+			this.TxtLastname.WidthChars = 20;
+			this.TxtLastname.InvisibleChar = '●';
+			this.hbox9.Add(this.TxtLastname);
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox9[this.TxtLastname]));
 			w7.Position = 1;
 			w7.Expand = false;
 			this.vbox4.Add(this.hbox9);
@@ -197,14 +199,14 @@ namespace SistemaEyS.AdminForms.Seguridad
 			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox10[this.alignment7]));
 			w10.Position = 0;
 			// Container child hbox10.Gtk.Box+BoxChild
-			this.entry8 = new global::Gtk.Entry();
-			this.entry8.CanFocus = true;
-			this.entry8.Name = "entry8";
-			this.entry8.IsEditable = true;
-			this.entry8.WidthChars = 20;
-			this.entry8.InvisibleChar = '●';
-			this.hbox10.Add(this.entry8);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox10[this.entry8]));
+			this.TxtEmail = new global::Gtk.Entry();
+			this.TxtEmail.CanFocus = true;
+			this.TxtEmail.Name = "TxtEmail";
+			this.TxtEmail.IsEditable = true;
+			this.TxtEmail.WidthChars = 20;
+			this.TxtEmail.InvisibleChar = '●';
+			this.hbox10.Add(this.TxtEmail);
+			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox10[this.TxtEmail]));
 			w11.Position = 1;
 			w11.Expand = false;
 			this.vbox4.Add(this.hbox10);
@@ -231,14 +233,14 @@ namespace SistemaEyS.AdminForms.Seguridad
 			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.hbox11[this.alignment8]));
 			w14.Position = 0;
 			// Container child hbox11.Gtk.Box+BoxChild
-			this.entry9 = new global::Gtk.Entry();
-			this.entry9.CanFocus = true;
-			this.entry9.Name = "entry9";
-			this.entry9.IsEditable = true;
-			this.entry9.WidthChars = 20;
-			this.entry9.InvisibleChar = '●';
-			this.hbox11.Add(this.entry9);
-			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.hbox11[this.entry9]));
+			this.TxtEmailConfirm = new global::Gtk.Entry();
+			this.TxtEmailConfirm.CanFocus = true;
+			this.TxtEmailConfirm.Name = "TxtEmailConfirm";
+			this.TxtEmailConfirm.IsEditable = true;
+			this.TxtEmailConfirm.WidthChars = 20;
+			this.TxtEmailConfirm.InvisibleChar = '●';
+			this.hbox11.Add(this.TxtEmailConfirm);
+			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.hbox11[this.TxtEmailConfirm]));
 			w15.Position = 1;
 			w15.Expand = false;
 			this.vbox4.Add(this.hbox11);
@@ -270,14 +272,14 @@ namespace SistemaEyS.AdminForms.Seguridad
 			global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.hbox14[this.alignment11]));
 			w19.Position = 0;
 			// Container child hbox14.Gtk.Box+BoxChild
-			this.entry12 = new global::Gtk.Entry();
-			this.entry12.CanFocus = true;
-			this.entry12.Name = "entry12";
-			this.entry12.IsEditable = true;
-			this.entry12.WidthChars = 20;
-			this.entry12.InvisibleChar = '●';
-			this.hbox14.Add(this.entry12);
-			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.hbox14[this.entry12]));
+			this.TxtUser = new global::Gtk.Entry();
+			this.TxtUser.CanFocus = true;
+			this.TxtUser.Name = "TxtUser";
+			this.TxtUser.IsEditable = true;
+			this.TxtUser.WidthChars = 20;
+			this.TxtUser.InvisibleChar = '●';
+			this.hbox14.Add(this.TxtUser);
+			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.hbox14[this.TxtUser]));
 			w20.Position = 1;
 			w20.Expand = false;
 			this.vbox6.Add(this.hbox14);
@@ -302,14 +304,14 @@ namespace SistemaEyS.AdminForms.Seguridad
 			global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.alignment9]));
 			w23.Position = 0;
 			// Container child hbox12.Gtk.Box+BoxChild
-			this.entry10 = new global::Gtk.Entry();
-			this.entry10.CanFocus = true;
-			this.entry10.Name = "entry10";
-			this.entry10.IsEditable = true;
-			this.entry10.WidthChars = 20;
-			this.entry10.InvisibleChar = '●';
-			this.hbox12.Add(this.entry10);
-			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.entry10]));
+			this.TxtPassword = new global::Gtk.Entry();
+			this.TxtPassword.CanFocus = true;
+			this.TxtPassword.Name = "TxtPassword";
+			this.TxtPassword.IsEditable = true;
+			this.TxtPassword.WidthChars = 20;
+			this.TxtPassword.InvisibleChar = '●';
+			this.hbox12.Add(this.TxtPassword);
+			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.TxtPassword]));
 			w24.Position = 1;
 			w24.Expand = false;
 			this.vbox6.Add(this.hbox12);
@@ -334,14 +336,14 @@ namespace SistemaEyS.AdminForms.Seguridad
 			global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.hbox13[this.alignment10]));
 			w27.Position = 0;
 			// Container child hbox13.Gtk.Box+BoxChild
-			this.entry11 = new global::Gtk.Entry();
-			this.entry11.CanFocus = true;
-			this.entry11.Name = "entry11";
-			this.entry11.IsEditable = true;
-			this.entry11.WidthChars = 20;
-			this.entry11.InvisibleChar = '●';
-			this.hbox13.Add(this.entry11);
-			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.hbox13[this.entry11]));
+			this.TxtPasswordConfirm = new global::Gtk.Entry();
+			this.TxtPasswordConfirm.CanFocus = true;
+			this.TxtPasswordConfirm.Name = "TxtPasswordConfirm";
+			this.TxtPasswordConfirm.IsEditable = true;
+			this.TxtPasswordConfirm.WidthChars = 20;
+			this.TxtPasswordConfirm.InvisibleChar = '●';
+			this.hbox13.Add(this.TxtPasswordConfirm);
+			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.hbox13[this.TxtPasswordConfirm]));
 			w28.Position = 1;
 			w28.Expand = false;
 			this.vbox6.Add(this.hbox13);
@@ -354,35 +356,41 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.hbox15.Name = "hbox15";
 			this.hbox15.Spacing = 6;
 			// Container child hbox15.Gtk.Box+BoxChild
-			this.button1 = new global::Gtk.Button();
-			this.button1.CanFocus = true;
-			this.button1.Name = "button1";
-			this.button1.UseUnderline = true;
-			this.button1.Label = global::Mono.Unix.Catalog.GetString("GtkButton");
-			this.hbox15.Add(this.button1);
-			global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.hbox15[this.button1]));
+			this.BtnRemove = new global::Gtk.Button();
+			this.BtnRemove.CanFocus = true;
+			this.BtnRemove.Name = "BtnRemove";
+			this.BtnRemove.UseStock = true;
+			this.BtnRemove.UseUnderline = true;
+			this.BtnRemove.Label = "gtk-remove";
+			this.hbox15.Add(this.BtnRemove);
+			global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.hbox15[this.BtnRemove]));
+			w30.PackType = ((global::Gtk.PackType)(1));
 			w30.Position = 0;
 			w30.Expand = false;
 			w30.Fill = false;
 			// Container child hbox15.Gtk.Box+BoxChild
-			this.button3 = new global::Gtk.Button();
-			this.button3.CanFocus = true;
-			this.button3.Name = "button3";
-			this.button3.UseUnderline = true;
-			this.button3.Label = global::Mono.Unix.Catalog.GetString("GtkButton");
-			this.hbox15.Add(this.button3);
-			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.hbox15[this.button3]));
+			this.BtnEdit = new global::Gtk.Button();
+			this.BtnEdit.CanFocus = true;
+			this.BtnEdit.Name = "BtnEdit";
+			this.BtnEdit.UseStock = true;
+			this.BtnEdit.UseUnderline = true;
+			this.BtnEdit.Label = "gtk-edit";
+			this.hbox15.Add(this.BtnEdit);
+			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.hbox15[this.BtnEdit]));
+			w31.PackType = ((global::Gtk.PackType)(1));
 			w31.Position = 1;
 			w31.Expand = false;
 			w31.Fill = false;
 			// Container child hbox15.Gtk.Box+BoxChild
-			this.button5 = new global::Gtk.Button();
-			this.button5.CanFocus = true;
-			this.button5.Name = "button5";
-			this.button5.UseUnderline = true;
-			this.button5.Label = global::Mono.Unix.Catalog.GetString("GtkButton");
-			this.hbox15.Add(this.button5);
-			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.hbox15[this.button5]));
+			this.BtnAdd = new global::Gtk.Button();
+			this.BtnAdd.CanFocus = true;
+			this.BtnAdd.Name = "BtnAdd";
+			this.BtnAdd.UseStock = true;
+			this.BtnAdd.UseUnderline = true;
+			this.BtnAdd.Label = "gtk-add";
+			this.hbox15.Add(this.BtnAdd);
+			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.hbox15[this.BtnAdd]));
+			w32.PackType = ((global::Gtk.PackType)(1));
 			w32.Position = 2;
 			w32.Expand = false;
 			w32.Fill = false;
@@ -419,29 +427,37 @@ namespace SistemaEyS.AdminForms.Seguridad
 			w36.Expand = false;
 			w36.Fill = false;
 			// Container child hbox1.Gtk.Box+BoxChild
-			this.entry1 = new global::Gtk.Entry();
-			this.entry1.CanFocus = true;
-			this.entry1.Name = "entry1";
-			this.entry1.IsEditable = true;
-			this.entry1.InvisibleChar = '●';
-			this.hbox1.Add(this.entry1);
-			global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.entry1]));
+			this.TxtSearch = new global::Gtk.Entry();
+			this.TxtSearch.CanFocus = true;
+			this.TxtSearch.Name = "TxtSearch";
+			this.TxtSearch.IsEditable = true;
+			this.TxtSearch.WidthChars = 30;
+			this.TxtSearch.InvisibleChar = '●';
+			this.hbox1.Add(this.TxtSearch);
+			global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.TxtSearch]));
 			w37.Position = 1;
+			w37.Expand = false;
+			w37.Fill = false;
 			this.vbox2.Add(this.hbox1);
 			global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hbox1]));
 			w38.Position = 0;
 			w38.Expand = false;
 			w38.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
+			this.GtkScrolledWindow = new global::Gtk.ScrolledWindow();
+			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
+			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
+			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
 			this.viewTable = new global::SistemaEyS.AdminForms.Tables.ViewTableTemplate();
-			this.viewTable.Events = ((global::Gdk.EventMask)(256));
+			this.viewTable.CanFocus = true;
 			this.viewTable.Name = "viewTable";
-			this.vbox2.Add(this.viewTable);
-			global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.viewTable]));
-			w39.Position = 1;
-			this.vbox1.Add(this.vbox2);
-			global::Gtk.Box.BoxChild w40 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.vbox2]));
+			this.GtkScrolledWindow.Add(this.viewTable);
+			this.vbox2.Add(this.GtkScrolledWindow);
+			global::Gtk.Box.BoxChild w40 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.GtkScrolledWindow]));
 			w40.Position = 1;
+			this.vbox1.Add(this.vbox2);
+			global::Gtk.Box.BoxChild w41 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.vbox2]));
+			w41.Position = 1;
 			this.alignment1.Add(this.vbox1);
 			this.Add(this.alignment1);
 			if ((this.Child != null))
@@ -451,6 +467,9 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.DefaultWidth = 550;
 			this.DefaultHeight = 400;
 			this.Show();
+			this.BtnAdd.Clicked += new global::System.EventHandler(this.BtnAddOnClicked);
+			this.BtnEdit.Clicked += new global::System.EventHandler(this.BtnEditOnClicked);
+			this.BtnRemove.Clicked += new global::System.EventHandler(this.BtnRemoveOnClicked);
 		}
 	}
 }

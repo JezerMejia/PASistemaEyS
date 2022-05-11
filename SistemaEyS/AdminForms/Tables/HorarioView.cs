@@ -28,14 +28,14 @@ namespace SistemaEyS.AdminForms.Tables
                 new StoreObject("Domingo - Fin", typeof(string), "text", new Gtk.CellRendererText()),
             };
 
-            this.viewTable.SetTreeViewColumns(this.viewTable.treeView, storeObjects);
+            this.viewTable.SetTreeViewColumns(storeObjects);
 
-            this.viewTable.treeView.Model = dtus.listarHorarios();
+            this.viewTable.Model = dtus.listarHorarios();
         }
 
         protected void btnUpdateOnClicked(object sender, EventArgs e)
         {
-            this.viewTable.treeView.Model = dtus.listarHorarios();
+            this.viewTable.Model = dtus.listarHorarios();
         }
     }
 }

@@ -877,33 +877,6 @@ IT</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Bin" id="SistemaEyS.AdminForms.Tables.ViewTableTemplate" design-size="300 300">
-    <property name="MemberName" />
-    <property name="Visible">False</property>
-    <child>
-      <widget class="Gtk.Alignment" id="alignment1">
-        <property name="MemberName" />
-        <property name="LeftPadding">10</property>
-        <property name="TopPadding">10</property>
-        <property name="RightPadding">10</property>
-        <property name="BottomPadding">10</property>
-        <property name="BorderWidth">10</property>
-        <child>
-          <widget class="Gtk.ScrolledWindow" id="scrolledwindow1">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="ShadowType">In</property>
-            <child>
-              <widget class="Gtk.TreeView" id="treeview1">
-                <property name="MemberName" />
-                <property name="CanFocus">True</property>
-              </widget>
-            </child>
-          </widget>
-        </child>
-      </widget>
-    </child>
-  </widget>
   <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Settings.UserRolSettings" design-size="418 340">
     <property name="MemberName" />
     <property name="Title" translatable="yes">UserRolSettings</property>
@@ -1252,9 +1225,16 @@ T.I.</property>
             <property name="Spacing">6</property>
             <property name="BorderWidth">1</property>
             <child>
-              <widget class="SistemaEyS.AdminForms.Tables.ViewTableTemplate" id="viewTable">
+              <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
                 <property name="MemberName" />
-                <property name="Events">ButtonPressMask</property>
+                <property name="ShadowType">In</property>
+                <child>
+                  <widget class="SistemaEyS.AdminForms.Tables.ViewTableTemplate" id="viewTable">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="ShowScrollbars">True</property>
+                  </widget>
+                </child>
               </widget>
               <packing>
                 <property name="Position">0</property>
@@ -1362,9 +1342,16 @@ T.I.</property>
             <property name="MemberName" />
             <property name="Spacing">6</property>
             <child>
-              <widget class="SistemaEyS.AdminForms.Tables.ViewTableTemplate" id="viewTable">
+              <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
                 <property name="MemberName" />
-                <property name="Events">ButtonPressMask</property>
+                <property name="ShadowType">In</property>
+                <child>
+                  <widget class="SistemaEyS.AdminForms.Tables.ViewTableTemplate" id="viewTable">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="ShowScrollbars">True</property>
+                  </widget>
+                </child>
               </widget>
               <packing>
                 <property name="Position">0</property>
@@ -1420,9 +1407,16 @@ T.I.</property>
             <property name="MemberName" />
             <property name="Spacing">6</property>
             <child>
-              <widget class="SistemaEyS.AdminForms.Tables.ViewTableTemplate" id="viewTable">
+              <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
                 <property name="MemberName" />
-                <property name="Events">ButtonPressMask</property>
+                <property name="ShadowType">In</property>
+                <child>
+                  <widget class="SistemaEyS.AdminForms.Tables.ViewTableTemplate" id="viewTable">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="ShowScrollbars">True</property>
+                  </widget>
+                </child>
               </widget>
               <packing>
                 <property name="Position">0</property>
@@ -1519,9 +1513,16 @@ T.I.</property>
         <property name="MemberName" />
         <property name="Spacing">6</property>
         <child>
-          <widget class="SistemaEyS.AdminForms.Tables.ViewTableTemplate" id="viewTable">
+          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
             <property name="MemberName" />
-            <property name="Events">ButtonPressMask</property>
+            <property name="ShadowType">In</property>
+            <child>
+              <widget class="SistemaEyS.AdminForms.Tables.ViewTableTemplate" id="viewTable">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="ShowScrollbars">True</property>
+              </widget>
+            </child>
           </widget>
           <packing>
             <property name="Position">0</property>
@@ -2827,7 +2828,7 @@ T.I.</property>
         <child>
           <widget class="Gtk.VBox" id="vbox1">
             <property name="MemberName" />
-            <property name="Spacing">6</property>
+            <property name="Spacing">16</property>
             <child>
               <widget class="Gtk.HBox" id="hbox3">
                 <property name="MemberName" />
@@ -2860,7 +2861,7 @@ T.I.</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.Entry" id="entry3">
+                          <widget class="Gtk.Entry" id="TxtName">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
@@ -2904,7 +2905,7 @@ T.I.</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.Entry" id="entry7">
+                          <widget class="Gtk.Entry" id="TxtLastname">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
@@ -2947,7 +2948,7 @@ T.I.</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.Entry" id="entry8">
+                          <widget class="Gtk.Entry" id="TxtEmail">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
@@ -2993,7 +2994,7 @@ Email:</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.Entry" id="entry9">
+                          <widget class="Gtk.Entry" id="TxtEmailConfirm">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
@@ -3046,7 +3047,7 @@ Email:</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.Entry" id="entry12">
+                          <widget class="Gtk.Entry" id="TxtUser">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
@@ -3089,7 +3090,7 @@ Email:</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.Entry" id="entry10">
+                          <widget class="Gtk.Entry" id="TxtPassword">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
@@ -3133,7 +3134,7 @@ Contraseña:</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.Entry" id="entry11">
+                          <widget class="Gtk.Entry" id="TxtPasswordConfirm">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
@@ -3159,14 +3160,17 @@ Contraseña:</property>
                         <property name="MemberName" />
                         <property name="Spacing">6</property>
                         <child>
-                          <widget class="Gtk.Button" id="button1">
+                          <widget class="Gtk.Button" id="BtnRemove">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
-                            <property name="Type">TextOnly</property>
-                            <property name="Label" translatable="yes">GtkButton</property>
-                            <property name="UseUnderline">True</property>
+                            <property name="UseStock">True</property>
+                            <property name="Type">StockItem</property>
+                            <property name="StockId">gtk-remove</property>
+                            <signal name="Clicked" handler="BtnRemoveOnClicked" />
+                            <property name="label">gtk-remove</property>
                           </widget>
                           <packing>
+                            <property name="PackType">End</property>
                             <property name="Position">0</property>
                             <property name="AutoSize">True</property>
                             <property name="Expand">False</property>
@@ -3174,14 +3178,17 @@ Contraseña:</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.Button" id="button3">
+                          <widget class="Gtk.Button" id="BtnEdit">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
-                            <property name="Type">TextOnly</property>
-                            <property name="Label" translatable="yes">GtkButton</property>
-                            <property name="UseUnderline">True</property>
+                            <property name="UseStock">True</property>
+                            <property name="Type">StockItem</property>
+                            <property name="StockId">gtk-edit</property>
+                            <signal name="Clicked" handler="BtnEditOnClicked" />
+                            <property name="label">gtk-edit</property>
                           </widget>
                           <packing>
+                            <property name="PackType">End</property>
                             <property name="Position">1</property>
                             <property name="AutoSize">True</property>
                             <property name="Expand">False</property>
@@ -3189,14 +3196,17 @@ Contraseña:</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.Button" id="button5">
+                          <widget class="Gtk.Button" id="BtnAdd">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
-                            <property name="Type">TextOnly</property>
-                            <property name="Label" translatable="yes">GtkButton</property>
-                            <property name="UseUnderline">True</property>
+                            <property name="UseStock">True</property>
+                            <property name="Type">StockItem</property>
+                            <property name="StockId">gtk-add</property>
+                            <signal name="Clicked" handler="BtnAddOnClicked" />
+                            <property name="label">gtk-add</property>
                           </widget>
                           <packing>
+                            <property name="PackType">End</property>
                             <property name="Position">2</property>
                             <property name="AutoSize">True</property>
                             <property name="Expand">False</property>
@@ -3248,15 +3258,18 @@ Contraseña:</property>
                       </packing>
                     </child>
                     <child>
-                      <widget class="Gtk.Entry" id="entry1">
+                      <widget class="Gtk.Entry" id="TxtSearch">
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
+                        <property name="WidthChars">30</property>
                         <property name="InvisibleChar">●</property>
                       </widget>
                       <packing>
                         <property name="Position">1</property>
-                        <property name="AutoSize">True</property>
+                        <property name="AutoSize">False</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
                       </packing>
                     </child>
                   </widget>
@@ -3268,9 +3281,16 @@ Contraseña:</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="SistemaEyS.AdminForms.Tables.ViewTableTemplate" id="viewTable">
+                  <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
                     <property name="MemberName" />
-                    <property name="Events">ButtonPressMask</property>
+                    <property name="ShadowType">In</property>
+                    <child>
+                      <widget class="SistemaEyS.AdminForms.Tables.ViewTableTemplate" id="viewTable">
+                        <property name="MemberName" />
+                        <property name="CanFocus">True</property>
+                        <property name="ShowScrollbars">True</property>
+                      </widget>
+                    </child>
                   </widget>
                   <packing>
                     <property name="Position">1</property>

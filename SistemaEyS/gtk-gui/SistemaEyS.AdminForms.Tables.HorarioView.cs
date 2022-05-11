@@ -8,6 +8,8 @@ namespace SistemaEyS.AdminForms.Tables
 
 		private global::Gtk.VBox vbox1;
 
+		private global::Gtk.ScrolledWindow GtkScrolledWindow;
+
 		private global::SistemaEyS.AdminForms.Tables.ViewTableTemplate viewTable;
 
 		private global::Gtk.HBox hbox1;
@@ -37,12 +39,17 @@ namespace SistemaEyS.AdminForms.Tables
 			this.vbox1 = new global::Gtk.VBox();
 			this.vbox1.Spacing = 6;
 			// Container child vbox1.Gtk.Box+BoxChild
+			this.GtkScrolledWindow = new global::Gtk.ScrolledWindow();
+			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
+			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
+			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
 			this.viewTable = new global::SistemaEyS.AdminForms.Tables.ViewTableTemplate();
-			this.viewTable.Events = ((global::Gdk.EventMask)(256));
+			this.viewTable.CanFocus = true;
 			this.viewTable.Name = "viewTable";
-			this.vbox1.Add(this.viewTable);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.viewTable]));
-			w1.Position = 0;
+			this.GtkScrolledWindow.Add(this.viewTable);
+			this.vbox1.Add(this.GtkScrolledWindow);
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.GtkScrolledWindow]));
+			w2.Position = 0;
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.hbox1 = new global::Gtk.HBox();
 			this.hbox1.Name = "hbox1";
@@ -54,11 +61,11 @@ namespace SistemaEyS.AdminForms.Tables
 			this.BtnDelete.UseUnderline = true;
 			this.BtnDelete.Label = global::Mono.Unix.Catalog.GetString("Eliminar");
 			this.hbox1.Add(this.BtnDelete);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.BtnDelete]));
-			w2.PackType = ((global::Gtk.PackType)(1));
-			w2.Position = 0;
-			w2.Expand = false;
-			w2.Fill = false;
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.BtnDelete]));
+			w3.PackType = ((global::Gtk.PackType)(1));
+			w3.Position = 0;
+			w3.Expand = false;
+			w3.Fill = false;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.BtnUpdate = new global::Gtk.Button();
 			this.BtnUpdate.CanFocus = true;
@@ -66,11 +73,11 @@ namespace SistemaEyS.AdminForms.Tables
 			this.BtnUpdate.UseUnderline = true;
 			this.BtnUpdate.Label = global::Mono.Unix.Catalog.GetString("Actualizar");
 			this.hbox1.Add(this.BtnUpdate);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.BtnUpdate]));
-			w3.PackType = ((global::Gtk.PackType)(1));
-			w3.Position = 1;
-			w3.Expand = false;
-			w3.Fill = false;
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.BtnUpdate]));
+			w4.PackType = ((global::Gtk.PackType)(1));
+			w4.Position = 1;
+			w4.Expand = false;
+			w4.Fill = false;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.BtnEdit = new global::Gtk.Button();
 			this.BtnEdit.CanFocus = true;
@@ -78,11 +85,11 @@ namespace SistemaEyS.AdminForms.Tables
 			this.BtnEdit.UseUnderline = true;
 			this.BtnEdit.Label = global::Mono.Unix.Catalog.GetString("Editar");
 			this.hbox1.Add(this.BtnEdit);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.BtnEdit]));
-			w4.PackType = ((global::Gtk.PackType)(1));
-			w4.Position = 2;
-			w4.Expand = false;
-			w4.Fill = false;
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.BtnEdit]));
+			w5.PackType = ((global::Gtk.PackType)(1));
+			w5.Position = 2;
+			w5.Expand = false;
+			w5.Fill = false;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.BtnAdd = new global::Gtk.Button();
 			this.BtnAdd.CanFocus = true;
@@ -90,16 +97,16 @@ namespace SistemaEyS.AdminForms.Tables
 			this.BtnAdd.UseUnderline = true;
 			this.BtnAdd.Label = global::Mono.Unix.Catalog.GetString("Añadir");
 			this.hbox1.Add(this.BtnAdd);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.BtnAdd]));
-			w5.PackType = ((global::Gtk.PackType)(1));
-			w5.Position = 3;
-			w5.Expand = false;
-			w5.Fill = false;
-			this.vbox1.Add(this.hbox1);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.hbox1]));
-			w6.Position = 1;
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.BtnAdd]));
+			w6.PackType = ((global::Gtk.PackType)(1));
+			w6.Position = 3;
 			w6.Expand = false;
 			w6.Fill = false;
+			this.vbox1.Add(this.hbox1);
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.hbox1]));
+			w7.Position = 1;
+			w7.Expand = false;
+			w7.Fill = false;
 			this.alignment2.Add(this.vbox1);
 			this.Add(this.alignment2);
 			if ((this.Child != null))

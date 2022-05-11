@@ -28,14 +28,14 @@ namespace SistemaEyS.AdminForms.Tables
                 new StoreObject("ID Horario", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Grupo", typeof(string), "text", new Gtk.CellRendererText()),
             };
-            this.viewTable.SetTreeViewColumns(this.viewTable.treeView, storeObjects);
+            this.viewTable.SetTreeViewColumns(storeObjects);
 
-            this.viewTable.treeView.Model = dtus.listarUsuarios();
+            this.viewTable.Model = dtus.listarUsuarios();
         }
 
         protected void btnUpdateOnClicked(object sender, EventArgs e)
         {
-            this.viewTable.treeView.Model = dtus.listarUsuarios();
+            this.viewTable.Model = dtus.listarUsuarios();
         }
 
 
