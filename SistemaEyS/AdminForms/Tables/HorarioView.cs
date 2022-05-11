@@ -1,5 +1,6 @@
 ﻿using System;
 using SistemaEyS.DatosEyS;
+using SistemaEyS.AdminForms.Tables.HorPanelBtn;
 
 namespace SistemaEyS.AdminForms.Tables
 {
@@ -36,6 +37,13 @@ namespace SistemaEyS.AdminForms.Tables
         protected void btnUpdateOnClicked(object sender, EventArgs e)
         {
             this.viewTable.Model = dtus.listarHorarios();
+        }
+
+        protected void OnBtnAddClicked(object sender, EventArgs e)
+        {
+            AddDialogHor adh = new AddDialogHor();
+
+            adh.Show();
         }
     }
 }
