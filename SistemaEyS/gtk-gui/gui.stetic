@@ -2839,6 +2839,46 @@ T.I.</property>
                     <property name="MemberName" />
                     <property name="Spacing">6</property>
                     <child>
+                      <widget class="Gtk.HBox" id="hbox2">
+                        <property name="MemberName" />
+                        <property name="Spacing">6</property>
+                        <child>
+                          <widget class="SistemaEySLibrary.ComboBoxNumericEntry" id="CmbxID">
+                            <property name="MemberName" />
+                            <property name="IsTextCombo">False</property>
+                            <property name="Items" translatable="yes" />
+                            <signal name="Changed" handler="CmbxIdOnChanged" />
+                          </widget>
+                          <packing>
+                            <property name="PackType">End</property>
+                            <property name="Position">0</property>
+                            <property name="AutoSize">False</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.Label" id="label2">
+                            <property name="MemberName" />
+                            <property name="LabelProp" translatable="yes">ID:</property>
+                          </widget>
+                          <packing>
+                            <property name="PackType">End</property>
+                            <property name="Position">1</property>
+                            <property name="AutoSize">True</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="Position">0</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                    <child>
                       <widget class="Gtk.HBox" id="hbox5">
                         <property name="MemberName" />
                         <property name="Spacing">6</property>
@@ -2877,7 +2917,7 @@ T.I.</property>
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">0</property>
+                        <property name="Position">1</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
@@ -2920,7 +2960,7 @@ T.I.</property>
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">1</property>
+                        <property name="Position">2</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
@@ -2963,7 +3003,7 @@ T.I.</property>
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">2</property>
+                        <property name="Position">3</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
@@ -3009,7 +3049,7 @@ Email:</property>
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">3</property>
+                        <property name="Position">4</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
@@ -3019,6 +3059,8 @@ Email:</property>
                   <packing>
                     <property name="Position">0</property>
                     <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
                   </packing>
                 </child>
                 <child>
@@ -3196,6 +3238,24 @@ Contraseña:</property>
                           </packing>
                         </child>
                         <child>
+                          <widget class="Gtk.Button" id="BtnUpdate">
+                            <property name="MemberName" />
+                            <property name="CanFocus">True</property>
+                            <property name="UseStock">True</property>
+                            <property name="Type">StockItem</property>
+                            <property name="StockId">gtk-refresh</property>
+                            <signal name="Clicked" handler="BtnUpdateOnClicked" />
+                            <property name="label">gtk-refresh</property>
+                          </widget>
+                          <packing>
+                            <property name="PackType">End</property>
+                            <property name="Position">2</property>
+                            <property name="AutoSize">True</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
+                          </packing>
+                        </child>
+                        <child>
                           <widget class="Gtk.Button" id="BtnAdd">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
@@ -3207,7 +3267,7 @@ Contraseña:</property>
                           </widget>
                           <packing>
                             <property name="PackType">End</property>
-                            <property name="Position">2</property>
+                            <property name="Position">3</property>
                             <property name="AutoSize">True</property>
                             <property name="Expand">False</property>
                             <property name="Fill">False</property>
@@ -3289,6 +3349,7 @@ Contraseña:</property>
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="ShowScrollbars">True</property>
+                        <signal name="RowActivated" handler="ViewTableOnRowActivated" />
                       </widget>
                     </child>
                   </widget>
