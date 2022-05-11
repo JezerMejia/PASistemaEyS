@@ -17,6 +17,22 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 
             ConnectionEyS connection = ConnectionEyS.OpenConnection();
 
+            //compararMayor();
+            if (lunesIni.ActiveText.Equals(lunesSal.ActiveText) ||
+                martesIni.ActiveText.Equals(martesSal.ActiveText) ||
+                miercolesIni.ActiveText.Equals(miercolesSal.ActiveText) ||
+                juevesIni.ActiveText.Equals(juevesSal.ActiveText) ||
+                viernesIni.ActiveText.Equals(viernesSal.ActiveText) ||
+                sabadoIni.ActiveText.Equals(sabadoSal.ActiveText) ||
+                domingoIni.ActiveText.Equals(domingoSal.ActiveText))
+            {
+
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, "No pueden inicio y salidas iguales ser iguales");
+                ms.Run();
+                ms.Destroy();
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(lunesIni.ActiveText) ||
                 string.IsNullOrWhiteSpace(lunesSal.ActiveText) ||
                 string.IsNullOrWhiteSpace(martesIni.ActiveText) ||
@@ -131,5 +147,28 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
             this.domingoSal.Entry.Text = "";
 
         }
+
+        public void comprobarIgual()
+        {
+
+        }
+
+        public void compararMayor()
+        {
+
+            DateTime dtLI = DateTime.ParseExact(lunesIni.ActiveText, "HH:mm", null);
+            DateTime dtLs = DateTime.ParseExact(lunesSal.ActiveText, "HH:mm", null);
+            int result = DateTime.Compare(dtLI, dtLs);
+
+            if (result < 0)
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
+                    ButtonsType.Ok, "Fechas distintas");
+                ms.Run();
+                ms.Destroy();
+            }
+
+        }
+
     }
 }
