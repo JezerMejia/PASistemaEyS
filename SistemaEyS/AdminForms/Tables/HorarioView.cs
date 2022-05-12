@@ -7,6 +7,7 @@ namespace SistemaEyS.AdminForms.Tables
     public partial class HorarioView : Gtk.Bin
     {
         Dt_tlb_horario dtus = new Dt_tlb_horario();
+        AddDialogHor adh = new AddDialogHor();
 
         public HorarioView()
         {
@@ -41,9 +42,8 @@ namespace SistemaEyS.AdminForms.Tables
 
         protected void OnBtnAddClicked(object sender, EventArgs e)
         {
-            AddDialogHor adh = new AddDialogHor();
-
             adh.Show();
+            adh.Present();
         }
     }
 }

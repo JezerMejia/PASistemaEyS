@@ -2,6 +2,7 @@
 using System.Data;
 using Gtk;
 using SistemaEyS.Database.Connection;
+
 namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 {
     public partial class AddDialogHor : Gtk.Window
@@ -10,6 +11,11 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
+            this.Hide();
+            this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
+            {
+                args.RetVal = this.HideOnDelete();
+            };
         }
 
         protected void OnButton15Clicked(object sender, EventArgs e)
