@@ -14,7 +14,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
 		private global::Gtk.HBox hbox13;
 
-		private global::SistemaEySLibrary.ComboBoxNumericEntry CmbxEntry;
+		private global::SistemaEySLibrary.ComboBoxNumericEntry CmbxID;
 
 		private global::Gtk.Label label5;
 
@@ -72,13 +72,13 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
 		private global::Gtk.HBox hbox18;
 
-		private global::Gtk.Entry idCar;
+		private global::Gtk.ComboBox CmbCargo;
 
 		private global::Gtk.Label label10;
 
 		private global::Gtk.HBox hbox19;
 
-		private global::Gtk.Entry idDep;
+		private global::Gtk.ComboBox CmbDep;
 
 		private global::Gtk.Label label11;
 
@@ -130,10 +130,10 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.hbox13.Name = "hbox13";
 			this.hbox13.Spacing = 6;
 			// Container child hbox13.Gtk.Box+BoxChild
-			this.CmbxEntry = new global::SistemaEySLibrary.ComboBoxNumericEntry();
-			this.CmbxEntry.Name = "CmbxEntry";
-			this.hbox13.Add(this.CmbxEntry);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox13[this.CmbxEntry]));
+			this.CmbxID = new global::SistemaEySLibrary.ComboBoxNumericEntry();
+			this.CmbxID.Name = "CmbxID";
+			this.hbox13.Add(this.CmbxID);
+			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox13[this.CmbxID]));
 			w1.PackType = ((global::Gtk.PackType)(1));
 			w1.Position = 0;
 			w1.Expand = false;
@@ -429,17 +429,15 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.hbox18.Name = "hbox18";
 			this.hbox18.Spacing = 6;
 			// Container child hbox18.Gtk.Box+BoxChild
-			this.idCar = new global::Gtk.Entry();
-			this.idCar.CanFocus = true;
-			this.idCar.Name = "idCar";
-			this.idCar.IsEditable = true;
-			this.idCar.WidthChars = 20;
-			this.idCar.InvisibleChar = '•';
-			this.hbox18.Add(this.idCar);
-			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.hbox18[this.idCar]));
+			this.CmbCargo = global::Gtk.ComboBox.NewText();
+			this.CmbCargo.WidthRequest = 150;
+			this.CmbCargo.Name = "CmbCargo";
+			this.hbox18.Add(this.CmbCargo);
+			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.hbox18[this.CmbCargo]));
 			w31.PackType = ((global::Gtk.PackType)(1));
 			w31.Position = 0;
 			w31.Expand = false;
+			w31.Fill = false;
 			// Container child hbox18.Gtk.Box+BoxChild
 			this.label10 = new global::Gtk.Label();
 			this.label10.Name = "label10";
@@ -460,17 +458,15 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.hbox19.Name = "hbox19";
 			this.hbox19.Spacing = 6;
 			// Container child hbox19.Gtk.Box+BoxChild
-			this.idDep = new global::Gtk.Entry();
-			this.idDep.CanFocus = true;
-			this.idDep.Name = "idDep";
-			this.idDep.IsEditable = true;
-			this.idDep.WidthChars = 20;
-			this.idDep.InvisibleChar = '•';
-			this.hbox19.Add(this.idDep);
-			global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.idDep]));
+			this.CmbDep = global::Gtk.ComboBox.NewText();
+			this.CmbDep.WidthRequest = 150;
+			this.CmbDep.Name = "CmbDep";
+			this.hbox19.Add(this.CmbDep);
+			global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.CmbDep]));
 			w34.PackType = ((global::Gtk.PackType)(1));
 			w34.Position = 0;
 			w34.Expand = false;
+			w34.Fill = false;
 			// Container child hbox19.Gtk.Box+BoxChild
 			this.label11 = new global::Gtk.Label();
 			this.label11.Name = "label11";
@@ -551,6 +547,8 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.hbox1.Add(this.vbox2);
 			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.vbox2]));
 			w43.Position = 1;
+			w43.Expand = false;
+			w43.Fill = false;
 			this.vbox6.Add(this.hbox1);
 			global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.hbox1]));
 			w44.Position = 0;
@@ -601,7 +599,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.DefaultWidth = 643;
 			this.DefaultHeight = 379;
 			this.Show();
-			this.CmbxEntry.Changed += new global::System.EventHandler(this.ComboBoxOnChanged);
+			this.CmbxID.Changed += new global::System.EventHandler(this.ComboBoxOnChanged);
 			this.BtnNewIDUpdate.Clicked += new global::System.EventHandler(this.BtnNewIDUpdateOnClicked);
 			this.BtnAccept.Clicked += new global::System.EventHandler(this.BtnAcceptOnClicked);
 			this.BtnCancel.Clicked += new global::System.EventHandler(this.BtnCancelOnClicked);

@@ -119,6 +119,8 @@
     <Compile Include="AdminForms\Tables\SolVacacionesView.cs" />
     <Compile Include="AdminForms\Tables\HorPanelBtn\AddDialogHor.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.HorPanelBtn.AddDialogHor.cs" />
+    <Compile Include="Database\DatosEyS\Dt_tbl_cargo.cs" />
+    <Compile Include="Database\DatosEyS\Dt_tbl_departamento.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />

@@ -7,15 +7,22 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 {
     public partial class UpdateDialog : Gtk.Window
     {
-        Dt_tlb_empleado dtus = new Dt_tlb_empleado();
-        ListStore datos;
+        protected Dt_tlb_empleado dtus = new Dt_tlb_empleado();
+        protected Dt_tlb_cargo dtcarg = new Dt_tlb_cargo();
+        protected Dt_tlb_departamento dtdep = new Dt_tlb_departamento();
+        protected ListStore EmpData;
+        protected ListStore CargoData;
+        protected ListStore DepData;
 
-        public UpdateDialog() :
+        protected EmpleadosView parent;
+
+        public UpdateDialog(EmpleadosView parent) :
                 base(Gtk.WindowType.Toplevel)
         {
+            this.parent = parent;
             this.Build();
             //this.CmbxEntry = SistemaEySLibrary.ComboBoxNumericEntry.NewText();
-            this.CmbxEntry.Entry.WidthChars = 16;
+            this.CmbxID.Entry.WidthChars = 16;
             this.Hide();
             this.UpdateData();
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
@@ -26,57 +33,110 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
         public void UpdateData()
         {
-            this.datos = dtus.listarUsuarios();
-            this.FillComboboxModel();
+            this.EmpData = dtus.listarUsuarios();
+            this.CargoData = dtcarg.listarCargos();
+            this.DepData = dtdep.ListarDepartamentosCmbx();
+            this.FillCmbxIDModel();
+            this.FillCmbCargoModel();
+            this.FillCmbDepModel();
         }
 
-        protected void FillComboboxModel()
+        protected void FillCmbxIDModel()
         {
-            ListStore store = (ListStore)this.CmbxEntry.Model;
+            ListStore store = (ListStore)this.CmbxID.Model;
             store.Clear();
             TreeIter iter;
-            if (datos.GetIterFirst(out iter))
+            if (EmpData.GetIterFirst(out iter))
             {
                 do
                 {
-                    this.CmbxEntry.InsertText(
-                        Convert.ToInt32(datos.GetValue(iter, 0)),
-                        (String)datos.GetValue(iter, 0)
+                    this.CmbxID.InsertText(
+                        Convert.ToInt32(EmpData.GetValue(iter, 0)),
+                        (String)EmpData.GetValue(iter, 0)
                     );
                 }
-                while (datos.IterNext(ref iter));
+                while (EmpData.IterNext(ref iter));
             }
 
-            this.CmbxEntry.Entry.Completion = new EntryCompletion();
-            this.CmbxEntry.Entry.Completion.Model = datos;
-            this.CmbxEntry.Entry.Completion.TextColumn = 0;
+            this.CmbxID.Entry.Completion = new EntryCompletion();
+            this.CmbxID.Entry.Completion.Model = EmpData;
+            this.CmbxID.Entry.Completion.TextColumn = 0;
+        }
+        protected void FillCmbCargoModel()
+        {
+            ListStore store = (ListStore)this.CmbCargo.Model;
+            store.Clear();
+            this.CargoData.InsertWithValues(0, "Ninguno", "0", "");
+            this.CmbCargo.Model = this.CargoData;
+            this.CmbCargo.Active = -1;
+        }
+        
+        protected void FillCmbDepModel()
+        {
+            ListStore model = (ListStore) this.CmbDep.Model;
+            model.Clear();
+            this.DepData.InsertWithValues(0, "Ninguno", "0", "");
+            this.CmbDep.Model = this.DepData;
+            this.CmbDep.Active = -1;
+        }
+
+        protected int GetIndexFromValue(ComboBox comboBox, string value)
+        {
+            int index = -1;
+            TreeModel model = comboBox.Model;
+            TreeIter iter;
+
+            if (value == "")
+            {
+                return 0;
+            }
+
+            int i = 0;
+            if (model.GetIterFirst(out iter))
+            {
+                do
+                {
+                    if (value == (string) model.GetValue(iter, 1))
+                    {
+                        index = i;
+                        break;
+                    }
+                    i++;
+                } while (model.IterNext(ref iter));
+            }
+
+            return index;
         }
 
         protected void ComboBoxOnChanged(object sender, EventArgs e)
         {
-            string id = this.CmbxEntry.ActiveText;
+            string id = this.CmbxID.ActiveText;
 
             TreeIter iter;
-            if (datos.GetIterFirst(out iter))
+            if (EmpData.GetIterFirst(out iter))
             {
                 do
                 {
-                    if (id == (string)datos.GetValue(iter, 0))
+                    if (id == (string)EmpData.GetValue(iter, 0))
                     {
-                        this.name.Text = (string)datos.GetValue(iter, 1);
-                        this.secondName.Text = (string)datos.GetValue(iter, 2);
-                        this.surname.Text = (string)datos.GetValue(iter, 3);
-                        this.secondSurname.Text = (string)datos.GetValue(iter, 4);
-                        this.dIngress.Text = (string)datos.GetValue(iter, 5);
-                        this.Icard.Text = (string)datos.GetValue(iter, 6);
-                        this.password.Text = (string)datos.GetValue(iter, 7);
-                        this.idCar.Text = (string)datos.GetValue(iter, 8);
-                        this.idDep.Text = (string)datos.GetValue(iter, 9);
-                        this.idHor.Text = (string)datos.GetValue(iter, 10);
-                        this.idGroup.Text = (string)datos.GetValue(iter, 11);
+                        this.newId.Text = id;
+                        this.name.Text = (string)EmpData.GetValue(iter, 1);
+                        this.secondName.Text = (string)EmpData.GetValue(iter, 2);
+                        this.surname.Text = (string)EmpData.GetValue(iter, 3);
+                        this.secondSurname.Text = (string)EmpData.GetValue(iter, 4);
+                        this.dIngress.Text = (string)EmpData.GetValue(iter, 5);
+                        this.Icard.Text = (string)EmpData.GetValue(iter, 6);
+                        this.password.Text = (string)EmpData.GetValue(iter, 7);
+                        this.CmbCargo.Active = this.GetIndexFromValue(
+                            this.CmbCargo, (string) EmpData.GetValue(iter, 8));
+                        this.CmbDep.Active = this.GetIndexFromValue(
+                            this.CmbDep, (string)EmpData.GetValue(iter, 9));
+                        this.idHor.Text = (string)EmpData.GetValue(iter, 10);
+                        this.idGroup.Text = (string)EmpData.GetValue(iter, 11);
                         return;
                     } else
                     {
+                        this.newId.Text = "";
                         this.name.Text = "";
                         this.secondName.Text = "";
                         this.surname.Text = "";
@@ -84,22 +144,39 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                         this.dIngress.Text = "";
                         this.Icard.Text = "";
                         this.password.Text = "";
-                        this.idCar.Text = "";
-                        this.idDep.Text = "";
+                        this.CmbCargo.Active = -1;
+                        this.CmbCargo.Active = -1;
                         this.idHor.Text = "";
                         this.idGroup.Text = "";
                     }
                 }
-                while (datos.IterNext(ref iter));
+                while (EmpData.IterNext(ref iter));
             }
+        }
+
+        protected string GetActiveID(ComboBox comboBox)
+        {
+            string id = "'NULL'";
+            TreeModel model = comboBox.Model;
+            TreeIter iter;
+            if (comboBox.GetActiveIter(out iter))
+            {
+                Console.WriteLine($"ID: {id}");
+                id = (string)model.GetValue(iter, 1);
+                if (string.IsNullOrWhiteSpace(id))
+                {
+                    return "NULL";
+                }
+                id = $"'{id}'";
+            }
+            return id;
         }
 
         protected void BtnAcceptOnClicked(object sender, EventArgs e)
         {
-
             ConnectionEyS connection = ConnectionEyS.OpenConnection();
 
-            string idEmpleado = this.CmbxEntry.ActiveText;
+            string idEmpleado = this.CmbxID.ActiveText;
 
             if (string.IsNullOrWhiteSpace(idEmpleado))
             {
@@ -139,13 +216,15 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             {
                 modifiedQuery += $"password = '{this.password.Text}', ";
             }
-            if (!string.IsNullOrWhiteSpace(this.idCar.Text))
+            if (!string.IsNullOrWhiteSpace(this.CmbCargo.ActiveText))
             {
-                modifiedQuery += $"idCargo = '{this.idCar.Text}', ";
+                string idCargo = this.GetActiveID(this.CmbCargo);
+                modifiedQuery += $"idCargo = {idCargo}, ";
             }
-            if (!string.IsNullOrWhiteSpace(this.idDep.Text))
+            if (!string.IsNullOrWhiteSpace(this.CmbDep.ActiveText))
             {
-                modifiedQuery += $"idDepartamento = '{this.idDep.Text}', ";
+                string idDep = this.GetActiveID(this.CmbDep);
+                modifiedQuery += $"idDepartamento = {idDep}, ";
             }
             if (!string.IsNullOrWhiteSpace(this.idHor.Text))
             {
@@ -162,6 +241,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
             string Query = $"UPDATE BDSistemaEyS.Empleado SET {modifiedQuery} " +
                 $"WHERE idEmpleado = {idEmpleado};";
+            //Console.WriteLine(Query);
             try
             {
                 connection.Execute(CommandType.Text, Query);
@@ -178,12 +258,14 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 ms.Run();
                 ms.Destroy();
             }
+
+            this.parent.UpdateData();
         }
 
         public void ClearInput()
         {
-            this.CmbxEntry.Active = -1;
-            this.CmbxEntry.Entry.Text = "";
+            this.CmbxID.Active = -1;
+            this.CmbxID.Entry.Text = "";
             this.newId.Text = "";
             this.name.Text = "";
             this.secondName.Text = "";
@@ -192,7 +274,8 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             this.dIngress.Text = "";
             this.Icard.Text = "";
             this.password.Text = "";
-            this.idCar.Text = "";
+            this.CmbCargo.Active = -1;
+            this.CmbDep.Active = -1;
         }
 
         public void SetIDRandom()

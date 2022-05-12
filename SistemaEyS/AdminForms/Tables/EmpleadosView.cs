@@ -9,12 +9,14 @@ namespace SistemaEyS.AdminForms.Tables
     {
         Dt_tlb_empleado dtus = new Dt_tlb_empleado();
         AddDialog addBtn = new AddDialog();
-        UpdateDialog actBtn = new UpdateDialog();
+        UpdateDialog actBtn;
         DeleteDialog delBtn = new DeleteDialog();
 
         public EmpleadosView()
         {
             this.Build();
+
+            this.actBtn = new UpdateDialog(this);
 
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
@@ -30,12 +32,19 @@ namespace SistemaEyS.AdminForms.Tables
             };
             this.viewTable.SetTreeViewColumns(storeObjects);
 
-            this.viewTable.Model = dtus.listarUsuarios();
+            this.viewTable.Model = dtus.listarUsuariosVista();
+        }
+
+        public void UpdateData()
+        {
+            this.viewTable.Model = dtus.listarUsuariosVista();
+            this.actBtn.UpdateData();
+            this.delBtn.UpdateData();
         }
 
         protected void btnUpdateOnClicked(object sender, EventArgs e)
         {
-            this.viewTable.Model = dtus.listarUsuarios();
+            this.UpdateData();
         }
 
 
