@@ -10,13 +10,15 @@ namespace SistemaEyS.AdminForms.Tables
 
 		private global::SistemaEyS.AdminForms.Tables.ViewTableTemplate viewTable;
 
-		private global::Gtk.HBox hbox1;
+		private global::Gtk.HBox hbox5;
 
-		private global::Gtk.Button btnAdd;
+		private global::Gtk.Button BtnDelSV;
 
-		private global::Gtk.Button btnDelete;
+		private global::Gtk.Button BtnActSV;
 
-		private global::Gtk.Button btnUpdate;
+		private global::Gtk.Button BtnUpSV;
+
+		private global::Gtk.Button BtnAddSV;
 
 		protected virtual void Build()
 		{
@@ -41,50 +43,62 @@ namespace SistemaEyS.AdminForms.Tables
 			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.GtkScrolledWindow]));
 			w2.Position = 0;
 			// Container child vbox1.Gtk.Box+BoxChild
-			this.hbox1 = new global::Gtk.HBox();
-			this.hbox1.Name = "hbox1";
-			this.hbox1.Spacing = 6;
-			// Container child hbox1.Gtk.Box+BoxChild
-			this.btnAdd = new global::Gtk.Button();
-			this.btnAdd.CanFocus = true;
-			this.btnAdd.Name = "btnAdd";
-			this.btnAdd.UseUnderline = true;
-			this.btnAdd.Label = global::Mono.Unix.Catalog.GetString("Añadir");
-			this.hbox1.Add(this.btnAdd);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.btnAdd]));
+			this.hbox5 = new global::Gtk.HBox();
+			this.hbox5.Name = "hbox5";
+			this.hbox5.Spacing = 6;
+			// Container child hbox5.Gtk.Box+BoxChild
+			this.BtnDelSV = new global::Gtk.Button();
+			this.BtnDelSV.CanFocus = true;
+			this.BtnDelSV.Name = "BtnDelSV";
+			this.BtnDelSV.UseUnderline = true;
+			this.BtnDelSV.Label = global::Mono.Unix.Catalog.GetString("Eliminar");
+			this.hbox5.Add(this.BtnDelSV);
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.BtnDelSV]));
 			w3.PackType = ((global::Gtk.PackType)(1));
 			w3.Position = 0;
 			w3.Expand = false;
 			w3.Fill = false;
-			// Container child hbox1.Gtk.Box+BoxChild
-			this.btnDelete = new global::Gtk.Button();
-			this.btnDelete.CanFocus = true;
-			this.btnDelete.Name = "btnDelete";
-			this.btnDelete.UseUnderline = true;
-			this.btnDelete.Label = global::Mono.Unix.Catalog.GetString("Eliminar");
-			this.hbox1.Add(this.btnDelete);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.btnDelete]));
+			// Container child hbox5.Gtk.Box+BoxChild
+			this.BtnActSV = new global::Gtk.Button();
+			this.BtnActSV.CanFocus = true;
+			this.BtnActSV.Name = "BtnActSV";
+			this.BtnActSV.UseUnderline = true;
+			this.BtnActSV.Label = global::Mono.Unix.Catalog.GetString("Actualizar");
+			this.hbox5.Add(this.BtnActSV);
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.BtnActSV]));
 			w4.PackType = ((global::Gtk.PackType)(1));
 			w4.Position = 1;
 			w4.Expand = false;
 			w4.Fill = false;
-			// Container child hbox1.Gtk.Box+BoxChild
-			this.btnUpdate = new global::Gtk.Button();
-			this.btnUpdate.CanFocus = true;
-			this.btnUpdate.Name = "btnUpdate";
-			this.btnUpdate.UseUnderline = true;
-			this.btnUpdate.Label = global::Mono.Unix.Catalog.GetString("Actualizar");
-			this.hbox1.Add(this.btnUpdate);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.btnUpdate]));
+			// Container child hbox5.Gtk.Box+BoxChild
+			this.BtnUpSV = new global::Gtk.Button();
+			this.BtnUpSV.CanFocus = true;
+			this.BtnUpSV.Name = "BtnUpSV";
+			this.BtnUpSV.UseUnderline = true;
+			this.BtnUpSV.Label = global::Mono.Unix.Catalog.GetString("Editar");
+			this.hbox5.Add(this.BtnUpSV);
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.BtnUpSV]));
 			w5.PackType = ((global::Gtk.PackType)(1));
 			w5.Position = 2;
 			w5.Expand = false;
 			w5.Fill = false;
-			this.vbox1.Add(this.hbox1);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.hbox1]));
-			w6.Position = 1;
+			// Container child hbox5.Gtk.Box+BoxChild
+			this.BtnAddSV = new global::Gtk.Button();
+			this.BtnAddSV.CanFocus = true;
+			this.BtnAddSV.Name = "BtnAddSV";
+			this.BtnAddSV.UseUnderline = true;
+			this.BtnAddSV.Label = global::Mono.Unix.Catalog.GetString("Añadir");
+			this.hbox5.Add(this.BtnAddSV);
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.BtnAddSV]));
+			w6.PackType = ((global::Gtk.PackType)(1));
+			w6.Position = 3;
 			w6.Expand = false;
 			w6.Fill = false;
+			this.vbox1.Add(this.hbox5);
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.hbox5]));
+			w7.Position = 1;
+			w7.Expand = false;
+			w7.Fill = false;
 			this.Add(this.vbox1);
 			if ((this.Child != null))
 			{
