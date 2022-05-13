@@ -64,7 +64,6 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
             }
 
             String Query = "INSERT INTO BDSistemaEyS.Horario (" +
-                    "idHorario," +
                     "lunesInicio, lunesSalida, " +
                     "martesInicio, martesSalida, " +
                     "miercolesInicio, miercolesSalida," +
@@ -73,7 +72,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
                     "sabadoInicio, sabadoSalida," +
                     "domingoInicio, domingoSalida) " +
                     "VALUES (" +
-                    $"{idHor.Text}, '{lunesIni.ActiveText}', '{lunesSal.ActiveText}'," +
+                    $"'{lunesIni.ActiveText}', '{lunesSal.ActiveText}'," +
                     $"'{martesIni.ActiveText}', '{martesSal.ActiveText}', " +
                     $"'{miercolesIni.ActiveText}','{miercolesSal.ActiveText}', " +
                     $"'{juevesIni.ActiveText}', '{juevesSal.ActiveText}', " +
@@ -108,7 +107,6 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 
         public void ClearInput()
         {
-            idHor.Text = "";
 
             // Lunes
             this.lunesIni.Active = -1;
@@ -143,8 +141,8 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
             //Sabado
             this.sabadoIni.Active = -1;
             this.sabadoIni.Entry.Text = "";
-            this.lunesSal.Active = -1;
-            this.lunesSal.Entry.Text = "";
+            this.sabadoSal.Active = -1;
+            this.sabadoSal.Entry.Text = "";
 
             //Domingo
             this.domingoIni.Active = -1;

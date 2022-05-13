@@ -12,14 +12,6 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 
 		private global::Gtk.VBox vbox10;
 
-		private global::Gtk.Alignment alignment22;
-
-		private global::Gtk.HBox hbox16;
-
-		private global::Gtk.Entry idHor;
-
-		private global::Gtk.Label label8;
-
 		private global::Gtk.Alignment alignment30;
 
 		private global::Gtk.HBox hbox28;
@@ -133,42 +125,6 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.vbox10.Name = "vbox10";
 			this.vbox10.Spacing = 6;
 			// Container child vbox10.Gtk.Box+BoxChild
-			this.alignment22 = new global::Gtk.Alignment(0.5F, 0.5F, 0F, 0F);
-			this.alignment22.Name = "alignment22";
-			this.alignment22.TopPadding = ((uint)(20));
-			this.alignment22.BottomPadding = ((uint)(20));
-			// Container child alignment22.Gtk.Container+ContainerChild
-			this.hbox16 = new global::Gtk.HBox();
-			this.hbox16.Name = "hbox16";
-			this.hbox16.Spacing = 6;
-			// Container child hbox16.Gtk.Box+BoxChild
-			this.idHor = new global::Gtk.Entry();
-			this.idHor.CanFocus = true;
-			this.idHor.Name = "idHor";
-			this.idHor.IsEditable = true;
-			this.idHor.InvisibleChar = '•';
-			this.hbox16.Add(this.idHor);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox16[this.idHor]));
-			w1.PackType = ((global::Gtk.PackType)(1));
-			w1.Position = 0;
-			w1.Expand = false;
-			// Container child hbox16.Gtk.Box+BoxChild
-			this.label8 = new global::Gtk.Label();
-			this.label8.Name = "label8";
-			this.label8.LabelProp = global::Mono.Unix.Catalog.GetString("ID:");
-			this.hbox16.Add(this.label8);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox16[this.label8]));
-			w2.PackType = ((global::Gtk.PackType)(1));
-			w2.Position = 1;
-			w2.Expand = false;
-			w2.Fill = false;
-			this.alignment22.Add(this.hbox16);
-			this.vbox10.Add(this.alignment22);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.alignment22]));
-			w4.Position = 0;
-			w4.Expand = false;
-			w4.Fill = false;
-			// Container child vbox10.Gtk.Box+BoxChild
 			this.alignment30 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
 			this.alignment30.Name = "alignment30";
 			// Container child alignment30.Gtk.Container+ContainerChild
@@ -185,10 +141,10 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.label20.LabelProp = global::Mono.Unix.Catalog.GetString("Entrada");
 			this.alignment34.Add(this.label20);
 			this.hbox28.Add(this.alignment34);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox28[this.alignment34]));
-			w6.Position = 0;
-			w6.Expand = false;
-			w6.Fill = false;
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox28[this.alignment34]));
+			w2.Position = 0;
+			w2.Expand = false;
+			w2.Fill = false;
 			// Container child hbox28.Gtk.Box+BoxChild
 			this.alignment33 = new global::Gtk.Alignment(0.5F, 0.5F, 0F, 0F);
 			this.alignment33.Name = "alignment33";
@@ -199,16 +155,16 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.label19.LabelProp = global::Mono.Unix.Catalog.GetString("Salida");
 			this.alignment33.Add(this.label19);
 			this.hbox28.Add(this.alignment33);
-			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox28[this.alignment33]));
-			w8.Position = 1;
-			w8.Expand = false;
-			w8.Fill = false;
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox28[this.alignment33]));
+			w4.Position = 1;
+			w4.Expand = false;
+			w4.Fill = false;
 			this.alignment30.Add(this.hbox28);
 			this.vbox10.Add(this.alignment30);
-			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.alignment30]));
-			w10.Position = 1;
-			w10.Expand = false;
-			w10.Fill = false;
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.alignment30]));
+			w6.Position = 0;
+			w6.Expand = false;
+			w6.Fill = false;
 			// Container child vbox10.Gtk.Box+BoxChild
 			this.alignment23 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
 			this.alignment23.Name = "alignment23";
@@ -230,11 +186,11 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.lunesSal.AppendText(global::Mono.Unix.Catalog.GetString("17:00"));
 			this.lunesSal.Name = "lunesSal";
 			this.hbox19.Add(this.lunesSal);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.lunesSal]));
-			w11.PackType = ((global::Gtk.PackType)(1));
-			w11.Position = 0;
-			w11.Expand = false;
-			w11.Fill = false;
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.lunesSal]));
+			w7.PackType = ((global::Gtk.PackType)(1));
+			w7.Position = 0;
+			w7.Expand = false;
+			w7.Fill = false;
 			// Container child hbox19.Gtk.Box+BoxChild
 			this.lunesIni = global::Gtk.ComboBoxEntry.NewText();
 			this.lunesIni.AppendText(global::Mono.Unix.Catalog.GetString("8:00"));
@@ -249,27 +205,27 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.lunesIni.AppendText(global::Mono.Unix.Catalog.GetString("17:00"));
 			this.lunesIni.Name = "lunesIni";
 			this.hbox19.Add(this.lunesIni);
-			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.lunesIni]));
-			w12.PackType = ((global::Gtk.PackType)(1));
-			w12.Position = 1;
-			w12.Expand = false;
-			w12.Fill = false;
+			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.lunesIni]));
+			w8.PackType = ((global::Gtk.PackType)(1));
+			w8.Position = 1;
+			w8.Expand = false;
+			w8.Fill = false;
 			// Container child hbox19.Gtk.Box+BoxChild
 			this.label9 = new global::Gtk.Label();
 			this.label9.Name = "label9";
 			this.label9.LabelProp = global::Mono.Unix.Catalog.GetString("Lunes:");
 			this.hbox19.Add(this.label9);
-			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.label9]));
-			w13.PackType = ((global::Gtk.PackType)(1));
-			w13.Position = 2;
-			w13.Expand = false;
-			w13.Fill = false;
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.label9]));
+			w9.PackType = ((global::Gtk.PackType)(1));
+			w9.Position = 2;
+			w9.Expand = false;
+			w9.Fill = false;
 			this.alignment23.Add(this.hbox19);
 			this.vbox10.Add(this.alignment23);
-			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.alignment23]));
-			w15.Position = 2;
-			w15.Expand = false;
-			w15.Fill = false;
+			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.alignment23]));
+			w11.Position = 1;
+			w11.Expand = false;
+			w11.Fill = false;
 			// Container child vbox10.Gtk.Box+BoxChild
 			this.alignment24 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
 			this.alignment24.Name = "alignment24";
@@ -291,11 +247,11 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.martesSal.AppendText(global::Mono.Unix.Catalog.GetString("17:00"));
 			this.martesSal.Name = "martesSal";
 			this.hbox20.Add(this.martesSal);
-			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.hbox20[this.martesSal]));
-			w16.PackType = ((global::Gtk.PackType)(1));
-			w16.Position = 0;
-			w16.Expand = false;
-			w16.Fill = false;
+			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hbox20[this.martesSal]));
+			w12.PackType = ((global::Gtk.PackType)(1));
+			w12.Position = 0;
+			w12.Expand = false;
+			w12.Fill = false;
 			// Container child hbox20.Gtk.Box+BoxChild
 			this.martesIni = global::Gtk.ComboBoxEntry.NewText();
 			this.martesIni.AppendText(global::Mono.Unix.Catalog.GetString("8:00"));
@@ -310,27 +266,27 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.martesIni.AppendText(global::Mono.Unix.Catalog.GetString("17:00"));
 			this.martesIni.Name = "martesIni";
 			this.hbox20.Add(this.martesIni);
-			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.hbox20[this.martesIni]));
-			w17.PackType = ((global::Gtk.PackType)(1));
-			w17.Position = 1;
-			w17.Expand = false;
-			w17.Fill = false;
+			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.hbox20[this.martesIni]));
+			w13.PackType = ((global::Gtk.PackType)(1));
+			w13.Position = 1;
+			w13.Expand = false;
+			w13.Fill = false;
 			// Container child hbox20.Gtk.Box+BoxChild
 			this.label10 = new global::Gtk.Label();
 			this.label10.Name = "label10";
 			this.label10.LabelProp = global::Mono.Unix.Catalog.GetString("Martes:");
 			this.hbox20.Add(this.label10);
-			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.hbox20[this.label10]));
-			w18.PackType = ((global::Gtk.PackType)(1));
-			w18.Position = 2;
-			w18.Expand = false;
-			w18.Fill = false;
+			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.hbox20[this.label10]));
+			w14.PackType = ((global::Gtk.PackType)(1));
+			w14.Position = 2;
+			w14.Expand = false;
+			w14.Fill = false;
 			this.alignment24.Add(this.hbox20);
 			this.vbox10.Add(this.alignment24);
-			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.alignment24]));
-			w20.Position = 3;
-			w20.Expand = false;
-			w20.Fill = false;
+			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.alignment24]));
+			w16.Position = 2;
+			w16.Expand = false;
+			w16.Fill = false;
 			// Container child vbox10.Gtk.Box+BoxChild
 			this.alignment25 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
 			this.alignment25.Name = "alignment25";
@@ -352,11 +308,11 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.miercolesSal.AppendText(global::Mono.Unix.Catalog.GetString("17:00"));
 			this.miercolesSal.Name = "miercolesSal";
 			this.hbox21.Add(this.miercolesSal);
-			global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.hbox21[this.miercolesSal]));
-			w21.PackType = ((global::Gtk.PackType)(1));
-			w21.Position = 0;
-			w21.Expand = false;
-			w21.Fill = false;
+			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.hbox21[this.miercolesSal]));
+			w17.PackType = ((global::Gtk.PackType)(1));
+			w17.Position = 0;
+			w17.Expand = false;
+			w17.Fill = false;
 			// Container child hbox21.Gtk.Box+BoxChild
 			this.miercolesIni = global::Gtk.ComboBoxEntry.NewText();
 			this.miercolesIni.AppendText(global::Mono.Unix.Catalog.GetString("8:00"));
@@ -371,27 +327,27 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.miercolesIni.AppendText(global::Mono.Unix.Catalog.GetString("17:00"));
 			this.miercolesIni.Name = "miercolesIni";
 			this.hbox21.Add(this.miercolesIni);
-			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.hbox21[this.miercolesIni]));
-			w22.PackType = ((global::Gtk.PackType)(1));
-			w22.Position = 1;
-			w22.Expand = false;
-			w22.Fill = false;
+			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.hbox21[this.miercolesIni]));
+			w18.PackType = ((global::Gtk.PackType)(1));
+			w18.Position = 1;
+			w18.Expand = false;
+			w18.Fill = false;
 			// Container child hbox21.Gtk.Box+BoxChild
 			this.label11 = new global::Gtk.Label();
 			this.label11.Name = "label11";
 			this.label11.LabelProp = global::Mono.Unix.Catalog.GetString("Miercoles:");
 			this.hbox21.Add(this.label11);
-			global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.hbox21[this.label11]));
-			w23.PackType = ((global::Gtk.PackType)(1));
-			w23.Position = 2;
-			w23.Expand = false;
-			w23.Fill = false;
+			global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.hbox21[this.label11]));
+			w19.PackType = ((global::Gtk.PackType)(1));
+			w19.Position = 2;
+			w19.Expand = false;
+			w19.Fill = false;
 			this.alignment25.Add(this.hbox21);
 			this.vbox10.Add(this.alignment25);
-			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.alignment25]));
-			w25.Position = 4;
-			w25.Expand = false;
-			w25.Fill = false;
+			global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.alignment25]));
+			w21.Position = 3;
+			w21.Expand = false;
+			w21.Fill = false;
 			// Container child vbox10.Gtk.Box+BoxChild
 			this.alignment26 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
 			this.alignment26.Name = "alignment26";
@@ -413,11 +369,11 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.juevesSal.AppendText(global::Mono.Unix.Catalog.GetString("17:00"));
 			this.juevesSal.Name = "juevesSal";
 			this.hbox22.Add(this.juevesSal);
-			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.hbox22[this.juevesSal]));
-			w26.PackType = ((global::Gtk.PackType)(1));
-			w26.Position = 0;
-			w26.Expand = false;
-			w26.Fill = false;
+			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.hbox22[this.juevesSal]));
+			w22.PackType = ((global::Gtk.PackType)(1));
+			w22.Position = 0;
+			w22.Expand = false;
+			w22.Fill = false;
 			// Container child hbox22.Gtk.Box+BoxChild
 			this.juevesIni = global::Gtk.ComboBoxEntry.NewText();
 			this.juevesIni.AppendText(global::Mono.Unix.Catalog.GetString("8:00"));
@@ -432,27 +388,27 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.juevesIni.AppendText(global::Mono.Unix.Catalog.GetString("17:00"));
 			this.juevesIni.Name = "juevesIni";
 			this.hbox22.Add(this.juevesIni);
-			global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.hbox22[this.juevesIni]));
-			w27.PackType = ((global::Gtk.PackType)(1));
-			w27.Position = 1;
-			w27.Expand = false;
-			w27.Fill = false;
+			global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.hbox22[this.juevesIni]));
+			w23.PackType = ((global::Gtk.PackType)(1));
+			w23.Position = 1;
+			w23.Expand = false;
+			w23.Fill = false;
 			// Container child hbox22.Gtk.Box+BoxChild
 			this.label12 = new global::Gtk.Label();
 			this.label12.Name = "label12";
 			this.label12.LabelProp = global::Mono.Unix.Catalog.GetString("Jueves:");
 			this.hbox22.Add(this.label12);
-			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.hbox22[this.label12]));
-			w28.PackType = ((global::Gtk.PackType)(1));
-			w28.Position = 2;
-			w28.Expand = false;
-			w28.Fill = false;
+			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.hbox22[this.label12]));
+			w24.PackType = ((global::Gtk.PackType)(1));
+			w24.Position = 2;
+			w24.Expand = false;
+			w24.Fill = false;
 			this.alignment26.Add(this.hbox22);
 			this.vbox10.Add(this.alignment26);
-			global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.alignment26]));
-			w30.Position = 5;
-			w30.Expand = false;
-			w30.Fill = false;
+			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.alignment26]));
+			w26.Position = 4;
+			w26.Expand = false;
+			w26.Fill = false;
 			// Container child vbox10.Gtk.Box+BoxChild
 			this.alignment27 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
 			this.alignment27.Name = "alignment27";
@@ -474,11 +430,11 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.viernesSal.AppendText(global::Mono.Unix.Catalog.GetString("17:00"));
 			this.viernesSal.Name = "viernesSal";
 			this.hbox23.Add(this.viernesSal);
-			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.hbox23[this.viernesSal]));
-			w31.PackType = ((global::Gtk.PackType)(1));
-			w31.Position = 0;
-			w31.Expand = false;
-			w31.Fill = false;
+			global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.hbox23[this.viernesSal]));
+			w27.PackType = ((global::Gtk.PackType)(1));
+			w27.Position = 0;
+			w27.Expand = false;
+			w27.Fill = false;
 			// Container child hbox23.Gtk.Box+BoxChild
 			this.viernesIni = global::Gtk.ComboBoxEntry.NewText();
 			this.viernesIni.AppendText(global::Mono.Unix.Catalog.GetString("8:00"));
@@ -493,27 +449,27 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.viernesIni.AppendText(global::Mono.Unix.Catalog.GetString("17:00"));
 			this.viernesIni.Name = "viernesIni";
 			this.hbox23.Add(this.viernesIni);
-			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.hbox23[this.viernesIni]));
-			w32.PackType = ((global::Gtk.PackType)(1));
-			w32.Position = 1;
-			w32.Expand = false;
-			w32.Fill = false;
+			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.hbox23[this.viernesIni]));
+			w28.PackType = ((global::Gtk.PackType)(1));
+			w28.Position = 1;
+			w28.Expand = false;
+			w28.Fill = false;
 			// Container child hbox23.Gtk.Box+BoxChild
 			this.label13 = new global::Gtk.Label();
 			this.label13.Name = "label13";
 			this.label13.LabelProp = global::Mono.Unix.Catalog.GetString("Viernes:");
 			this.hbox23.Add(this.label13);
-			global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.hbox23[this.label13]));
-			w33.PackType = ((global::Gtk.PackType)(1));
-			w33.Position = 2;
-			w33.Expand = false;
-			w33.Fill = false;
+			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.hbox23[this.label13]));
+			w29.PackType = ((global::Gtk.PackType)(1));
+			w29.Position = 2;
+			w29.Expand = false;
+			w29.Fill = false;
 			this.alignment27.Add(this.hbox23);
 			this.vbox10.Add(this.alignment27);
-			global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.alignment27]));
-			w35.Position = 6;
-			w35.Expand = false;
-			w35.Fill = false;
+			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.alignment27]));
+			w31.Position = 5;
+			w31.Expand = false;
+			w31.Fill = false;
 			// Container child vbox10.Gtk.Box+BoxChild
 			this.alignment28 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
 			this.alignment28.Name = "alignment28";
@@ -535,11 +491,11 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.sabadoSal.AppendText(global::Mono.Unix.Catalog.GetString("17:00"));
 			this.sabadoSal.Name = "sabadoSal";
 			this.hbox24.Add(this.sabadoSal);
-			global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.hbox24[this.sabadoSal]));
-			w36.PackType = ((global::Gtk.PackType)(1));
-			w36.Position = 0;
-			w36.Expand = false;
-			w36.Fill = false;
+			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.hbox24[this.sabadoSal]));
+			w32.PackType = ((global::Gtk.PackType)(1));
+			w32.Position = 0;
+			w32.Expand = false;
+			w32.Fill = false;
 			// Container child hbox24.Gtk.Box+BoxChild
 			this.sabadoIni = global::Gtk.ComboBoxEntry.NewText();
 			this.sabadoIni.AppendText(global::Mono.Unix.Catalog.GetString("8:00"));
@@ -554,27 +510,27 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.sabadoIni.AppendText(global::Mono.Unix.Catalog.GetString("17:00"));
 			this.sabadoIni.Name = "sabadoIni";
 			this.hbox24.Add(this.sabadoIni);
-			global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(this.hbox24[this.sabadoIni]));
-			w37.PackType = ((global::Gtk.PackType)(1));
-			w37.Position = 1;
-			w37.Expand = false;
-			w37.Fill = false;
+			global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.hbox24[this.sabadoIni]));
+			w33.PackType = ((global::Gtk.PackType)(1));
+			w33.Position = 1;
+			w33.Expand = false;
+			w33.Fill = false;
 			// Container child hbox24.Gtk.Box+BoxChild
 			this.label14 = new global::Gtk.Label();
 			this.label14.Name = "label14";
 			this.label14.LabelProp = global::Mono.Unix.Catalog.GetString("Sabado:");
 			this.hbox24.Add(this.label14);
-			global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.hbox24[this.label14]));
-			w38.PackType = ((global::Gtk.PackType)(1));
-			w38.Position = 2;
-			w38.Expand = false;
-			w38.Fill = false;
+			global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.hbox24[this.label14]));
+			w34.PackType = ((global::Gtk.PackType)(1));
+			w34.Position = 2;
+			w34.Expand = false;
+			w34.Fill = false;
 			this.alignment28.Add(this.hbox24);
 			this.vbox10.Add(this.alignment28);
-			global::Gtk.Box.BoxChild w40 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.alignment28]));
-			w40.Position = 7;
-			w40.Expand = false;
-			w40.Fill = false;
+			global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.alignment28]));
+			w36.Position = 6;
+			w36.Expand = false;
+			w36.Fill = false;
 			// Container child vbox10.Gtk.Box+BoxChild
 			this.alignment29 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
 			this.alignment29.Name = "alignment29";
@@ -596,11 +552,11 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.domingoSal.AppendText(global::Mono.Unix.Catalog.GetString("17:00"));
 			this.domingoSal.Name = "domingoSal";
 			this.hbox25.Add(this.domingoSal);
-			global::Gtk.Box.BoxChild w41 = ((global::Gtk.Box.BoxChild)(this.hbox25[this.domingoSal]));
-			w41.PackType = ((global::Gtk.PackType)(1));
-			w41.Position = 0;
-			w41.Expand = false;
-			w41.Fill = false;
+			global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(this.hbox25[this.domingoSal]));
+			w37.PackType = ((global::Gtk.PackType)(1));
+			w37.Position = 0;
+			w37.Expand = false;
+			w37.Fill = false;
 			// Container child hbox25.Gtk.Box+BoxChild
 			this.domingoIni = global::Gtk.ComboBoxEntry.NewText();
 			this.domingoIni.AppendText(global::Mono.Unix.Catalog.GetString("8:00"));
@@ -615,33 +571,33 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.domingoIni.AppendText(global::Mono.Unix.Catalog.GetString("17:00"));
 			this.domingoIni.Name = "domingoIni";
 			this.hbox25.Add(this.domingoIni);
-			global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.hbox25[this.domingoIni]));
-			w42.PackType = ((global::Gtk.PackType)(1));
-			w42.Position = 1;
-			w42.Expand = false;
-			w42.Fill = false;
+			global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.hbox25[this.domingoIni]));
+			w38.PackType = ((global::Gtk.PackType)(1));
+			w38.Position = 1;
+			w38.Expand = false;
+			w38.Fill = false;
 			// Container child hbox25.Gtk.Box+BoxChild
 			this.label15 = new global::Gtk.Label();
 			this.label15.Name = "label15";
 			this.label15.LabelProp = global::Mono.Unix.Catalog.GetString("Domingo:");
 			this.hbox25.Add(this.label15);
-			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.hbox25[this.label15]));
-			w43.PackType = ((global::Gtk.PackType)(1));
-			w43.Position = 2;
-			w43.Expand = false;
-			w43.Fill = false;
+			global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.hbox25[this.label15]));
+			w39.PackType = ((global::Gtk.PackType)(1));
+			w39.Position = 2;
+			w39.Expand = false;
+			w39.Fill = false;
 			this.alignment29.Add(this.hbox25);
 			this.vbox10.Add(this.alignment29);
-			global::Gtk.Box.BoxChild w45 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.alignment29]));
-			w45.Position = 8;
-			w45.Expand = false;
-			w45.Fill = false;
+			global::Gtk.Box.BoxChild w41 = ((global::Gtk.Box.BoxChild)(this.vbox10[this.alignment29]));
+			w41.Position = 7;
+			w41.Expand = false;
+			w41.Fill = false;
 			this.alignment21.Add(this.vbox10);
 			this.vbox5.Add(this.alignment21);
-			global::Gtk.Box.BoxChild w47 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.alignment21]));
-			w47.Position = 0;
-			w47.Expand = false;
-			w47.Fill = false;
+			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.alignment21]));
+			w43.Position = 0;
+			w43.Expand = false;
+			w43.Fill = false;
 			// Container child vbox5.Gtk.Box+BoxChild
 			this.alignment18 = new global::Gtk.Alignment(0.5F, 0.5F, 0F, 0F);
 			this.alignment18.Name = "alignment18";
@@ -657,10 +613,10 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.button15.UseUnderline = true;
 			this.button15.Label = global::Mono.Unix.Catalog.GetString("Guardar");
 			this.hbox7.Add(this.button15);
-			global::Gtk.Box.BoxChild w48 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.button15]));
-			w48.Position = 0;
-			w48.Expand = false;
-			w48.Fill = false;
+			global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.button15]));
+			w44.Position = 0;
+			w44.Expand = false;
+			w44.Fill = false;
 			// Container child hbox7.Gtk.Box+BoxChild
 			this.button13 = new global::Gtk.Button();
 			this.button13.CanFocus = true;
@@ -668,16 +624,16 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.button13.UseUnderline = true;
 			this.button13.Label = global::Mono.Unix.Catalog.GetString("Cancelar");
 			this.hbox7.Add(this.button13);
-			global::Gtk.Box.BoxChild w49 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.button13]));
-			w49.Position = 1;
-			w49.Expand = false;
-			w49.Fill = false;
+			global::Gtk.Box.BoxChild w45 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.button13]));
+			w45.Position = 1;
+			w45.Expand = false;
+			w45.Fill = false;
 			this.alignment18.Add(this.hbox7);
 			this.vbox5.Add(this.alignment18);
-			global::Gtk.Box.BoxChild w51 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.alignment18]));
-			w51.Position = 1;
-			w51.Expand = false;
-			w51.Fill = false;
+			global::Gtk.Box.BoxChild w47 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.alignment18]));
+			w47.Position = 1;
+			w47.Expand = false;
+			w47.Fill = false;
 			this.alignment17.Add(this.vbox5);
 			this.Add(this.alignment17);
 			if ((this.Child != null))
@@ -685,7 +641,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 				this.Child.ShowAll();
 			}
 			this.DefaultWidth = 478;
-			this.DefaultHeight = 496;
+			this.DefaultHeight = 415;
 			this.Show();
 			this.button15.Clicked += new global::System.EventHandler(this.OnButton15Clicked);
 			this.button13.Clicked += new global::System.EventHandler(this.OnButton13Clicked);
