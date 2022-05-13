@@ -99,7 +99,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 			global::Stetic.Gui.Initialize(this);
 			// Widget SistemaEyS.AdminForms.Seguridad.UserSeguridad
 			this.Name = "SistemaEyS.AdminForms.Seguridad.UserSeguridad";
-			this.Title = global::Mono.Unix.Catalog.GetString("UserSeguridad");
+			this.Title = global::Mono.Unix.Catalog.GetString("Seguridad | Usuario");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 			// Container child SistemaEyS.AdminForms.Seguridad.UserSeguridad.Gtk.Container+ContainerChild
 			this.alignment1 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
@@ -441,6 +441,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.vbox2.Spacing = 6;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.hbox1 = new global::Gtk.HBox();
+			this.hbox1.Name = "hbox1";
 			this.hbox1.Spacing = 6;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.label1 = new global::Gtk.Label();
