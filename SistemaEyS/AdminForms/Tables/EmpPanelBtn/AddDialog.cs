@@ -9,9 +9,11 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 {
     public partial class AddDialog : Gtk.Window
     {
-        public AddDialog() :
+        protected EmpleadosView parent;
+        public AddDialog(EmpleadosView parent) :
                 base(Gtk.WindowType.Toplevel)
         {
+            this.parent = parent;
             this.Build();
             SetIDRandom();
             this.Hide();
@@ -62,6 +64,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 ms.Run();
                 ms.Destroy();
             }
+            this.parent.UpdateData();
         }
 
         protected void BtnCancelOnClicked(object sender, EventArgs e)

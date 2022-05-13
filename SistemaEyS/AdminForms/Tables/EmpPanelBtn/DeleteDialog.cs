@@ -11,10 +11,12 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
         Dt_tlb_empleado dtus = new Dt_tlb_empleado();
         ListStore datos;
+        protected EmpleadosView parent;
 
-        public DeleteDialog() :
+        public DeleteDialog(EmpleadosView parent) :
                 base(Gtk.WindowType.Toplevel)
         {
+            this.parent = parent;
             this.Build();
             this.CmbxEntry.Entry.WidthChars = 21;
             this.Hide();
@@ -110,6 +112,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 ms.Run();
                 ms.Destroy();
             }
+            this.parent.UpdateData();
         }
 
         protected void BtnCancelOnClicked(object sender, EventArgs e)

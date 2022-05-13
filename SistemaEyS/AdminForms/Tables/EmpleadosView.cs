@@ -8,15 +8,17 @@ namespace SistemaEyS.AdminForms.Tables
     public partial class EmpleadosView : Gtk.Bin
     {
         Dt_tlb_empleado dtus = new Dt_tlb_empleado();
-        AddDialog addBtn = new AddDialog();
+        AddDialog addBtn;
         UpdateDialog actBtn;
-        DeleteDialog delBtn = new DeleteDialog();
+        DeleteDialog delBtn;
 
         public EmpleadosView()
         {
             this.Build();
 
+            this.addBtn = new AddDialog(this);
             this.actBtn = new UpdateDialog(this);
+            this.delBtn = new DeleteDialog(this);
 
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
