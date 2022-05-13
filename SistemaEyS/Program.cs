@@ -9,6 +9,7 @@ namespace SistemaEyS
         public static void Main(string[] args)
         {
             Application.Init();
+            Gtk.Settings.Default.SetLongProperty("gtk-button-images", 1, "");
             ConnectionEyS.OpenConnection();
 
             MainWindow win = new MainWindow();
