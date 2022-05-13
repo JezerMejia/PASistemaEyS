@@ -24,7 +24,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
             ConnectionEyS connection = ConnectionEyS.OpenConnection();
 
             //compararMayor();
-            if (lunesIni.ActiveText.Equals(lunesSal.ActiveText) ||
+            /*if (lunesIni.ActiveText.Equals(lunesSal.ActiveText) ||
                 martesIni.ActiveText.Equals(martesSal.ActiveText) ||
                 miercolesIni.ActiveText.Equals(miercolesSal.ActiveText) ||
                 juevesIni.ActiveText.Equals(juevesSal.ActiveText) ||
@@ -33,11 +33,9 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
                 domingoIni.ActiveText.Equals(domingoSal.ActiveText))
             {
 
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok, "No pueden inicio y salidas iguales ser iguales");
-                ms.Run();
-                ms.Destroy();
+                mensaje("Entrada y salida no pueden ser iguales");
                 return;
-            }
+            }*/
 
             if (string.IsNullOrWhiteSpace(lunesIni.ActiveText) ||
                 string.IsNullOrWhiteSpace(lunesSal.ActiveText) ||
@@ -55,10 +53,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
                 string.IsNullOrWhiteSpace(domingoSal.ActiveText)
                 )
             {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
-                    ButtonsType.Ok, "No puede haber datos vacíos");
-                ms.Run();
-                ms.Destroy();
+                mensaje("No pueden haber datos vacios");
                 ClearInput();
                 return;
             }
@@ -83,10 +78,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
             try
             {
                 connection.Execute(CommandType.Text, Query);
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
-                    ButtonsType.Ok, "Guardado");
-                ms.Run();
-                ms.Destroy();
+                mensaje("Guardado");
                 ClearInput();
             }
             catch (Exception ex)
@@ -171,6 +163,15 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
                 ms.Run();
                 ms.Destroy();
             }
+
+        }
+
+        public void mensaje(String mensaje)
+        {
+            MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
+                    ButtonsType.Ok, mensaje);
+            ms.Run();
+            ms.Destroy();
 
         }
 
