@@ -255,7 +255,7 @@ namespace SistemaEyS.AdminForms.Seguridad
                     this.SelectedID = Int32.Parse(selectedID);
                     this.SetEntryTextFromID(this.SelectedID);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return;
                 }

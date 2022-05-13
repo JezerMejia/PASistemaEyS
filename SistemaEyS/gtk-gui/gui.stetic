@@ -2834,7 +2834,7 @@ T.I.</property>
   </widget>
   <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Seguridad.UserSeguridad" design-size="602 400">
     <property name="MemberName" />
-    <property name="Title" translatable="yes">UserSeguridad</property>
+    <property name="Title" translatable="yes">Seguridad | Usuario</property>
     <property name="WindowPosition">CenterOnParent</property>
     <child>
       <widget class="Gtk.Alignment" id="alignment1">
