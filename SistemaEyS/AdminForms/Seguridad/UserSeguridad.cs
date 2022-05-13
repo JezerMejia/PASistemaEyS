@@ -46,7 +46,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         public void UpdateData()
         {
-            this.TreeData = new TreeModelFilter(DtUser.listarUsuarios(), null);
+            this.TreeData = new TreeModelFilter(DtUser.GetData(), null);
             this.TreeData.VisibleFunc = this.ModelFilterFunc;
             this.viewTable.Model = this.TreeData;
             //this.FillComboboxModel();
@@ -54,8 +54,6 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         protected void BtnAddOnClicked(object sender, EventArgs args)
         {
-            ConnectionSeg connection = ConnectionSeg.OpenConnection();
-
             if (string.IsNullOrWhiteSpace(TxtName.Text) ||
                 string.IsNullOrWhiteSpace(TxtLastname.Text) ||
                 string.IsNullOrWhiteSpace(TxtUser.Text) ||
@@ -85,16 +83,12 @@ namespace SistemaEyS.AdminForms.Seguridad
                 return;
             }
 
-            string Query = "INSERT INTO Seguridad.tbl_user (" +
-                    "user, pwd, estado, " +
-                    "nombres, apellidos, email) " +
-                    "VALUES (" +
-                    $"'{TxtUser.Text}', '{TxtPassword.Text}', 1," +
-                    $"'{TxtName.Text}', '{TxtLastname.Text}', '{TxtEmail.Text}');";
-
             try
             {
-                connection.Execute(CommandType.Text, Query);
+                this.DtUser.InsertInto(
+                    this.TxtUser.Text, this.TxtPassword.Text,
+                    this.TxtName.Text, this.TxtLastname.Text,
+                    this.TxtEmail.Text);
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Info,
                     ButtonsType.Ok, "Usuario agregado");
                 ms.Run();
@@ -112,8 +106,6 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         protected void BtnEditOnClicked(object sender, EventArgs args)
         {
-            ConnectionSeg connection = ConnectionSeg.OpenConnection();
-
             if (string.IsNullOrWhiteSpace(TxtName.Text) ||
                 string.IsNullOrWhiteSpace(TxtLastname.Text) ||
                 string.IsNullOrWhiteSpace(TxtUser.Text) ||
@@ -121,46 +113,47 @@ namespace SistemaEyS.AdminForms.Seguridad
                 string.IsNullOrWhiteSpace(TxtEmail.Text)
                 )
             {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Info,
-                    ButtonsType.Ok, "No puede haber datos vacíos");
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
+                    MessageType.Info, ButtonsType.Ok,
+                    "No puede haber datos vacíos");
                 ms.Run();
                 ms.Destroy();
                 return;
             }
 
             if (!TxtEmail.Text.Equals(TxtEmailConfirm.Text)) {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, "El Email y la confirmación no coinciden");
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
+                    MessageType.Error, ButtonsType.Ok,
+                    "El Email y la confirmación no coinciden");
                 ms.Run();
                 ms.Destroy();
                 return;
             }
             if (!TxtPassword.Text.Equals(TxtPasswordConfirm.Text)) {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, "La Contraseña y la confirmación no coinciden");
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
+                    MessageType.Error, ButtonsType.Ok,
+                    "La Contraseña y la confirmación no coinciden");
                 ms.Run();
                 ms.Destroy();
                 return;
             }
 
-            string Query = "UPDATE Seguridad.tbl_user SET " +
-                    $"user = '{TxtUser.Text}', pwd = '{TxtPassword.Text}', estado = 2, " +
-                    $"nombres = '{TxtName.Text}', apellidos = '{TxtLastname.Text}', " +
-                    $"email = '{TxtEmail.Text}' " +
-                    $"WHERE id_user = '{this.SelectedID}'";
-
             try
             {
-                connection.Execute(CommandType.Text, Query);
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Info,
-                    ButtonsType.Ok, "Usuario editado");
+                this.DtUser.UpdateSet(
+                    this.SelectedID.ToString(), this.TxtUser.Text,
+                    this.TxtPassword.Text, this.TxtName.Text,
+                    this.TxtLastname.Text, this.TxtEmail.Text
+                    );
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
+                    MessageType.Info, ButtonsType.Ok, "Usuario editado");
                 ms.Run();
                 ms.Destroy();
             }
             catch (Exception e)
             {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, e.Message);
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
+                    MessageType.Error, ButtonsType.Ok, e.Message);
                 ms.Run();
                 ms.Destroy();
             }
@@ -219,13 +212,9 @@ namespace SistemaEyS.AdminForms.Seguridad
                     return;
             }
 
-            string Query = "UPDATE Seguridad.tbl_user SET " +
-                    $"estado = 3 " +
-                    $"WHERE id_user = '{this.SelectedID}'";
-
             try
             {
-                connection.Execute(CommandType.Text, Query);
+                this.DtUser.DeleteFrom(this.SelectedID.ToString());
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Info,
                     ButtonsType.Ok, "Usuario eliminado");
                 ms.Run();

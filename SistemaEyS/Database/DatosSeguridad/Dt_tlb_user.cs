@@ -9,12 +9,10 @@ namespace SistemaEyS.DatosSeguridad
     public class Dt_tlb_user
     {
 
-        public Gtk.ListStore listStore;
+        public ListStore Model;
+        public ConnectionSeg conn = ConnectionSeg.OpenConnection();
 
-        ConnectionSeg conn = ConnectionSeg.OpenConnection();
-        StringBuilder sb = new StringBuilder();
-
-        public ListStore listarUsuarios()
+        public void UpdateModel()
         {
             ListStore datos = new ListStore(
                 typeof(string),
@@ -28,6 +26,7 @@ namespace SistemaEyS.DatosSeguridad
                 );
 
             IDataReader idr = null;
+            StringBuilder sb = new StringBuilder();
             sb.Clear();
             sb.Append("SELECT * FROM Seguridad.tbl_user;");
             try
@@ -46,12 +45,12 @@ namespace SistemaEyS.DatosSeguridad
                         idr[7].ToString()  // Estado
                         );
                 }
-                return datos;
             }
             catch (Exception e)
             {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, e.Message);
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal,
+                    MessageType.Error, ButtonsType.Ok, e.Message);
+                ms.SetPosition(WindowPosition.Mouse);
                 ms.Run();
                 ms.Destroy();
             }
@@ -62,47 +61,116 @@ namespace SistemaEyS.DatosSeguridad
                     idr.Close();
                 }
             }
-            return datos;
+            this.Model = datos;
         }
 
-
-        //Seguridad
-
-        public ListStore cbxEUsers()
+        public void InsertInto(string user, string pwd, string nombres,
+            string apellidos, string email)
         {
-            ListStore datos = new ListStore(
-                    typeof(string),
-                    typeof(string)
-                );
-            IDataReader idr = null;
-            sb.Clear();
-            sb.Append("SELECT id_user, user FROM Seguridad.tbl_user WHERE estado<>3;");
+            if (string.IsNullOrWhiteSpace(user))
+            {
+                throw new Exception("No se proporcionó un usuario");
+            }
+
+            string Query = "INSERT INTO Seguridad.tbl_user (" +
+                    "user, pwd, estado, " +
+                    "nombres, apellidos, email) " +
+                    "VALUES (" +
+                    $"'{user}', '{pwd ?? ""}', 1," +
+                    $"'{nombres ?? ""}', '{apellidos ?? ""}'," +
+                    $"'{email ?? ""}');";
+
             try
             {
-                idr = conn.Read(CommandType.Text, sb.ToString());
-                while (idr.Read())
-                {
-                    datos.AppendValues(
-                        idr[0].ToString(),
-                        idr[1].ToString()
-                        );
-                }
+                this.conn.Execute(CommandType.Text, Query);
             }
             catch (Exception e)
             {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, e.Message);
-                ms.Run();
-                ms.Destroy();
+                throw e;
             }
-            finally
+        }
+
+        public void UpdateSet(string id_user, string user, string pwd,
+            string nombres, string apellidos, string email)
+        {
+            string ModifiedQuery = "estado = 2, ";
+
+            if (string.IsNullOrWhiteSpace(id_user))
             {
-                if (idr != null && !idr.IsClosed)
-                {
-                    idr.Close();
-                }
+                throw new Exception("No se proporcionó el ID del usuario");
             }
-            return datos;
+            if (!string.IsNullOrWhiteSpace(user))
+            {
+                ModifiedQuery += $"user = '{user}', ";
+            }
+            if (!string.IsNullOrWhiteSpace(pwd))
+            {
+                ModifiedQuery += $"pwd = '{pwd}', ";
+            }
+            if (!string.IsNullOrWhiteSpace(nombres))
+            {
+                ModifiedQuery += $"nombres = '{nombres}', ";
+            }
+            if (!string.IsNullOrWhiteSpace(apellidos))
+            {
+                ModifiedQuery += $"apellidos = '{apellidos}', ";
+            }
+            if (!string.IsNullOrWhiteSpace(email))
+            {
+                ModifiedQuery += $"email = '{email}', ";
+            }
+
+            ModifiedQuery = ModifiedQuery.Trim();
+            if (ModifiedQuery.EndsWith(","))
+                ModifiedQuery = ModifiedQuery.Remove(ModifiedQuery.Length - 1);
+
+            string Query = $"UPDATE Seguridad.tbl_user SET {ModifiedQuery} " +
+                $"WHERE id_user = {id_user};";
+
+            try
+            {
+                this.conn.Execute(CommandType.Text, Query);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public void DeleteFrom(string id_user)
+        {
+            string Query = "DELETE FROM Seguridad.tbl_user WHERE id_user = " +
+                $"{id_user};";
+
+            try
+            {
+                this.conn.Execute(CommandType.Text, Query);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        public void DeleteFromUpdate(string id_user)
+        {
+            string Query = "UPDATE Seguridad.tbl_user SET " +
+                "estado = 3 " +
+                $"WHERE id_user = {id_user};";
+
+            try
+            {
+                this.conn.Execute(CommandType.Text, Query);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public ListStore GetData()
+        {
+            this.UpdateModel();
+            return this.Model;
         }
 
         public Dt_tlb_user()
