@@ -1,9 +1,9 @@
 ﻿using System;
 namespace SistemaEyS.AdminForms.Settings
 {
-    public partial class CargosSettings : Gtk.Window
+    public partial class DepartamentoSettings : Gtk.Window
     {
-        public CargosSettings() :
+        public DepartamentoSettings() :
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
@@ -15,6 +15,7 @@ namespace SistemaEyS.AdminForms.Settings
         {
             this.CmbxID.Active = -1;
             this.TxtName.Text = "";
+            this.TxtExt.Text = "";
             this.TxtDescription.Buffer.Text = "";
         }
 

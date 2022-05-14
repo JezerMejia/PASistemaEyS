@@ -88,8 +88,8 @@ namespace SistemaEyS.AdminForms
 
         protected void SeguridadRolesOnActivated(object sender, EventArgs e)
         {
-            AdminForms.Settings.UserRolSettings userRolSettings = new Settings.UserRolSettings();
-            userRolSettings.Show();
+            //AdminForms.Settings.DepartamentoSettings userRolSettings = new Settings.DepartamentoSettings();
+            //userRolSettings.Show();
         }
 
         protected void AjustesCargosOnActivated(object sender, EventArgs e)
@@ -104,5 +104,10 @@ namespace SistemaEyS.AdminForms
             userSeguridad.Show();
         }
 
+        protected void AjustesDepartamentosOnActivated(object sender, EventArgs e)
+        {
+            AdminForms.Settings.DepartamentoSettings departamentoSettings = new Settings.DepartamentoSettings();
+            departamentoSettings.Show();
+        }
     }
 }
