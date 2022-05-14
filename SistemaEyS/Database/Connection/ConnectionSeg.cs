@@ -5,12 +5,10 @@ using Gtk;
 
 namespace SistemaEyS.Database.Connection
 {
-    public class ConnectionSeg
+    public class ConnectionSeg : ConnectionBase
     {
-        public MySqlConnection conn { get; set; }
-        static private ConnectionSeg instance = null;
-
-        public String CadenaConexion()
+        protected static new ConnectionSeg instance;
+        public override string GetConnectionString()
         {
             MySqlConnectionStringBuilder sb = new MySqlConnectionStringBuilder
             {
@@ -26,7 +24,7 @@ namespace SistemaEyS.Database.Connection
         {
             if (ConnectionSeg.instance != null) return ConnectionSeg.instance;
             ConnectionSeg conexion = new ConnectionSeg();
-            conexion.conn.ConnectionString = conexion.CadenaConexion();
+            conexion.conn.ConnectionString = conexion.GetConnectionString();
 
             MessageDialog ms;
             try
@@ -69,58 +67,5 @@ namespace SistemaEyS.Database.Connection
                 ConnectionSeg.instance = null;
             }
         }
-
-
-        public IDataReader Read(CommandType ct, string query)
-        {
-            MySqlCommand sqlCommand = new MySqlCommand
-            {
-                CommandType = ct,
-                CommandText = query,
-                Connection = this.conn
-            };
-
-            IDataReader IDR;
-            try
-            {
-                IDR = sqlCommand.ExecuteReader();
-            }
-            catch
-            {
-                throw;
-            }
-
-            return IDR;
-        }
-
-
-        public Int32 Execute(CommandType ct, string query)
-        {
-            Int32 value = 0;
-
-            MySqlCommand sqlCommand = new MySqlCommand
-            {
-                CommandType = ct,
-                CommandText = query,
-                Connection = this.conn
-            };
-
-            try
-            {
-                value = sqlCommand.ExecuteNonQuery();
-            }
-            catch
-            {
-                throw;
-            }
-
-            return value;
-        }
-
-        private ConnectionSeg()
-        {
-            conn = new MySqlConnection();
-        }
     }
-
 }
