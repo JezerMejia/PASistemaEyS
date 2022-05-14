@@ -195,7 +195,7 @@ namespace SistemaEyS.AdminForms.Seguridad
             }
 
             string userName = this.GetUserValue(this.SelectedID, 3)?.ToString() ?? "";
-            string userLastname = this.GetUserValue(this.SelectedID, 4).ToString() ?? "";
+            string userLastname = this.GetUserValue(this.SelectedID, 4)?.ToString() ?? "";
             string userFullname = $"{userName} {userLastname}";
 
             MessageDialog deletePrompt = new MessageDialog(this, DialogFlags.Modal,
@@ -227,6 +227,7 @@ namespace SistemaEyS.AdminForms.Seguridad
                 ms.Run();
                 ms.Destroy();
             }
+            this.SelectedID = -1;
             this.UpdateData();
         }
 
