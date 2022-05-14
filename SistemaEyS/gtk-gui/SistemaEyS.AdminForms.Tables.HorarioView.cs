@@ -115,8 +115,10 @@ namespace SistemaEyS.AdminForms.Tables
 				this.Child.ShowAll();
 			}
 			this.Hide();
+			this.viewTable.RowActivated += new global::Gtk.RowActivatedHandler(this.OnViewTableRowActivated);
 			this.BtnAdd.Clicked += new global::System.EventHandler(this.OnBtnAddClicked);
 			this.BtnUpdate.Clicked += new global::System.EventHandler(this.btnUpdateOnClicked);
+			this.BtnDelete.Clicked += new global::System.EventHandler(this.OnBtnDeleteClicked);
 		}
 	}
 }

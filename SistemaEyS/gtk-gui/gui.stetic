@@ -4,7 +4,6 @@
     <images-root-path>..</images-root-path>
   </configuration>
   <import>
-    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../../SistemaEySLibrary/bin/Debug/SistemaEySLibrary.dll" />
     <widget-library name="../bin/Debug/SistemaEyS.exe" internal="true" />
   </import>
@@ -1863,6 +1862,7 @@ IT</property>
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="ShowScrollbars">True</property>
+                    <signal name="RowActivated" handler="OnViewTableRowActivated" />
                   </widget>
                 </child>
               </widget>
@@ -1882,6 +1882,7 @@ IT</property>
                     <property name="Type">TextOnly</property>
                     <property name="Label" translatable="yes">Eliminar</property>
                     <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="OnBtnDeleteClicked" />
                   </widget>
                   <packing>
                     <property name="PackType">End</property>
