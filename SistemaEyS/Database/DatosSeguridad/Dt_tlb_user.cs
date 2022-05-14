@@ -6,15 +6,13 @@ using SistemaEyS.Database.Connection;
 
 namespace SistemaEyS.DatosSeguridad
 {
-    public class Dt_tlb_user
+    public class Dt_tlb_user : DataTableTemplate
     {
-
-        public ListStore Model;
-        public ConnectionSeg conn = ConnectionSeg.OpenConnection();
-
-        public void UpdateModel()
+        public Dt_tlb_user()
         {
-            ListStore datos = new ListStore(
+            this.conn = ConnectionSeg.OpenConnection();
+            this.DBTable = "Seguridad.tbl_user";
+            this.Model = new ListStore(
                 typeof(string),
                 typeof(string),
                 typeof(string),
@@ -24,6 +22,10 @@ namespace SistemaEyS.DatosSeguridad
                 typeof(string),
                 typeof(string)
                 );
+        }
+        public override void UpdateModel()
+        {
+            this.Model.Clear();
 
             IDataReader idr = null;
             StringBuilder sb = new StringBuilder();
@@ -34,7 +36,7 @@ namespace SistemaEyS.DatosSeguridad
                 idr = conn.Read(CommandType.Text, sb.ToString());
                 while (idr.Read())
                 {
-                    datos.AppendValues(
+                    this.Model.AppendValues(
                         idr[0].ToString(), // ID Usuario
                         idr[1].ToString(), // Usario
                         idr[2].ToString(), // Contraseña
@@ -61,120 +63,65 @@ namespace SistemaEyS.DatosSeguridad
                     idr.Close();
                 }
             }
-            this.Model = datos;
         }
 
         public void InsertInto(string user, string pwd, string nombres,
             string apellidos, string email)
         {
-            if (string.IsNullOrWhiteSpace(user))
-            {
-                throw new Exception("No se proporcionó un usuario");
-            }
-
-            string Query = "INSERT INTO Seguridad.tbl_user (" +
-                    "user, pwd, estado, " +
-                    "nombres, apellidos, email) " +
-                    "VALUES (" +
-                    $"'{user}', '{pwd ?? ""}', 1," +
-                    $"'{nombres ?? ""}', '{apellidos ?? ""}'," +
-                    $"'{email ?? ""}');";
-
-            try
-            {
-                this.conn.Execute(CommandType.Text, Query);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            this.InsertInto(
+                    //this.conn,
+                    new DataTableParameter("user", $"'{user}'"),
+                    new DataTableParameter("pwd", $"'{pwd}'"),
+                    new DataTableParameter("nombres", $"'{nombres}'"),
+                    new DataTableParameter("apellidos", $"'{apellidos}'"),
+                    new DataTableParameter("email", $"'{email}'"),
+                    new DataTableParameter("estado", "'1'")
+                );
         }
 
         public void UpdateSet(string id_user, string user, string pwd,
             string nombres, string apellidos, string email)
         {
-            string ModifiedQuery = "estado = 2, ";
-
-            if (string.IsNullOrWhiteSpace(id_user))
-            {
-                throw new Exception("No se proporcionó el ID del usuario");
-            }
-            if (!string.IsNullOrWhiteSpace(user))
-            {
-                ModifiedQuery += $"user = '{user}', ";
-            }
-            if (!string.IsNullOrWhiteSpace(pwd))
-            {
-                ModifiedQuery += $"pwd = '{pwd}', ";
-            }
-            if (!string.IsNullOrWhiteSpace(nombres))
-            {
-                ModifiedQuery += $"nombres = '{nombres}', ";
-            }
-            if (!string.IsNullOrWhiteSpace(apellidos))
-            {
-                ModifiedQuery += $"apellidos = '{apellidos}', ";
-            }
-            if (!string.IsNullOrWhiteSpace(email))
-            {
-                ModifiedQuery += $"email = '{email}', ";
-            }
-
-            ModifiedQuery = ModifiedQuery.Trim();
-            if (ModifiedQuery.EndsWith(","))
-                ModifiedQuery = ModifiedQuery.Remove(ModifiedQuery.Length - 1);
-
-            string Query = $"UPDATE Seguridad.tbl_user SET {ModifiedQuery} " +
-                $"WHERE id_user = {id_user};";
-
-            try
-            {
-                this.conn.Execute(CommandType.Text, Query);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            Console.WriteLine(id_user);
+            this.UpdateSet(
+                    //this.conn,
+                    new DataTableParameter("id_user", id_user),
+                    new DataTableParameter(
+                        !string.IsNullOrWhiteSpace(user) ? "user" : "",
+                        $"'{user}'"
+                        ),
+                    new DataTableParameter(
+                        !string.IsNullOrWhiteSpace(pwd) ? "pwd" : "",
+                        $"'{pwd}'"
+                        ),
+                    new DataTableParameter(
+                        !string.IsNullOrWhiteSpace(nombres) ? "nombres" : "",
+                        $"'{nombres}'"
+                        ),
+                    new DataTableParameter(
+                        !string.IsNullOrWhiteSpace(apellidos) ? "apellidos" : "",
+                        $"'{apellidos}'"
+                        ),
+                    new DataTableParameter(
+                        !string.IsNullOrWhiteSpace(email) ? "email" : "",
+                        $"'{email}'"
+                        )
+                );
+            //this.UpdateSet(id_user, user, pwd, nombres, apellidos, email, "");
         }
 
         public void DeleteFrom(string id_user)
         {
-            string Query = "DELETE FROM Seguridad.tbl_user WHERE id_user = " +
-                $"{id_user};";
-
-            try
-            {
-                this.conn.Execute(CommandType.Text, Query);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            this.DeleteFrom(this.conn,
+                new DataTableParameter("id_user", id_user)
+                );
         }
         public void DeleteFromUpdate(string id_user)
         {
-            string Query = "UPDATE Seguridad.tbl_user SET " +
-                "estado = 3 " +
-                $"WHERE id_user = {id_user};";
-
-            try
-            {
-                this.conn.Execute(CommandType.Text, Query);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public ListStore GetData()
-        {
-            this.UpdateModel();
-            return this.Model;
-        }
-
-        public Dt_tlb_user()
-        {
+            this.UpdateSet(
+                new DataTableParameter("id_user", id_user),
+                new DataTableParameter("estado", "3")
+                );
         }
     }
 }
