@@ -25,10 +25,10 @@ namespace SistemaEyS.AdminForms.Tables
 			// Container child SistemaEyS.AdminForms.Tables.EntradaSalidaView.Gtk.Container+ContainerChild
 			this.alignment1 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
 			this.alignment1.Name = "alignment1";
-			this.alignment1.LeftPadding = ((uint)(10));
-			this.alignment1.TopPadding = ((uint)(10));
-			this.alignment1.RightPadding = ((uint)(10));
-			this.alignment1.BottomPadding = ((uint)(10));
+			this.alignment1.LeftPadding = ((uint)(15));
+			this.alignment1.TopPadding = ((uint)(15));
+			this.alignment1.RightPadding = ((uint)(15));
+			this.alignment1.BottomPadding = ((uint)(15));
 			// Container child alignment1.Gtk.Container+ContainerChild
 			this.vbox1 = new global::Gtk.VBox();
 			this.vbox1.Name = "vbox1";

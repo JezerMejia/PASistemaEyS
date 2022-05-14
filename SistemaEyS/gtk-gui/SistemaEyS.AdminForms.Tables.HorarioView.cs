@@ -31,10 +31,10 @@ namespace SistemaEyS.AdminForms.Tables
 			// Container child SistemaEyS.AdminForms.Tables.HorarioView.Gtk.Container+ContainerChild
 			this.alignment2 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
 			this.alignment2.Name = "alignment2";
-			this.alignment2.LeftPadding = ((uint)(10));
-			this.alignment2.TopPadding = ((uint)(10));
-			this.alignment2.RightPadding = ((uint)(10));
-			this.alignment2.BottomPadding = ((uint)(10));
+			this.alignment2.LeftPadding = ((uint)(15));
+			this.alignment2.TopPadding = ((uint)(15));
+			this.alignment2.RightPadding = ((uint)(15));
+			this.alignment2.BottomPadding = ((uint)(15));
 			// Container child alignment2.Gtk.Container+ContainerChild
 			this.vbox1 = new global::Gtk.VBox();
 			this.vbox1.Name = "vbox1";

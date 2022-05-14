@@ -4,6 +4,7 @@
     <images-root-path>..</images-root-path>
   </configuration>
   <import>
+    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../../SistemaEySLibrary/bin/Debug/SistemaEySLibrary.dll" />
     <widget-library name="../bin/Debug/SistemaEyS.exe" internal="true" />
   </import>
@@ -1213,11 +1214,10 @@ T.I.</property>
     <child>
       <widget class="Gtk.Alignment" id="alignment2">
         <property name="MemberName" />
-        <property name="LeftPadding">5</property>
-        <property name="TopPadding">5</property>
-        <property name="RightPadding">5</property>
-        <property name="BottomPadding">6</property>
-        <property name="BorderWidth">10</property>
+        <property name="LeftPadding">15</property>
+        <property name="TopPadding">15</property>
+        <property name="RightPadding">15</property>
+        <property name="BottomPadding">15</property>
         <child>
           <widget class="Gtk.VBox" id="vbox1">
             <property name="MemberName" />
@@ -1332,10 +1332,10 @@ T.I.</property>
     <child>
       <widget class="Gtk.Alignment" id="alignment1">
         <property name="MemberName" />
-        <property name="LeftPadding">10</property>
-        <property name="TopPadding">10</property>
-        <property name="RightPadding">10</property>
-        <property name="BottomPadding">10</property>
+        <property name="LeftPadding">15</property>
+        <property name="TopPadding">15</property>
+        <property name="RightPadding">15</property>
+        <property name="BottomPadding">15</property>
         <child>
           <widget class="Gtk.VBox" id="vbox1">
             <property name="MemberName" />
@@ -1397,10 +1397,10 @@ T.I.</property>
     <child>
       <widget class="Gtk.Alignment" id="alignment2">
         <property name="MemberName" />
-        <property name="LeftPadding">10</property>
-        <property name="TopPadding">10</property>
-        <property name="RightPadding">10</property>
-        <property name="BottomPadding">10</property>
+        <property name="LeftPadding">15</property>
+        <property name="TopPadding">15</property>
+        <property name="RightPadding">15</property>
+        <property name="BottomPadding">15</property>
         <child>
           <widget class="Gtk.VBox" id="vbox1">
             <property name="MemberName" />
@@ -1509,101 +1509,110 @@ T.I.</property>
     <property name="MemberName" />
     <property name="Visible">False</property>
     <child>
-      <widget class="Gtk.VBox" id="vbox1">
+      <widget class="Gtk.Alignment" id="alignment1">
         <property name="MemberName" />
-        <property name="Spacing">6</property>
+        <property name="LeftPadding">15</property>
+        <property name="TopPadding">15</property>
+        <property name="RightPadding">15</property>
+        <property name="BottomPadding">15</property>
         <child>
-          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
-            <property name="MemberName" />
-            <property name="ShadowType">In</property>
-            <child>
-              <widget class="SistemaEyS.AdminForms.Tables.ViewTableTemplate" id="viewTable">
-                <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="ShowScrollbars">True</property>
-              </widget>
-            </child>
-          </widget>
-          <packing>
-            <property name="Position">0</property>
-            <property name="AutoSize">True</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.HBox" id="hbox5">
+          <widget class="Gtk.VBox" id="vbox1">
             <property name="MemberName" />
             <property name="Spacing">6</property>
             <child>
-              <widget class="Gtk.Button" id="BtnDelSV">
+              <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
                 <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="Type">TextOnly</property>
-                <property name="Label" translatable="yes">Eliminar</property>
-                <property name="UseUnderline">True</property>
+                <property name="ShadowType">In</property>
+                <child>
+                  <widget class="SistemaEyS.AdminForms.Tables.ViewTableTemplate" id="viewTable">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="ShowScrollbars">True</property>
+                  </widget>
+                </child>
               </widget>
               <packing>
-                <property name="PackType">End</property>
                 <property name="Position">0</property>
                 <property name="AutoSize">True</property>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Button" id="BtnActSV">
+              <widget class="Gtk.HBox" id="hbox5">
                 <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="Type">TextOnly</property>
-                <property name="Label" translatable="yes">Actualizar</property>
-                <property name="UseUnderline">True</property>
+                <property name="Spacing">6</property>
+                <child>
+                  <widget class="Gtk.Button" id="BtnDelSV">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextOnly</property>
+                    <property name="Label" translatable="yes">Eliminar</property>
+                    <property name="UseUnderline">True</property>
+                  </widget>
+                  <packing>
+                    <property name="PackType">End</property>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Button" id="BtnActSV">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextOnly</property>
+                    <property name="Label" translatable="yes">Actualizar</property>
+                    <property name="UseUnderline">True</property>
+                  </widget>
+                  <packing>
+                    <property name="PackType">End</property>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Button" id="BtnUpSV">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextOnly</property>
+                    <property name="Label" translatable="yes">Editar</property>
+                    <property name="UseUnderline">True</property>
+                  </widget>
+                  <packing>
+                    <property name="PackType">End</property>
+                    <property name="Position">2</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Button" id="BtnAddSV">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextOnly</property>
+                    <property name="Label" translatable="yes">Añadir</property>
+                    <property name="UseUnderline">True</property>
+                  </widget>
+                  <packing>
+                    <property name="PackType">End</property>
+                    <property name="Position">3</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
               </widget>
               <packing>
-                <property name="PackType">End</property>
                 <property name="Position">1</property>
                 <property name="AutoSize">True</property>
                 <property name="Expand">False</property>
                 <property name="Fill">False</property>
               </packing>
             </child>
-            <child>
-              <widget class="Gtk.Button" id="BtnUpSV">
-                <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="Type">TextOnly</property>
-                <property name="Label" translatable="yes">Editar</property>
-                <property name="UseUnderline">True</property>
-              </widget>
-              <packing>
-                <property name="PackType">End</property>
-                <property name="Position">2</property>
-                <property name="AutoSize">True</property>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.Button" id="BtnAddSV">
-                <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="Type">TextOnly</property>
-                <property name="Label" translatable="yes">Añadir</property>
-                <property name="UseUnderline">True</property>
-              </widget>
-              <packing>
-                <property name="PackType">End</property>
-                <property name="Position">3</property>
-                <property name="AutoSize">True</property>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
-              </packing>
-            </child>
           </widget>
-          <packing>
-            <property name="Position">1</property>
-            <property name="AutoSize">True</property>
-            <property name="Expand">False</property>
-            <property name="Fill">False</property>
-          </packing>
         </child>
       </widget>
     </child>
