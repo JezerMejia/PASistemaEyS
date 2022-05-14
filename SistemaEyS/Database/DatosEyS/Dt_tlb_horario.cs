@@ -13,8 +13,9 @@ namespace SistemaEyS.DatosEyS
 
         ConnectionEyS conn = ConnectionEyS.OpenConnection();
         StringBuilder sb = new StringBuilder();
+        public ListStore Model;
 
-        public ListStore listarHorarios()
+        public void UpdateModel()
         {
             ListStore datos = new ListStore(
                 typeof(string), typeof(string),
@@ -25,15 +26,15 @@ namespace SistemaEyS.DatosEyS
                 typeof(string), typeof(string),
                 typeof(string), typeof(string),
                 typeof(string), typeof(string)
-            );
+                );
 
             IDataReader idr = null;
+            StringBuilder sb = new StringBuilder();
             sb.Clear();
             sb.Append("SELECT * FROM BDSistemaEyS.Horario;");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());
-
                 while (idr.Read())
                 {
                     datos.AppendValues(
@@ -47,12 +48,12 @@ namespace SistemaEyS.DatosEyS
                         idr[13].ToString(), idr[14].ToString() // Domingo
                     );
                 }
-                return datos;
             }
             catch (Exception e)
             {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, e.Message);
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal,
+                    MessageType.Error, ButtonsType.Ok, e.Message);
+                ms.SetPosition(WindowPosition.Mouse);
                 ms.Run();
                 ms.Destroy();
             }
@@ -63,8 +64,15 @@ namespace SistemaEyS.DatosEyS
                     idr.Close();
                 }
             }
-            return datos;
+            this.Model = datos;
         }
+
+        public ListStore GetData()
+        {
+            this.UpdateModel();
+            return this.Model;
+        }
+
         public Dt_tlb_horario()
         {
         }
