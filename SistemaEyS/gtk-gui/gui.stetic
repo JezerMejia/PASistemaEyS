@@ -883,10 +883,10 @@ IT</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Settings.DepartamentoSettings" design-size="418 370">
+  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Settings.DepartamentoSettings" design-size="382 466">
     <property name="MemberName" />
     <property name="Title" translatable="yes">Ajustes | Departamentos</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="WindowPosition">Center</property>
     <child>
       <widget class="Gtk.Alignment" id="alignment2">
         <property name="MemberName" />
@@ -1296,8 +1296,8 @@ IT</property>
   </widget>
   <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Settings.CargosSettings" design-size="382 408">
     <property name="MemberName" />
-    <property name="Title" translatable="yes">CargosSettings</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="Title" translatable="yes">Ajustes | Cargos</property>
+    <property name="WindowPosition">Center</property>
     <child>
       <widget class="Gtk.Alignment" id="alignment2">
         <property name="MemberName" />
@@ -3292,7 +3292,7 @@ IT</property>
   <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Seguridad.UserSeguridad" design-size="602 400">
     <property name="MemberName" />
     <property name="Title" translatable="yes">Seguridad | Usuario</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="WindowPosition">Center</property>
     <child>
       <widget class="Gtk.Alignment" id="alignment1">
         <property name="MemberName" />

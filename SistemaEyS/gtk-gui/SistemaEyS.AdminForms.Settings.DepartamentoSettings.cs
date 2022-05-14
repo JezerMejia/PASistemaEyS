@@ -78,7 +78,7 @@ namespace SistemaEyS.AdminForms.Settings
 			// Widget SistemaEyS.AdminForms.Settings.DepartamentoSettings
 			this.Name = "SistemaEyS.AdminForms.Settings.DepartamentoSettings";
 			this.Title = global::Mono.Unix.Catalog.GetString("Ajustes | Departamentos");
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Container child SistemaEyS.AdminForms.Settings.DepartamentoSettings.Gtk.Container+ContainerChild
 			this.alignment2 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
 			this.alignment2.Name = "alignment2";
@@ -394,8 +394,8 @@ namespace SistemaEyS.AdminForms.Settings
 			{
 				this.Child.ShowAll();
 			}
-			this.DefaultWidth = 418;
-			this.DefaultHeight = 370;
+			this.DefaultWidth = 382;
+			this.DefaultHeight = 466;
 			this.Show();
 			this.BtnNew.Clicked += new global::System.EventHandler(this.BtnNewOnClicked);
 			this.BtnAdd.Clicked += new global::System.EventHandler(this.BtnAddOnClicked);

@@ -69,8 +69,8 @@ namespace SistemaEyS.AdminForms.Settings
 			global::Stetic.Gui.Initialize(this);
 			// Widget SistemaEyS.AdminForms.Settings.CargosSettings
 			this.Name = "SistemaEyS.AdminForms.Settings.CargosSettings";
-			this.Title = global::Mono.Unix.Catalog.GetString("CargosSettings");
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.Title = global::Mono.Unix.Catalog.GetString("Ajustes | Cargos");
+			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Container child SistemaEyS.AdminForms.Settings.CargosSettings.Gtk.Container+ContainerChild
 			this.alignment2 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
 			this.alignment2.Name = "alignment2";
