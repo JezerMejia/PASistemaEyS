@@ -23,8 +23,9 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 
             ConnectionEyS connection = ConnectionEyS.OpenConnection();
 
-            //compararMayor();
-            /*if (lunesIni.ActiveText.Equals(lunesSal.ActiveText) ||
+            compararMayor();
+          
+            if (lunesIni.ActiveText.Equals(lunesSal.ActiveText) ||
                 martesIni.ActiveText.Equals(martesSal.ActiveText) ||
                 miercolesIni.ActiveText.Equals(miercolesSal.ActiveText) ||
                 juevesIni.ActiveText.Equals(juevesSal.ActiveText) ||
@@ -35,7 +36,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 
                 mensaje("Entrada y salida no pueden ser iguales");
                 return;
-            }*/
+            }
 
             if (string.IsNullOrWhiteSpace(lunesIni.ActiveText) ||
                 string.IsNullOrWhiteSpace(lunesSal.ActiveText) ||
@@ -152,16 +153,20 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
         public void compararMayor()
         {
 
-            DateTime dtLI = DateTime.ParseExact(lunesIni.ActiveText, "HH:mm", null);
-            DateTime dtLs = DateTime.ParseExact(lunesSal.ActiveText, "HH:mm", null);
-            int result = DateTime.Compare(dtLI, dtLs);
+            DateTime dtLunesI = DateTime.ParseExact(lunesIni.ActiveText, "H:mm", null);
+            DateTime dtLuness = DateTime.ParseExact(lunesSal.ActiveText, "H:mm", null);
+            DateTime dtmartesI = DateTime.ParseExact(martesIni.ActiveText, "H:mm", null);
+            DateTime dtmartess = DateTime.ParseExact(martesSal.ActiveText, "H:mm", null);
+            int result = DateTime.Compare(dtLunesI, dtLuness);
+            int resultm = DateTime.Compare(dtmartesI, dtmartess);
 
-            if (result < 0)
+            if (result > 0 || resultm > 0)
             {
                 MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
                     ButtonsType.Ok, "Fechas distintas");
                 ms.Run();
                 ms.Destroy();
+                return;
             }
 
         }
