@@ -6,38 +6,38 @@ using SistemaEyS.Database.Connection;
 
 namespace SistemaEyS.DatosEyS
 {
-    public class Dt_tlb_departamento
+    public class Dt_tbl_departamento : DataTableTemplate
     {
-
-        public Gtk.ListStore listStore;
-
-        ConnectionEyS conn = ConnectionEyS.OpenConnection();
-        StringBuilder sb = new StringBuilder();
-
-        public ListStore ListarDepartamentosCmbx()
+        public Dt_tbl_departamento()
         {
-            ListStore datos = new ListStore(
+            this.conn = ConnectionEyS.OpenConnection();
+            this.DBTable = "BDSistemaEyS.Departamento";
+            this.Model = new ListStore(
                 typeof(string), typeof(string),
                 typeof(string), typeof(string)
-            );
+                );
+        }
+
+        public override void UpdateModel()
+        {
+            this.Model.Clear();
 
             IDataReader idr = null;
+            StringBuilder sb = new StringBuilder();
             sb.Clear();
             sb.Append("SELECT * FROM BDSistemaEyS.Departamento;");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());
-
                 while (idr.Read())
                 {
-                    datos.AppendValues(
-                        idr[1].ToString(), // Nombre
+                    this.Model.AppendValues(
                         idr[0].ToString(), // ID
+                        idr[1].ToString(), // Nombre
                         idr[2].ToString(), // Descripción
-                        idr[3].ToString() // Extensión
+                        idr[3].ToString()  // Extensión
                     );
                 }
-                return datos;
             }
             catch (Exception e)
             {
@@ -53,51 +53,68 @@ namespace SistemaEyS.DatosEyS
                     idr.Close();
                 }
             }
-            return datos;
         }
-        public ListStore ListarDepartamentos()
+
+        public ListStore GetDataCmbx()
         {
-            ListStore datos = new ListStore(
+            this.UpdateModel();
+            TreeIter iter;
+
+            ListStore model = new ListStore(
                 typeof(string), typeof(string),
                 typeof(string), typeof(string)
-            );
+                );
 
-            IDataReader idr = null;
-            sb.Clear();
-            sb.Append("SELECT * FROM BDSistemaEyS.Departamento;");
-            try
+            if (this.Model.GetIterFirst(out iter))
             {
-                idr = conn.Read(CommandType.Text, sb.ToString());
-
-                while (idr.Read())
+                do
                 {
-                    datos.AppendValues(
-                        idr[0].ToString(), // ID
-                        idr[1].ToString(), // Nombre
-                        idr[2].ToString(), // Descripción
-                        idr[3].ToString() // Extensión
+                    model.AppendValues(
+                        this.Model.GetValue(iter, 1),
+                        this.Model.GetValue(iter, 0),
+                        this.Model.GetValue(iter, 2),
+                        this.Model.GetValue(iter, 3)
                     );
                 }
-                return datos;
+                while (this.Model.IterNext(ref iter));
             }
-            catch (Exception e)
-            {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, e.Message);
-                ms.Run();
-                ms.Destroy();
-            }
-            finally
-            {
-                if (idr != null && !idr.IsClosed)
-                {
-                    idr.Close();
-                }
-            }
-            return datos;
+
+            return model;
         }
-        public Dt_tlb_departamento()
+
+        public void InsertInto(string nombre, string descripcion, string extension)
         {
+            this.InsertInto(
+                    new DataTableParameter("nombreDepartamento", $"'{nombre}'"),
+                    new DataTableParameter("descripcionDepartamento", $"'{descripcion}'"),
+                    new DataTableParameter("extensionDepartamento", $"'{extension}'")
+                );
+        }
+
+        public void UpdateSet(string idDepartamento, string nombre, string descripcion, string extension)
+        {
+            this.UpdateSet(
+                    new DataTableParameter("idDepartamento", $"'{idDepartamento}'"),
+                    new DataTableParameter(
+                        !string.IsNullOrWhiteSpace(nombre) ? "nombreDepartamento" : "",
+                        $"'{nombre}'"
+                        ),
+                    new DataTableParameter(
+                        !string.IsNullOrWhiteSpace(descripcion) ? "descripcionDepartamento" : "",
+                        $"'{descripcion}'"
+                        ),
+                    new DataTableParameter(
+                        !string.IsNullOrWhiteSpace(extension) ? "extensionDepartamento" : "",
+                        $"'{extension}'"
+                        )
+                );
+        }
+
+        public void DeleteFrom(string idDepartamento)
+        {
+            this.DeleteFrom(this.conn,
+                new DataTableParameter("idDepartamento", $"'{idDepartamento}'")
+                );
         }
     }
 }
