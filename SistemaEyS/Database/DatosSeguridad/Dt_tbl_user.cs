@@ -44,7 +44,9 @@ namespace SistemaEyS.DatosSeguridad
                         idr[4].ToString(), // Apellidos
                         idr[5].ToString(), // Email
                         idr[6].ToString(), // Contraseña temp
-                        idr[7].ToString()  // Estado
+                        idr[7].ToString() // Estado
+                        //idr[8].ToString(), // ID Rol
+                        //idr[9].ToString()  // Rol
                         );
                 }
             }
@@ -63,6 +65,33 @@ namespace SistemaEyS.DatosSeguridad
                     idr.Close();
                 }
             }
+        }
+
+        public ListStore GetDataCmbx()
+        {
+            this.UpdateModel();
+            TreeIter iter;
+
+            ListStore model = new ListStore(
+                typeof(string),
+                typeof(string),
+                typeof(string)
+                );
+
+            if (this.Model.GetIterFirst(out iter))
+            {
+                do
+                {
+                    model.AppendValues(
+                        this.Model.GetValue(iter, 1),
+                        this.Model.GetValue(iter, 0),
+                        this.Model.GetValue(iter, 2)
+                    );
+                }
+                while (this.Model.IterNext(ref iter));
+            }
+
+            return model;
         }
 
         public void InsertInto(string user, string pwd, string nombres,

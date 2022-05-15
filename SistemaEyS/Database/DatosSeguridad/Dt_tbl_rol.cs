@@ -55,6 +55,33 @@ namespace SistemaEyS.DatosSeguridad
             }
         }
 
+        public ListStore GetDataCmbx()
+        {
+            this.UpdateModel();
+            TreeIter iter;
+
+            ListStore model = new ListStore(
+                typeof(string),
+                typeof(string),
+                typeof(string)
+                );
+
+            if (this.Model.GetIterFirst(out iter))
+            {
+                do
+                {
+                    model.AppendValues(
+                        this.Model.GetValue(iter, 1),
+                        this.Model.GetValue(iter, 0),
+                        this.Model.GetValue(iter, 2)
+                    );
+                }
+                while (this.Model.IterNext(ref iter));
+            }
+
+            return model;
+        }
+
         public void InsertInto(string rol, string estado)
         {
             this.InsertInto(
