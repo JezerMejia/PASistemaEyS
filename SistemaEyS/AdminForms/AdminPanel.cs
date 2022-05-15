@@ -10,6 +10,7 @@ namespace SistemaEyS.AdminForms
     {
         protected Window parent;
         protected uint timeout;
+
         public AdminPanel(Window parent) :
                 base(Gtk.WindowType.Toplevel)
         {
@@ -88,8 +89,8 @@ namespace SistemaEyS.AdminForms
 
         protected void SeguridadRolesOnActivated(object sender, EventArgs e)
         {
-            //AdminForms.Settings.DepartamentoSettings userRolSettings = new Settings.DepartamentoSettings();
-            //userRolSettings.Show();
+            AdminForms.Seguridad.RolSeguridad rolSeguridad = new RolSeguridad();
+            rolSeguridad.Show();
         }
 
         protected void AjustesCargosOnActivated(object sender, EventArgs e)
