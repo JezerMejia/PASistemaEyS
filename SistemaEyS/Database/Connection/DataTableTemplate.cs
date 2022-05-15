@@ -55,7 +55,16 @@ namespace SistemaEyS.Database.Connection
                     "VALUES (" +
                     $"{QueryValues}" +
                     ");";
-            this.conn.Execute(CommandType.Text, Query);
+            try
+            {
+                this.conn.Execute(CommandType.Text, Query);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(Query);
+                Console.WriteLine(e);
+                throw e;
+            }
         }
         public virtual void UpdateSet(params DataTableParameter[] parameters)
         {
@@ -71,14 +80,33 @@ namespace SistemaEyS.Database.Connection
 
             string Query = $"UPDATE {this.DBTable} SET {QueryValues} " +
                 $"WHERE {parameters[0].name} = {parameters[0].value};";
-            this.conn.Execute(CommandType.Text, Query);
+
+            try
+            {
+                this.conn.Execute(CommandType.Text, Query);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(Query);
+                Console.WriteLine(e);
+                throw e;
+            }
         }
         public virtual void DeleteFrom(ConnectionBase conn, DataTableParameter id)
         {
             string Query = $"DELETE FROM {this.DBTable} WHERE " +
                 $"{id.name} = {id.value};";
 
-            this.conn.Execute(CommandType.Text, Query);
+            try
+            {
+                this.conn.Execute(CommandType.Text, Query);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(Query);
+                Console.WriteLine(e);
+                throw e;
+            }
         }
     }
 }
