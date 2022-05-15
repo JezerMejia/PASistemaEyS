@@ -6,9 +6,9 @@ using SistemaEyS.Database.Connection;
 
 namespace SistemaEyS.DatosSeguridad
 {
-    public class Dt_tlb_user : DataTableTemplate
+    public class Dt_tbl_user : DataTableTemplate
     {
-        public Dt_tlb_user()
+        public Dt_tbl_user()
         {
             this.conn = ConnectionSeg.OpenConnection();
             this.DBTable = "Seguridad.tbl_user";
