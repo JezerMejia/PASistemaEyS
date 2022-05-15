@@ -6,7 +6,7 @@ namespace SistemaEyS.AdminForms.Settings
 {
     public partial class CargosSettings : Gtk.Window
     {
-        Dt_tbl_cargo DtCargo = new Dt_tbl_cargo();
+        protected Dt_tbl_cargo DtCargo = new Dt_tbl_cargo();
         protected TreeModelFilter TreeData;
         protected TreeModelFilterVisibleFunc ModelFilterFunc;
         public int SelectedID = -1;
