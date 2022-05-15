@@ -47,6 +47,7 @@ namespace SistemaEyS.AdminForms.Settings
 
         protected void BtnNewOnClicked(object sender, EventArgs e)
         {
+            this.SelectedID = -1;
             this.TxtName.Text = "";
             this.TxtDescription.Buffer.Text = "";
         }
