@@ -121,6 +121,9 @@
     <Compile Include="Database\Connection\DataTableTemplate.cs" />
     <Compile Include="Database\Connection\ConnectionBase.cs" />
     <Compile Include="Database\DatosSeguridad\Dt_tbl_user.cs" />
+    <Compile Include="Database\DatosSeguridad\Dt_tbl_rol.cs" />
+    <Compile Include="AdminForms\Seguridad\RolSeguridad.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Seguridad.RolSeguridad.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
