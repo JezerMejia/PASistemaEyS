@@ -8,7 +8,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
     public partial class UpdateDialog : Gtk.Window
     {
         protected Dt_tlb_empleado dtus = new Dt_tlb_empleado();
-        protected Dt_tlb_cargo dtcarg = new Dt_tlb_cargo();
+        protected Dt_tbl_cargo dtcarg = new Dt_tbl_cargo();
         protected Dt_tlb_departamento dtdep = new Dt_tlb_departamento();
         protected ListStore EmpData;
         protected ListStore CargoData;
@@ -34,7 +34,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
         public void UpdateData()
         {
             this.EmpData = dtus.listarUsuarios();
-            this.CargoData = dtcarg.listarCargos();
+            this.CargoData = dtcarg.GetDataCmbx();
             this.DepData = dtdep.ListarDepartamentosCmbx();
             this.FillCmbxIDModel();
             this.FillCmbCargoModel();

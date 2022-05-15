@@ -8,10 +8,10 @@ namespace SistemaEyS.AdminForms.Seguridad
 {
     public partial class UserSeguridad : Gtk.Window
     {
-        Dt_tlb_user DtUser = new Dt_tlb_user();
-        TreeModelFilter TreeData;
-        TreeModelFilterVisibleFunc ModelFilterFunc;
-        int SelectedID = -1;
+        protected Dt_tbl_user DtUser = new Dt_tbl_user();
+        protected TreeModelFilter TreeData;
+        protected TreeModelFilterVisibleFunc ModelFilterFunc;
+        public int SelectedID = -1;
 
         public UserSeguridad() :
                 base(Gtk.WindowType.Toplevel)
@@ -160,31 +160,8 @@ namespace SistemaEyS.AdminForms.Seguridad
             this.UpdateData();
         }
 
-        protected object GetUserValue(int idUser, int column)
-        {
-            TreeIter iter;
-            TreeModel model = this.TreeData;
-
-            object value = null;
-
-            if (model.GetIterFirst(out iter))
-            {
-                do
-                {
-                    if (idUser.ToString() == model.GetValue(iter, 0).ToString())
-                    {
-                        value = model.GetValue(iter, column);
-                    }
-                } while (model.IterNext(ref iter));
-            }
-
-            return value;
-        }
-
         protected void BtnRemoveOnClicked(object sender, EventArgs args)
         {
-            ConnectionSeg connection = ConnectionSeg.OpenConnection();
-
             if (this.SelectedID < 0)
             {
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning,
@@ -229,6 +206,44 @@ namespace SistemaEyS.AdminForms.Seguridad
             }
             this.SelectedID = -1;
             this.UpdateData();
+        }
+
+        protected void BtnUpdateOnClicked(object sender, EventArgs e)
+        {
+            this.UpdateData();
+        }
+
+        protected void BtnNewOnClicked(object sender, EventArgs e)
+        {
+            this.SelectedID = -1;
+            this.TxtUser.Text = "";
+            this.TxtName.Text = "";
+            this.TxtLastname.Text = "";
+            this.TxtEmail.Text = "";
+            this.TxtEmailConfirm.Text = "";
+            this.TxtPassword.Text = "";
+            this.TxtPasswordConfirm.Text = "";
+        }
+
+        protected object GetUserValue(int idUser, int column)
+        {
+            TreeIter iter;
+            TreeModel model = this.TreeData;
+
+            object value = null;
+
+            if (model.GetIterFirst(out iter))
+            {
+                do
+                {
+                    if (idUser.ToString() == model.GetValue(iter, 0).ToString())
+                    {
+                        value = model.GetValue(iter, column);
+                    }
+                } while (model.IterNext(ref iter));
+            }
+
+            return value;
         }
 
         protected void ViewTableOnRowActivated(object o, RowActivatedArgs args)
@@ -285,11 +300,6 @@ namespace SistemaEyS.AdminForms.Seguridad
             }
         }
 
-        protected void BtnUpdateOnClicked(object sender, EventArgs e)
-        {
-            this.UpdateData();
-        }
-
         protected bool ViewTableEqualFunc(TreeModel model, int column, string key, TreeIter iter)
         {
             for (int i = 0; i < model.NColumns; i++)
@@ -329,18 +339,6 @@ namespace SistemaEyS.AdminForms.Seguridad
         {
             //Console.WriteLine($"Changed: '{this.TxtSearch.Text}'");
             this.TreeData.Refilter();
-        }
-
-        protected void BtnNewOnClicked(object sender, EventArgs e)
-        {
-            this.SelectedID = -1;
-            this.TxtUser.Text = "";
-            this.TxtName.Text = "";
-            this.TxtLastname.Text = "";
-            this.TxtEmail.Text = "";
-            this.TxtEmailConfirm.Text = "";
-            this.TxtPassword.Text = "";
-            this.TxtPasswordConfirm.Text = "";
         }
     }
 }
