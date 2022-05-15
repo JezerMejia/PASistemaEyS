@@ -99,10 +99,16 @@ namespace SistemaEyS.AdminForms
             cargosSettings.Show();
         }
 
-        protected void SeguridadUsuariosOnActivated(object sender, EventArgs e)
+        protected void SeguridadUsuariosConfOnActivated(object sender, EventArgs e)
         {
             UserSeguridad userSeguridad = new UserSeguridad();
             userSeguridad.Show();
+        }
+
+        protected void SeguridadUsuariosRolesOnActivated(object sender, EventArgs e)
+        {
+            UserRolSeguridad userRolSeguridad = new UserRolSeguridad();
+            userRolSeguridad.Show();
         }
 
         protected void AjustesDepartamentosOnActivated(object sender, EventArgs e)

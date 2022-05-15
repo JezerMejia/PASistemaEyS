@@ -743,7 +743,6 @@ IT</property>
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Usuarios</property>
         <property name="ShortLabel" translatable="yes">Usuarios</property>
-        <signal name="Activated" handler="SeguridadUsuariosOnActivated" />
       </action>
       <action id="OpcionesDeRolAction">
         <property name="Type">Action</property>
@@ -755,6 +754,18 @@ IT</property>
         <property name="Label" translatable="yes">Departamentos</property>
         <property name="ShortLabel" translatable="yes">Departamentos</property>
         <signal name="Activated" handler="AjustesDepartamentosOnActivated" />
+      </action>
+      <action id="ConfiguracinAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Configuración</property>
+        <property name="ShortLabel" translatable="yes">Configuración</property>
+        <signal name="Activated" handler="SeguridadUsuariosConfOnActivated" />
+      </action>
+      <action id="RolesAction1">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Roles</property>
+        <property name="ShortLabel" translatable="yes">Roles</property>
+        <signal name="Activated" handler="SeguridadUsuariosRolesOnActivated" />
       </action>
     </action-group>
     <property name="MemberName" />
@@ -797,7 +808,10 @@ IT</property>
                     <node type="Menuitem" action="DepartamentosAction" />
                   </node>
                   <node type="Menu" action="SeguridadAction">
-                    <node type="Menuitem" action="UsuariosAction" />
+                    <node type="Menu" action="UsuariosAction">
+                      <node type="Menuitem" action="ConfiguracinAction" />
+                      <node type="Menuitem" action="RolesAction1" />
+                    </node>
                     <node type="Menuitem" action="RolesAction" />
                     <node type="Menuitem" action="OpcionesDeRolAction" />
                   </node>

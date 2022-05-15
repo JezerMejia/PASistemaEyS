@@ -64,6 +64,10 @@ namespace SistemaEyS.AdminForms
 
 		private global::Gtk.Action DepartamentosAction;
 
+		private global::Gtk.Action ConfiguracinAction;
+
+		private global::Gtk.Action RolesAction1;
+
 		private global::Gtk.Alignment alignment1;
 
 		private global::Gtk.VBox vbox4;
@@ -177,6 +181,12 @@ namespace SistemaEyS.AdminForms
 			this.DepartamentosAction = new global::Gtk.Action("DepartamentosAction", global::Mono.Unix.Catalog.GetString("Departamentos"), null, null);
 			this.DepartamentosAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Departamentos");
 			w1.Add(this.DepartamentosAction, null);
+			this.ConfiguracinAction = new global::Gtk.Action("ConfiguracinAction", global::Mono.Unix.Catalog.GetString("Configuración"), null, null);
+			this.ConfiguracinAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Configuración");
+			w1.Add(this.ConfiguracinAction, null);
+			this.RolesAction1 = new global::Gtk.Action("RolesAction1", global::Mono.Unix.Catalog.GetString("Roles"), null, null);
+			this.RolesAction1.ShortLabel = global::Mono.Unix.Catalog.GetString("Roles");
+			w1.Add(this.RolesAction1, null);
 			this.UIManager.InsertActionGroup(w1, 0);
 			this.AddAccelGroup(this.UIManager.AccelGroup);
 			this.Name = "SistemaEyS.AdminForms.AdminPanel";
@@ -206,12 +216,13 @@ namespace SistemaEyS.AdminForms
 					"n\'/><menuitem name=\'PermisosAction\' action=\'PermisosAction\'/></menu><menu name=\'" +
 					"AjustesAction\' action=\'AjustesAction\'><menuitem name=\'CargosAction\' action=\'Carg" +
 					"osAction\'/><menuitem name=\'DepartamentosAction\' action=\'DepartamentosAction\'/></" +
-					"menu><menu name=\'SeguridadAction\' action=\'SeguridadAction\'><menuitem name=\'Usuar" +
-					"iosAction\' action=\'UsuariosAction\'/><menuitem name=\'RolesAction\' action=\'RolesAc" +
-					"tion\'/><menuitem name=\'OpcionesDeRolAction\' action=\'OpcionesDeRolAction\'/></menu" +
-					"><menu name=\'AyudaAction\' action=\'AyudaAction\'><menuitem name=\'dialogInfoAction\'" +
-					" action=\'dialogInfoAction\'/><menuitem name=\'dialogQuestionAction\' action=\'dialog" +
-					"QuestionAction\'/></menu></menubar></ui>");
+					"menu><menu name=\'SeguridadAction\' action=\'SeguridadAction\'><menu name=\'UsuariosA" +
+					"ction\' action=\'UsuariosAction\'><menuitem name=\'ConfiguracinAction\' action=\'Confi" +
+					"guracinAction\'/><menuitem name=\'RolesAction1\' action=\'RolesAction1\'/></menu><men" +
+					"uitem name=\'RolesAction\' action=\'RolesAction\'/><menuitem name=\'OpcionesDeRolActi" +
+					"on\' action=\'OpcionesDeRolAction\'/></menu><menu name=\'AyudaAction\' action=\'AyudaA" +
+					"ction\'><menuitem name=\'dialogInfoAction\' action=\'dialogInfoAction\'/><menuitem na" +
+					"me=\'dialogQuestionAction\' action=\'dialogQuestionAction\'/></menu></menubar></ui>");
 			this.menuBar = ((global::Gtk.MenuBar)(this.UIManager.GetWidget("/menuBar")));
 			this.menuBar.Name = "menuBar";
 			this.vbox4.Add(this.menuBar);
@@ -284,8 +295,9 @@ namespace SistemaEyS.AdminForms
 			this.CargosAction.Activated += new global::System.EventHandler(this.AjustesCargosOnActivated);
 			this.SolicitudesDeVacacionesAction.Activated += new global::System.EventHandler(this.TablasSolicitudVacacionesActionOnActivated);
 			this.SolicitudDeVacacionesAction.Activated += new global::System.EventHandler(this.TablasSolicitudVacacionesActionOnActivated);
-			this.UsuariosAction.Activated += new global::System.EventHandler(this.SeguridadUsuariosOnActivated);
 			this.DepartamentosAction.Activated += new global::System.EventHandler(this.AjustesDepartamentosOnActivated);
+			this.ConfiguracinAction.Activated += new global::System.EventHandler(this.SeguridadUsuariosConfOnActivated);
+			this.RolesAction1.Activated += new global::System.EventHandler(this.SeguridadUsuariosRolesOnActivated);
 		}
 	}
 }
