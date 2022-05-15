@@ -908,50 +908,6 @@ IT</property>
                     <property name="MemberName" />
                     <property name="Spacing">6</property>
                     <child>
-                      <widget class="Gtk.HBox" id="hbox6">
-                        <property name="MemberName" />
-                        <property name="Spacing">6</property>
-                        <child>
-                          <widget class="Gtk.Alignment" id="alignment4">
-                            <property name="MemberName" />
-                            <property name="Xalign">1</property>
-                            <child>
-                              <widget class="Gtk.Label" id="label4">
-                                <property name="MemberName" />
-                                <property name="Xalign">1</property>
-                                <property name="LabelProp" translatable="yes">ID:</property>
-                                <property name="Justify">Right</property>
-                              </widget>
-                            </child>
-                          </widget>
-                          <packing>
-                            <property name="Position">0</property>
-                            <property name="AutoSize">False</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="SistemaEySLibrary.ComboBoxNumericEntry" id="CmbxID">
-                            <property name="MemberName" />
-                            <property name="IsTextCombo">False</property>
-                            <property name="Items" translatable="yes" />
-                          </widget>
-                          <packing>
-                            <property name="PackType">End</property>
-                            <property name="Position">1</property>
-                            <property name="AutoSize">True</property>
-                            <property name="Expand">False</property>
-                            <property name="Fill">False</property>
-                          </packing>
-                        </child>
-                      </widget>
-                      <packing>
-                        <property name="Position">0</property>
-                        <property name="AutoSize">True</property>
-                        <property name="Expand">False</property>
-                        <property name="Fill">False</property>
-                      </packing>
-                    </child>
-                    <child>
                       <widget class="Gtk.HBox" id="hbox5">
                         <property name="MemberName" />
                         <property name="Spacing">6</property>
@@ -993,7 +949,7 @@ IT</property>
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">1</property>
+                        <property name="Position">0</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
@@ -1041,7 +997,7 @@ IT</property>
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">2</property>
+                        <property name="Position">1</property>
                         <property name="AutoSize">True</property>
                         <property name="Expand">False</property>
                         <property name="Fill">False</property>
@@ -1233,6 +1189,7 @@ IT</property>
                         <property name="IsEditable">True</property>
                         <property name="WidthChars">30</property>
                         <property name="InvisibleChar">●</property>
+                        <signal name="Changed" handler="TxtSearchOnChanged" />
                       </widget>
                       <packing>
                         <property name="Position">1</property>
@@ -1249,6 +1206,7 @@ IT</property>
                         <property name="Icon">stock:gtk-refresh Menu</property>
                         <property name="Label" translatable="yes">Actualizar</property>
                         <property name="UseUnderline">True</property>
+                        <signal name="Clicked" handler="BtnUpdateOnClicked" />
                       </widget>
                       <packing>
                         <property name="PackType">End</property>
@@ -1275,6 +1233,7 @@ IT</property>
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="ShowScrollbars">True</property>
+                        <signal name="RowActivated" handler="ViewTableOnRowActivated" />
                       </widget>
                     </child>
                   </widget>

@@ -9,7 +9,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
     {
         protected Dt_tlb_empleado dtus = new Dt_tlb_empleado();
         protected Dt_tbl_cargo dtcarg = new Dt_tbl_cargo();
-        protected Dt_tlb_departamento dtdep = new Dt_tlb_departamento();
+        protected Dt_tbl_departamento dtdep = new Dt_tbl_departamento();
         protected ListStore EmpData;
         protected ListStore CargoData;
         protected ListStore DepData;
@@ -35,7 +35,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
         {
             this.EmpData = dtus.listarUsuarios();
             this.CargoData = dtcarg.GetDataCmbx();
-            this.DepData = dtdep.ListarDepartamentosCmbx();
+            this.DepData = dtdep.GetDataCmbx();
             this.FillCmbxIDModel();
             this.FillCmbCargoModel();
             this.FillCmbDepModel();
