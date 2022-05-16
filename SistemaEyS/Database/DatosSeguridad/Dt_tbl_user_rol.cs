@@ -18,6 +18,7 @@ namespace SistemaEyS.DatosSeguridad
                 typeof(string)
                 );
         }
+
         public override void UpdateModel()
         {
             this.Model.Clear();
