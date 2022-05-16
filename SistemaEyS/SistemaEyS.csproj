@@ -127,6 +127,8 @@
     <Compile Include="AdminForms\Seguridad\UserRolSeguridad.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Seguridad.UserRolSeguridad.cs" />
     <Compile Include="Database\DatosSeguridad\Dt_tbl_user_rol.cs" />
+    <Compile Include="AdminForms\Tables\HorPanelBtn\UpdateHorario.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.HorPanelBtn.UpdateHorario.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
