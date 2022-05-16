@@ -1,11 +1,13 @@
 ﻿using System;
 using SistemaEyS.DatosEyS;
+using SistemaEyS.AdminForms.Tables.HorPanelBtn;
 
 namespace SistemaEyS.AdminForms.Tables
 {
     public partial class EntradaSalidaView : Gtk.Bin
     {
         Dt_tlb_asistencia dtus = new Dt_tlb_asistencia();
+
         public EntradaSalidaView()
         {
             this.Build();

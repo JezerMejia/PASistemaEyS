@@ -24,7 +24,28 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
             ConnectionEyS connection = ConnectionEyS.OpenConnection();
 
             compararMayor();
-          
+
+            if (string.IsNullOrWhiteSpace(lunesIni.ActiveText) ||
+               string.IsNullOrWhiteSpace(lunesSal.ActiveText) ||
+               string.IsNullOrWhiteSpace(martesIni.ActiveText) ||
+               string.IsNullOrWhiteSpace(martesSal.ActiveText) ||
+               string.IsNullOrWhiteSpace(miercolesIni.ActiveText) ||
+               string.IsNullOrWhiteSpace(miercolesSal.ActiveText) ||
+               string.IsNullOrWhiteSpace(juevesIni.ActiveText) ||
+               string.IsNullOrWhiteSpace(juevesSal.ActiveText) ||
+               string.IsNullOrWhiteSpace(viernesIni.ActiveText) ||
+               string.IsNullOrWhiteSpace(viernesSal.ActiveText) ||
+               string.IsNullOrWhiteSpace(sabadoIni.ActiveText) ||
+               string.IsNullOrWhiteSpace(sabadoSal.ActiveText) ||
+               string.IsNullOrWhiteSpace(domingoIni.ActiveText) ||
+               string.IsNullOrWhiteSpace(domingoSal.ActiveText)
+               )
+            {
+                mensaje("No pueden haber datos vacios");
+                ClearInput();
+                return;
+            }
+
             if (lunesIni.ActiveText.Equals(lunesSal.ActiveText) ||
                 martesIni.ActiveText.Equals(martesSal.ActiveText) ||
                 miercolesIni.ActiveText.Equals(miercolesSal.ActiveText) ||
@@ -38,27 +59,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(lunesIni.ActiveText) ||
-                string.IsNullOrWhiteSpace(lunesSal.ActiveText) ||
-                string.IsNullOrWhiteSpace(martesIni.ActiveText) ||
-                string.IsNullOrWhiteSpace(martesSal.ActiveText) ||
-                string.IsNullOrWhiteSpace(miercolesIni.ActiveText) ||
-                string.IsNullOrWhiteSpace(miercolesSal.ActiveText) ||
-                string.IsNullOrWhiteSpace(juevesIni.ActiveText) ||
-                string.IsNullOrWhiteSpace(juevesSal.ActiveText) ||
-                string.IsNullOrWhiteSpace(viernesIni.ActiveText) ||
-                string.IsNullOrWhiteSpace(viernesSal.ActiveText) ||
-                string.IsNullOrWhiteSpace(sabadoIni.ActiveText) ||
-                string.IsNullOrWhiteSpace(sabadoSal.ActiveText) ||
-                string.IsNullOrWhiteSpace(domingoIni.ActiveText) ||
-                string.IsNullOrWhiteSpace(domingoSal.ActiveText)
-                )
-            {
-                mensaje("No pueden haber datos vacios");
-                ClearInput();
-                return;
-            }
-
+           
             String Query = "INSERT INTO BDSistemaEyS.Horario (" +
                     "lunesInicio, lunesSalida, " +
                     "martesInicio, martesSalida, " +
@@ -145,10 +146,6 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 
         }
 
-        public void comprobarIgual()
-        {
-
-        }
 
         public void compararMayor()
         {
