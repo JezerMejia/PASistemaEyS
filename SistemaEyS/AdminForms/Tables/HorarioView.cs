@@ -15,6 +15,7 @@ namespace SistemaEyS.AdminForms.Tables
         TreeModelFilterVisibleFunc ModelFilterFunc;
         int SelectedID = -1;
         ConnectionEyS connection = ConnectionEyS.OpenConnection();
+        UpdateHorario upHor = new UpdateHorario();
 
         public HorarioView()
         {
@@ -162,6 +163,20 @@ namespace SistemaEyS.AdminForms.Tables
             UpdateData();
 
 
+        }
+
+        protected void OnBtnEditClicked(object sender, EventArgs e)
+        {
+            if (this.SelectedID < 0)
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Warning,
+                    ButtonsType.Ok, "Seleccione un horario en la tabla");
+                ms.Run();
+                ms.Destroy();
+                return;
+            }
+
+            upHor.Show();
         }
     }
 }
