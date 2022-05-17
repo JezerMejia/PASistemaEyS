@@ -6,23 +6,22 @@ using SistemaEyS.Database.Connection;
 
 namespace SistemaEyS.DatosEyS
 {
-    public class Dt_tlb_asistencia
+    public class Dt_tlb_asistencia : DataTableTemplate
     {
-
-        public Gtk.ListStore listStore;
-
-        ConnectionEyS conn = ConnectionEyS.OpenConnection();
-        StringBuilder sb = new StringBuilder();
-
-        public ListStore listarEntradaSalida()
+        public Dt_tlb_asistencia()
         {
-            ListStore datos = new ListStore(
+            this.conn = ConnectionEyS.OpenConnection();
+            this.DBTable = "BDSistemaEyS.Asistencia";
+            this.Model = new ListStore(
                 typeof(string), typeof(string),
                 typeof(string), typeof(string),
                 typeof(string)
-            );
-
+                );
+        }
+        public override void UpdateModel()
+        {
             IDataReader idr = null;
+            StringBuilder sb = new StringBuilder();
             sb.Clear();
             sb.Append("SELECT * FROM BDSistemaEyS.Asistencia;");
             try
@@ -31,7 +30,7 @@ namespace SistemaEyS.DatosEyS
 
                 while (idr.Read())
                 {
-                    datos.AppendValues(
+                    this.Model.AppendValues(
                         idr[0].ToString(), // ID
                         idr[4].ToString(), // ID Empleado
                         idr.GetDateTime(1).ToString("yyyy-MM-dd"), // Fecha
@@ -39,7 +38,6 @@ namespace SistemaEyS.DatosEyS
                         idr[3].ToString() // Salida
                     );
                 }
-                return datos;
             }
             catch (Exception e)
             {
@@ -55,10 +53,47 @@ namespace SistemaEyS.DatosEyS
                     idr.Close();
                 }
             }
-            return datos;
         }
-        public Dt_tlb_asistencia()
+
+        public void InsertEnterAssistance(string idEmpleado, string fechaAsistencia, string horaEntrada)
         {
+            string QueryParameters = "idEmpleado,fechaAsistencia,horaEntrada";
+            string QueryValues = $"'{idEmpleado}','{fechaAsistencia}','{horaEntrada}'";
+
+            string Query = $"INSERT INTO {this.DBTable} ({QueryParameters}) " +
+                $"VALUES ({QueryValues}) " +
+                $"ON DUPLICATE KEY UPDATE horaEntrada='{horaEntrada};'";
+
+            try
+            {
+                this.conn.Execute(CommandType.Text, Query);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(Query);
+                Console.WriteLine(e);
+                throw e;
+            }
+        }
+        public void InsertExitAssistance(string idEmpleado, string fechaAsistencia, string horaSalida)
+        {
+            string QueryParameters = "idEmpleado,fechaAsistencia,horaSalida";
+            string QueryValues = $"'{idEmpleado}','{fechaAsistencia}','{horaSalida}'";
+
+            string Query = $"INSERT INTO {this.DBTable} ({QueryParameters}) " +
+                $"VALUES ({QueryValues}) " +
+                $"ON DUPLICATE KEY UPDATE horaSalida='{horaSalida}';";
+
+            try
+            {
+                this.conn.Execute(CommandType.Text, Query);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(Query);
+                Console.WriteLine(e);
+                throw e;
+            }
         }
     }
 }
