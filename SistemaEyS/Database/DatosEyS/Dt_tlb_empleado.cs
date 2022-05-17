@@ -195,5 +195,12 @@ namespace SistemaEyS.DatosEyS
                     )
                 );
         }
+
+        public void DeleteFrom(string idEmpleado)
+        {
+            this.DeleteFrom(this.conn,
+                new DataTableParameter("idEmpleado", $"'{idEmpleado}'")
+                );
+        }
     }
 }
