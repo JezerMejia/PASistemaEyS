@@ -29,7 +29,7 @@ namespace SistemaEyS.UserForms
 
         public void UpdateData()
         {
-            this.EmpModel = this.DtEmp.listarUsuariosVista();
+            this.EmpModel = this.DtEmp.GetDataView();
             this.lbWelcome.Text = $"¡Bienvenido, {this.GetEmpleadoName()}!";
         }
 

@@ -7,7 +7,7 @@ namespace SistemaEyS.AdminForms.Tables
 {
     public partial class EmpleadosView : Gtk.Bin
     {
-        Dt_tlb_empleado dtus = new Dt_tlb_empleado();
+        Dt_tlb_empleado DtEmp = new Dt_tlb_empleado();
         AddDialog addBtn;
         UpdateDialog actBtn;
         DeleteDialog delBtn;
@@ -34,12 +34,12 @@ namespace SistemaEyS.AdminForms.Tables
             };
             this.viewTable.SetTreeViewColumns(storeObjects);
 
-            this.viewTable.Model = dtus.listarUsuariosVista();
+            this.UpdateData();
         }
 
         public void UpdateData()
         {
-            this.viewTable.Model = dtus.listarUsuariosVista();
+            this.viewTable.Model = DtEmp.GetDataView();
             this.actBtn.UpdateData();
             this.delBtn.UpdateData();
         }

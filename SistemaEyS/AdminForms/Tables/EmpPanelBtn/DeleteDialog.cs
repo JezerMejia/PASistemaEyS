@@ -9,7 +9,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
     public partial class DeleteDialog : Gtk.Window
     {
 
-        Dt_tlb_empleado dtus = new Dt_tlb_empleado();
+        Dt_tlb_empleado DtEmp = new Dt_tlb_empleado();
         ListStore datos;
         protected EmpleadosView parent;
 
@@ -29,7 +29,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
         public void UpdateData()
         {
-            this.datos = dtus.listarUsuariosVista();
+            this.datos = DtEmp.GetDataView();
             this.FillComboboxModel();
         }
 
