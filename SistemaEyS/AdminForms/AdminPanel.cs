@@ -59,7 +59,7 @@ namespace SistemaEyS.AdminForms
 
         protected void TablasEmpleadosActionOnActivated(object sender, EventArgs e)
         {
-            Tables.EmpleadosView empleadosPanel = new Tables.EmpleadosView();
+            Tables.EmpleadosView empleadosPanel = new Tables.EmpleadosView(this);
             this.AddTab(this.ntTabview, empleadosPanel, "Empleados");
         }
 
