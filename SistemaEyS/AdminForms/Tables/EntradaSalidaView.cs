@@ -6,7 +6,7 @@ namespace SistemaEyS.AdminForms.Tables
 {
     public partial class EntradaSalidaView : Gtk.Bin
     {
-        Dt_tlb_asistencia dtus = new Dt_tlb_asistencia();
+        Dt_tlb_asistencia DtAssis = new Dt_tlb_asistencia();
 
         public EntradaSalidaView()
         {
@@ -20,12 +20,12 @@ namespace SistemaEyS.AdminForms.Tables
             };
             this.viewTable.SetTreeViewColumns(storeObjects);
 
-            this.viewTable.Model = dtus.listarEntradaSalida();
+            this.viewTable.Model = DtAssis.GetData();
         }
 
         protected void btnUpdateOnClicked(object sender, EventArgs e)
         {
-            this.viewTable.Model = dtus.listarEntradaSalida();
+            this.viewTable.Model = DtAssis.GetData();
         }
     }
 }

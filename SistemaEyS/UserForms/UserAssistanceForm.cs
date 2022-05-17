@@ -3,6 +3,7 @@ using System.Data;
 using System.Text;
 using Gtk;
 using SistemaEyS.Database.Connection;
+using SistemaEyS.DatosEyS;
 
 namespace SistemaEyS.UserForms
 {
@@ -11,7 +12,10 @@ namespace SistemaEyS.UserForms
         protected Window parent;
         protected uint timeout;
         protected string idEmpleado;
-        ConnectionEyS conn = ConnectionEyS.OpenConnection();
+
+        protected Dt_tlb_asistencia DtAssis = new Dt_tlb_asistencia();
+        protected Dt_tlb_empleado DtEmp = new Dt_tlb_empleado();
+        protected ListStore EmpModel;
 
         public UserAssistanceForm(Window parent, string idEmpleado) :
                 base(Gtk.WindowType.Toplevel)
@@ -19,42 +23,31 @@ namespace SistemaEyS.UserForms
             this.parent = parent;
             this.idEmpleado = idEmpleado;
             this.Build();
+            this.UpdateData();
             this.SetDateTimeTimeout();
-
-            this.lbWelcome.Text = $"¡Bienvenido, {this.GetNameEmpleado()}!";
         }
 
-        protected string GetNameEmpleado()
+        public void UpdateData()
         {
-            StringBuilder sb = new StringBuilder();
-            string value = "";
-            IDataReader idr = null;
+            this.EmpModel = this.DtEmp.listarUsuariosVista();
+            this.lbWelcome.Text = $"¡Bienvenido, {this.GetEmpleadoName()}!";
+        }
 
-            sb.Clear();
-            sb.Append($"SELECT Nombre FROM BDSistemaEyS.vwEmpleado " +
-                    $"WHERE ID = {this.idEmpleado};"
-                    );
-            try
+        protected string GetEmpleadoName()
+        {
+            TreeIter iter;
+            if (this.EmpModel.GetIterFirst(out iter))
             {
-                idr = conn.Read(CommandType.Text, sb.ToString());
-                if (!idr.Read()) throw new Exception("Empleado no encontrado");
-                value = idr[0].ToString();
-            }
-            catch (Exception e)
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, "Error al obtener el nombre del empleado: " + e.Message);
-                ms.Run();
-                ms.Destroy();
-            }
-            finally
-            {
-                if (idr != null && !idr.IsClosed)
+                do
                 {
-                    idr.Close();
+                    if (this.idEmpleado == this.EmpModel.GetValue(iter, 0).ToString())
+                    {
+                        return this.EmpModel.GetValue(iter, 1).ToString();
+                    }
                 }
+                while (this.EmpModel.IterNext(ref iter));
             }
-            return value;
+            return "";
         }
 
         protected void SetDateTimeTimeout()
@@ -71,63 +64,57 @@ namespace SistemaEyS.UserForms
             return true;
         }
 
-        private bool MarkAssitanceEnter()
+        private void MarkAssitanceEnter()
         {
-            StringBuilder sb = new StringBuilder();
-            bool value = false;
-
             DateTime now = DateTime.Now;
 
-            sb.Clear();
-            sb.Append($"INSERT INTO BDSistemaEyS.Asistencia (fechaAsistencia, horaEntrada, idEmpleado) " +
-                    $"VALUES ('{now.ToString("yyyy-MM-dd")}', '{now.ToString("H:mm:ss")}', {this.idEmpleado}) " +
-                    $"ON DUPLICATE KEY UPDATE horaEntrada='{now.ToString("H:mm:ss")}';"
-                    );
             try
             {
-                value = conn.Execute(CommandType.Text, sb.ToString()) != 0;
+                this.DtAssis.InsertEnterAssistance(
+                    this.idEmpleado,
+                    now.ToString("yyyy-MM-dd"),
+                    now.ToString("H:mm:ss")
+                );
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok, "Marcado de entrada exitoso");
+                    MessageType.Info, ButtonsType.Ok,
+                    "Marcado de entrada exitoso");
                 ms.Run();
                 ms.Destroy();
             }
             catch (Exception e)
             {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, "Error al marcar la entrada: " + e.Message);
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
+                    MessageType.Error, ButtonsType.Ok,
+                    "Error al marcar la entrada: " + e.Message);
                 ms.Run();
                 ms.Destroy();
             }
-            return value;
         }
-        private bool MarkAssitanceExit()
+        private void MarkAssitanceExit()
         {
-            StringBuilder sb = new StringBuilder();
-            bool value = false;
-
             DateTime now = DateTime.Now;
 
-            sb.Clear();
-            sb.Append($"INSERT INTO BDSistemaEyS.Asistencia (fechaAsistencia, horaSalida, idEmpleado) " +
-                    $"VALUES ('{now.ToString("yyyy-MM-dd")}', '{now.ToString("H:mm:ss")}', {this.idEmpleado}) " +
-                    $"ON DUPLICATE KEY UPDATE horaSalida='{now.ToString("H:mm:ss")}';"
-                    );
             try
             {
-                value = conn.Execute(CommandType.Text, sb.ToString()) != 0;
+                this.DtAssis.InsertExitAssistance(
+                    this.idEmpleado,
+                    now.ToString("yyyy-MM-dd"),
+                    now.ToString("H:mm:ss")
+                );
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok, "Marcado de salida exitoso");
+                    MessageType.Info, ButtonsType.Ok,
+                    "Marcado de salida exitoso");
                 ms.Run();
                 ms.Destroy();
             }
             catch (Exception e)
             {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, "Error al marcar la salida: " + e.Message);
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
+                    MessageType.Error, ButtonsType.Ok,
+                    "Error al marcar la salida: " + e.Message);
                 ms.Run();
                 ms.Destroy();
             }
-            return value;
         }
 
         public void Close()
