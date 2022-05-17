@@ -101,13 +101,11 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Settings.CargosSettings.cs" />
     <Compile Include="AdminForms\Tables\EmpPanelBtn\AddDialog.cs" />
     <Compile Include="AdminForms\Tables\EmpPanelBtn\UpdateDialog.cs" />
-    <Compile Include="AdminForms\Tables\EmpPanelBtn\DeleteDialog.cs" />
     <Compile Include="AdminForms\Seguridad\UserSeguridad.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Seguridad.UserSeguridad.cs" />
 
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.AddDialog.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.UpdateDialog.cs" />
-    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpPanelBtn.DeleteDialog.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EntradaSalidaView.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.EmpleadosView.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.HorarioView.cs" />
