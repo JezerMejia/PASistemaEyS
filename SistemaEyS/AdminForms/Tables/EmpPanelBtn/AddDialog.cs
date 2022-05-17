@@ -18,7 +18,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
         {
             this.parent = parent;
             this.Build();
-            SetIDRandom();
+            this.SetIDRandom();
             this.Hide();
 
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
@@ -34,8 +34,9 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 string.IsNullOrWhiteSpace(TxtPIN.Text)
                 )
             {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
-                    ButtonsType.Ok, "No puede haber datos vacíos");
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                    "No puede haber datos vacíos");
                 ms.Run();
                 ms.Destroy();
                 ClearInput();
@@ -49,16 +50,18 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                     this.TxtLastName.Text, this.TxtSecondLastName.Text,
                     this.TxtPIN.Text
                     );
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
-                    ButtonsType.Ok, "Agregado");
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                    "Agregado");
                 ms.Run();
                 ms.Destroy();
                 ClearInput();
             }
             catch (Exception e)
             {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, e.Message);
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Error, ButtonsType.Ok,
+                    e.Message);
                 ms.Run();
                 ms.Destroy();
             }

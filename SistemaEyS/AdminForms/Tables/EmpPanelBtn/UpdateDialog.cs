@@ -14,6 +14,20 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
         protected ListStore CargoData;
         protected ListStore DepData;
 
+        protected int _SelectedID;
+        public int SelectedID
+        {
+            get
+            {
+                return this._SelectedID;
+            }
+            set
+            {
+                this._SelectedID = value;
+                this.TxtID.Text = this._SelectedID.ToString();
+            }
+        }
+
         protected EmpleadosView parent;
 
         public UpdateDialog(EmpleadosView parent) :
@@ -21,8 +35,6 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
         {
             this.parent = parent;
             this.Build();
-            //this.CmbxEntry = SistemaEySLibrary.ComboBoxNumericEntry.NewText();
-            this.CmbxID.Entry.WidthChars = 16;
             this.Hide();
             this.UpdateData();
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
@@ -36,19 +48,10 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             this.EmpData = DtEmp.GetData();
             this.CargoData = DtCargo.GetDataCmbx();
             this.DepData = DtDep.GetDataCmbx();
-            this.FillCmbxIDModel();
             this.FillCmbCargoModel();
             this.FillCmbDepModel();
-        }
 
-        protected void FillCmbxIDModel()
-        {
-            this.CmbxID.Model = this.EmpData;
-            this.CmbxID.Active = -1;
-
-            this.CmbxID.Entry.Completion = new EntryCompletion();
-            this.CmbxID.Entry.Completion.Model = this.EmpData;
-            this.CmbxID.Entry.Completion.TextColumn = 0;
+            this.SetEntryTextFromID(this.TxtID.Text);
         }
         protected void FillCmbCargoModel()
         {
@@ -96,18 +99,21 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             return index;
         }
 
-        protected void ComboBoxOnChanged(object sender, EventArgs e)
+        protected void TxtIDOnChanged(object sender, EventArgs e)
         {
-            string id = this.CmbxID.ActiveText;
+            string id = this.TxtID.Text;
+            this.SetEntryTextFromID(id);
+        }
 
+        protected void SetEntryTextFromID(string idEmpleado)
+        {
             TreeIter iter;
             if (EmpData.GetIterFirst(out iter))
             {
                 do
                 {
-                    if (id == (string)EmpData.GetValue(iter, 0))
+                    if (idEmpleado == (string)EmpData.GetValue(iter, 0))
                     {
-                        this.newId.Text = id;
                         this.name.Text = (string)EmpData.GetValue(iter, 1);
                         this.secondName.Text = (string)EmpData.GetValue(iter, 2);
                         this.surname.Text = (string)EmpData.GetValue(iter, 3);
@@ -116,15 +122,15 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                         this.Icard.Text = (string)EmpData.GetValue(iter, 6);
                         this.password.Text = (string)EmpData.GetValue(iter, 7);
                         this.CmbCargo.Active = this.GetIndexFromValue(
-                            this.CmbCargo, (string) EmpData.GetValue(iter, 8));
+                            this.CmbCargo, (string)EmpData.GetValue(iter, 8));
                         this.CmbDep.Active = this.GetIndexFromValue(
                             this.CmbDep, (string)EmpData.GetValue(iter, 9));
                         this.idHor.Text = (string)EmpData.GetValue(iter, 10);
                         this.idGroup.Text = (string)EmpData.GetValue(iter, 11);
                         return;
-                    } else
+                    }
+                    else
                     {
-                        this.newId.Text = "";
                         this.name.Text = "";
                         this.secondName.Text = "";
                         this.surname.Text = "";
@@ -162,12 +168,13 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
         protected void BtnAcceptOnClicked(object sender, EventArgs e)
         {
-            string idEmpleado = this.CmbxID.ActiveText;
+            string idEmpleado = this.TxtID.Text;
 
             if (string.IsNullOrWhiteSpace(idEmpleado))
             {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Info,
-                        ButtonsType.Ok, "Seleccione un ID de empleado");
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                    "Seleccione un ID de empleado");
                 ms.Run();
                 ms.Destroy();
                 return;
@@ -188,16 +195,17 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                     this.GetActiveID(this.CmbDep),
                     this.idHor.Text
                     );
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Info,
-                    ButtonsType.Ok, "Guardado");
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                    "Guardado");
                 ms.Run();
                 ms.Destroy();
-                ClearInput();
             }
             catch (Exception ex)
             {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, ex.Message);
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Error, ButtonsType.Ok,
+                    ex.Message);
                 ms.Run();
                 ms.Destroy();
             }
@@ -207,9 +215,6 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
         public void ClearInput()
         {
-            this.CmbxID.Active = -1;
-            this.CmbxID.Entry.Text = "";
-            this.newId.Text = "";
             this.name.Text = "";
             this.secondName.Text = "";
             this.surname.Text = "";
@@ -221,21 +226,9 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             this.CmbDep.Active = -1;
         }
 
-        public void SetIDRandom()
-        {
-            Random r = new Random();
-            this.newId.Text = Convert.ToString(r.Next(10000, 100000));
-        }
-
         protected void BtnCancelOnClicked(object sender, EventArgs e)
         {
-            this.ClearInput();
             this.Hide();
-        }
-
-        protected void BtnNewIDUpdateOnClicked(object sender, EventArgs e)
-        {
-            this.SetIDRandom();
         }
     }
 }
