@@ -7,9 +7,9 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 {
     public partial class UpdateDialog : Gtk.Window
     {
-        protected Dt_tlb_empleado dtus = new Dt_tlb_empleado();
-        protected Dt_tbl_cargo dtcarg = new Dt_tbl_cargo();
-        protected Dt_tbl_departamento dtdep = new Dt_tbl_departamento();
+        protected Dt_tlb_empleado DtEmp = new Dt_tlb_empleado();
+        protected Dt_tbl_cargo DtCargo = new Dt_tbl_cargo();
+        protected Dt_tbl_departamento DtDep = new Dt_tbl_departamento();
         protected ListStore EmpData;
         protected ListStore CargoData;
         protected ListStore DepData;
@@ -33,9 +33,9 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
         public void UpdateData()
         {
-            this.EmpData = dtus.listarUsuarios();
-            this.CargoData = dtcarg.GetDataCmbx();
-            this.DepData = dtdep.GetDataCmbx();
+            this.EmpData = DtEmp.GetData();
+            this.CargoData = DtCargo.GetDataCmbx();
+            this.DepData = DtDep.GetDataCmbx();
             this.FillCmbxIDModel();
             this.FillCmbCargoModel();
             this.FillCmbDepModel();
@@ -43,23 +43,11 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
         protected void FillCmbxIDModel()
         {
-            ListStore store = (ListStore)this.CmbxID.Model;
-            store.Clear();
-            TreeIter iter;
-            if (EmpData.GetIterFirst(out iter))
-            {
-                do
-                {
-                    this.CmbxID.InsertText(
-                        Convert.ToInt32(EmpData.GetValue(iter, 0)),
-                        (String)EmpData.GetValue(iter, 0)
-                    );
-                }
-                while (EmpData.IterNext(ref iter));
-            }
+            this.CmbxID.Model = this.EmpData;
+            this.CmbxID.Active = -1;
 
             this.CmbxID.Entry.Completion = new EntryCompletion();
-            this.CmbxID.Entry.Completion.Model = EmpData;
+            this.CmbxID.Entry.Completion.Model = this.EmpData;
             this.CmbxID.Entry.Completion.TextColumn = 0;
         }
         protected void FillCmbCargoModel()
@@ -174,78 +162,33 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
         protected void BtnAcceptOnClicked(object sender, EventArgs e)
         {
-            ConnectionEyS connection = ConnectionEyS.OpenConnection();
-
             string idEmpleado = this.CmbxID.ActiveText;
 
             if (string.IsNullOrWhiteSpace(idEmpleado))
             {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Info,
                         ButtonsType.Ok, "Seleccione un ID de empleado");
                 ms.Run();
                 ms.Destroy();
+                return;
             }
 
-            string modifiedQuery = "";
-
-            if (!string.IsNullOrWhiteSpace(this.newId.Text))
-            {
-                modifiedQuery += $"idEmpleado = {this.newId.Text}, ";
-            }
-            if (!string.IsNullOrWhiteSpace(this.name.Text))
-            {
-                modifiedQuery += $"primerNombre = '{this.name.Text}', ";
-            }
-            if (!string.IsNullOrWhiteSpace(this.secondName.Text))
-            {
-                modifiedQuery += $"segundoNombre = '{this.secondName.Text}', ";
-            }
-            if (!string.IsNullOrWhiteSpace(this.surname.Text))
-            {
-                modifiedQuery += $"primerApellido = '{this.surname.Text}', ";
-            }
-            if (!string.IsNullOrWhiteSpace(this.secondSurname.Text))
-            {
-                modifiedQuery += $"segundoApellido = '{this.secondSurname.Text}', ";
-            }
-            if (!string.IsNullOrWhiteSpace(this.Icard.Text))
-            {
-                modifiedQuery += $"cedulaEmpleado = '{this.Icard.Text}', ";
-            }
-            if (!string.IsNullOrWhiteSpace(this.password.Text))
-            {
-                modifiedQuery += $"password = '{this.password.Text}', ";
-            }
-            if (!string.IsNullOrWhiteSpace(this.CmbCargo.ActiveText))
-            {
-                string idCargo = this.GetActiveID(this.CmbCargo);
-                modifiedQuery += $"idCargo = {idCargo}, ";
-            }
-            if (!string.IsNullOrWhiteSpace(this.CmbDep.ActiveText))
-            {
-                string idDep = this.GetActiveID(this.CmbDep);
-                modifiedQuery += $"idDepartamento = {idDep}, ";
-            }
-            if (!string.IsNullOrWhiteSpace(this.idHor.Text))
-            {
-                modifiedQuery += $"idHorario = {this.idHor.Text}, ";
-            }
-            if (!string.IsNullOrWhiteSpace(this.idGroup.Text))
-            {
-                modifiedQuery += $"idGrupo = {this.idGroup.Text}, ";
-            }
-
-            modifiedQuery = modifiedQuery.Trim();
-            if (modifiedQuery.EndsWith(","))
-                modifiedQuery = modifiedQuery.Remove(modifiedQuery.Length - 1);
-
-            string Query = $"UPDATE BDSistemaEyS.Empleado SET {modifiedQuery} " +
-                $"WHERE idEmpleado = {idEmpleado};";
-            //Console.WriteLine(Query);
             try
             {
-                connection.Execute(CommandType.Text, Query);
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
+                this.DtEmp.UpdateSet(
+                    idEmpleado,
+                    this.name.Text,
+                    this.secondName.Text,
+                    this.surname.Text,
+                    this.secondSurname.Text,
+                    this.password.Text,
+                    this.Icard.Text,
+                    this.dIngress.Text,
+                    this.GetActiveID(this.CmbCargo),
+                    this.GetActiveID(this.CmbDep),
+                    this.idHor.Text
+                    );
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Info,
                     ButtonsType.Ok, "Guardado");
                 ms.Run();
                 ms.Destroy();
@@ -253,7 +196,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             }
             catch (Exception ex)
             {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
                     ButtonsType.Ok, ex.Message);
                 ms.Run();
                 ms.Destroy();

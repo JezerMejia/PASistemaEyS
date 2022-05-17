@@ -4,12 +4,15 @@ using SistemaEyS.Database.Connection;
 using MySql.Data.MySqlClient;
 using System.Data;
 using SistemaEySLibrary;
+using SistemaEyS.DatosEyS;
 
 namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 {
     public partial class AddDialog : Gtk.Window
     {
         protected EmpleadosView parent;
+        protected Dt_tlb_empleado DtEmp = new Dt_tlb_empleado();
+
         public AddDialog(EmpleadosView parent) :
                 base(Gtk.WindowType.Toplevel)
         {
@@ -26,8 +29,6 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
         protected void BtnAddOnClicked(object sender, EventArgs args)
         {
-            ConnectionEyS connection = ConnectionEyS.OpenConnection();
-
             if (string.IsNullOrWhiteSpace(TxtID.Text) ||
                 string.IsNullOrWhiteSpace(TxtName.Text) ||
                 string.IsNullOrWhiteSpace(TxtPIN.Text)
@@ -41,16 +42,13 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 return;
             }
 
-            string Query = "INSERT INTO BDSistemaEyS.Empleado (" +
-                    "idEmpleado, primerNombre, segundoNombre, " +
-                    "primerApellido, segundoApellido, password) " +
-                    "VALUES (" +
-                    $"{TxtID.Text}, '{TxtName.Text}', '{TxtSecondName.Text}'," +
-                    $"'{TxtLastName.Text}', '{TxtSecondLastName.Text}', '{TxtPIN.Text}');";
-
             try
             {
-                connection.Execute(CommandType.Text, Query);
+                this.DtEmp.InsertInto(
+                    this.TxtID.Text, this.TxtName.Text, this.TxtSecondName.Text,
+                    this.TxtLastName.Text, this.TxtSecondLastName.Text,
+                    this.TxtPIN.Text
+                    );
                 MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
                     ButtonsType.Ok, "Agregado");
                 ms.Run();
