@@ -42,7 +42,7 @@ namespace SistemaEyS.AdminForms
 
 		private global::Gtk.Action dialogInfoAction;
 
-		private global::Gtk.Action dialogQuestionAction;
+		private global::Gtk.Action HelpSistemaEySAction;
 
 		private global::Gtk.Action AjustesAction;
 
@@ -148,9 +148,9 @@ namespace SistemaEyS.AdminForms
 			this.dialogInfoAction = new global::Gtk.Action("dialogInfoAction", global::Mono.Unix.Catalog.GetString("Manual"), null, "gtk-dialog-info");
 			this.dialogInfoAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Manual");
 			w1.Add(this.dialogInfoAction, null);
-			this.dialogQuestionAction = new global::Gtk.Action("dialogQuestionAction", global::Mono.Unix.Catalog.GetString("SistemaEyS"), null, "gtk-dialog-question");
-			this.dialogQuestionAction.ShortLabel = global::Mono.Unix.Catalog.GetString("SistemaEyS");
-			w1.Add(this.dialogQuestionAction, null);
+			this.HelpSistemaEySAction = new global::Gtk.Action("HelpSistemaEySAction", global::Mono.Unix.Catalog.GetString("SistemaEyS"), null, "gtk-dialog-question");
+			this.HelpSistemaEySAction.ShortLabel = global::Mono.Unix.Catalog.GetString("SistemaEyS");
+			w1.Add(this.HelpSistemaEySAction, null);
 			this.AjustesAction = new global::Gtk.Action("AjustesAction", global::Mono.Unix.Catalog.GetString("Ajustes"), null, null);
 			this.AjustesAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Ajustes");
 			w1.Add(this.AjustesAction, null);
@@ -222,7 +222,7 @@ namespace SistemaEyS.AdminForms
 					"uitem name=\'RolesAction\' action=\'RolesAction\'/><menuitem name=\'OpcionesDeRolActi" +
 					"on\' action=\'OpcionesDeRolAction\'/></menu><menu name=\'AyudaAction\' action=\'AyudaA" +
 					"ction\'><menuitem name=\'dialogInfoAction\' action=\'dialogInfoAction\'/><menuitem na" +
-					"me=\'dialogQuestionAction\' action=\'dialogQuestionAction\'/></menu></menubar></ui>");
+					"me=\'HelpSistemaEySAction\' action=\'HelpSistemaEySAction\'/></menu></menubar></ui>");
 			this.menuBar = ((global::Gtk.MenuBar)(this.UIManager.GetWidget("/menuBar")));
 			this.menuBar.Name = "menuBar";
 			this.vbox4.Add(this.menuBar);
@@ -291,6 +291,7 @@ namespace SistemaEyS.AdminForms
 			this.EmpleadosAction.Activated += new global::System.EventHandler(this.TablasEmpleadosActionOnActivated);
 			this.HorariosAction.Activated += new global::System.EventHandler(this.TablasHorariosActionOnActivated);
 			this.EntradasSalidasAction.Activated += new global::System.EventHandler(this.TablasEntradasSalidasActionOnActivated);
+			this.HelpSistemaEySAction.Activated += new global::System.EventHandler(this.HelpSistemaEySActionOnActivated);
 			this.RolesAction.Activated += new global::System.EventHandler(this.SeguridadRolesOnActivated);
 			this.CargosAction.Activated += new global::System.EventHandler(this.AjustesCargosOnActivated);
 			this.SolicitudesDeVacacionesAction.Activated += new global::System.EventHandler(this.TablasSolicitudVacacionesActionOnActivated);

@@ -694,11 +694,12 @@ IT</property>
         <property name="ShortLabel" translatable="yes">Manual</property>
         <property name="StockId">gtk-dialog-info</property>
       </action>
-      <action id="dialogQuestionAction">
+      <action id="HelpSistemaEySAction">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">SistemaEyS</property>
         <property name="ShortLabel" translatable="yes">SistemaEyS</property>
         <property name="StockId">gtk-dialog-question</property>
+        <signal name="Activated" handler="HelpSistemaEySActionOnActivated" />
       </action>
       <action id="AjustesAction">
         <property name="Type">Action</property>
@@ -817,7 +818,7 @@ IT</property>
                   </node>
                   <node type="Menu" action="AyudaAction">
                     <node type="Menuitem" action="dialogInfoAction" />
-                    <node type="Menuitem" action="dialogQuestionAction" />
+                    <node type="Menuitem" action="HelpSistemaEySAction" />
                   </node>
                 </node>
               </widget>
@@ -5540,6 +5541,103 @@ Contraseña:</property>
                 </child>
               </widget>
               <packing>
+                <property name="Position">1</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+          </widget>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Help.AboutEyS" design-size="400 300">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">Sobre SistemaEyS</property>
+    <property name="WindowPosition">Center</property>
+    <property name="Modal">True</property>
+    <child>
+      <widget class="Gtk.Alignment" id="alignment1">
+        <property name="MemberName" />
+        <property name="LeftPadding">10</property>
+        <property name="TopPadding">10</property>
+        <property name="RightPadding">10</property>
+        <property name="BottomPadding">10</property>
+        <child>
+          <widget class="Gtk.VBox" id="vbox1">
+            <property name="MemberName" />
+            <property name="Spacing">6</property>
+            <child>
+              <widget class="Gtk.Alignment" id="alignment2">
+                <property name="MemberName" />
+                <child>
+                  <widget class="Gtk.VBox" id="vbox2">
+                    <property name="MemberName" />
+                    <property name="Spacing">6</property>
+                    <child>
+                      <widget class="Gtk.Label" id="label1">
+                        <property name="MemberName" />
+                        <property name="LabelProp">&lt;span weight="heavy" size="xx-large"&gt;SistemaEyS&lt;/span&gt;</property>
+                        <property name="UseMarkup">True</property>
+                      </widget>
+                      <packing>
+                        <property name="Position">0</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.Label" id="label3">
+                        <property name="MemberName" />
+                        <property name="LabelProp" translatable="yes">Sistema de Entrada y Salida
+
+Creado con C# y GTK en MonoDevelop para Linux.
+
+Base de Datos creada con MySQLWorkbench.</property>
+                        <property name="Justify">Center</property>
+                      </widget>
+                      <packing>
+                        <property name="Position">1</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                  </widget>
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">0</property>
+                <property name="AutoSize">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.HBox" id="hbox1">
+                <property name="MemberName" />
+                <property name="Spacing">6</property>
+                <child>
+                  <widget class="Gtk.Button" id="BtnExit">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextAndIcon</property>
+                    <property name="Icon">stock:gtk-quit Menu</property>
+                    <property name="Label" translatable="yes">Salir</property>
+                    <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="BtnExitOnClicked" />
+                  </widget>
+                  <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="PackType">End</property>
                 <property name="Position">1</property>
                 <property name="AutoSize">True</property>
                 <property name="Expand">False</property>

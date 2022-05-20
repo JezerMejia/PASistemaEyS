@@ -116,5 +116,11 @@ namespace SistemaEyS.AdminForms
             AdminForms.Settings.DepartamentoSettings departamentoSettings = new Settings.DepartamentoSettings();
             departamentoSettings.Show();
         }
+
+        protected void HelpSistemaEySActionOnActivated(object sender, EventArgs e)
+        {
+            Help.AboutEyS aboutEyS = new Help.AboutEyS();
+            aboutEyS.Show();
+        }
     }
 }
