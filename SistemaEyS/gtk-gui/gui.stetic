@@ -8,81 +8,117 @@
     <widget-library name="../../SistemaEySLibrary/bin/Debug/SistemaEySLibrary.dll" />
     <widget-library name="../bin/Debug/SistemaEyS.exe" internal="true" />
   </import>
-  <widget class="Gtk.Window" id="MainWindow" design-size="432 254">
+  <widget class="Gtk.Window" id="MainWindow" design-size="500 415">
     <property name="MemberName" />
     <property name="Title" translatable="yes">Sistema EyS</property>
     <property name="WindowPosition">Center</property>
+    <property name="DefaultWidth">500</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
-      <widget class="Gtk.Alignment" id="alignment12">
+      <widget class="Gtk.VBox" id="vbox4">
         <property name="MemberName" />
-        <property name="Xscale">0</property>
-        <property name="Yscale">0</property>
-        <property name="LeftPadding">10</property>
-        <property name="TopPadding">10</property>
-        <property name="RightPadding">10</property>
-        <property name="BottomPadding">10</property>
+        <property name="Spacing">6</property>
         <child>
-          <widget class="Gtk.VBox" id="vbox10">
+          <widget class="Gtk.Image" id="image76">
             <property name="MemberName" />
-            <property name="Homogeneous">True</property>
-            <property name="Spacing">30</property>
+            <property name="WidthRequest">500</property>
+            <property name="HeightRequest">180</property>
+            <property name="Pixbuf">resource:SistemaEyS.Resources.Logotipo GIT.jpg</property>
+          </widget>
+          <packing>
+            <property name="Position">0</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Alignment" id="alignment4">
+            <property name="MemberName" />
+            <property name="Yscale">0.5</property>
+            <property name="LeftPadding">10</property>
+            <property name="TopPadding">10</property>
+            <property name="RightPadding">10</property>
+            <property name="BottomPadding">10</property>
             <child>
-              <widget class="Gtk.Label" id="lbHelp">
-                <property name="MemberName" />
-                <property name="LabelProp" translatable="yes">Seleccione su método para iniciar sesión en el sistema</property>
-                <property name="Justify">Center</property>
-              </widget>
-              <packing>
-                <property name="Position">0</property>
-                <property name="AutoSize">True</property>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.HBox" id="hbox15">
+              <widget class="Gtk.VBox" id="vbox5">
                 <property name="MemberName" />
                 <property name="Spacing">6</property>
                 <child>
-                  <widget class="Gtk.Button" id="btnEnterUserLogin">
+                  <widget class="Gtk.Label" id="label5">
                     <property name="MemberName" />
-                    <property name="CanFocus">True</property>
-                    <property name="Type">TextOnly</property>
-                    <property name="Label" translatable="yes">Empleado</property>
-                    <property name="UseUnderline">True</property>
-                    <signal name="Clicked" handler="btnEnterUserLoginOnClicked" />
+                    <property name="LabelProp">&lt;span weight="bold" size="xx-large"&gt;SistemaEyS&lt;/span&gt;
+
+Seleccione su método de entrada al SistemaEyS</property>
+                    <property name="UseMarkup">True</property>
+                    <property name="Justify">Center</property>
                   </widget>
                   <packing>
                     <property name="Position">0</property>
                     <property name="AutoSize">False</property>
+                    <property name="Expand">False</property>
                     <property name="Fill">False</property>
+                    <property name="Padding">20</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Button" id="btnEnterAdminLogin">
+                  <widget class="Gtk.Alignment" id="alignment6">
                     <property name="MemberName" />
-                    <property name="CanFocus">True</property>
-                    <property name="Type">TextOnly</property>
-                    <property name="Label" translatable="yes">Administrador</property>
-                    <property name="UseUnderline">True</property>
-                    <signal name="Clicked" handler="btnEnterAdminLoginOnClicked" />
+                    <property name="Xscale">0</property>
+                    <child>
+                      <widget class="Gtk.HBox" id="hbox3">
+                        <property name="MemberName" />
+                        <property name="Homogeneous">True</property>
+                        <property name="Spacing">20</property>
+                        <child>
+                          <widget class="Gtk.Button" id="BtnEnterUserLogin">
+                            <property name="MemberName" />
+                            <property name="CanFocus">True</property>
+                            <property name="Type">TextOnly</property>
+                            <property name="Label" translatable="yes">Empleado</property>
+                            <property name="UseUnderline">True</property>
+                            <signal name="Clicked" handler="BtnEnterUserLoginOnClicked" />
+                          </widget>
+                          <packing>
+                            <property name="Position">0</property>
+                            <property name="AutoSize">True</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.Button" id="BtnEnterAdminLogin">
+                            <property name="MemberName" />
+                            <property name="CanFocus">True</property>
+                            <property name="Type">TextOnly</property>
+                            <property name="Label" translatable="yes">Administrador</property>
+                            <property name="UseUnderline">True</property>
+                            <signal name="Clicked" handler="BtnEnterAdminLoginOnClicked" />
+                          </widget>
+                          <packing>
+                            <property name="Position">1</property>
+                            <property name="AutoSize">True</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
+                          </packing>
+                        </child>
+                      </widget>
+                    </child>
                   </widget>
                   <packing>
                     <property name="Position">1</property>
                     <property name="AutoSize">False</property>
+                    <property name="Expand">False</property>
                     <property name="Fill">False</property>
                   </packing>
                 </child>
               </widget>
-              <packing>
-                <property name="Position">1</property>
-                <property name="AutoSize">True</property>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
-              </packing>
             </child>
           </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="AutoSize">False</property>
+          </packing>
         </child>
       </widget>
     </child>

@@ -16,14 +16,14 @@ public partial class MainWindow : Gtk.Window
         a.RetVal = true;
     }
 
-    protected void btnEnterUserLoginOnClicked(object sender, EventArgs e)
+    protected void BtnEnterUserLoginOnClicked(object sender, EventArgs e)
     {
         UserLogin userLoginWindow = new UserLogin(this);
         this.Hide();
         userLoginWindow.Show();
     }
 
-    protected void btnEnterAdminLoginOnClicked(object sender, EventArgs e)
+    protected void BtnEnterAdminLoginOnClicked(object sender, EventArgs e)
     {
         AdminLogin adminLoginWindow = new AdminLogin(this);
         this.Hide();
