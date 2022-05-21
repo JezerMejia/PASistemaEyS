@@ -74,18 +74,22 @@ public partial class MainWindow
 		// Container child alignment6.Gtk.Container+ContainerChild
 		this.hbox3 = new global::Gtk.HBox();
 		this.hbox3.Name = "hbox3";
-		this.hbox3.Spacing = 6;
+		this.hbox3.Homogeneous = true;
+		this.hbox3.Spacing = 20;
 		// Container child hbox3.Gtk.Box+BoxChild
 		this.BtnEnterUserLogin = new global::Gtk.Button();
 		this.BtnEnterUserLogin.CanFocus = true;
 		this.BtnEnterUserLogin.Name = "BtnEnterUserLogin";
 		this.BtnEnterUserLogin.UseUnderline = true;
 		this.BtnEnterUserLogin.Label = global::Mono.Unix.Catalog.GetString("Empleado");
+		global::Gtk.Image w3 = new global::Gtk.Image();
+		w3.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "stock_new-meeting", global::Gtk.IconSize.Menu);
+		this.BtnEnterUserLogin.Image = w3;
 		this.hbox3.Add(this.BtnEnterUserLogin);
-		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.BtnEnterUserLogin]));
-		w3.Position = 0;
-		w3.Expand = false;
-		w3.Fill = false;
+		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.BtnEnterUserLogin]));
+		w4.Position = 0;
+		w4.Expand = false;
+		w4.Fill = false;
 		// Container child hbox3.Gtk.Box+BoxChild
 		this.BtnEnterAdminLogin = new global::Gtk.Button();
 		this.BtnEnterAdminLogin.CanFocus = true;
@@ -93,20 +97,20 @@ public partial class MainWindow
 		this.BtnEnterAdminLogin.UseUnderline = true;
 		this.BtnEnterAdminLogin.Label = global::Mono.Unix.Catalog.GetString("Administrador");
 		this.hbox3.Add(this.BtnEnterAdminLogin);
-		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.BtnEnterAdminLogin]));
-		w4.Position = 1;
-		w4.Expand = false;
-		w4.Fill = false;
+		global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.BtnEnterAdminLogin]));
+		w5.Position = 1;
+		w5.Expand = false;
+		w5.Fill = false;
 		this.alignment6.Add(this.hbox3);
 		this.vbox5.Add(this.alignment6);
-		global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.alignment6]));
-		w6.Position = 1;
-		w6.Expand = false;
-		w6.Fill = false;
+		global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.alignment6]));
+		w7.Position = 1;
+		w7.Expand = false;
+		w7.Fill = false;
 		this.alignment4.Add(this.vbox5);
 		this.vbox4.Add(this.alignment4);
-		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.alignment4]));
-		w8.Position = 1;
+		global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.alignment4]));
+		w9.Position = 1;
 		this.Add(this.vbox4);
 		if ((this.Child != null))
 		{
