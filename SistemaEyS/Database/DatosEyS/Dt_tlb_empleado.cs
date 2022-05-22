@@ -51,8 +51,7 @@ namespace SistemaEyS.DatosEyS
                         idr[5].ToString(), // Contraseña
                         idr[6].ToString(), // Cargo
                         idr[7].ToString(), // Departamento
-                        idr[8].ToString(), // ID Horario
-                        idr[9].ToString()  // Grupo
+                        idr[8].ToString() // ID Horario
                     );
                 }
             }
@@ -98,8 +97,7 @@ namespace SistemaEyS.DatosEyS
                         idr[7].ToString(), // Contraseña
                         idr[8].ToString(), // idcargo
                         idr[9].ToString(),  // idDepartamento
-                        idr[10].ToString(), // idHorario
-                        idr[11].ToString()  // idGrupo
+                        idr[10].ToString() // idHorario
                     );
                 }
             }

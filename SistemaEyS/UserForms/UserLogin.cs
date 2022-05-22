@@ -41,7 +41,7 @@ namespace SistemaEyS.UserForms
             bool value = false;
 
             sb.Clear();
-            sb.Append($"SELECT idEmpleado, password FROM BDSistemaEyS.Empleado WHERE idEmpleado = {user};");
+            sb.Append($"SELECT idEmpleado, pinEmpleado FROM BDSistemaEyS.Empleado WHERE idEmpleado = {user};");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());

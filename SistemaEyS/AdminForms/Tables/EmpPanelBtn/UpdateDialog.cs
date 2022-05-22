@@ -126,7 +126,6 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                         this.CmbDep.Active = this.GetIndexFromValue(
                             this.CmbDep, (string)EmpData.GetValue(iter, 9));
                         this.idHor.Text = (string)EmpData.GetValue(iter, 10);
-                        this.idGroup.Text = (string)EmpData.GetValue(iter, 11);
                         return;
                     }
                     else
@@ -141,7 +140,6 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                         this.CmbCargo.Active = -1;
                         this.CmbCargo.Active = -1;
                         this.idHor.Text = "";
-                        this.idGroup.Text = "";
                     }
                 }
                 while (EmpData.IterNext(ref iter));
