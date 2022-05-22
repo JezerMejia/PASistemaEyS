@@ -1,5 +1,6 @@
 ﻿using System;
 using SistemaEyS.DatosEyS;
+using SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn;
 
 namespace SistemaEyS.AdminForms.Tables
 {
@@ -8,6 +9,7 @@ namespace SistemaEyS.AdminForms.Tables
     public partial class SolVacacionesView : Gtk.Bin
     {
         Dt_tlb_solicitudVacaciones dtus = new Dt_tlb_solicitudVacaciones();
+        AddDialogSolVac solVac = new AddDialogSolVac();
 
         public SolVacacionesView()
         {
@@ -23,6 +25,13 @@ namespace SistemaEyS.AdminForms.Tables
             this.viewTable.SetTreeViewColumns(storeObjects);
 
             this.viewTable.Model = dtus.listarSolicitudVacaciones();
+        }
+
+        protected void OnBtnAddSVClicked(object sender, EventArgs e)
+        {
+
+            solVac.Show();
+
         }
     }
 }
