@@ -67,6 +67,7 @@ namespace SistemaEyS.AdminForms.Seguridad
             this.CmbxUsuario.Entry.Completion.Model = this.DataUser;
             this.CmbxUsuario.Entry.Completion.TextColumn = 0;
         }
+
         protected void FillCmbxRolModel()
         {
             this.CmbxRol.Model = this.DataRol;
