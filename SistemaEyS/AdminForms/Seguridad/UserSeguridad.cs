@@ -1,8 +1,6 @@
 ﻿using System;
 using Gtk;
-using SistemaEyS.DatosSeguridad;
-using SistemaEyS.Database.Connection;
-using System.Data;
+using SistemaEyS.DatosSeguridad.Datos;
 
 namespace SistemaEyS.AdminForms.Seguridad
 {

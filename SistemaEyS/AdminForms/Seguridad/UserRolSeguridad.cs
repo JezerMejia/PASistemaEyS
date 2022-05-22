@@ -1,6 +1,6 @@
 ﻿using System;
 using Gtk;
-using SistemaEyS.DatosSeguridad;
+using SistemaEyS.DatosSeguridad.Datos;
 
 namespace SistemaEyS.AdminForms.Seguridad
 {

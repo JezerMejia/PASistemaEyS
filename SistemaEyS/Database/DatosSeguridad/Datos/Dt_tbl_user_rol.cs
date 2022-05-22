@@ -4,7 +4,7 @@ using Gtk;
 using System.Text;
 using SistemaEyS.Database.Connection;
 
-namespace SistemaEyS.DatosSeguridad
+namespace SistemaEyS.DatosSeguridad.Datos
 {
     public class Dt_tbl_user_rol : DataTableTemplate
     {
