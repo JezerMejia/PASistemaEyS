@@ -132,7 +132,7 @@ namespace SistemaEyS.DatosEyS
 
         public void InsertInto(string idEmpleado, string primerNombre,
             string segundoNombre, string primerApellido, string segundoApellido,
-            string password)
+            string pinEmpleado)
         {
             this.InsertInto(
                 new DataTableParameter("idEmpleado", $"'{idEmpleado}'"),
@@ -140,13 +140,13 @@ namespace SistemaEyS.DatosEyS
                 new DataTableParameter("segundoNombre", $"'{segundoNombre}'"),
                 new DataTableParameter("primerApellido", $"'{primerApellido}'"),
                 new DataTableParameter("segundoApellido", $"'{segundoApellido}'"),
-                new DataTableParameter("password", $"'{password}'")
+                new DataTableParameter("pinEmpleado", $"'{pinEmpleado}'")
                 );
         }
 
         public void UpdateSet(string idEmpleado, string primerNombre,
             string segundoNombre, string primerApellido, string segundoApellido,
-            string password, string cedulaEmpleado, string fechaIngreso,
+            string pinEmpleado, string cedulaEmpleado, string fechaIngreso,
             string idCargo, string idDepartamento, string idHorario)
         {
             this.UpdateSet(
@@ -168,8 +168,8 @@ namespace SistemaEyS.DatosEyS
                     $"'{segundoApellido}'"
                     ),
                 new DataTableParameter(
-                    !string.IsNullOrWhiteSpace(password) ? "password" : "",
-                    $"'{password}'"
+                    !string.IsNullOrWhiteSpace(pinEmpleado) ? "pinEmpleado" : "",
+                    $"'{pinEmpleado}'"
                     ),
                 new DataTableParameter(
                     !string.IsNullOrWhiteSpace(cedulaEmpleado) ? "cedulaEmpleado" : "",
