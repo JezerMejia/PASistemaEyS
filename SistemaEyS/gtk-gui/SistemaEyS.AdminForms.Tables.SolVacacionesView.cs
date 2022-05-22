@@ -115,6 +115,7 @@ namespace SistemaEyS.AdminForms.Tables
 				this.Child.ShowAll();
 			}
 			this.Hide();
+			this.BtnAddSV.Clicked += new global::System.EventHandler(this.OnBtnAddSVClicked);
 		}
 	}
 }

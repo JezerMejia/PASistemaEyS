@@ -126,7 +126,6 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.TxtID.Name = "TxtID";
 			this.TxtID.IsEditable = false;
 			this.TxtID.WidthChars = 20;
-			this.TxtID.InvisibleChar = '●';
 			this.hbox13.Add(this.TxtID);
 			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox13[this.TxtID]));
 			w1.PackType = ((global::Gtk.PackType)(1));

@@ -266,7 +266,6 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.TxtPIN.Name = "TxtPIN";
 			this.TxtPIN.IsEditable = true;
 			this.TxtPIN.WidthChars = 25;
-			this.TxtPIN.InvisibleChar = '●';
 			this.hbox6.Add(this.TxtPIN);
 			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.TxtPIN]));
 			w18.PackType = ((global::Gtk.PackType)(1));

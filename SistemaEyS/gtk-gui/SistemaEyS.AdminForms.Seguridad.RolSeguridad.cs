@@ -89,7 +89,6 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.TxtName.Name = "TxtName";
 			this.TxtName.IsEditable = true;
 			this.TxtName.WidthChars = 20;
-			this.TxtName.InvisibleChar = '●';
 			this.hbox5.Add(this.TxtName);
 			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.TxtName]));
 			w1.PackType = ((global::Gtk.PackType)(1));
@@ -126,7 +125,6 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.TxtEstado.Name = "TxtEstado";
 			this.TxtEstado.IsEditable = true;
 			this.TxtEstado.WidthChars = 20;
-			this.TxtEstado.InvisibleChar = '●';
 			this.hbox6.Add(this.TxtEstado);
 			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.TxtEstado]));
 			w5.PackType = ((global::Gtk.PackType)(1));
@@ -255,7 +253,6 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.TxtSearch.Name = "TxtSearch";
 			this.TxtSearch.IsEditable = true;
 			this.TxtSearch.WidthChars = 30;
-			this.TxtSearch.InvisibleChar = '●';
 			this.hbox1.Add(this.TxtSearch);
 			global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.TxtSearch]));
 			w21.Position = 1;
@@ -302,7 +299,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 			{
 				this.Child.ShowAll();
 			}
-			this.DefaultWidth = 382;
+			this.DefaultWidth = 429;
 			this.DefaultHeight = 423;
 			this.Show();
 			this.BtnNew.Clicked += new global::System.EventHandler(this.BtnNewOnClicked);

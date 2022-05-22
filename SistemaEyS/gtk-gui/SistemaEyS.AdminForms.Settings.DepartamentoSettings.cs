@@ -101,7 +101,6 @@ namespace SistemaEyS.AdminForms.Settings
 			this.TxtName.Name = "TxtName";
 			this.TxtName.IsEditable = true;
 			this.TxtName.WidthChars = 20;
-			this.TxtName.InvisibleChar = '●';
 			this.hbox5.Add(this.TxtName);
 			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.TxtName]));
 			w1.PackType = ((global::Gtk.PackType)(1));
@@ -138,7 +137,6 @@ namespace SistemaEyS.AdminForms.Settings
 			this.TxtExt.Name = "TxtExt";
 			this.TxtExt.IsEditable = true;
 			this.TxtExt.WidthChars = 20;
-			this.TxtExt.InvisibleChar = '●';
 			this.hbox7.Add(this.TxtExt);
 			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.TxtExt]));
 			w5.PackType = ((global::Gtk.PackType)(1));
@@ -309,7 +307,6 @@ namespace SistemaEyS.AdminForms.Settings
 			this.TxtSearch.Name = "TxtSearch";
 			this.TxtSearch.IsEditable = true;
 			this.TxtSearch.WidthChars = 30;
-			this.TxtSearch.InvisibleChar = '●';
 			this.hbox1.Add(this.TxtSearch);
 			global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.TxtSearch]));
 			w27.Position = 1;

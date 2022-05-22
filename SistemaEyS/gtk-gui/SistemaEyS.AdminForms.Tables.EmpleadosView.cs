@@ -104,7 +104,6 @@ namespace SistemaEyS.AdminForms.Tables
 			this.TxtSearch.Name = "TxtSearch";
 			this.TxtSearch.IsEditable = true;
 			this.TxtSearch.WidthChars = 30;
-			this.TxtSearch.InvisibleChar = '●';
 			this.hbox3.Add(this.TxtSearch);
 			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.TxtSearch]));
 			w5.Position = 1;

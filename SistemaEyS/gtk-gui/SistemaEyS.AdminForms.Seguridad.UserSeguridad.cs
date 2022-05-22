@@ -144,7 +144,6 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.TxtName.Name = "TxtName";
 			this.TxtName.IsEditable = true;
 			this.TxtName.WidthChars = 20;
-			this.TxtName.InvisibleChar = '●';
 			this.hbox5.Add(this.TxtName);
 			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.TxtName]));
 			w3.Position = 1;
@@ -177,7 +176,6 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.TxtLastname.Name = "TxtLastname";
 			this.TxtLastname.IsEditable = true;
 			this.TxtLastname.WidthChars = 20;
-			this.TxtLastname.InvisibleChar = '●';
 			this.hbox9.Add(this.TxtLastname);
 			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox9[this.TxtLastname]));
 			w7.Position = 1;
@@ -209,7 +207,6 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.TxtEmail.Name = "TxtEmail";
 			this.TxtEmail.IsEditable = true;
 			this.TxtEmail.WidthChars = 20;
-			this.TxtEmail.InvisibleChar = '●';
 			this.hbox10.Add(this.TxtEmail);
 			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox10[this.TxtEmail]));
 			w11.Position = 1;
@@ -243,7 +240,6 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.TxtEmailConfirm.Name = "TxtEmailConfirm";
 			this.TxtEmailConfirm.IsEditable = true;
 			this.TxtEmailConfirm.WidthChars = 20;
-			this.TxtEmailConfirm.InvisibleChar = '●';
 			this.hbox11.Add(this.TxtEmailConfirm);
 			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.hbox11[this.TxtEmailConfirm]));
 			w15.Position = 1;
@@ -282,7 +278,6 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.TxtUser.Name = "TxtUser";
 			this.TxtUser.IsEditable = true;
 			this.TxtUser.WidthChars = 20;
-			this.TxtUser.InvisibleChar = '●';
 			this.hbox14.Add(this.TxtUser);
 			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.hbox14[this.TxtUser]));
 			w20.Position = 1;
@@ -314,7 +309,6 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.TxtPassword.Name = "TxtPassword";
 			this.TxtPassword.IsEditable = true;
 			this.TxtPassword.WidthChars = 20;
-			this.TxtPassword.InvisibleChar = '●';
 			this.hbox12.Add(this.TxtPassword);
 			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.TxtPassword]));
 			w24.Position = 1;
@@ -346,7 +340,6 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.TxtPasswordConfirm.Name = "TxtPasswordConfirm";
 			this.TxtPasswordConfirm.IsEditable = true;
 			this.TxtPasswordConfirm.WidthChars = 20;
-			this.TxtPasswordConfirm.InvisibleChar = '●';
 			this.hbox13.Add(this.TxtPasswordConfirm);
 			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.hbox13[this.TxtPasswordConfirm]));
 			w28.Position = 1;
@@ -458,7 +451,6 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.TxtSearch.Name = "TxtSearch";
 			this.TxtSearch.IsEditable = true;
 			this.TxtSearch.WidthChars = 30;
-			this.TxtSearch.InvisibleChar = '●';
 			this.hbox1.Add(this.TxtSearch);
 			global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.TxtSearch]));
 			w42.Position = 1;
@@ -505,7 +497,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 			{
 				this.Child.ShowAll();
 			}
-			this.DefaultWidth = 602;
+			this.DefaultWidth = 630;
 			this.DefaultHeight = 400;
 			this.Show();
 			this.BtnNew.Clicked += new global::System.EventHandler(this.BtnNewOnClicked);

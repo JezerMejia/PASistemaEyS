@@ -247,7 +247,6 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.TxtSearch.Name = "TxtSearch";
 			this.TxtSearch.IsEditable = true;
 			this.TxtSearch.WidthChars = 30;
-			this.TxtSearch.InvisibleChar = '●';
 			this.hbox1.Add(this.TxtSearch);
 			global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.TxtSearch]));
 			w21.Position = 1;
@@ -294,7 +293,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 			{
 				this.Child.ShowAll();
 			}
-			this.DefaultWidth = 382;
+			this.DefaultWidth = 429;
 			this.DefaultHeight = 383;
 			this.Show();
 			this.BtnNew.Clicked += new global::System.EventHandler(this.BtnNewOnClicked);
