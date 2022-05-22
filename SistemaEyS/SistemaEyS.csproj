@@ -130,6 +130,10 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.HorPanelBtn.UpdateHorario.cs" />
     <Compile Include="AdminForms\Help\AboutEyS.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Help.AboutEyS.cs" />
+    <Compile Include="AdminForms\Tables\SolVacacionesPanelBtn\AddDialogSolVac.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn.AddDialogSolVac.cs" />
+    <Compile Include="AdminForms\Tables\SolVacacionesPanelBtn\Calendar\calendar.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn.Calendar.calendar.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
@@ -145,6 +149,8 @@
     <Folder Include="AdminForms\Seguridad\" />
     <Folder Include="AdminForms\Tables\HorPanelBtn\" />
     <Folder Include="AdminForms\Help\" />
+    <Folder Include="AdminForms\Tables\SolVacacionesPanelBtn\" />
+    <Folder Include="AdminForms\Tables\SolVacacionesPanelBtn\Calendar\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SistemaEySLibrary\SistemaEySLibrary.csproj">
