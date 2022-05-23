@@ -80,12 +80,6 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
 		private global::Gtk.Label label12;
 
-		private global::Gtk.HBox hbox21;
-
-		private global::Gtk.Entry idGroup;
-
-		private global::Gtk.Label label13;
-
 		private global::Gtk.Alignment alignment6;
 
 		private global::Gtk.HBox hbox12;
@@ -126,6 +120,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.TxtID.Name = "TxtID";
 			this.TxtID.IsEditable = false;
 			this.TxtID.WidthChars = 20;
+			this.TxtID.InvisibleChar = '●';
 			this.hbox13.Add(this.TxtID);
 			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox13[this.TxtID]));
 			w1.PackType = ((global::Gtk.PackType)(1));
@@ -459,47 +454,16 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			w34.Position = 4;
 			w34.Expand = false;
 			w34.Fill = false;
-			// Container child vbox2.Gtk.Box+BoxChild
-			this.hbox21 = new global::Gtk.HBox();
-			this.hbox21.Name = "hbox21";
-			this.hbox21.Spacing = 6;
-			// Container child hbox21.Gtk.Box+BoxChild
-			this.idGroup = new global::Gtk.Entry();
-			this.idGroup.CanFocus = true;
-			this.idGroup.Name = "idGroup";
-			this.idGroup.IsEditable = true;
-			this.idGroup.WidthChars = 20;
-			this.idGroup.InvisibleChar = '•';
-			this.hbox21.Add(this.idGroup);
-			global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(this.hbox21[this.idGroup]));
-			w35.PackType = ((global::Gtk.PackType)(1));
-			w35.Position = 0;
+			this.hbox1.Add(this.vbox2);
+			global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.vbox2]));
+			w35.Position = 1;
 			w35.Expand = false;
-			// Container child hbox21.Gtk.Box+BoxChild
-			this.label13 = new global::Gtk.Label();
-			this.label13.Name = "label13";
-			this.label13.LabelProp = global::Mono.Unix.Catalog.GetString("Grupo:");
-			this.hbox21.Add(this.label13);
-			global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.hbox21[this.label13]));
-			w36.PackType = ((global::Gtk.PackType)(1));
-			w36.Position = 1;
+			w35.Fill = false;
+			this.vbox6.Add(this.hbox1);
+			global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.hbox1]));
+			w36.Position = 0;
 			w36.Expand = false;
 			w36.Fill = false;
-			this.vbox2.Add(this.hbox21);
-			global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hbox21]));
-			w37.Position = 5;
-			w37.Expand = false;
-			w37.Fill = false;
-			this.hbox1.Add(this.vbox2);
-			global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.vbox2]));
-			w38.Position = 1;
-			w38.Expand = false;
-			w38.Fill = false;
-			this.vbox6.Add(this.hbox1);
-			global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.hbox1]));
-			w39.Position = 0;
-			w39.Expand = false;
-			w39.Fill = false;
 			// Container child vbox6.Gtk.Box+BoxChild
 			this.alignment6 = new global::Gtk.Alignment(0.5F, 0.5F, 0F, 0F);
 			this.alignment6.Name = "alignment6";
@@ -514,34 +478,34 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.BtnAccept.Name = "BtnAccept";
 			this.BtnAccept.UseUnderline = true;
 			this.BtnAccept.Label = global::Mono.Unix.Catalog.GetString("Aceptar");
-			global::Gtk.Image w40 = new global::Gtk.Image();
-			w40.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-apply", global::Gtk.IconSize.Menu);
-			this.BtnAccept.Image = w40;
+			global::Gtk.Image w37 = new global::Gtk.Image();
+			w37.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-apply", global::Gtk.IconSize.Menu);
+			this.BtnAccept.Image = w37;
 			this.hbox12.Add(this.BtnAccept);
-			global::Gtk.Box.BoxChild w41 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.BtnAccept]));
-			w41.Position = 0;
-			w41.Expand = false;
-			w41.Fill = false;
+			global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.BtnAccept]));
+			w38.Position = 0;
+			w38.Expand = false;
+			w38.Fill = false;
 			// Container child hbox12.Gtk.Box+BoxChild
 			this.BtnCancel = new global::Gtk.Button();
 			this.BtnCancel.CanFocus = true;
 			this.BtnCancel.Name = "BtnCancel";
 			this.BtnCancel.UseUnderline = true;
 			this.BtnCancel.Label = global::Mono.Unix.Catalog.GetString("Cancelar");
-			global::Gtk.Image w42 = new global::Gtk.Image();
-			w42.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-cancel", global::Gtk.IconSize.Menu);
-			this.BtnCancel.Image = w42;
+			global::Gtk.Image w39 = new global::Gtk.Image();
+			w39.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-cancel", global::Gtk.IconSize.Menu);
+			this.BtnCancel.Image = w39;
 			this.hbox12.Add(this.BtnCancel);
-			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.BtnCancel]));
-			w43.Position = 1;
-			w43.Expand = false;
-			w43.Fill = false;
+			global::Gtk.Box.BoxChild w40 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.BtnCancel]));
+			w40.Position = 1;
+			w40.Expand = false;
+			w40.Fill = false;
 			this.alignment6.Add(this.hbox12);
 			this.vbox6.Add(this.alignment6);
-			global::Gtk.Box.BoxChild w45 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.alignment6]));
-			w45.Position = 1;
-			w45.Expand = false;
-			w45.Fill = false;
+			global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.alignment6]));
+			w42.Position = 1;
+			w42.Expand = false;
+			w42.Fill = false;
 			this.alignment5.Add(this.vbox6);
 			this.Add(this.alignment5);
 			if ((this.Child != null))
