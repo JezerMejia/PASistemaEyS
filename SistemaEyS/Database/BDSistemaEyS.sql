@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Asistencia` (
   `idAsistencia` INT NOT NULL AUTO_INCREMENT,
   `fechaAsistencia` DATE NOT NULL,
   `horaEntrada` TIME NULL,
-  `HoraSalida` TIME NULL,
+  `horaSalida` TIME NULL,
   `idEmpleado` INT NOT NULL,
   PRIMARY KEY (`idAsistencia`),
   INDEX `RefEmpleado5` (`idEmpleado` ASC) VISIBLE,
@@ -147,9 +147,9 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`SolVacaciones` (
   `idSolVacaciones` INT NOT NULL AUTO_INCREMENT,
   `fechaSol` DATETIME NOT NULL,
   `descripcionSol` VARCHAR(100) CHARACTER SET 'utf8' NOT NULL,
+  `fechaHoraInicio` DATETIME NOT NULL,
+  `fechaHoraFin` DATETIME NOT NULL,
   `idEmpleado` INT NOT NULL,
-  `FechaHoraInicio` DATETIME NOT NULL,
-  `FechaHoraFin` DATETIME NOT NULL,
   PRIMARY KEY (`idSolVacaciones`),
   INDEX `RefEmpleado8` (`idEmpleado` ASC) VISIBLE,
   UNIQUE INDEX `idSolVacaciones_UNIQUE` (`idSolVacaciones` ASC) VISIBLE,
@@ -281,6 +281,16 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`vwRolOpcion` (`ID Rol` INT, `Rol` INT
 CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`vwUserRol` (`ID Usuario` INT, `Usuario` INT, `Contraseña` INT, `Nombres` INT, `Apellidos` INT, `Email` INT, `Contraseña temp` INT, `Estado` INT, `ID Rol` INT, `Rol` INT);
 
 -- -----------------------------------------------------
+-- Placeholder table for view `BDSistemaEyS`.`vwAsistencia`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`vwAsistencia` (`"ID"` INT, `"Fecha"` INT, `"Hora de Entrada"` INT, `"Hora de Salida"` INT, `"ID Empleado"` INT, `"Empleado"` INT);
+
+-- -----------------------------------------------------
+-- Placeholder table for view `BDSistemaEyS`.`vwSolVacaciones`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`vwSolVacaciones` (`"ID"` INT, `"Fecha de Solicitud"` INT, `"Descripción"` INT, `"Fecha de Inicio"` INT, `"Fecha de Fin"` INT, `"ID Empleado"` INT, `"Empleado"` INT);
+
+-- -----------------------------------------------------
 -- View `BDSistemaEyS`.`vwEmpleado`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `BDSistemaEyS`.`vwEmpleado`;
@@ -349,6 +359,45 @@ LEFT JOIN
 LEFT JOIN
 `tbl_rol` AS `tbr` ON `tbur`.`id_rol` = `tbr`.`id_rol`
 ;
+
+-- -----------------------------------------------------
+-- View `BDSistemaEyS`.`vwAsistencia`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `BDSistemaEyS`.`vwAsistencia`;
+DROP VIEW IF EXISTS `BDSistemaEyS`.`vwAsistencia` ;
+USE `BDSistemaEyS`;
+CREATE  OR REPLACE VIEW `vwAsistencia` AS
+SELECT
+Asistencia.idAsistencia AS "ID",
+Asistencia.fechaAsistencia AS "Fecha",
+Asistencia.horaEntrada AS "Hora de Entrada",
+Asistencia.horaSalida AS "Hora de Salida",
+Asistencia.idEmpleado AS "ID Empleado",
+CONCAT(Empleado.Nombre, " ", Empleado.Apellido) As "Empleado"
+FROM
+BDSistemaEyS.Asistencia AS Asistencia
+LEFT JOIN
+BDSistemaEyS.vwEmpleado AS Empleado ON Asistencia.idEmpleado = Empleado.ID;
+
+-- -----------------------------------------------------
+-- View `BDSistemaEyS`.`vwSolVacaciones`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `BDSistemaEyS`.`vwSolVacaciones`;
+DROP VIEW IF EXISTS `BDSistemaEyS`.`vwSolVacaciones` ;
+USE `BDSistemaEyS`;
+CREATE  OR REPLACE VIEW `vwSolVacaciones` AS
+SELECT
+Sol.idSolVacaciones AS "ID",
+Sol.fechaSol AS "Fecha de Solicitud",
+Sol.descripcionSol AS "Descripción",
+Sol.fechaHoraInicio AS "Fecha de Inicio",
+Sol.fechaHoraFin AS "Fecha de Fin",
+Sol.idEmpleado AS "ID Empleado",
+CONCAT(Empleado.Nombre, " ", Empleado.Apellido) AS "Empleado"
+FROM
+BDSistemaEyS.SolVacaciones AS Sol
+LEFT JOIN
+BDSistemaEyS.vwEmpleado AS Empleado ON Sol.idEmpleado = Empleado.ID;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
