@@ -1,12 +1,16 @@
 ﻿using System;
 using Gtk;
 using SistemaEyS.DatosSeguridad.Datos;
+using SistemaEyS.DatosSeguridad.Entidades;
+using SistemaEyS.DatosSeguridad.Negocio;
 
 namespace SistemaEyS.AdminForms.Seguridad
 {
     public partial class UserSeguridad : Gtk.Window
     {
         protected Dt_tbl_user DtUser = new Dt_tbl_user();
+        protected Neg_user NegUser = new Neg_user();
+
         protected TreeModelFilter TreeData;
         protected TreeModelFilterVisibleFunc ModelFilterFunc;
         public int SelectedID = -1;
@@ -52,41 +56,41 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         protected void BtnAddOnClicked(object sender, EventArgs args)
         {
-            if (string.IsNullOrWhiteSpace(TxtName.Text) ||
-                string.IsNullOrWhiteSpace(TxtLastname.Text) ||
-                string.IsNullOrWhiteSpace(TxtUser.Text) ||
-                string.IsNullOrWhiteSpace(TxtPassword.Text) ||
-                string.IsNullOrWhiteSpace(TxtEmail.Text)
-                )
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Info,
-                    ButtonsType.Ok, "No puede haber datos vacíos");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
-            if (!TxtEmail.Text.Equals(TxtEmailConfirm.Text)) {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, "El Email y la confirmación no coinciden");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-            if (!TxtPassword.Text.Equals(TxtPasswordConfirm.Text)) {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, "La Contraseña y la confirmación no coinciden");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
             try
             {
-                this.DtUser.InsertInto(
-                    this.TxtUser.Text, this.TxtPassword.Text,
-                    this.TxtName.Text, this.TxtLastname.Text,
-                    this.TxtEmail.Text);
+                if (string.IsNullOrWhiteSpace(TxtName.Text) ||
+                    string.IsNullOrWhiteSpace(TxtLastname.Text) ||
+                    string.IsNullOrWhiteSpace(TxtUser.Text) ||
+                    string.IsNullOrWhiteSpace(TxtPassword.Text) ||
+                    string.IsNullOrWhiteSpace(TxtEmail.Text)
+                    )
+                {
+                    throw new ArgumentException("No puede haber datos vacíos");
+                }
+                if (!TxtEmail.Text.Equals(TxtEmailConfirm.Text))
+                {
+                    throw new ArgumentException(
+                        "El Email y la confirmación no coinciden"
+                        );
+                }
+                if (!TxtPassword.Text.Equals(TxtPasswordConfirm.Text))
+                {
+                    throw new ArgumentException(
+                        "La Contraseña y la confirmación no coinciden"
+                        );
+                }
+
+                Ent_user user = new Ent_user()
+                {
+                    user = this.TxtUser.Text,
+                    pwd = this.TxtPassword.Text,
+                    nombres = this.TxtName.Text,
+                    apellidos = this.TxtLastname.Text,
+                    email = this.TxtEmail.Text,
+                    estado = EntidadEstado.Añadido
+                };
+                this.NegUser.AddUser(user);
+
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Info,
                     ButtonsType.Ok, "Usuario agregado");
                 ms.Run();
@@ -104,45 +108,50 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         protected void BtnEditOnClicked(object sender, EventArgs args)
         {
-            if (string.IsNullOrWhiteSpace(TxtName.Text) ||
-                string.IsNullOrWhiteSpace(TxtLastname.Text) ||
-                string.IsNullOrWhiteSpace(TxtUser.Text) ||
-                string.IsNullOrWhiteSpace(TxtPassword.Text) ||
-                string.IsNullOrWhiteSpace(TxtEmail.Text)
-                )
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok,
-                    "No puede haber datos vacíos");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
-            if (!TxtEmail.Text.Equals(TxtEmailConfirm.Text)) {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Error, ButtonsType.Ok,
-                    "El Email y la confirmación no coinciden");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-            if (!TxtPassword.Text.Equals(TxtPasswordConfirm.Text)) {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Error, ButtonsType.Ok,
-                    "La Contraseña y la confirmación no coinciden");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
             try
             {
-                this.DtUser.UpdateSet(
-                    this.SelectedID.ToString(), this.TxtUser.Text,
-                    this.TxtPassword.Text, this.TxtName.Text,
-                    this.TxtLastname.Text, this.TxtEmail.Text
+                if (this.SelectedID < 0)
+                {
+                    throw new ArgumentException(
+                        "No se ha seleccionado un usuario"
+                        );
+                }
+
+                if (string.IsNullOrWhiteSpace(TxtName.Text) ||
+                    string.IsNullOrWhiteSpace(TxtLastname.Text) ||
+                    string.IsNullOrWhiteSpace(TxtUser.Text) ||
+                    string.IsNullOrWhiteSpace(TxtPassword.Text) ||
+                    string.IsNullOrWhiteSpace(TxtEmail.Text)
+                    )
+                {
+                    throw new ArgumentException("No puede haber datos vacíos");
+                }
+
+                if (!TxtEmail.Text.Equals(TxtEmailConfirm.Text))
+                {
+                    throw new ArgumentException(
+                        "El Email y la confirmación no coinciden"
                     );
+                }
+                if (!TxtPassword.Text.Equals(TxtPasswordConfirm.Text))
+                {
+                    throw new ArgumentException(
+                        "La Contraseña y la confirmación no coinciden"
+                    );
+                }
+
+                Ent_user user = new Ent_user()
+                {
+                    id_user = this.SelectedID,
+                    user = this.TxtUser.Text,
+                    pwd = this.TxtPassword.Text,
+                    nombres = this.TxtName.Text,
+                    apellidos = this.TxtLastname.Text,
+                    email = this.TxtEmail.Text,
+                    estado = EntidadEstado.Modificado
+                };
+                this.NegUser.EditUser(user);
+
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Info, ButtonsType.Ok, "Usuario editado");
                 ms.Run();
@@ -160,49 +169,37 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         protected void BtnRemoveOnClicked(object sender, EventArgs args)
         {
-            if (this.SelectedID < 0)
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning,
-                    ButtonsType.Ok, "Seleccione un usuario en la tabla");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
-            string userName = this.GetUserValue(this.SelectedID, 3)?.ToString() ?? "";
-            string userLastname = this.GetUserValue(this.SelectedID, 4)?.ToString() ?? "";
-            string userFullname = $"{userName} {userLastname}";
-
-            MessageDialog deletePrompt = new MessageDialog(this, DialogFlags.Modal,
-                MessageType.Question, ButtonsType.YesNo,
-                $"¿Desea eliminar el usuario \"{userFullname}\" ({this.SelectedID})?");
-            int result = deletePrompt.Run();
-            deletePrompt.Destroy();
-
-            switch (result)
-            {
-                case (int) ResponseType.Yes:
-                    break;
-                default:
-                    return;
-            }
-
             try
             {
-                this.DtUser.DeleteFrom(this.SelectedID.ToString());
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Info,
-                    ButtonsType.Ok, "Usuario eliminado");
-                ms.Run();
-                ms.Destroy();
+                if (this.SelectedID < 0)
+                {
+                    throw new ArgumentOutOfRangeException(
+                        "No se ha seleccionado un usuario"
+                        );
+                }
+
+                Ent_user user = this.NegUser.SearchUser(this.SelectedID);
+                string userFullname = $"{user.nombres} {user.apellidos}";
+
+                MessageDialog deletePrompt = new MessageDialog(this, DialogFlags.Modal,
+                    MessageType.Question, ButtonsType.YesNo,
+                    $"¿Desea eliminar el usuario \"{userFullname}\" ({this.SelectedID})?");
+                int result = deletePrompt.Run();
+                deletePrompt.Destroy();
+
+                if ((ResponseType)result != ResponseType.Yes) return;
+
+                this.NegUser.RemoveUser(user);
+                this.SelectedID = -1;
             }
             catch (Exception e)
             {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Error,
                     ButtonsType.Ok, e.Message);
                 ms.Run();
                 ms.Destroy();
             }
-            this.SelectedID = -1;
             this.UpdateData();
         }
 
@@ -221,27 +218,6 @@ namespace SistemaEyS.AdminForms.Seguridad
             this.TxtEmailConfirm.Text = "";
             this.TxtPassword.Text = "";
             this.TxtPasswordConfirm.Text = "";
-        }
-
-        protected object GetUserValue(int idUser, int column)
-        {
-            TreeIter iter;
-            TreeModel model = this.TreeData;
-
-            object value = null;
-
-            if (model.GetIterFirst(out iter))
-            {
-                do
-                {
-                    if (idUser.ToString() == model.GetValue(iter, 0).ToString())
-                    {
-                        value = model.GetValue(iter, column);
-                    }
-                } while (model.IterNext(ref iter));
-            }
-
-            return value;
         }
 
         protected void ViewTableOnRowActivated(object o, RowActivatedArgs args)
@@ -267,34 +243,25 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         protected void SetEntryTextFromID(int id)
         {
-            TreeIter iter;
-            if (this.TreeData.GetIterFirst(out iter))
+            try
             {
-                do
-                {
-                    if (id.ToString() == (string)this.TreeData.GetValue(iter, 0))
-                    {
-                        this.TxtUser.Text = (string)TreeData.GetValue(iter, 1);
-                        this.TxtName.Text = (string)TreeData.GetValue(iter, 3);
-                        this.TxtLastname.Text = (string)TreeData.GetValue(iter, 4);
-                        this.TxtEmail.Text = (string)TreeData.GetValue(iter, 5);
-                        this.TxtEmailConfirm.Text = "";
-                        this.TxtPassword.Text = (string)TreeData.GetValue(iter, 2);
-                        this.TxtPasswordConfirm.Text = "";
-                        return;
-                    }
-                    else
-                    {
-                        this.TxtUser.Text = "";
-                        this.TxtName.Text = "";
-                        this.TxtLastname.Text = "";
-                        this.TxtEmail.Text = "";
-                        this.TxtEmailConfirm.Text = "";
-                        this.TxtPassword.Text = "";
-                        this.TxtPasswordConfirm.Text = "";
-                    }
-                }
-                while (TreeData.IterNext(ref iter));
+                Ent_user user = this.NegUser.SearchUser(id);
+
+                this.TxtUser.Text = user.user;
+                this.TxtName.Text = user.nombres;
+                this.TxtLastname.Text = user.apellidos;
+                this.TxtEmail.Text = user.email;
+                this.TxtEmailConfirm.Text = "";
+                this.TxtPassword.Text = user.pwd;
+                this.TxtPasswordConfirm.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info,
+                    ButtonsType.Ok, ex.Message);
+                ms.Run();
+                ms.Destroy();
             }
         }
 
