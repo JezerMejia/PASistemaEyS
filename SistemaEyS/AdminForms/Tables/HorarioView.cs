@@ -133,33 +133,22 @@ namespace SistemaEyS.AdminForms.Tables
 
             try
             {
-                String Query = "DELETE FROM BDSistemaEyS.Horario WHERE idHorario = " +
-                $"{this.SelectedID.ToString()};";
-
-                try
-                {
-                    connection.Execute(CommandType.Text, Query);
+                dthor.DeleteFrom(SelectedID.ToString());
+               
                     MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
                         ButtonsType.Ok, "Eliminado");
                     ms.Run();
                     ms.Destroy();
                     //ClearInput();
-                }
+             }
                 catch (Exception ex)
-                {
+             {
                     MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
-                        ButtonsType.Ok, ex.Message);
+                    ButtonsType.Ok, ex.Message);
                     ms.Run();
                     ms.Destroy();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, ex.Message);
-                ms.Run();
-                ms.Destroy();
-            }
+             }
+           
             UpdateData();
 
 
