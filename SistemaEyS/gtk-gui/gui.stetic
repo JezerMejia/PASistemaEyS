@@ -968,6 +968,7 @@ IT</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="PackType">End</property>
@@ -1015,6 +1016,7 @@ IT</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="PackType">End</property>
@@ -1237,6 +1239,7 @@ IT</property>
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
                         <property name="WidthChars">30</property>
+                        <property name="InvisibleChar">●</property>
                         <signal name="Changed" handler="TxtSearchOnChanged" />
                       </widget>
                       <packing>
@@ -1335,6 +1338,7 @@ IT</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="PackType">End</property>
@@ -1557,6 +1561,7 @@ IT</property>
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
                         <property name="WidthChars">30</property>
+                        <property name="InvisibleChar">●</property>
                         <signal name="Changed" handler="TxtSearchOnChanged" />
                       </widget>
                       <packing>
@@ -1700,6 +1705,7 @@ IT</property>
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
                         <property name="WidthChars">30</property>
+                        <property name="InvisibleChar">●</property>
                         <signal name="Changed" handler="TxtSearchOnChanged" />
                       </widget>
                       <packing>
@@ -2383,6 +2389,7 @@ IT</property>
                                 <property name="CanFocus">True</property>
                                 <property name="IsEditable">True</property>
                                 <property name="WidthChars">25</property>
+                                <property name="InvisibleChar">●</property>
                               </widget>
                               <packing>
                                 <property name="PackType">End</property>
@@ -2522,6 +2529,7 @@ IT</property>
                             <property name="MemberName" />
                             <property name="IsEditable">False</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                             <signal name="Changed" handler="TxtIDOnChanged" />
                           </widget>
                           <packing>
@@ -3089,6 +3097,7 @@ IT</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -3132,6 +3141,7 @@ IT</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -3174,6 +3184,7 @@ IT</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -3219,6 +3230,7 @@ Email:</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -3271,6 +3283,7 @@ Email:</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -3313,6 +3326,7 @@ Email:</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -3356,6 +3370,7 @@ Contraseña:</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -3497,6 +3512,7 @@ Contraseña:</property>
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
                         <property name="WidthChars">30</property>
+                        <property name="InvisibleChar">●</property>
                         <signal name="Changed" handler="TxtSearchOnChanged" />
                       </widget>
                       <packing>
@@ -4274,6 +4290,7 @@ Contraseña:</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="PackType">End</property>
@@ -4321,6 +4338,7 @@ Contraseña:</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="PackType">End</property>
@@ -4484,6 +4502,7 @@ Contraseña:</property>
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
                         <property name="WidthChars">30</property>
+                        <property name="InvisibleChar">●</property>
                         <signal name="Changed" handler="TxtSearchOnChanged" />
                       </widget>
                       <packing>
@@ -4789,6 +4808,7 @@ Contraseña:</property>
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
                         <property name="WidthChars">30</property>
+                        <property name="InvisibleChar">●</property>
                       </widget>
                       <packing>
                         <property name="Position">1</property>
