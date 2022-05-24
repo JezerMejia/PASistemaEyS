@@ -18,7 +18,7 @@ namespace SistemaEyS.AdminForms.Tables
         TreeModelFilterVisibleFunc ModelFilterFunc;
         int SelectedID = -1;
         ConnectionEyS connection = ConnectionEyS.OpenConnection();
-        //UpdateHorario upHor = new UpdateHorario();
+        UpdateDialogSolVac upHor = new UpdateDialogSolVac();
 
         public SolVacacionesView()
         {
@@ -142,6 +142,21 @@ namespace SistemaEyS.AdminForms.Tables
              }
            
             UpdateData();
+        }
+
+
+        protected void OnBtnUpSVClicked(object sender, EventArgs e)
+        {
+            if (this.SelectedID < 0)
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Warning,
+                    ButtonsType.Ok, "Seleccione un horario en la tabla");
+                ms.Run();
+                ms.Destroy();
+                return;
+            }
+
+            upHor.Show();
         }
     }
 }
