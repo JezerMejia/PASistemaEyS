@@ -125,84 +125,6 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
             ca.Show();
         }
 
-        protected void OnButton4Clicked(object sender, EventArgs e)
-        {
-             
-            if (string.IsNullOrWhiteSpace(fechaTxt.Text) ||
-                string.IsNullOrWhiteSpace(idEmp.ActiveText) ||
-                string.IsNullOrWhiteSpace(justTxt.Buffer.Text) ||
-                string.IsNullOrWhiteSpace(fecIni.Text) ||
-                string.IsNullOrWhiteSpace(fecSal.Text)
-
-                )
-            {
-                MessageDialog ms = new MessageDialog(this,
-                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
-                    "No puede haber datos vacíos");
-                ms.Run();
-                ms.Destroy();
-                //ClearInput();
-                return;
-            }
-
-            actFech = DateTime.Now.Date;
-            inFech = Convert.ToDateTime(fechaTxt.Text);
-            inicioFech = Convert.ToDateTime(fecIni.Text);
-            finFech = Convert.ToDateTime(fecSal.Text);
-
-
-            if (inFech < actFech)
-            {
-                MessageDialog ms = new MessageDialog(this,
-                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
-                    "La solicitud no puede hacerse desde el pasado, ingrese la fecha actual o mayor a esa");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
-            if(inicioFech < actFech || finFech < actFech)
-            {
-                mensaje("Una de las fecha de solicitud es menor a la fecha actual, ingrese una fecha mayor la actual");
-                return;
-            }
-
-            if(inicioFech == finFech)
-            {
-                MessageDialog ms = new MessageDialog(this,
-                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
-                    "Las fechas de las solicitudes no deben ser iguales");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
-            if(inicioFech > finFech)
-            {
-                mensaje("La fecha de inicio no puede ser menor a la de salida");
-            }
-
-
-
-            try
-            {
-                DtSolVac.InsertInto(this.fechaTxt.Text,this.justTxt.Buffer.Text,this.idEmp.ActiveText,this.fecIni.Text,this.fecSal.Text);
-                mensaje("Guardado");
-                //ClearInput();
-            }
-            catch (Exception ex)
-            {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, ex.Message);
-                ms.Run();
-                ms.Destroy();
-            }
-
-            UpdateData();
-            ClearInput();
-
-        }
-
         public void mensaje(String mensaje)
         {
             MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
@@ -240,6 +162,80 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
         {
             fecSal.Sensitive = false;
             fecSal.IsEditable = false;
+        }
+
+        protected void OnSaveBtnClicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(fechaTxt.Text) ||
+                string.IsNullOrWhiteSpace(idEmp.ActiveText) ||
+                string.IsNullOrWhiteSpace(justTxt.Buffer.Text) ||
+                string.IsNullOrWhiteSpace(fecIni.Text) ||
+                string.IsNullOrWhiteSpace(fecSal.Text)
+
+                )
+            {
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                    "No puede haber datos vacíos");
+                ms.Run();
+                ms.Destroy();
+                //ClearInput();
+                return;
+            }
+
+            actFech = DateTime.Now.Date;
+            inFech = Convert.ToDateTime(fechaTxt.Text);
+            inicioFech = Convert.ToDateTime(fecIni.Text);
+            finFech = Convert.ToDateTime(fecSal.Text);
+
+
+            if (inFech < actFech)
+            {
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                    "La solicitud no puede hacerse desde el pasado, ingrese la fecha actual o mayor a esa");
+                ms.Run();
+                ms.Destroy();
+                return;
+            }
+
+            if (inicioFech < actFech || finFech < actFech)
+            {
+                mensaje("Una de las fecha de solicitud es menor a la fecha actual, ingrese una fecha mayor la actual");
+                return;
+            }
+
+            if (inicioFech == finFech)
+            {
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                    "Las fechas de las solicitudes no deben ser iguales");
+                ms.Run();
+                ms.Destroy();
+                return;
+            }
+
+            if (inicioFech > finFech)
+            {
+                mensaje("La fecha de inicio no puede ser menor a la de salida");
+            }
+
+            try
+            {
+                DtSolVac.InsertInto(this.fechaTxt.Text, this.justTxt.Buffer.Text, this.idEmp.ActiveText, this.fecIni.Text, this.fecSal.Text);
+                mensaje("Guardado");
+                //ClearInput();
+            }
+            catch (Exception ex)
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                    ButtonsType.Ok, ex.Message);
+                ms.Run();
+                ms.Destroy();
+            }
+
+            UpdateData();
+            ClearInput();
         }
     }
 }
