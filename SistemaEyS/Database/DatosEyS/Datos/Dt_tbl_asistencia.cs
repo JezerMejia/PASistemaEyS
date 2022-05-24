@@ -62,7 +62,7 @@ namespace SistemaEyS.DatosEyS.Datos
 
             string Query = $"INSERT INTO {this.DBTable} ({QueryParameters}) " +
                 $"VALUES ({QueryValues}) " +
-                $"ON DUPLICATE KEY UPDATE horaEntrada='{horaEntrada};'";
+                $"ON DUPLICATE KEY UPDATE horaEntrada='{horaEntrada}';";
 
             try
             {

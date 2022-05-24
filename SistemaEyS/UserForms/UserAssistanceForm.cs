@@ -70,7 +70,7 @@ namespace SistemaEyS.UserForms
                 this.DtAssis.InsertEnterAssistance(
                     this.idEmpleado,
                     now.ToString("yyyy-MM-dd"),
-                    now.ToString("H:mm:ss")
+                    now.ToString("HH:mm:ss")
                 );
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Info, ButtonsType.Ok,
@@ -96,7 +96,7 @@ namespace SistemaEyS.UserForms
                 this.DtAssis.InsertExitAssistance(
                     this.idEmpleado,
                     now.ToString("yyyy-MM-dd"),
-                    now.ToString("H:mm:ss")
+                    now.ToString("HH:mm:ss")
                 );
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Info, ButtonsType.Ok,
