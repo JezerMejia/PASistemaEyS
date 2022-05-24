@@ -1,10 +1,14 @@
 ﻿using System;
 using Gtk;
 using SistemaEyS.DatosEyS.Datos;
+using SistemaEyS.DatosEyS.Entidades;
+using SistemaEyS.DatosEyS.Negocio;
 namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 {
     public partial class UpdateDialog : Gtk.Window
     {
+        protected Neg_Empleado NegEmp = new Neg_Empleado();
+
         protected Dt_tlb_empleado DtEmp = new Dt_tlb_empleado();
         protected Dt_tbl_cargo DtCargo = new Dt_tbl_cargo();
         protected Dt_tbl_departamento DtDep = new Dt_tbl_departamento();
@@ -12,7 +16,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
         protected ListStore CargoData;
         protected ListStore DepData;
 
-        protected int _SelectedID;
+        protected int _SelectedID = -1;
         public int SelectedID
         {
             get
@@ -49,7 +53,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             this.FillCmbCargoModel();
             this.FillCmbDepModel();
 
-            this.SetEntryTextFromID(this.TxtID.Text);
+            this.SetEntryTextFromID(this.SelectedID);
         }
         protected void FillCmbCargoModel()
         {
@@ -59,10 +63,10 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             this.CmbCargo.Model = this.CargoData;
             this.CmbCargo.Active = -1;
         }
-        
+
         protected void FillCmbDepModel()
         {
-            ListStore model = (ListStore) this.CmbDep.Model;
+            ListStore model = (ListStore)this.CmbDep.Model;
             model.Clear();
             this.DepData.InsertWithValues(0, "Ninguno", "0", "");
             this.CmbDep.Model = this.DepData;
@@ -71,7 +75,8 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
         protected int GetIndexFromValue(ComboBox comboBox, string value)
         {
-            int index = -1;
+            if (string.IsNullOrWhiteSpace(value)) return 0;
+            int index = 0;
             TreeModel model = comboBox.Model;
             TreeIter iter;
 
@@ -85,7 +90,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             {
                 do
                 {
-                    if (value == (string) model.GetValue(iter, 1))
+                    if (value == (string)model.GetValue(iter, 1))
                     {
                         index = i;
                         break;
@@ -99,98 +104,104 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
         protected void TxtIDOnChanged(object sender, EventArgs e)
         {
-            string id = this.TxtID.Text;
-            this.SetEntryTextFromID(id);
+            this.SetEntryTextFromID(this.SelectedID);
         }
 
-        protected void SetEntryTextFromID(string idEmpleado)
+        protected void SetEntryTextFromID(int idEmpleado)
         {
-            TreeIter iter;
-            if (EmpData.GetIterFirst(out iter))
+            Console.WriteLine(idEmpleado);
+            try
             {
-                do
-                {
-                    if (idEmpleado == (string)EmpData.GetValue(iter, 0))
-                    {
-                        this.name.Text = (string)EmpData.GetValue(iter, 1);
-                        this.secondName.Text = (string)EmpData.GetValue(iter, 2);
-                        this.surname.Text = (string)EmpData.GetValue(iter, 3);
-                        this.secondSurname.Text = (string)EmpData.GetValue(iter, 4);
-                        this.dIngress.Text = (string)EmpData.GetValue(iter, 5);
-                        this.Icard.Text = (string)EmpData.GetValue(iter, 6);
-                        this.password.Text = (string)EmpData.GetValue(iter, 7);
-                        this.CmbCargo.Active = this.GetIndexFromValue(
-                            this.CmbCargo, (string)EmpData.GetValue(iter, 8));
-                        this.CmbDep.Active = this.GetIndexFromValue(
-                            this.CmbDep, (string)EmpData.GetValue(iter, 9));
-                        this.idHor.Text = (string)EmpData.GetValue(iter, 10);
-                        return;
-                    }
-                    else
-                    {
-                        this.name.Text = "";
-                        this.secondName.Text = "";
-                        this.surname.Text = "";
-                        this.secondSurname.Text = "";
-                        this.dIngress.Text = "";
-                        this.Icard.Text = "";
-                        this.password.Text = "";
-                        this.CmbCargo.Active = -1;
-                        this.CmbCargo.Active = -1;
-                        this.idHor.Text = "";
-                    }
-                }
-                while (EmpData.IterNext(ref iter));
+                Ent_Empleado emp = this.NegEmp.SearchEmpleado(idEmpleado);
+
+                this.name.Text = emp.primerNombre;
+                this.secondName.Text = emp.segundoNombre;
+                this.surname.Text = emp.primerApellido;
+                this.secondSurname.Text = emp.segundoApellido;
+                this.dIngress.Text = emp.fechaIngreso?.ToString("yyyy-MM-dd") ?? "";
+                this.Icard.Text = emp.cedulaEmpleado;
+                this.password.Text = emp.pinEmpleado;
+                this.password.Text = emp.pinEmpleado;
+                this.CmbCargo.Active = this.GetIndexFromValue(
+                    this.CmbCargo, emp.idCargo?.ToString());
+                this.CmbDep.Active = this.GetIndexFromValue(
+                    this.CmbDep, emp.idDepartamento?.ToString());
+                this.idHor.Text = emp.idHorario?.ToString() ?? "";
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex);
+                this.name.Text = "";
+                this.secondName.Text = "";
+                this.surname.Text = "";
+                this.secondSurname.Text = "";
+                this.dIngress.Text = "";
+                this.Icard.Text = "";
+                this.password.Text = "";
+                this.password.Text = "";
+                this.CmbCargo.Active = -1;
+                this.CmbDep.Active = -1;
+                this.idHor.Text = "";
             }
         }
 
-        protected string GetActiveID(ComboBox comboBox)
+        protected int? GetActiveID(ComboBox comboBox)
         {
-            string id = "'NULL'";
+            int? id = null;
             TreeModel model = comboBox.Model;
             TreeIter iter;
             if (comboBox.GetActiveIter(out iter))
             {
-                Console.WriteLine($"ID: {id}");
-                id = (string)model.GetValue(iter, 1);
-                if (string.IsNullOrWhiteSpace(id))
-                {
-                    return "NULL";
-                }
-                id = $"'{id}'";
+                //Console.WriteLine($"ID: {id}");
+                string v = (string)model.GetValue(iter, 1);
+                if (string.IsNullOrWhiteSpace(v) || v == "0") return null;
+                id = Int32.Parse(v);
             }
             return id;
         }
 
         protected void BtnAcceptOnClicked(object sender, EventArgs e)
         {
-            string idEmpleado = this.TxtID.Text;
-
-            if (string.IsNullOrWhiteSpace(idEmpleado))
-            {
-                MessageDialog ms = new MessageDialog(this,
-                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
-                    "Seleccione un ID de empleado");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
             try
             {
-                this.DtEmp.UpdateSet(
-                    idEmpleado,
-                    this.name.Text,
-                    this.secondName.Text,
-                    this.surname.Text,
-                    this.secondSurname.Text,
-                    this.password.Text,
-                    this.Icard.Text,
-                    this.dIngress.Text,
-                    this.GetActiveID(this.CmbCargo),
-                    this.GetActiveID(this.CmbDep),
-                    this.idHor.Text
-                    );
+                DateTime? fechaIngreso = null;
+                if (!string.IsNullOrWhiteSpace(this.dIngress.Text))
+                {
+                    fechaIngreso = DateTime.Parse(this.dIngress.Text);
+                }
+                int? idHor = null;
+                if (!string.IsNullOrWhiteSpace(this.idHor.Text))
+                {
+                    idHor = Int32.Parse(this.idHor.Text);
+                }
+                Ent_Empleado emp = new Ent_Empleado()
+                {
+                    idEmpleado = this.SelectedID,
+                    primerNombre = this.name.Text,
+                    segundoNombre = this.secondName.Text,
+                    primerApellido = this.surname.Text,
+                    segundoApellido = this.secondSurname.Text,
+                    pinEmpleado = this.password.Text,
+                    cedulaEmpleado = this.Icard.Text,
+                    fechaIngreso = fechaIngreso,
+                    idCargo = this.GetActiveID(this.CmbCargo),
+                    idDepartamento = this.GetActiveID(this.CmbDep),
+                    idHorario = idHor,
+                };
+                this.NegEmp.EditEmpleado(emp);
+                //this.DtEmp.UpdateSet(
+                //    idEmpleado,
+                //    this.name.Text,
+                //    this.secondName.Text,
+                //    this.surname.Text,
+                //    this.secondSurname.Text,
+                //    this.password.Text,
+                //    this.Icard.Text,
+                //    this.dIngress.Text,
+                //    this.GetActiveID(this.CmbCargo),
+                //    this.GetActiveID(this.CmbDep),
+                //    this.idHor.Text
+                //    );
                 MessageDialog ms = new MessageDialog(this,
                     DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
                     "Guardado");
@@ -199,6 +210,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 MessageDialog ms = new MessageDialog(this,
                     DialogFlags.Modal, MessageType.Error, ButtonsType.Ok,
                     ex.Message);
