@@ -17,13 +17,18 @@ namespace SistemaEyS.Database.Connection
 {
     public abstract class DataTableTemplate
     {
+        public Type[] gTypes;
         public ListStore Model;
         public ConnectionBase conn;
         public string DBTable;
 
         public DataTableTemplate()
         {
-            this.Model = new ListStore(typeof(string));
+            this.gTypes = new Type[1]
+            {
+                typeof(string)
+            };
+            this.Model = new ListStore(this.gTypes);
         }
 
         public ListStore GetData()
@@ -107,6 +112,76 @@ namespace SistemaEyS.Database.Connection
                 Console.WriteLine(e);
                 throw e;
             }
+        }
+
+        public virtual bool DoesExist(DataTableParameter data)
+        {
+            IDataReader idr = null;
+            string Query = $"SELECT `{data.name}` FROM {this.DBTable} WHERE " +
+                    $"{data.name} = '{data.value}'";
+            bool value = false;
+            try
+            {
+                idr = conn.Read(CommandType.Text, Query);
+                value = idr.Read();
+            }
+            catch (Exception e)
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal,
+                    MessageType.Error, ButtonsType.Ok, e.Message);
+                ms.SetPosition(WindowPosition.Mouse);
+                ms.Run();
+                ms.Destroy();
+            }
+            finally
+            {
+                if (idr != null && !idr.IsClosed)
+                {
+                    idr.Close();
+                }
+            }
+            return value;
+        }
+        public ListStore Search(DataTableParameter data)
+        {
+            ListStore store = new ListStore(
+                this.gTypes
+            );
+
+            IDataReader idr = null;
+            string Query = $"SELECT * FROM {this.DBTable} WHERE " +
+                $"`{data.name}` = '{data.value}';";
+            try
+            {
+                idr = conn.Read(CommandType.Text, Query);
+                if (!idr.Read()) return null;
+
+                string[] arr = new string[this.gTypes.Length];
+
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    string value = idr.IsDBNull(i) ? "" : idr.GetValue(i).ToString();
+                    arr[i] = value;
+                }
+
+                store.AppendValues(arr);
+            }
+            catch (Exception e)
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal,
+                    MessageType.Error, ButtonsType.Ok, e.Message);
+                ms.SetPosition(WindowPosition.Mouse);
+                ms.Run();
+                ms.Destroy();
+            }
+            finally
+            {
+                if (idr != null && !idr.IsClosed)
+                {
+                    idr.Close();
+                }
+            }
+            return store;
         }
     }
 }
