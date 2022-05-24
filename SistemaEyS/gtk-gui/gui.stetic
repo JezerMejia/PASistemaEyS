@@ -2063,6 +2063,7 @@ IT</property>
                     <property name="Type">TextOnly</property>
                     <property name="Label" translatable="yes">Eliminar</property>
                     <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="OnBtnDelSVClicked" />
                   </widget>
                   <packing>
                     <property name="PackType">End</property>
