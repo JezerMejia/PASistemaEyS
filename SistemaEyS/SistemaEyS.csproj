@@ -138,6 +138,8 @@
     <Compile Include="Database\DatosEyS\Datos\Dt_tlb_horario.cs" />
     <Compile Include="Database\DatosEyS\Entidades\Ent_Empleado.cs" />
     <Compile Include="Database\DatosEyS\Negocio\Neg_Empleado.cs" />
+    <Compile Include="AdminForms\Tables\SolVacacionesPanelBtn\UpdateDialogSolVac.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn.UpdateDialogSolVac.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
