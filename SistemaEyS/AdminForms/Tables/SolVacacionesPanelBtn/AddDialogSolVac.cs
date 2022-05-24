@@ -7,6 +7,8 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 {
     public partial class AddDialogSolVac : Gtk.Window
     {
+        protected EmpleadosView parent;
+        protected Dt_tlb_SolVacaciones DtSolVac = new Dt_tlb_SolVacaciones();
         Dt_tlb_empleado dtEmp = new Dt_tlb_empleado();
         protected ListStore DataUser;
         protected TreeModelFilter TreeData;
@@ -60,7 +62,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
             try
             {
                 dt = fechaEntrada;
-                this.fechaTxt.Text = fechaEntrada.ToString("dd/MM/yyyy");
+                this.fechaTxt.Text = fechaEntrada.ToString("yyyy/MM/dd");
             }
             catch (Exception ex)
             {
@@ -75,7 +77,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
             try
             {
                 dtIni = fechaEntrada;
-                this.fecIni.Text = fechaEntrada.ToString("dd/MM/yyyy hh:mm:ss tt");
+                this.fecIni.Text = fechaEntrada.ToString("yyyy/MM/dd hh:mm:ss");
             }
             catch (Exception ex)
             {
@@ -90,7 +92,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
             try
             {
                 dtSal = fechaEntrada;
-                this.fecSal.Text = fechaEntrada.ToString("dd/MM/yyyy hh:mm:ss tt");
+                this.fecSal.Text = fechaEntrada.ToString("yyyy/MM/dd hh:mm:ss");
             }
             catch (Exception ex)
             {
@@ -116,6 +118,51 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
         {
             ca.fecha = new calendar.selectFecha(this.setFechaSal);
             ca.Show();
+        }
+
+        protected void OnButton4Clicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(fechaTxt.Text) ||
+                string.IsNullOrWhiteSpace(idEmp.ActiveText) ||
+                string.IsNullOrWhiteSpace(fecIni.Text) ||
+                string.IsNullOrWhiteSpace(fecSal.Text)
+
+                )
+            {
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                    "No puede haber datos vacíos");
+                ms.Run();
+                ms.Destroy();
+                //ClearInput();
+                return;
+            }
+
+            try
+            {
+                DtSolVac.InsertInto(this.fechaTxt.Text,this.GtkScrolledWindow.CompositeName,this.idEmp.ActiveText,this.fecIni.Text,this.fecSal.Text);
+                mensaje("Guardado");
+                //ClearInput();
+            }
+            catch (Exception ex)
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                    ButtonsType.Ok, ex.Message);
+                ms.Run();
+                ms.Destroy();
+            }
+
+            UpdateData();
+
+        }
+
+        public void mensaje(String mensaje)
+        {
+            MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
+                    ButtonsType.Ok, mensaje);
+            ms.Run();
+            ms.Destroy();
+
         }
     }
 }
