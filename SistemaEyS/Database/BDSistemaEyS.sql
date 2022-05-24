@@ -167,7 +167,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 DROP TABLE IF EXISTS `BDSistemaEyS`.`tbl_user` ;
 
 CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`tbl_user` (
-  `id_user` INT(11) NOT NULL,
+  `id_user` INT(11) NOT NULL AUTO_INCREMENT,
   `user` VARCHAR(50) NOT NULL,
   `pwd` VARCHAR(50) NOT NULL,
   `nombres` VARCHAR(50) NOT NULL,
@@ -203,7 +203,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `BDSistemaEyS`.`tbl_UserRol` ;
 
 CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`tbl_UserRol` (
-  `id_UserRol` INT(11) NOT NULL,
+  `id_UserRol` INT(11) NOT NULL AUTO_INCREMENT,
   `id_user` INT(11) NOT NULL,
   `id_rol` INT(11) NOT NULL,
   PRIMARY KEY (`id_UserRol`),
