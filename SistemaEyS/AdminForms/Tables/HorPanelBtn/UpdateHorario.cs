@@ -27,7 +27,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 
         public void UpdateData()
         {
-            this.HorData = dthor.listarUsuariosHor();
+            //this.HorData = dthor.listarUsuariosHor();
             //this.FillCmbxIDModel();
         }
 
