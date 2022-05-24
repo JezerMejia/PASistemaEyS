@@ -12,7 +12,7 @@ namespace SistemaEyS.DatosSeguridad.Datos
         {
             this.conn = ConnectionSeg.OpenConnection();
             this.DBTable = "Seguridad.tbl_user";
-            this.Model = new ListStore(
+            this.gTypes = new Type[8] {
                 typeof(string),
                 typeof(string),
                 typeof(string),
@@ -21,7 +21,8 @@ namespace SistemaEyS.DatosSeguridad.Datos
                 typeof(string),
                 typeof(string),
                 typeof(string)
-                );
+            };
+            this.Model = new ListStore(this.gTypes);
         }
 
         public override void UpdateModel()
@@ -31,7 +32,7 @@ namespace SistemaEyS.DatosSeguridad.Datos
             IDataReader idr = null;
             StringBuilder sb = new StringBuilder();
             sb.Clear();
-            sb.Append("SELECT * FROM Seguridad.tbl_user;");
+            sb.Append("SELECT * FROM Seguridad.tbl_user WHERE estado <> 3;");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());
@@ -46,8 +47,6 @@ namespace SistemaEyS.DatosSeguridad.Datos
                         idr[5].ToString(), // Email
                         idr[6].ToString(), // Contraseña temp
                         idr[7].ToString() // Estado
-                        //idr[8].ToString(), // ID Rol
-                        //idr[9].ToString()  // Rol
                         );
                 }
             }
@@ -94,9 +93,8 @@ namespace SistemaEyS.DatosSeguridad.Datos
 
             return model;
         }
-
         public void InsertInto(string user, string pwd, string nombres,
-            string apellidos, string email)
+            string apellidos, string email, string estado)
         {
             this.InsertInto(
                     //this.conn,
@@ -105,12 +103,12 @@ namespace SistemaEyS.DatosSeguridad.Datos
                     new DataTableParameter("nombres", $"'{nombres}'"),
                     new DataTableParameter("apellidos", $"'{apellidos}'"),
                     new DataTableParameter("email", $"'{email}'"),
-                    new DataTableParameter("estado", "'1'")
+                    new DataTableParameter("estado", $"'{estado}'")
                 );
         }
 
         public void UpdateSet(string id_user, string user, string pwd,
-            string nombres, string apellidos, string email)
+            string nombres, string apellidos, string email, string estado)
         {
             Console.WriteLine(id_user);
             this.UpdateSet(
@@ -135,6 +133,10 @@ namespace SistemaEyS.DatosSeguridad.Datos
                     new DataTableParameter(
                         !string.IsNullOrWhiteSpace(email) ? "email" : "",
                         $"'{email}'"
+                        ),
+                    new DataTableParameter(
+                        !string.IsNullOrWhiteSpace(estado) ? "estado" : "",
+                        $"'{estado}'"
                         )
                 );
             //this.UpdateSet(id_user, user, pwd, nombres, apellidos, email, "");
