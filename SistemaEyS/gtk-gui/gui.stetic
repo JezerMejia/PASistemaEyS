@@ -2043,6 +2043,7 @@ IT</property>
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="ShowScrollbars">True</property>
+                    <signal name="RowActivated" handler="OnViewTableRowActivated" />
                   </widget>
                 </child>
               </widget>
@@ -2078,6 +2079,7 @@ IT</property>
                     <property name="Type">TextOnly</property>
                     <property name="Label" translatable="yes">Actualizar</property>
                     <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="OnBtnActSVClicked" />
                   </widget>
                   <packing>
                     <property name="PackType">End</property>
@@ -5894,7 +5896,7 @@ Base de Datos creada con MySQLWorkbench.</property>
                         <property name="MemberName" />
                         <property name="ShadowType">In</property>
                         <child>
-                          <widget class="Gtk.TextView" id="textview2">
+                          <widget class="Gtk.TextView" id="justTxt">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="ShowScrollbars">True</property>
@@ -5954,6 +5956,7 @@ Base de Datos creada con MySQLWorkbench.</property>
                         <property name="Type">TextOnly</property>
                         <property name="Label" translatable="yes">Guardar</property>
                         <property name="UseUnderline">True</property>
+                        <signal name="Clicked" handler="OnButton4Clicked" />
                       </widget>
                       <packing>
                         <property name="Position">0</property>

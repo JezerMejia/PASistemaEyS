@@ -48,7 +48,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
 
-		private global::Gtk.TextView textview2;
+		private global::Gtk.TextView justTxt;
 
 		private global::Gtk.Alignment alignment8;
 
@@ -256,10 +256,10 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
-			this.textview2 = new global::Gtk.TextView();
-			this.textview2.CanFocus = true;
-			this.textview2.Name = "textview2";
-			this.GtkScrolledWindow.Add(this.textview2);
+			this.justTxt = new global::Gtk.TextView();
+			this.justTxt.CanFocus = true;
+			this.justTxt.Name = "justTxt";
+			this.GtkScrolledWindow.Add(this.justTxt);
 			this.alignment5.Add(this.GtkScrolledWindow);
 			this.hbox7.Add(this.alignment5);
 			global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.alignment5]));
@@ -331,6 +331,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 			this.button8.Clicked += new global::System.EventHandler(this.OnButton8Clicked);
 			this.button9.Clicked += new global::System.EventHandler(this.OnButton9Clicked);
 			this.button10.Clicked += new global::System.EventHandler(this.OnButton10Clicked);
+			this.button4.Clicked += new global::System.EventHandler(this.OnButton4Clicked);
 		}
 	}
 }
