@@ -1,10 +1,6 @@
 ﻿using System;
 using Gtk;
-using SistemaEyS.Database.Connection;
-using MySql.Data.MySqlClient;
-using System.Data;
-using SistemaEySLibrary;
-using SistemaEyS.DatosEyS;
+using SistemaEyS.DatosEyS.Datos;
 
 namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 {

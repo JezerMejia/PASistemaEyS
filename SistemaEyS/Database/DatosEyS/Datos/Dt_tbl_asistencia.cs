@@ -4,7 +4,7 @@ using Gtk;
 using System.Text;
 using SistemaEyS.Database.Connection;
 
-namespace SistemaEyS.DatosEyS
+namespace SistemaEyS.DatosEyS.Datos
 {
     public class Dt_tlb_asistencia : DataTableTemplate
     {
@@ -62,7 +62,7 @@ namespace SistemaEyS.DatosEyS
 
             string Query = $"INSERT INTO {this.DBTable} ({QueryParameters}) " +
                 $"VALUES ({QueryValues}) " +
-                $"ON DUPLICATE KEY UPDATE horaEntrada='{horaEntrada};'";
+                $"ON DUPLICATE KEY UPDATE horaEntrada='{horaEntrada}';";
 
             try
             {

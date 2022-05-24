@@ -1,6 +1,6 @@
 ﻿using System;
 using Gtk;
-using SistemaEyS.DatosEyS;
+using SistemaEyS.DatosEyS.Datos;
 using SistemaEyS.AdminForms.Tables.EmpPanelBtn;
 
 namespace SistemaEyS.AdminForms.Tables
@@ -250,6 +250,7 @@ namespace SistemaEyS.AdminForms.Tables
             for (int i = 0; i < model.NColumns; i++)
             {
                 string value = (string)model.GetValue(iter, i);
+                if (string.IsNullOrWhiteSpace(value)) return true;
                 if (value.ToLower().Contains(key.ToLower()))
                 {
                     return false;
@@ -298,7 +299,7 @@ namespace SistemaEyS.AdminForms.Tables
                     this.SelectedID = Int32.Parse(value.ToString());
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return;
             }

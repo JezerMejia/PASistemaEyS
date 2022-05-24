@@ -2,7 +2,7 @@
 using System.Data;
 using Gtk;
 using SistemaEyS.Database.Connection;
-using SistemaEyS.DatosEyS;
+using SistemaEyS.DatosEyS.Datos;
 
 namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 {

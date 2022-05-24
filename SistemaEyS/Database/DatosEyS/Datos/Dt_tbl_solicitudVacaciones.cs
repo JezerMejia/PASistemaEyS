@@ -5,7 +5,7 @@ using System.Text;
 using SistemaEyS.Database.Connection;
 using SistemaEyS.DatosEyS;
 
-namespace SistemaEyS.DatosEyS
+namespace SistemaEyS.DatosEyS.Datos
 {
     public class Dt_tlb_SolVacaciones : DataTableTemplate
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using Gtk;
-using SistemaEyS.DatosEyS;
+using SistemaEyS.DatosEyS.Datos;
 
 namespace SistemaEyS.AdminForms.Settings
 {

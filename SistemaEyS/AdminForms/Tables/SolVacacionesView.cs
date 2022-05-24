@@ -1,5 +1,5 @@
 ﻿using System;
-using SistemaEyS.DatosEyS;
+using SistemaEyS.DatosEyS.Datos;
 using SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn;
 using Gtk;
 using SistemaEyS.Database.Connection;

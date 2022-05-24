@@ -1,6 +1,6 @@
 ﻿using System;
 using Gtk;
-using SistemaEyS.DatosEyS;
+using SistemaEyS.DatosEyS.Datos;
 using SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn.Calendar;
 
 namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
