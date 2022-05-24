@@ -136,6 +136,7 @@
     <Compile Include="Database\DatosEyS\Datos\Dt_tbl_solicitudVacaciones.cs" />
     <Compile Include="Database\DatosEyS\Datos\Dt_tlb_empleado.cs" />
     <Compile Include="Database\DatosEyS\Datos\Dt_tlb_horario.cs" />
+    <Compile Include="Database\DatosEyS\Entidades\Ent_Empleado.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
@@ -157,6 +158,7 @@
     <Folder Include="Database\DatosSeguridad\Entidades\" />
     <Folder Include="Database\DatosSeguridad\Negocio\" />
     <Folder Include="Database\DatosEyS\Datos\" />
+    <Folder Include="Database\DatosEyS\Entidades\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SistemaEySLibrary\SistemaEySLibrary.csproj">
