@@ -220,9 +220,10 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 			w17.Fill = false;
 			// Container child hbox6.Gtk.Box+BoxChild
 			this.fecSal = new global::Gtk.Entry();
+			this.fecSal.Sensitive = false;
 			this.fecSal.CanFocus = true;
 			this.fecSal.Name = "fecSal";
-			this.fecSal.IsEditable = true;
+			this.fecSal.IsEditable = false;
 			this.fecSal.InvisibleChar = '•';
 			this.hbox6.Add(this.fecSal);
 			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.fecSal]));
@@ -330,6 +331,8 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 			this.DefaultHeight = 315;
 			this.Show();
 			this.button8.Clicked += new global::System.EventHandler(this.OnButton8Clicked);
+			this.fecIni.TextInserted += new global::Gtk.TextInsertedHandler(this.OnFecIniTextInserted);
+			this.fecIni.TextDeleted += new global::Gtk.TextDeletedHandler(this.OnFecIniTextDeleted);
 			this.button9.Clicked += new global::System.EventHandler(this.OnButton9Clicked);
 			this.button10.Clicked += new global::System.EventHandler(this.OnButton10Clicked);
 			this.saveBtn.Clicked += new global::System.EventHandler(this.OnButton4Clicked);

@@ -5797,6 +5797,8 @@ Base de Datos creada con MySQLWorkbench.</property>
                     <property name="CanFocus">True</property>
                     <property name="IsEditable">True</property>
                     <property name="InvisibleChar">•</property>
+                    <signal name="TextInserted" handler="OnFecIniTextInserted" />
+                    <signal name="TextDeleted" handler="OnFecIniTextDeleted" />
                   </widget>
                   <packing>
                     <property name="PackType">End</property>
@@ -5851,8 +5853,9 @@ Base de Datos creada con MySQLWorkbench.</property>
                 <child>
                   <widget class="Gtk.Entry" id="fecSal">
                     <property name="MemberName" />
+                    <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
-                    <property name="IsEditable">True</property>
+                    <property name="IsEditable">False</property>
                     <property name="InvisibleChar">•</property>
                   </widget>
                   <packing>
