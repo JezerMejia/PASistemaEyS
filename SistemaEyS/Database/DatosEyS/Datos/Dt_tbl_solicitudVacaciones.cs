@@ -94,12 +94,12 @@ namespace SistemaEyS.DatosEyS.Datos
         }
 
 
-        public void UpdateSet(string idSolVacaciones, string fechaSol, string descripcionSol, string idEmpleado, string FechaHoraInicio,
+        public void UpdateSet( string fechaSol, string descripcionSol, string idEmpleado, string FechaHoraInicio,
                                 string FechaHoraFin)
 
         {
             this.UpdateSet(
-                new DataTableParameter("idSolVacaciones", $"'{idSolVacaciones}'"),
+                //new DataTableParameter("idSolVacaciones", $"'{idSolVacaciones}'"),
                 new DataTableParameter(
                     !string.IsNullOrWhiteSpace(fechaSol) ? "fechaSol" : "",
                     $"'{fechaSol}'"
