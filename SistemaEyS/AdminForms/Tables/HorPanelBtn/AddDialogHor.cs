@@ -2,11 +2,14 @@
 using System.Data;
 using Gtk;
 using SistemaEyS.Database.Connection;
+using SistemaEyS.DatosEyS;
 
 namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 {
     public partial class AddDialogHor : Gtk.Window
     {
+        Dt_tlb_horario DtHor = new Dt_tlb_horario();
+
         public AddDialogHor() :
                 base(Gtk.WindowType.Toplevel)
         {
@@ -22,8 +25,6 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
         {
 
             ConnectionEyS connection = ConnectionEyS.OpenConnection();
-
-            compararMayor();
 
             if (string.IsNullOrWhiteSpace(lunesIni.ActiveText) ||
                string.IsNullOrWhiteSpace(lunesSal.ActiveText) ||
@@ -59,27 +60,18 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
                 return;
             }
 
-           
-            String Query = "INSERT INTO BDSistemaEyS.Horario (" +
-                    "lunesInicio, lunesSalida, " +
-                    "martesInicio, martesSalida, " +
-                    "miercolesInicio, miercolesSalida," +
-                    "juevesInicio, juevesSalida," +
-                    "viernesInicio, viernesSalida," +
-                    "sabadoInicio, sabadoSalida," +
-                    "domingoInicio, domingoSalida) " +
-                    "VALUES (" +
-                    $"'{lunesIni.ActiveText}', '{lunesSal.ActiveText}'," +
-                    $"'{martesIni.ActiveText}', '{martesSal.ActiveText}', " +
-                    $"'{miercolesIni.ActiveText}','{miercolesSal.ActiveText}', " +
-                    $"'{juevesIni.ActiveText}', '{juevesSal.ActiveText}', " +
-                    $"'{viernesIni.ActiveText}', '{viernesSal.ActiveText}'," +
-                    $"'{sabadoIni.ActiveText}', '{sabadoSal.ActiveText}', " +
-                    $"'{domingoIni.ActiveText}', '{domingoSal.ActiveText}');";
+            //compararMayor();
 
             try
             {
-                connection.Execute(CommandType.Text, Query);
+                DtHor.InsertInto(this.lunesIni.ActiveText, this.lunesSal.ActiveText,
+                            this.martesIni.ActiveText, this.martesSal.ActiveText,
+                            this.miercolesIni.ActiveText, this.miercolesSal.ActiveText,
+                            this.juevesIni.ActiveText, this.juevesSal.ActiveText,
+                            this.viernesIni.ActiveText, this.viernesSal.ActiveText,
+                            this.sabadoIni.ActiveText, this.sabadoSal.ActiveText,
+                            this.domingoIni.ActiveText, this.domingoSal.ActiveText
+                            );
                 mensaje("Guardado");
                 ClearInput();
             }
@@ -90,6 +82,8 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
                 ms.Run();
                 ms.Destroy();
             }
+
+
 
         }
 
