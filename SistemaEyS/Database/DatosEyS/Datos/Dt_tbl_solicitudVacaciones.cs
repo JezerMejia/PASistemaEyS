@@ -4,7 +4,7 @@ using Gtk;
 using System.Text;
 using SistemaEyS.Database.Connection;
 
-namespace SistemaEyS.DatosEyS
+namespace SistemaEyS.DatosEyS.Datos
 {
     public class Dt_tlb_solicitudVacaciones
     {

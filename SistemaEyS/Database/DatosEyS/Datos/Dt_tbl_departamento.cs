@@ -4,18 +4,17 @@ using Gtk;
 using System.Text;
 using SistemaEyS.Database.Connection;
 
-namespace SistemaEyS.DatosEyS
+namespace SistemaEyS.DatosEyS.Datos
 {
-    public class Dt_tbl_cargo : DataTableTemplate
+    public class Dt_tbl_departamento : DataTableTemplate
     {
-        public Dt_tbl_cargo()
+        public Dt_tbl_departamento()
         {
             this.conn = ConnectionEyS.OpenConnection();
-            this.DBTable = "BDSistemaEyS.Cargo";
+            this.DBTable = "BDSistemaEyS.Departamento";
             this.Model = new ListStore(
-                typeof(string),
-                typeof(string),
-                typeof(string)
+                typeof(string), typeof(string),
+                typeof(string), typeof(string)
                 );
         }
 
@@ -26,7 +25,7 @@ namespace SistemaEyS.DatosEyS
             IDataReader idr = null;
             StringBuilder sb = new StringBuilder();
             sb.Clear();
-            sb.Append("SELECT * FROM BDSistemaEyS.Cargo;");
+            sb.Append("SELECT * FROM BDSistemaEyS.Departamento;");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());
@@ -35,7 +34,8 @@ namespace SistemaEyS.DatosEyS
                     this.Model.AppendValues(
                         idr[0].ToString(), // ID
                         idr[1].ToString(), // Nombre
-                        idr[2].ToString()  // Descripción
+                        idr[2].ToString(), // Descripción
+                        idr[3].ToString()  // Extensión
                     );
                 }
             }
@@ -61,9 +61,8 @@ namespace SistemaEyS.DatosEyS
             TreeIter iter;
 
             ListStore model = new ListStore(
-                typeof(string),
-                typeof(string),
-                typeof(string)
+                typeof(string), typeof(string),
+                typeof(string), typeof(string)
                 );
 
             if (this.Model.GetIterFirst(out iter))
@@ -73,7 +72,8 @@ namespace SistemaEyS.DatosEyS
                     model.AppendValues(
                         this.Model.GetValue(iter, 1),
                         this.Model.GetValue(iter, 0),
-                        this.Model.GetValue(iter, 2)
+                        this.Model.GetValue(iter, 2),
+                        this.Model.GetValue(iter, 3)
                     );
                 }
                 while (this.Model.IterNext(ref iter));
@@ -82,33 +82,38 @@ namespace SistemaEyS.DatosEyS
             return model;
         }
 
-        public void InsertInto(string nombre, string descripcion)
+        public void InsertInto(string nombre, string descripcion, string extension)
         {
             this.InsertInto(
-                    new DataTableParameter("nombreCargo", $"'{nombre}'"),
-                    new DataTableParameter("descripcionCargo", $"'{descripcion}'")
+                    new DataTableParameter("nombreDepartamento", $"'{nombre}'"),
+                    new DataTableParameter("descripcionDepartamento", $"'{descripcion}'"),
+                    new DataTableParameter("extensionDepartamento", $"'{extension}'")
                 );
         }
 
-        public void UpdateSet(string idCargo, string nombre, string descripcion)
+        public void UpdateSet(string idDepartamento, string nombre, string descripcion, string extension)
         {
             this.UpdateSet(
-                    new DataTableParameter("idCargo", $"'{idCargo}'"),
+                    new DataTableParameter("idDepartamento", $"'{idDepartamento}'"),
                     new DataTableParameter(
-                        !string.IsNullOrWhiteSpace(nombre) ? "nombreCargo" : "",
+                        !string.IsNullOrWhiteSpace(nombre) ? "nombreDepartamento" : "",
                         $"'{nombre}'"
                         ),
                     new DataTableParameter(
-                        !string.IsNullOrWhiteSpace(descripcion) ? "descripcionCargo" : "",
+                        !string.IsNullOrWhiteSpace(descripcion) ? "descripcionDepartamento" : "",
                         $"'{descripcion}'"
+                        ),
+                    new DataTableParameter(
+                        !string.IsNullOrWhiteSpace(extension) ? "extensionDepartamento" : "",
+                        $"'{extension}'"
                         )
                 );
         }
 
-        public void DeleteFrom(string idCargo)
+        public void DeleteFrom(string idDepartamento)
         {
             this.DeleteFrom(this.conn,
-                new DataTableParameter("idCargo", $"'{idCargo}'")
+                new DataTableParameter("idDepartamento", $"'{idDepartamento}'")
                 );
         }
     }
