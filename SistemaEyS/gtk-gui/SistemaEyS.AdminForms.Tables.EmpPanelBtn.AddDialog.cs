@@ -46,6 +46,12 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
 		private global::Gtk.Label label5;
 
+		private global::Gtk.HBox hbox8;
+
+		private global::Gtk.Entry TxtCedula;
+
+		private global::Gtk.Label label7;
+
 		private global::Gtk.HBox hbox6;
 
 		private global::SistemaEySLibrary.NumericEntry TxtPIN;
@@ -134,7 +140,6 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			w5.Fill = false;
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.hbox1 = new global::Gtk.HBox();
-			this.hbox1.Name = "hbox1";
 			this.hbox1.Spacing = 6;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.TxtName = new global::Gtk.Entry();
@@ -142,6 +147,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.TxtName.Name = "TxtName";
 			this.TxtName.IsEditable = true;
 			this.TxtName.WidthChars = 25;
+			this.TxtName.MaxLength = 25;
 			this.TxtName.InvisibleChar = '•';
 			this.hbox1.Add(this.TxtName);
 			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.TxtName]));
@@ -173,6 +179,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.TxtSecondName.Name = "TxtSecondName";
 			this.TxtSecondName.IsEditable = true;
 			this.TxtSecondName.WidthChars = 25;
+			this.TxtSecondName.MaxLength = 25;
 			this.TxtSecondName.InvisibleChar = '•';
 			this.hbox3.Add(this.TxtSecondName);
 			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.TxtSecondName]));
@@ -204,6 +211,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.TxtLastName.Name = "TxtLastName";
 			this.TxtLastName.IsEditable = true;
 			this.TxtLastName.WidthChars = 25;
+			this.TxtLastName.MaxLength = 25;
 			this.TxtLastName.InvisibleChar = '•';
 			this.hbox4.Add(this.TxtLastName);
 			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.TxtLastName]));
@@ -235,6 +243,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.TxtSecondLastName.Name = "TxtSecondLastName";
 			this.TxtSecondLastName.IsEditable = true;
 			this.TxtSecondLastName.WidthChars = 25;
+			this.TxtSecondLastName.MaxLength = 25;
 			this.TxtSecondLastName.InvisibleChar = '•';
 			this.hbox7.Add(this.TxtSecondLastName);
 			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.TxtSecondLastName]));
@@ -257,6 +266,38 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			w17.Expand = false;
 			w17.Fill = false;
 			// Container child vbox1.Gtk.Box+BoxChild
+			this.hbox8 = new global::Gtk.HBox();
+			this.hbox8.Name = "hbox8";
+			this.hbox8.Spacing = 6;
+			// Container child hbox8.Gtk.Box+BoxChild
+			this.TxtCedula = new global::Gtk.Entry();
+			this.TxtCedula.CanFocus = true;
+			this.TxtCedula.Name = "TxtCedula";
+			this.TxtCedula.IsEditable = true;
+			this.TxtCedula.WidthChars = 25;
+			this.TxtCedula.MaxLength = 14;
+			this.TxtCedula.InvisibleChar = '•';
+			this.hbox8.Add(this.TxtCedula);
+			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.hbox8[this.TxtCedula]));
+			w18.PackType = ((global::Gtk.PackType)(1));
+			w18.Position = 0;
+			w18.Expand = false;
+			// Container child hbox8.Gtk.Box+BoxChild
+			this.label7 = new global::Gtk.Label();
+			this.label7.Name = "label7";
+			this.label7.LabelProp = global::Mono.Unix.Catalog.GetString("Cédula:");
+			this.hbox8.Add(this.label7);
+			global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.hbox8[this.label7]));
+			w19.PackType = ((global::Gtk.PackType)(1));
+			w19.Position = 1;
+			w19.Expand = false;
+			w19.Fill = false;
+			this.vbox1.Add(this.hbox8);
+			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.hbox8]));
+			w20.Position = 5;
+			w20.Expand = false;
+			w20.Fill = false;
+			// Container child vbox1.Gtk.Box+BoxChild
 			this.hbox6 = new global::Gtk.HBox();
 			this.hbox6.Name = "hbox6";
 			this.hbox6.Spacing = 6;
@@ -266,34 +307,36 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.TxtPIN.Name = "TxtPIN";
 			this.TxtPIN.IsEditable = true;
 			this.TxtPIN.WidthChars = 25;
+			this.TxtPIN.MaxLength = 30;
+			this.TxtPIN.InvisibleChar = '●';
 			this.hbox6.Add(this.TxtPIN);
-			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.TxtPIN]));
-			w18.PackType = ((global::Gtk.PackType)(1));
-			w18.Position = 0;
-			w18.Expand = false;
-			w18.Fill = false;
+			global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.TxtPIN]));
+			w21.PackType = ((global::Gtk.PackType)(1));
+			w21.Position = 0;
+			w21.Expand = false;
+			w21.Fill = false;
 			// Container child hbox6.Gtk.Box+BoxChild
 			this.label6 = new global::Gtk.Label();
 			this.label6.Name = "label6";
 			this.label6.LabelProp = global::Mono.Unix.Catalog.GetString("PIN:");
 			this.label6.Justify = ((global::Gtk.Justification)(1));
 			this.hbox6.Add(this.label6);
-			global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.label6]));
-			w19.PackType = ((global::Gtk.PackType)(1));
-			w19.Position = 1;
-			w19.Expand = false;
-			w19.Fill = false;
-			this.vbox1.Add(this.hbox6);
-			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.hbox6]));
-			w20.Position = 5;
-			w20.Expand = false;
-			w20.Fill = false;
-			this.alignment2.Add(this.vbox1);
-			this.vbox3.Add(this.alignment2);
-			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.vbox3[this.alignment2]));
-			w22.Position = 0;
+			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.label6]));
+			w22.PackType = ((global::Gtk.PackType)(1));
+			w22.Position = 1;
 			w22.Expand = false;
 			w22.Fill = false;
+			this.vbox1.Add(this.hbox6);
+			global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.hbox6]));
+			w23.Position = 6;
+			w23.Expand = false;
+			w23.Fill = false;
+			this.alignment2.Add(this.vbox1);
+			this.vbox3.Add(this.alignment2);
+			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.vbox3[this.alignment2]));
+			w25.Position = 0;
+			w25.Expand = false;
+			w25.Fill = false;
 			// Container child vbox3.Gtk.Box+BoxChild
 			this.alignment3 = new global::Gtk.Alignment(0.5F, 0.5F, 0F, 0F);
 			this.alignment3.Name = "alignment3";
@@ -308,39 +351,39 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.BtnAdd.Name = "BtnAdd";
 			this.BtnAdd.UseUnderline = true;
 			this.BtnAdd.Label = global::Mono.Unix.Catalog.GetString("Agregar");
-			global::Gtk.Image w23 = new global::Gtk.Image();
-			w23.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-add", global::Gtk.IconSize.Menu);
-			this.BtnAdd.Image = w23;
+			global::Gtk.Image w26 = new global::Gtk.Image();
+			w26.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-add", global::Gtk.IconSize.Menu);
+			this.BtnAdd.Image = w26;
 			this.hbox5.Add(this.BtnAdd);
-			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.BtnAdd]));
-			w24.Position = 0;
-			w24.Expand = false;
-			w24.Fill = false;
+			global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.BtnAdd]));
+			w27.Position = 0;
+			w27.Expand = false;
+			w27.Fill = false;
 			// Container child hbox5.Gtk.Box+BoxChild
 			this.BtnCancel = new global::Gtk.Button();
 			this.BtnCancel.CanFocus = true;
 			this.BtnCancel.Name = "BtnCancel";
 			this.BtnCancel.UseUnderline = true;
 			this.BtnCancel.Label = global::Mono.Unix.Catalog.GetString("Cancelar");
-			global::Gtk.Image w25 = new global::Gtk.Image();
-			w25.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-cancel", global::Gtk.IconSize.Menu);
-			this.BtnCancel.Image = w25;
+			global::Gtk.Image w28 = new global::Gtk.Image();
+			w28.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-cancel", global::Gtk.IconSize.Menu);
+			this.BtnCancel.Image = w28;
 			this.hbox5.Add(this.BtnCancel);
-			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.BtnCancel]));
-			w26.Position = 1;
-			w26.Expand = false;
-			w26.Fill = false;
-			this.alignment3.Add(this.hbox5);
-			this.vbox3.Add(this.alignment3);
-			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.vbox3[this.alignment3]));
-			w28.Position = 1;
-			w28.Expand = false;
-			w28.Fill = false;
-			this.vbox2.Add(this.vbox3);
-			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.vbox3]));
-			w29.Position = 0;
+			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.BtnCancel]));
+			w29.Position = 1;
 			w29.Expand = false;
 			w29.Fill = false;
+			this.alignment3.Add(this.hbox5);
+			this.vbox3.Add(this.alignment3);
+			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.vbox3[this.alignment3]));
+			w31.Position = 1;
+			w31.Expand = false;
+			w31.Fill = false;
+			this.vbox2.Add(this.vbox3);
+			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.vbox3]));
+			w32.Position = 0;
+			w32.Expand = false;
+			w32.Fill = false;
 			this.alignment1.Add(this.vbox2);
 			this.Add(this.alignment1);
 			if ((this.Child != null))
