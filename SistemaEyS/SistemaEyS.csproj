@@ -134,6 +134,8 @@
     <Compile Include="Database\DatosSeguridad\Datos\Dt_tbl_rol.cs" />
     <Compile Include="Database\DatosSeguridad\Datos\Dt_tbl_user.cs" />
     <Compile Include="Database\DatosSeguridad\Datos\Dt_tbl_user_rol.cs" />
+    <Compile Include="Database\DatosSeguridad\Entidades\Ent_user.cs" />
+    <Compile Include="Database\DatosSeguridad\Negocio\Neg_user.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
@@ -152,6 +154,8 @@
     <Folder Include="AdminForms\Tables\SolVacacionesPanelBtn\" />
     <Folder Include="AdminForms\Tables\SolVacacionesPanelBtn\Calendar\" />
     <Folder Include="Database\DatosSeguridad\Datos\" />
+    <Folder Include="Database\DatosSeguridad\Entidades\" />
+    <Folder Include="Database\DatosSeguridad\Negocio\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SistemaEySLibrary\SistemaEySLibrary.csproj">
