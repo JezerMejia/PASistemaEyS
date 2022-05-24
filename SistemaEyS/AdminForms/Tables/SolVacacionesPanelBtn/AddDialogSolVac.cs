@@ -19,6 +19,10 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
         DateTime dt;
         DateTime dtIni;
         DateTime dtSal;
+        DateTime actFech;
+        DateTime inFech;
+        DateTime inicioFech;
+        DateTime finFech;
 
 
         public AddDialogSolVac() :
@@ -31,6 +35,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
                 args.RetVal = this.HideOnDelete();
             };
             //this.ModelFilterFunc = new TreeModelFilterVisibleFunc(this.TreeModelFilterVisible);
+            
             UpdateData();
         }
 
@@ -122,6 +127,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 
         protected void OnButton4Clicked(object sender, EventArgs e)
         {
+             
             if (string.IsNullOrWhiteSpace(fechaTxt.Text) ||
                 string.IsNullOrWhiteSpace(idEmp.ActiveText) ||
                 string.IsNullOrWhiteSpace(justTxt.Buffer.Text) ||
@@ -138,6 +144,45 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
                 //ClearInput();
                 return;
             }
+
+            actFech = DateTime.Now.Date;
+            inFech = Convert.ToDateTime(fechaTxt.Text);
+            inicioFech = Convert.ToDateTime(fecIni.Text);
+            finFech = Convert.ToDateTime(fecSal.Text);
+
+
+            if (inFech < actFech)
+            {
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                    "La solicitud no puede hacerse desde el pasado, ingrese la fecha actual o mayor a esa");
+                ms.Run();
+                ms.Destroy();
+                return;
+            }
+
+            if(inicioFech < actFech || finFech < actFech)
+            {
+                mensaje("Una de las fecha de solicitud es menor a la fecha actual, ingrese una fecha mayor la actual");
+                return;
+            }
+
+            if(inicioFech == finFech)
+            {
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                    "Las fechas de las solicitudes no deben ser iguales");
+                ms.Run();
+                ms.Destroy();
+                return;
+            }
+
+            if(inicioFech > finFech)
+            {
+                mensaje("La fecha de inicio no puede ser menor a la de salida");
+            }
+
+
 
             try
             {
@@ -185,5 +230,16 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 
         }
 
+        protected void OnFecIniTextInserted(object o, TextInsertedArgs args)
+        {
+            fecSal.Sensitive = true;
+            fecSal.IsEditable = true;
+        }
+
+        protected void OnFecIniTextDeleted(object o, TextDeletedArgs args)
+        {
+            fecSal.Sensitive = false;
+            fecSal.IsEditable = false;
+        }
     }
 }
