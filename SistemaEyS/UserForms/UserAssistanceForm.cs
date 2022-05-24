@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Data;
-using System.Text;
 using Gtk;
-using SistemaEyS.Database.Connection;
-using SistemaEyS.DatosEyS;
+using SistemaEyS.DatosEyS.Datos;
 
 namespace SistemaEyS.UserForms
 {
