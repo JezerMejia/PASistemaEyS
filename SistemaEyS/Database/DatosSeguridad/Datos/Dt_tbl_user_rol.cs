@@ -11,7 +11,7 @@ namespace SistemaEyS.DatosSeguridad.Datos
         public Dt_tbl_user_rol()
         {
             this.conn = ConnectionSeg.OpenConnection();
-            this.DBTable = "Seguridad.tbl_UserRol";
+            this.DBTable = "BDSistemaEyS.tbl_UserRol";
             this.Model = new ListStore(
                 typeof(string),
                 typeof(string),
@@ -26,7 +26,7 @@ namespace SistemaEyS.DatosSeguridad.Datos
             IDataReader idr = null;
             StringBuilder sb = new StringBuilder();
             sb.Clear();
-            sb.Append("SELECT * FROM Seguridad.tbl_UserRol;");
+            sb.Append("SELECT * FROM BDSistemaEyS.tbl_UserRol;");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());

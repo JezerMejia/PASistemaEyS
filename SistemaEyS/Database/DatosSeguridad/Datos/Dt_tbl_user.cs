@@ -11,7 +11,7 @@ namespace SistemaEyS.DatosSeguridad.Datos
         public Dt_tbl_user()
         {
             this.conn = ConnectionSeg.OpenConnection();
-            this.DBTable = "Seguridad.tbl_user";
+            this.DBTable = "BDSistemaEyS.tbl_user";
             this.gTypes = new Type[8] {
                 typeof(string),
                 typeof(string),
@@ -32,7 +32,7 @@ namespace SistemaEyS.DatosSeguridad.Datos
             IDataReader idr = null;
             StringBuilder sb = new StringBuilder();
             sb.Clear();
-            sb.Append("SELECT * FROM Seguridad.tbl_user WHERE estado <> 3;");
+            sb.Append("SELECT * FROM BDSistemaEyS.tbl_user WHERE estado <> 3;");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());

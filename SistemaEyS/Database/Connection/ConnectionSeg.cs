@@ -13,7 +13,7 @@ namespace SistemaEyS.Database.Connection
             MySqlConnectionStringBuilder sb = new MySqlConnectionStringBuilder
             {
                 Server = "localhost",
-                Database = "Seguridad",
+                Database = "BDSistemaEyS",
                 UserID = "root",
                 Password = "Usuario123."
             };
@@ -31,7 +31,7 @@ namespace SistemaEyS.Database.Connection
             {
                 conexion.conn.Open();
                 ms = new MessageDialog(null, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok, "Se abrió la conexión a la BD Seguridad");
+                    MessageType.Info, ButtonsType.Ok, "Se abrió la conexión al apartado de Seguridad");
                 ms.SetPosition(WindowPosition.Center);
                 ms.Run();
                 ms.Destroy();
@@ -39,7 +39,7 @@ namespace SistemaEyS.Database.Connection
             catch (Exception e)
             {
                 ms = new MessageDialog(null, DialogFlags.Modal,
-                    MessageType.Error, ButtonsType.Ok, "Error al conectar a la Base de Datos de Seguridad: " + e.Message);
+                    MessageType.Error, ButtonsType.Ok, "Error al conectar al apartado de Seguridad: " + e.Message);
                 ms.SetPosition(WindowPosition.Center);
                 ms.Run();
                 ms.Destroy();
