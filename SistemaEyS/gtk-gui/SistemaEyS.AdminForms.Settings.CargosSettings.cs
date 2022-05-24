@@ -93,6 +93,7 @@ namespace SistemaEyS.AdminForms.Settings
 			this.TxtName.Name = "TxtName";
 			this.TxtName.IsEditable = true;
 			this.TxtName.WidthChars = 20;
+			this.TxtName.InvisibleChar = '●';
 			this.hbox5.Add(this.TxtName);
 			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.TxtName]));
 			w1.PackType = ((global::Gtk.PackType)(1));
@@ -263,6 +264,7 @@ namespace SistemaEyS.AdminForms.Settings
 			this.TxtSearch.Name = "TxtSearch";
 			this.TxtSearch.IsEditable = true;
 			this.TxtSearch.WidthChars = 30;
+			this.TxtSearch.InvisibleChar = '●';
 			this.hbox1.Add(this.TxtSearch);
 			global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.TxtSearch]));
 			w23.Position = 1;
@@ -293,9 +295,7 @@ namespace SistemaEyS.AdminForms.Settings
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
-			this.viewTable = new global::SistemaEyS.AdminForms.Tables.ViewTableTemplate();
-			this.viewTable.CanFocus = true;
-			this.viewTable.Name = "viewTable";
+			this.viewTable = null;
 			this.GtkScrolledWindow.Add(this.viewTable);
 			this.vbox2.Add(this.GtkScrolledWindow);
 			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.GtkScrolledWindow]));
@@ -317,7 +317,6 @@ namespace SistemaEyS.AdminForms.Settings
 			this.BtnEdit.Clicked += new global::System.EventHandler(this.BtnEditOnClicked);
 			this.BtnRemove.Clicked += new global::System.EventHandler(this.BtnRemoveOnClicked);
 			this.TxtSearch.Changed += new global::System.EventHandler(this.TxtSearchOnChanged);
-			this.viewTable.RowActivated += new global::Gtk.RowActivatedHandler(this.ViewTableOnRowActivated);
 		}
 	}
 }

@@ -89,6 +89,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.TxtName.Name = "TxtName";
 			this.TxtName.IsEditable = true;
 			this.TxtName.WidthChars = 20;
+			this.TxtName.InvisibleChar = '●';
 			this.hbox5.Add(this.TxtName);
 			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.TxtName]));
 			w1.PackType = ((global::Gtk.PackType)(1));
@@ -125,6 +126,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.TxtEstado.Name = "TxtEstado";
 			this.TxtEstado.IsEditable = true;
 			this.TxtEstado.WidthChars = 20;
+			this.TxtEstado.InvisibleChar = '●';
 			this.hbox6.Add(this.TxtEstado);
 			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.TxtEstado]));
 			w5.PackType = ((global::Gtk.PackType)(1));
@@ -253,6 +255,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.TxtSearch.Name = "TxtSearch";
 			this.TxtSearch.IsEditable = true;
 			this.TxtSearch.WidthChars = 30;
+			this.TxtSearch.InvisibleChar = '●';
 			this.hbox1.Add(this.TxtSearch);
 			global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.TxtSearch]));
 			w21.Position = 1;
@@ -283,9 +286,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
-			this.viewTable = new global::SistemaEyS.AdminForms.Tables.ViewTableTemplate();
-			this.viewTable.CanFocus = true;
-			this.viewTable.Name = "viewTable";
+			this.viewTable = null;
 			this.GtkScrolledWindow.Add(this.viewTable);
 			this.vbox2.Add(this.GtkScrolledWindow);
 			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.GtkScrolledWindow]));
@@ -307,7 +308,6 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.BtnEdit.Clicked += new global::System.EventHandler(this.BtnEditOnClicked);
 			this.BtnRemove.Clicked += new global::System.EventHandler(this.BtnRemoveOnClicked);
 			this.TxtSearch.Changed += new global::System.EventHandler(this.TxtSearchOnChanged);
-			this.viewTable.RowActivated += new global::Gtk.RowActivatedHandler(this.ViewTableOnRowActivated);
 		}
 	}
 }

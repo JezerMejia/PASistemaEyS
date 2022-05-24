@@ -335,7 +335,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 			this.fecIni.TextDeleted += new global::Gtk.TextDeletedHandler(this.OnFecIniTextDeleted);
 			this.button9.Clicked += new global::System.EventHandler(this.OnButton9Clicked);
 			this.button10.Clicked += new global::System.EventHandler(this.OnButton10Clicked);
-			this.saveBtn.Clicked += new global::System.EventHandler(this.OnButton4Clicked);
+			this.saveBtn.Clicked += new global::System.EventHandler(this.OnSaveBtnClicked);
 			this.exitBtn.Clicked += new global::System.EventHandler(this.OnExitBtnClicked);
 		}
 	}

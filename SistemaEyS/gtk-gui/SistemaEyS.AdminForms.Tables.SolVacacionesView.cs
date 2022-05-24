@@ -117,6 +117,7 @@ namespace SistemaEyS.AdminForms.Tables
 			this.Hide();
 			this.viewTable.RowActivated += new global::Gtk.RowActivatedHandler(this.OnViewTableRowActivated);
 			this.BtnAddSV.Clicked += new global::System.EventHandler(this.OnBtnAddSVClicked);
+			this.BtnUpSV.Clicked += new global::System.EventHandler(this.OnBtnUpSVClicked);
 			this.BtnActSV.Clicked += new global::System.EventHandler(this.OnBtnActSVClicked);
 			this.BtnDelSV.Clicked += new global::System.EventHandler(this.OnBtnDelSVClicked);
 		}
