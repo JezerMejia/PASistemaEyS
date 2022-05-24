@@ -98,5 +98,50 @@ namespace SistemaEyS.AdminForms.Tables
         {
             UpdateData();
         }
+
+        protected void OnBtnDelSVClicked(object sender, EventArgs e)
+        {
+            if (this.SelectedID < 0)
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Warning,
+                    ButtonsType.Ok, "Seleccione un horario en la tabla");
+                ms.Run();
+                ms.Destroy();
+                return;
+            }
+
+            MessageDialog deletePrompt = new MessageDialog(null, DialogFlags.Modal,
+            MessageType.Question, ButtonsType.YesNo, $"¿Desea eliminar el horario ({this.SelectedID})?");
+            int result = deletePrompt.Run();
+            deletePrompt.Destroy();
+
+            switch (result)
+            {
+                case (int)ResponseType.Yes:
+                    break;
+                default:
+                    return;
+            }
+
+            try
+            {
+                dtSolVac.DeleteFrom(SelectedID.ToString());
+               
+                    MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
+                        ButtonsType.Ok, "Eliminado");
+                    ms.Run();
+                    ms.Destroy();
+                    //ClearInput();
+             }
+                catch (Exception ex)
+             {
+                    MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                    ButtonsType.Ok, ex.Message);
+                    ms.Run();
+                    ms.Destroy();
+             }
+           
+            UpdateData();
+        }
     }
 }
