@@ -58,9 +58,9 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 
 		private global::Gtk.HBox hbox2;
 
-		private global::Gtk.Button button4;
+		private global::Gtk.Button saveBtn;
 
-		private global::Gtk.Button button3;
+		private global::Gtk.Button exitBtn;
 
 		protected virtual void Build()
 		{
@@ -255,6 +255,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 			this.GtkScrolledWindow = new global::Gtk.ScrolledWindow();
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
+			this.GtkScrolledWindow.WindowPlacement = ((global::Gtk.CornerType)(3));
 			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
 			this.justTxt = new global::Gtk.TextView();
 			this.justTxt.CanFocus = true;
@@ -292,24 +293,24 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 			this.hbox2.Name = "hbox2";
 			this.hbox2.Spacing = 6;
 			// Container child hbox2.Gtk.Box+BoxChild
-			this.button4 = new global::Gtk.Button();
-			this.button4.CanFocus = true;
-			this.button4.Name = "button4";
-			this.button4.UseUnderline = true;
-			this.button4.Label = global::Mono.Unix.Catalog.GetString("Guardar");
-			this.hbox2.Add(this.button4);
-			global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.button4]));
+			this.saveBtn = new global::Gtk.Button();
+			this.saveBtn.CanFocus = true;
+			this.saveBtn.Name = "saveBtn";
+			this.saveBtn.UseUnderline = true;
+			this.saveBtn.Label = global::Mono.Unix.Catalog.GetString("Guardar");
+			this.hbox2.Add(this.saveBtn);
+			global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.saveBtn]));
 			w27.Position = 0;
 			w27.Expand = false;
 			w27.Fill = false;
 			// Container child hbox2.Gtk.Box+BoxChild
-			this.button3 = new global::Gtk.Button();
-			this.button3.CanFocus = true;
-			this.button3.Name = "button3";
-			this.button3.UseUnderline = true;
-			this.button3.Label = global::Mono.Unix.Catalog.GetString("Cancelar");
-			this.hbox2.Add(this.button3);
-			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.button3]));
+			this.exitBtn = new global::Gtk.Button();
+			this.exitBtn.CanFocus = true;
+			this.exitBtn.Name = "exitBtn";
+			this.exitBtn.UseUnderline = true;
+			this.exitBtn.Label = global::Mono.Unix.Catalog.GetString("Cancelar");
+			this.hbox2.Add(this.exitBtn);
+			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.exitBtn]));
 			w28.Position = 1;
 			w28.Expand = false;
 			w28.Fill = false;
@@ -331,7 +332,8 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 			this.button8.Clicked += new global::System.EventHandler(this.OnButton8Clicked);
 			this.button9.Clicked += new global::System.EventHandler(this.OnButton9Clicked);
 			this.button10.Clicked += new global::System.EventHandler(this.OnButton10Clicked);
-			this.button4.Clicked += new global::System.EventHandler(this.OnButton4Clicked);
+			this.saveBtn.Clicked += new global::System.EventHandler(this.OnButton4Clicked);
+			this.exitBtn.Clicked += new global::System.EventHandler(this.OnExitBtnClicked);
 		}
 	}
 }

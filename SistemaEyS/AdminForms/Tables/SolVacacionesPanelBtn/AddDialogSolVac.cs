@@ -124,6 +124,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
         {
             if (string.IsNullOrWhiteSpace(fechaTxt.Text) ||
                 string.IsNullOrWhiteSpace(idEmp.ActiveText) ||
+                string.IsNullOrWhiteSpace(justTxt.Buffer.Text) ||
                 string.IsNullOrWhiteSpace(fecIni.Text) ||
                 string.IsNullOrWhiteSpace(fecSal.Text)
 
@@ -140,7 +141,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 
             try
             {
-                DtSolVac.InsertInto(this.fechaTxt.Text,this.GtkScrolledWindow.CompositeName,this.idEmp.ActiveText,this.fecIni.Text,this.fecSal.Text);
+                DtSolVac.InsertInto(this.fechaTxt.Text,this.justTxt.Buffer.Text,this.idEmp.ActiveText,this.fecIni.Text,this.fecSal.Text);
                 mensaje("Guardado");
                 //ClearInput();
             }
@@ -153,6 +154,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
             }
 
             UpdateData();
+            ClearInput();
 
         }
 
@@ -164,5 +166,24 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
             ms.Destroy();
 
         }
+
+        protected void OnExitBtnClicked(object sender, EventArgs e)
+        {
+            this.Hide();
+            ClearInput();
+        }
+
+        public void ClearInput()
+        {
+
+            fechaTxt.Text = "";
+            idEmp.Active = -1;
+            idEmp.Entry.Text = "";
+            justTxt.Buffer.Text = "";
+            fecIni.Text = "";
+            fecSal.Text = "";
+
+        }
+
     }
 }

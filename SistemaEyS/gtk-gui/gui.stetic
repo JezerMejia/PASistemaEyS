@@ -5895,6 +5895,7 @@ Base de Datos creada con MySQLWorkbench.</property>
                       <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
                         <property name="MemberName" />
                         <property name="ShadowType">In</property>
+                        <property name="WindowPlacement">BottomRight</property>
                         <child>
                           <widget class="Gtk.TextView" id="justTxt">
                             <property name="MemberName" />
@@ -5950,7 +5951,7 @@ Base de Datos creada con MySQLWorkbench.</property>
                     <property name="MemberName" />
                     <property name="Spacing">6</property>
                     <child>
-                      <widget class="Gtk.Button" id="button4">
+                      <widget class="Gtk.Button" id="saveBtn">
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="Type">TextOnly</property>
@@ -5966,12 +5967,13 @@ Base de Datos creada con MySQLWorkbench.</property>
                       </packing>
                     </child>
                     <child>
-                      <widget class="Gtk.Button" id="button3">
+                      <widget class="Gtk.Button" id="exitBtn">
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="Type">TextOnly</property>
                         <property name="Label" translatable="yes">Cancelar</property>
                         <property name="UseUnderline">True</property>
+                        <signal name="Clicked" handler="OnExitBtnClicked" />
                       </widget>
                       <packing>
                         <property name="Position">1</property>
