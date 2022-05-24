@@ -73,10 +73,11 @@ namespace SistemaEyS.DatosEyS.Negocio
                 emp.idEmpleado.ToString(),
                 emp.primerNombre, emp.segundoNombre,
                 emp.primerApellido, emp.segundoApellido,
-		        emp.pinEmpleado, emp.cedulaEmpleado,
-                emp.fechaIngreso.ToString("yyyy-MM-dd"),
-		        emp.idCargo.ToString(),
-                emp.idDepartamento.ToString(), emp.idHorario.ToString()
+                emp.pinEmpleado, emp.cedulaEmpleado,
+                emp.fechaIngreso?.ToString("yyyy-MM-dd"),
+                emp.idCargo?.ToString() ?? "NULL",
+                emp.idDepartamento?.ToString() ?? "NULL",
+                emp.idHorario?.ToString() ?? "NULL"
             );
         }
         public void RemoveUser(Ent_Empleado emp)
@@ -94,19 +95,37 @@ namespace SistemaEyS.DatosEyS.Negocio
 
             if (!store.GetIterFirst(out iter)) throw new NullReferenceException("No hay datos del empleado");
 
+            DateTime? fechaIngreso = null;
+            if (!string.IsNullOrWhiteSpace((string)store.GetValue(iter, 5)))
+            {
+                fechaIngreso = DateTime.Parse((string) store.GetValue(iter, 5));
+            }
+            int? idCargo = null;
+            if (!string.IsNullOrWhiteSpace((string)store.GetValue(iter, 8))) {
+                idCargo = Int32.Parse((string)store.GetValue(iter, 8));
+	        }
+            int? idDep = null;
+            if (!string.IsNullOrWhiteSpace((string)store.GetValue(iter, 9))) {
+                idDep = Int32.Parse((string)store.GetValue(iter, 9));
+	        }
+            int? idHor = null;
+            if (!string.IsNullOrWhiteSpace((string)store.GetValue(iter, 10))) {
+                idHor = Int32.Parse((string)store.GetValue(iter, 10));
+	        }
+
             Ent_Empleado user = new Ent_Empleado()
             {
                 idEmpleado = Int32.Parse(store.GetValue(iter, 0).ToString()),
-                primerNombre = store.GetValue(iter, 1).ToString(),
-                segundoNombre = store.GetValue(iter, 2).ToString(),
-                primerApellido = store.GetValue(iter, 3).ToString(),
-                segundoApellido = store.GetValue(iter, 4).ToString(),
-                fechaIngreso = DateTime.Parse(store.GetValue(iter, 5).ToString()),
-                cedulaEmpleado = store.GetValue(iter, 6).ToString(),
-                pinEmpleado = store.GetValue(iter, 7).ToString(),
-                idCargo = Int32.Parse(store.GetValue(iter, 8).ToString()),
-                idDepartamento = Int32.Parse(store.GetValue(iter, 9).ToString()),
-                idHorario = Int32.Parse(store.GetValue(iter, 10).ToString()),
+                primerNombre = store.GetValue(iter, 1)?.ToString() ?? "",
+                segundoNombre = store.GetValue(iter, 2)?.ToString() ?? "",
+                primerApellido = store.GetValue(iter, 3)?.ToString() ?? "",
+                segundoApellido = store.GetValue(iter, 4)?.ToString() ?? "",
+                fechaIngreso = fechaIngreso,
+                cedulaEmpleado = store.GetValue(iter, 6)?.ToString() ?? "",
+                pinEmpleado = store.GetValue(iter, 7)?.ToString() ?? "",
+                idCargo = idCargo,
+                idDepartamento = idDep,
+                idHorario = idHor
             };
 
             return user;

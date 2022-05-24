@@ -14,18 +14,14 @@ namespace SistemaEyS.DatosEyS.Datos
         {
             this.conn = ConnectionEyS.OpenConnection();
             this.DBTable = "BDSistemaEyS.Empleado";
-            this.ModelView = new ListStore(
+            this.gTypes = new Type[11] {
                 typeof(string), typeof(string), typeof(string),
                 typeof(string), typeof(string), typeof(string),
                 typeof(string), typeof(string), typeof(string),
-                typeof(string)
-            );
-            this.Model = new ListStore(
-                typeof(string), typeof(string), typeof(string),
-                typeof(string), typeof(string), typeof(string),
-                typeof(string), typeof(string), typeof(string),
-                typeof(string), typeof(string), typeof(string)
-            );
+                typeof(string), typeof(string)
+            };
+            this.ModelView = new ListStore(this.gTypes);
+            this.Model = new ListStore(this.gTypes);
         }
 
         public void UpdateModelView()
