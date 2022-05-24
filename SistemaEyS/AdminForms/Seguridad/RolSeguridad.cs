@@ -257,6 +257,7 @@ namespace SistemaEyS.AdminForms.Seguridad
             for (int i = 0; i < model.NColumns; i++)
             {
                 string value = (string)model.GetValue(iter, i);
+                if (string.IsNullOrWhiteSpace(value)) return true;
                 if (value.ToLower().Contains(key.ToLower()))
                 {
                     return false;
@@ -278,6 +279,7 @@ namespace SistemaEyS.AdminForms.Seguridad
             for (int i = 0; i < model.NColumns; i++)
             {
                 string value = (string)model.GetValue(iter, i);
+                if (string.IsNullOrEmpty(value)) return false;
                 //Console.WriteLine($"\t{i}: '{value}'");
                 if (value.ToLower().Contains(this.TxtSearch.Text.ToLower()))
                 {

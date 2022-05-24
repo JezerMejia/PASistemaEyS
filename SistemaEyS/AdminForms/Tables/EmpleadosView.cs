@@ -250,6 +250,7 @@ namespace SistemaEyS.AdminForms.Tables
             for (int i = 0; i < model.NColumns; i++)
             {
                 string value = (string)model.GetValue(iter, i);
+                if (string.IsNullOrWhiteSpace(value)) return true;
                 if (value.ToLower().Contains(key.ToLower()))
                 {
                     return false;
