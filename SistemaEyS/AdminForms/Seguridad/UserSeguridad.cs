@@ -190,7 +190,7 @@ namespace SistemaEyS.AdminForms.Seguridad
                 if ((ResponseType)result != ResponseType.Yes) return;
 
                 this.NegUser.RemoveUser(user);
-                this.SelectedID = -1;
+                this.ClearInput();
             }
             catch (Exception e)
             {
@@ -208,7 +208,7 @@ namespace SistemaEyS.AdminForms.Seguridad
             this.UpdateData();
         }
 
-        protected void BtnNewOnClicked(object sender, EventArgs e)
+        protected void ClearInput()
         {
             this.SelectedID = -1;
             this.TxtUser.Text = "";
@@ -218,6 +218,11 @@ namespace SistemaEyS.AdminForms.Seguridad
             this.TxtEmailConfirm.Text = "";
             this.TxtPassword.Text = "";
             this.TxtPasswordConfirm.Text = "";
+        }
+
+        protected void BtnNewOnClicked(object sender, EventArgs e)
+        {
+            this.ClearInput();
         }
 
         protected void ViewTableOnRowActivated(object o, RowActivatedArgs args)
