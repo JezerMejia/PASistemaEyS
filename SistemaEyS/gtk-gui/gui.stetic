@@ -1884,7 +1884,8 @@ IT</property>
                   <widget class="Gtk.Button" id="btnUpdate">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
-                    <property name="Type">TextOnly</property>
+                    <property name="Type">TextAndIcon</property>
+                    <property name="Icon">stock:gtk-refresh Menu</property>
                     <property name="Label" translatable="yes">Actualizar</property>
                     <property name="UseUnderline">True</property>
                     <signal name="Clicked" handler="btnUpdateOnClicked" />
@@ -2071,7 +2072,8 @@ IT</property>
                   <widget class="Gtk.Button" id="BtnDelSV">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
-                    <property name="Type">TextOnly</property>
+                    <property name="Type">TextAndIcon</property>
+                    <property name="Icon">stock:gtk-delete Menu</property>
                     <property name="Label" translatable="yes">Eliminar</property>
                     <property name="UseUnderline">True</property>
                     <signal name="Clicked" handler="OnBtnDelSVClicked" />
@@ -2088,7 +2090,8 @@ IT</property>
                   <widget class="Gtk.Button" id="BtnActSV">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
-                    <property name="Type">TextOnly</property>
+                    <property name="Type">TextAndIcon</property>
+                    <property name="Icon">stock:gtk-refresh Menu</property>
                     <property name="Label" translatable="yes">Actualizar</property>
                     <property name="UseUnderline">True</property>
                     <signal name="Clicked" handler="OnBtnActSVClicked" />
@@ -2105,7 +2108,8 @@ IT</property>
                   <widget class="Gtk.Button" id="BtnUpSV">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
-                    <property name="Type">TextOnly</property>
+                    <property name="Type">TextAndIcon</property>
+                    <property name="Icon">stock:gtk-copy Menu</property>
                     <property name="Label" translatable="yes">Editar</property>
                     <property name="UseUnderline">True</property>
                     <signal name="Clicked" handler="OnBtnUpSVClicked" />
@@ -2122,7 +2126,8 @@ IT</property>
                   <widget class="Gtk.Button" id="BtnAddSV">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
-                    <property name="Type">TextOnly</property>
+                    <property name="Type">TextAndIcon</property>
+                    <property name="Icon">stock:gtk-new Menu</property>
                     <property name="Label" translatable="yes">Añadir</property>
                     <property name="UseUnderline">True</property>
                     <signal name="Clicked" handler="OnBtnAddSVClicked" />

@@ -55,17 +55,20 @@ namespace SistemaEyS.AdminForms.Tables
 			this.btnUpdate.Name = "btnUpdate";
 			this.btnUpdate.UseUnderline = true;
 			this.btnUpdate.Label = global::Mono.Unix.Catalog.GetString("Actualizar");
+			global::Gtk.Image w3 = new global::Gtk.Image();
+			w3.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-refresh", global::Gtk.IconSize.Menu);
+			this.btnUpdate.Image = w3;
 			this.hbox1.Add(this.btnUpdate);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.btnUpdate]));
-			w3.PackType = ((global::Gtk.PackType)(1));
-			w3.Position = 0;
-			w3.Expand = false;
-			w3.Fill = false;
-			this.vbox1.Add(this.hbox1);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.hbox1]));
-			w4.Position = 1;
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.btnUpdate]));
+			w4.PackType = ((global::Gtk.PackType)(1));
+			w4.Position = 0;
 			w4.Expand = false;
 			w4.Fill = false;
+			this.vbox1.Add(this.hbox1);
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.hbox1]));
+			w5.Position = 1;
+			w5.Expand = false;
+			w5.Fill = false;
 			this.alignment1.Add(this.vbox1);
 			this.Add(this.alignment1);
 			if ((this.Child != null))
