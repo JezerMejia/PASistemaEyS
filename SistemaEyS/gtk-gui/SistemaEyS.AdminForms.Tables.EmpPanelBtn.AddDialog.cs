@@ -392,7 +392,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 				this.Child.ShowAll();
 			}
 			this.DefaultWidth = 415;
-			this.DefaultHeight = 312;
+			this.DefaultHeight = 346;
 			this.Show();
 			this.BtnNewIDUpdate.Clicked += new global::System.EventHandler(this.BtnNewIDUpdateOnClicked);
 			this.BtnAdd.Clicked += new global::System.EventHandler(this.BtnAddOnClicked);

@@ -311,7 +311,7 @@ namespace SistemaEyS.AdminForms.Settings
 			{
 				this.Child.ShowAll();
 			}
-			this.DefaultWidth = 382;
+			this.DefaultWidth = 445;
 			this.DefaultHeight = 408;
 			this.Show();
 			this.BtnNew.Clicked += new global::System.EventHandler(this.BtnNewOnClicked);

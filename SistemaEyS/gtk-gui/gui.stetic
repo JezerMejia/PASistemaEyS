@@ -594,7 +594,8 @@ IT</property>
                       <widget class="Gtk.Button" id="btnExit">
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
-                        <property name="Type">TextOnly</property>
+                        <property name="Type">TextAndIcon</property>
+                        <property name="Icon">stock:gtk-undo Menu</property>
                         <property name="Label" translatable="yes">Salir</property>
                         <property name="UseUnderline">True</property>
                         <signal name="Clicked" handler="btnExitOnClicked" />
@@ -610,7 +611,8 @@ IT</property>
                       <widget class="Gtk.Button" id="btnEnter">
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
-                        <property name="Type">TextOnly</property>
+                        <property name="Type">TextAndIcon</property>
+                        <property name="Icon">stock:gtk-redo Menu</property>
                         <property name="Label" translatable="yes">Entrar</property>
                         <property name="UseUnderline">True</property>
                         <signal name="Clicked" handler="btnEnterOnClicked" />
@@ -939,7 +941,7 @@ IT</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Settings.DepartamentoSettings" design-size="382 466">
+  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Settings.DepartamentoSettings" design-size="445 466">
     <property name="MemberName" />
     <property name="Title" translatable="yes">Ajustes | Departamentos</property>
     <property name="WindowPosition">Center</property>
@@ -1309,7 +1311,7 @@ IT</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Settings.CargosSettings" design-size="382 408">
+  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Settings.CargosSettings" design-size="445 408">
     <property name="MemberName" />
     <property name="Title" translatable="yes">Ajustes | Cargos</property>
     <property name="WindowPosition">Center</property>
@@ -2142,7 +2144,7 @@ IT</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Tables.EmpPanelBtn.AddDialog" design-size="415 312">
+  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Tables.EmpPanelBtn.AddDialog" design-size="415 346">
     <property name="MemberName" />
     <property name="Title" translatable="yes">Añadir Empleado</property>
     <property name="WindowPosition">Mouse</property>
@@ -2553,7 +2555,7 @@ IT</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Tables.EmpPanelBtn.UpdateDialog" design-size="643 379">
+  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Tables.EmpPanelBtn.UpdateDialog" design-size="662 379">
     <property name="MemberName" />
     <property name="Title" translatable="yes">Actualizar Empleado</property>
     <property name="WindowPosition">Mouse</property>

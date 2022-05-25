@@ -512,7 +512,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			{
 				this.Child.ShowAll();
 			}
-			this.DefaultWidth = 643;
+			this.DefaultWidth = 662;
 			this.DefaultHeight = 379;
 			this.Show();
 			this.TxtID.Changed += new global::System.EventHandler(this.TxtIDOnChanged);
