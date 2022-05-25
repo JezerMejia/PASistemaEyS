@@ -1950,7 +1950,8 @@ IT</property>
                   <widget class="Gtk.Button" id="BtnDelete">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
-                    <property name="Type">TextOnly</property>
+                    <property name="Type">TextAndIcon</property>
+                    <property name="Icon">stock:gtk-delete Menu</property>
                     <property name="Label" translatable="yes">Eliminar</property>
                     <property name="UseUnderline">True</property>
                     <signal name="Clicked" handler="OnBtnDeleteClicked" />
@@ -1967,7 +1968,8 @@ IT</property>
                   <widget class="Gtk.Button" id="BtnUpdate">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
-                    <property name="Type">TextOnly</property>
+                    <property name="Type">TextAndIcon</property>
+                    <property name="Icon">stock:gtk-refresh Menu</property>
                     <property name="Label" translatable="yes">Actualizar</property>
                     <property name="UseUnderline">True</property>
                     <signal name="Clicked" handler="btnUpdateOnClicked" />
@@ -1984,7 +1986,8 @@ IT</property>
                   <widget class="Gtk.Button" id="BtnEdit">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
-                    <property name="Type">TextOnly</property>
+                    <property name="Type">TextAndIcon</property>
+                    <property name="Icon">stock:gtk-copy Menu</property>
                     <property name="Label" translatable="yes">Editar</property>
                     <property name="UseUnderline">True</property>
                     <signal name="Clicked" handler="OnBtnEditClicked" />
@@ -2001,7 +2004,8 @@ IT</property>
                   <widget class="Gtk.Button" id="BtnAdd">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
-                    <property name="Type">TextOnly</property>
+                    <property name="Type">TextAndIcon</property>
+                    <property name="Icon">stock:gtk-new Menu</property>
                     <property name="Label" translatable="yes">Añadir</property>
                     <property name="UseUnderline">True</property>
                     <signal name="Clicked" handler="OnBtnAddClicked" />
