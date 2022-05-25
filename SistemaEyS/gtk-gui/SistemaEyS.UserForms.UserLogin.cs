@@ -111,12 +111,15 @@ namespace SistemaEyS.UserForms
 			this.btnEnter.Name = "btnEnter";
 			this.btnEnter.UseUnderline = true;
 			this.btnEnter.Label = global::Mono.Unix.Catalog.GetString("Entrar");
+			global::Gtk.Image w7 = new global::Gtk.Image();
+			w7.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-redo", global::Gtk.IconSize.Menu);
+			this.btnEnter.Image = w7;
 			this.alignment11.Add(this.btnEnter);
 			this.vbox9.Add(this.alignment11);
-			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vbox9[this.alignment11]));
-			w8.Position = 2;
-			w8.Fill = false;
-			w8.Padding = ((uint)(10));
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox9[this.alignment11]));
+			w9.Position = 2;
+			w9.Fill = false;
+			w9.Padding = ((uint)(10));
 			this.alignment10.Add(this.vbox9);
 			this.Add(this.alignment10);
 			if ((this.Child != null))

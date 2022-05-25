@@ -96,21 +96,24 @@ public partial class MainWindow
 		this.BtnEnterAdminLogin.Name = "BtnEnterAdminLogin";
 		this.BtnEnterAdminLogin.UseUnderline = true;
 		this.BtnEnterAdminLogin.Label = global::Mono.Unix.Catalog.GetString("Administrador");
+		global::Gtk.Image w5 = new global::Gtk.Image();
+		w5.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-home", global::Gtk.IconSize.Menu);
+		this.BtnEnterAdminLogin.Image = w5;
 		this.hbox3.Add(this.BtnEnterAdminLogin);
-		global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.BtnEnterAdminLogin]));
-		w5.Position = 1;
-		w5.Expand = false;
-		w5.Fill = false;
+		global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.BtnEnterAdminLogin]));
+		w6.Position = 1;
+		w6.Expand = false;
+		w6.Fill = false;
 		this.alignment6.Add(this.hbox3);
 		this.vbox5.Add(this.alignment6);
-		global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.alignment6]));
-		w7.Position = 1;
-		w7.Expand = false;
-		w7.Fill = false;
+		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.alignment6]));
+		w8.Position = 1;
+		w8.Expand = false;
+		w8.Fill = false;
 		this.alignment4.Add(this.vbox5);
 		this.vbox4.Add(this.alignment4);
-		global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.alignment4]));
-		w9.Position = 1;
+		global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.alignment4]));
+		w10.Position = 1;
 		this.Add(this.vbox4);
 		if ((this.Child != null))
 		{
