@@ -139,6 +139,11 @@
     <Compile Include="AdminForms\Tables\SolVacacionesPanelBtn\UpdateDialogSolVac.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn.UpdateDialogSolVac.cs" />
     <Compile Include="AdminForms\Tables\HorPanelBtn\UpdateHorario.cs" />
+    <Compile Include="Database\DatosEyS\Entidades\Ent_Horario.cs" />
+    <Compile Include="Database\DatosEyS\Entidades\Ent_SolicitudVacaciones.cs" />
+    <Compile Include="Database\DatosEyS\Entidades\Ent_Departamento.cs" />
+    <Compile Include="Database\DatosEyS\Entidades\En_Cargo.cs" />
+    <Compile Include="Database\DatosEyS\Entidades\En_Asistencia.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
