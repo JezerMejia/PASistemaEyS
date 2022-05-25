@@ -11,11 +11,6 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
         ConnectionEyS connection = ConnectionEyS.OpenConnection();
         protected Dt_tlb_horario dthor = new Dt_tlb_horario();
         protected ListStore HorData;
-        protected ListStore DataUser;
-        protected TreeModelFilter TreeData;
-        protected TreeModelFilterVisibleFunc ModelFilterFunc;
-        public int SelectedID = -1;
-        public int SelectedUser = -1;
 
         public UpdateHorario() :
                 base(Gtk.WindowType.Toplevel)
@@ -66,17 +61,15 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 
             try
             {
-                this.dthor.UpdateSet(this.lunesIni.ActiveText, this.lunesSal.ActiveText,
+                dthor.UpdateSet(this.lunesIni.ActiveText, this.lunesSal.ActiveText,
                             this.martesIni.ActiveText, this.martesSal.ActiveText,
                             this.miercolesIni.ActiveText, this.miercolesSal.ActiveText,
                             this.juevesIni.ActiveText, this.juevesSal.ActiveText,
                             this.viernesIni.ActiveText, this.viernesSal.ActiveText,
                             this.sabadoIni.ActiveText, this.sabadoSal.ActiveText,
-                            this.domingoIni.ActiveText, this.domingoSal.ActiveText
-                            );
+                            this.domingoIni.ActiveText, this.domingoSal.ActiveText);
 
-                this.mensaje("Guardado");
-                //ClearInput();
+                mensaje("Guardado");
             }
             catch (Exception ex)
             {
@@ -85,7 +78,6 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
                 ms.Run();
                 ms.Destroy();
             }
-            ClearInput();
 
         }
 
