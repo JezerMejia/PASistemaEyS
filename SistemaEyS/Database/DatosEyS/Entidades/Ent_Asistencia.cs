@@ -1,7 +1,7 @@
 ﻿using System;
 namespace SistemaEyS.DatosEyS.Entidades
 {
-    public class En_Asistencia
+    public class Ent_Asistencia
     {
         private int _idAsistencia;
         private DateTime? _fechaAsistencia;
@@ -39,7 +39,7 @@ namespace SistemaEyS.DatosEyS.Entidades
             set => this._idEmpleado = value;
         }
 
-        public En_Asistencia()
+        public Ent_Asistencia()
         {
         }
     }
