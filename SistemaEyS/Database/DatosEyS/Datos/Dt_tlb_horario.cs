@@ -115,7 +115,7 @@ namespace SistemaEyS.DatosEyS.Datos
         }
 
 
-        public void UpdateSet(string idHorario, string lunesInicio, string lunesSalida,
+        public void UpdateSet(string lunesInicio, string lunesSalida,
                             string martesInicio, string martesSalida,
                             string miercolesInicio, string miercolesSalida,
                             string juevesInicio, string juevesSalida,
@@ -126,7 +126,7 @@ namespace SistemaEyS.DatosEyS.Datos
 
         {
             this.UpdateSet(
-                new DataTableParameter("idHorario", $"'{idHorario}'"),
+                //new DataTableParameter("idHorario", $"'{idHorario}'"),
                 new DataTableParameter(
                     !string.IsNullOrWhiteSpace(lunesInicio) ? "lunesInicio" : "",
                     $"'{lunesInicio}'"
@@ -157,35 +157,31 @@ namespace SistemaEyS.DatosEyS.Datos
                     ),
                 new DataTableParameter(
                     !string.IsNullOrWhiteSpace(juevesSalida) ? "juevesSalida" : "",
-                    $"{juevesSalida}"
+                    $"'{juevesSalida}'"
                     ),
                 new DataTableParameter(
                     !string.IsNullOrWhiteSpace(viernesInicio) ? "viernesInicio" : "",
-                    $"{viernesInicio}"
+                    $"'{viernesInicio}'"
                     ),
-                new DataTableParameter(
+               new DataTableParameter(
                     !string.IsNullOrWhiteSpace(viernesSalida) ? "viernesSalida" : "",
-                    $"{viernesSalida}"
+                    $"'{viernesSalida}'"
                     ),
-
                 new DataTableParameter(
                     !string.IsNullOrWhiteSpace(sabadoInicio) ? "sabadoInicio" : "",
-                    $"{sabadoInicio}"
+                    $"'{sabadoInicio}'"
                     ),
-
                 new DataTableParameter(
                     !string.IsNullOrWhiteSpace(sabadoSalida) ? "sabadoSalida" : "",
-                    $"{sabadoSalida}"
+                    $"'{sabadoSalida}'"
                     ),
-
                 new DataTableParameter(
                     !string.IsNullOrWhiteSpace(domingoInicio) ? "domingoInicio" : "",
-                    $"{domingoInicio}"
+                    $"'{domingoInicio}'"
                     ),
-
                 new DataTableParameter(
                     !string.IsNullOrWhiteSpace(domingoSalida) ? "domingoSalida" : "",
-                    $"{domingoSalida}"
+                    $"'{domingoSalida}'"
                     )
 
                 );
