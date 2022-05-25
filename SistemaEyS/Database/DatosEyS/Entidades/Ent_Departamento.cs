@@ -1,5 +1,5 @@
 ﻿using System;
-namespace SistemaEyS.Database.DatosEyS.Entidades
+namespace SistemaEyS.DatosEyS.Entidades
 {
     public class Ent_Departamento
     {
