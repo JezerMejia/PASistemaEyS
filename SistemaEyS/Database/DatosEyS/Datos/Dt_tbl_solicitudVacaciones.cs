@@ -42,11 +42,11 @@ namespace SistemaEyS.DatosEyS.Datos
                 {
                     this.Model.AppendValues(
                         idr[0].ToString(), // ID
-                        idr[3].ToString(), // ID Empleado
+                        idr[5].ToString(), // ID Empleado
                         idr[1].ToString(), // Fecha de Solicitud
                         idr[2].ToString(), // Descripción
-                        idr[4].ToString(), // Inicio
-                        idr[5].ToString() // Fin
+                        idr[3].ToString(), // Inicio
+                        idr[4].ToString() // Fin
                     );
                 }
             }
