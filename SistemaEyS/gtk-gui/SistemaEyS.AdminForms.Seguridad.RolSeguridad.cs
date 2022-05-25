@@ -50,7 +50,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
 
-		private global::SistemaEyS.AdminForms.Tables.ViewTableTemplate viewTable;
+		private global::SistemaEySLibrary.ViewTableTemplate viewTable;
 
 		protected virtual void Build()
 		{
@@ -286,7 +286,9 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
-			this.viewTable = null;
+			this.viewTable = new global::SistemaEySLibrary.ViewTableTemplate();
+			this.viewTable.CanFocus = true;
+			this.viewTable.Name = "viewTable";
 			this.GtkScrolledWindow.Add(this.viewTable);
 			this.vbox2.Add(this.GtkScrolledWindow);
 			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.GtkScrolledWindow]));
@@ -308,6 +310,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.BtnEdit.Clicked += new global::System.EventHandler(this.BtnEditOnClicked);
 			this.BtnRemove.Clicked += new global::System.EventHandler(this.BtnRemoveOnClicked);
 			this.TxtSearch.Changed += new global::System.EventHandler(this.TxtSearchOnChanged);
+			this.viewTable.RowActivated += new global::Gtk.RowActivatedHandler(this.ViewTableOnRowActivated);
 		}
 	}
 }

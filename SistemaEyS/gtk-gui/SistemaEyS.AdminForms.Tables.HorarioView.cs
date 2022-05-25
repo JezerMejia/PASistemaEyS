@@ -10,7 +10,7 @@ namespace SistemaEyS.AdminForms.Tables
 
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
 
-		private global::SistemaEyS.AdminForms.Tables.ViewTableTemplate viewTable;
+		private global::SistemaEySLibrary.ViewTableTemplate viewTable;
 
 		private global::Gtk.HBox hbox1;
 
@@ -44,7 +44,9 @@ namespace SistemaEyS.AdminForms.Tables
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
-			this.viewTable = null;
+			this.viewTable = new global::SistemaEySLibrary.ViewTableTemplate();
+			this.viewTable.CanFocus = true;
+			this.viewTable.Name = "viewTable";
 			this.GtkScrolledWindow.Add(this.viewTable);
 			this.vbox1.Add(this.GtkScrolledWindow);
 			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.GtkScrolledWindow]));
@@ -113,6 +115,7 @@ namespace SistemaEyS.AdminForms.Tables
 				this.Child.ShowAll();
 			}
 			this.Hide();
+			this.viewTable.RowActivated += new global::Gtk.RowActivatedHandler(this.OnViewTableRowActivated);
 			this.BtnAdd.Clicked += new global::System.EventHandler(this.OnBtnAddClicked);
 			this.BtnEdit.Clicked += new global::System.EventHandler(this.OnBtnEditClicked);
 			this.BtnUpdate.Clicked += new global::System.EventHandler(this.btnUpdateOnClicked);

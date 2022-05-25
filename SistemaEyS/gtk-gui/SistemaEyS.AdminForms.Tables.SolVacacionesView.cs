@@ -10,7 +10,7 @@ namespace SistemaEyS.AdminForms.Tables
 
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
 
-		private global::SistemaEyS.AdminForms.Tables.ViewTableTemplate viewTable;
+		private global::SistemaEySLibrary.ViewTableTemplate viewTable;
 
 		private global::Gtk.HBox hbox5;
 
@@ -44,7 +44,7 @@ namespace SistemaEyS.AdminForms.Tables
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
-			this.viewTable = new global::SistemaEyS.AdminForms.Tables.ViewTableTemplate();
+			this.viewTable = new global::SistemaEySLibrary.ViewTableTemplate();
 			this.viewTable.CanFocus = true;
 			this.viewTable.Name = "viewTable";
 			this.GtkScrolledWindow.Add(this.viewTable);

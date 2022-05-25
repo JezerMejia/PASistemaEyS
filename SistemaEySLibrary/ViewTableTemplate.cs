@@ -15,7 +15,7 @@ public struct StoreObject
     public Gtk.CellRenderer cellRenderer;
 }
 
-namespace SistemaEyS.AdminForms.Tables
+namespace SistemaEySLibrary
 {
     [System.ComponentModel.ToolboxItem(true)]
     public class ViewTableTemplate : Gtk.TreeView
@@ -27,7 +27,7 @@ namespace SistemaEyS.AdminForms.Tables
             
         }
 
-        internal protected void SetTreeViewColumns(StoreObject[] storeObject)
+        public void SetTreeViewColumns(StoreObject[] storeObject)
         {
             Type[] types = new Type[storeObject.Length];
             for (int i = 0; i < types.Length; i++)

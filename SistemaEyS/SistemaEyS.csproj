@@ -83,7 +83,6 @@
     <Compile Include="AdminForms\AdminLogin.cs" />
     <Compile Include="AdminForms\AdminPanel.cs" />
     <Compile Include="AdminForms\Tables\EmpleadosView.cs" />
-    <Compile Include="AdminForms\Tables\ViewTableTemplate.cs" />
     <Compile Include="AdminForms\Tables\HorarioView.cs" />
     <Compile Include="AdminForms\Settings\DepartamentoSettings.cs" />
     <Compile Include="AdminForms\Settings\CargosSettings.cs" />

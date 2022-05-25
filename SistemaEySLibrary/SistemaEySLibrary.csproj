@@ -54,6 +54,7 @@
     <Compile Include="gtk-gui\SistemaEySLibrary.TabviewLabel.cs" />
     <Compile Include="ClockWidget.cs" />
     <Compile Include="ComboBoxNumericEntry.cs" />
+    <Compile Include="ViewTableTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
