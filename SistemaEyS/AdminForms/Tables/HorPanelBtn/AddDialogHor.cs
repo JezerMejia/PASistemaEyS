@@ -9,6 +9,8 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
     public partial class AddDialogHor : Gtk.Window
     {
         Dt_tlb_horario DtHor = new Dt_tlb_horario();
+        public int SelectedID = -1;
+        public int SelectedUser = -1;
 
         public AddDialogHor() :
                 base(Gtk.WindowType.Toplevel)
