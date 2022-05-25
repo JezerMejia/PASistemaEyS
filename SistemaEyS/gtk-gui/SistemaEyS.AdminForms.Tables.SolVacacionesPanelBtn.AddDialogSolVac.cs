@@ -16,13 +16,13 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 
 		private global::Gtk.Button button8;
 
-		private global::Gtk.Entry fechaTxt;
+		private global::Gtk.Entry TxtFechaSol;
 
 		private global::Gtk.Label label1;
 
 		private global::Gtk.HBox hbox4;
 
-		private global::Gtk.ComboBoxEntry idEmp;
+		private global::Gtk.ComboBoxEntry CmbxIDEmp;
 
 		private global::Gtk.Label label2;
 
@@ -30,7 +30,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 
 		private global::Gtk.Button button9;
 
-		private global::Gtk.Entry fecIni;
+		private global::Gtk.Entry TxtFechaIni;
 
 		private global::Gtk.Label label3;
 
@@ -38,7 +38,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 
 		private global::Gtk.Button button10;
 
-		private global::Gtk.Entry fecSal;
+		private global::Gtk.Entry TxtFechaFin;
 
 		private global::Gtk.Label label4;
 
@@ -103,13 +103,13 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 			w3.Expand = false;
 			w3.Fill = false;
 			// Container child hbox3.Gtk.Box+BoxChild
-			this.fechaTxt = new global::Gtk.Entry();
-			this.fechaTxt.CanFocus = true;
-			this.fechaTxt.Name = "fechaTxt";
-			this.fechaTxt.IsEditable = true;
-			this.fechaTxt.InvisibleChar = '•';
-			this.hbox3.Add(this.fechaTxt);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.fechaTxt]));
+			this.TxtFechaSol = new global::Gtk.Entry();
+			this.TxtFechaSol.CanFocus = true;
+			this.TxtFechaSol.Name = "TxtFechaSol";
+			this.TxtFechaSol.IsEditable = true;
+			this.TxtFechaSol.InvisibleChar = '•';
+			this.hbox3.Add(this.TxtFechaSol);
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.TxtFechaSol]));
 			w4.PackType = ((global::Gtk.PackType)(1));
 			w4.Position = 1;
 			// Container child hbox3.Gtk.Box+BoxChild
@@ -133,10 +133,10 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 			this.hbox4.Name = "hbox4";
 			this.hbox4.Spacing = 6;
 			// Container child hbox4.Gtk.Box+BoxChild
-			this.idEmp = global::Gtk.ComboBoxEntry.NewText();
-			this.idEmp.Name = "idEmp";
-			this.hbox4.Add(this.idEmp);
-			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.idEmp]));
+			this.CmbxIDEmp = global::Gtk.ComboBoxEntry.NewText();
+			this.CmbxIDEmp.Name = "CmbxIDEmp";
+			this.hbox4.Add(this.CmbxIDEmp);
+			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.CmbxIDEmp]));
 			w8.PackType = ((global::Gtk.PackType)(1));
 			w8.Position = 0;
 			w8.Expand = false;
@@ -175,13 +175,13 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 			w12.Expand = false;
 			w12.Fill = false;
 			// Container child hbox5.Gtk.Box+BoxChild
-			this.fecIni = new global::Gtk.Entry();
-			this.fecIni.CanFocus = true;
-			this.fecIni.Name = "fecIni";
-			this.fecIni.IsEditable = true;
-			this.fecIni.InvisibleChar = '•';
-			this.hbox5.Add(this.fecIni);
-			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.fecIni]));
+			this.TxtFechaIni = new global::Gtk.Entry();
+			this.TxtFechaIni.CanFocus = true;
+			this.TxtFechaIni.Name = "TxtFechaIni";
+			this.TxtFechaIni.IsEditable = true;
+			this.TxtFechaIni.InvisibleChar = '•';
+			this.hbox5.Add(this.TxtFechaIni);
+			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.TxtFechaIni]));
 			w13.PackType = ((global::Gtk.PackType)(1));
 			w13.Position = 1;
 			w13.Expand = false;
@@ -219,14 +219,14 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 			w17.Expand = false;
 			w17.Fill = false;
 			// Container child hbox6.Gtk.Box+BoxChild
-			this.fecSal = new global::Gtk.Entry();
-			this.fecSal.Sensitive = false;
-			this.fecSal.CanFocus = true;
-			this.fecSal.Name = "fecSal";
-			this.fecSal.IsEditable = false;
-			this.fecSal.InvisibleChar = '•';
-			this.hbox6.Add(this.fecSal);
-			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.fecSal]));
+			this.TxtFechaFin = new global::Gtk.Entry();
+			this.TxtFechaFin.Sensitive = false;
+			this.TxtFechaFin.CanFocus = true;
+			this.TxtFechaFin.Name = "TxtFechaFin";
+			this.TxtFechaFin.IsEditable = false;
+			this.TxtFechaFin.InvisibleChar = '•';
+			this.hbox6.Add(this.TxtFechaFin);
+			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.TxtFechaFin]));
 			w18.PackType = ((global::Gtk.PackType)(1));
 			w18.Position = 1;
 			w18.Expand = false;
@@ -331,8 +331,8 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 			this.DefaultHeight = 315;
 			this.Show();
 			this.button8.Clicked += new global::System.EventHandler(this.OnButton8Clicked);
-			this.fecIni.TextInserted += new global::Gtk.TextInsertedHandler(this.OnFecIniTextInserted);
-			this.fecIni.TextDeleted += new global::Gtk.TextDeletedHandler(this.OnFecIniTextDeleted);
+			this.TxtFechaIni.TextInserted += new global::Gtk.TextInsertedHandler(this.OnFecIniTextInserted);
+			this.TxtFechaIni.TextDeleted += new global::Gtk.TextDeletedHandler(this.OnFecIniTextDeleted);
 			this.button9.Clicked += new global::System.EventHandler(this.OnButton9Clicked);
 			this.button10.Clicked += new global::System.EventHandler(this.OnButton10Clicked);
 			this.saveBtn.Clicked += new global::System.EventHandler(this.OnSaveBtnClicked);

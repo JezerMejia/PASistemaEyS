@@ -12,13 +12,14 @@ namespace SistemaEyS.AdminForms.Tables
     public partial class SolVacacionesView : Gtk.Bin
     {
 
-        AddDialogSolVac solVac = new AddDialogSolVac();
-        Dt_tlb_SolVacaciones dtSolVac = new Dt_tlb_SolVacaciones();
+        AddDialogSolVac addDialog = new AddDialogSolVac();
+        UpdateDialogSolVac updateDialog = new UpdateDialogSolVac();
+
+        Dt_tlb_SolVacaciones DtSolv = new Dt_tlb_SolVacaciones();
+
         TreeModelFilter TreeData;
         TreeModelFilterVisibleFunc ModelFilterFunc;
         int SelectedID = -1;
-        ConnectionEyS connection = ConnectionEyS.OpenConnection();
-        UpdateDialogSolVac upHor = new UpdateDialogSolVac();
 
         public SolVacacionesView()
         {
@@ -38,7 +39,7 @@ namespace SistemaEyS.AdminForms.Tables
 
         public void UpdateData()
         {
-            this.TreeData = new TreeModelFilter(dtSolVac.GetData(), null);
+            this.TreeData = new TreeModelFilter(this.DtSolv.GetData(), null);
             this.TreeData.VisibleFunc = this.ModelFilterFunc;
             this.viewTable.Model = this.TreeData;
             //this.FillComboboxModel();
@@ -46,9 +47,7 @@ namespace SistemaEyS.AdminForms.Tables
 
         protected void OnBtnAddSVClicked(object sender, EventArgs e)
         {
-
-            solVac.Show();
-
+            this.addDialog.Show();
         }
 
         protected void OnViewTableRowActivated(object o, RowActivatedArgs args)
@@ -73,30 +72,9 @@ namespace SistemaEyS.AdminForms.Tables
             }
         }
 
-        protected object GetUserValue(int idUser, int column)
-        {
-            TreeIter iter;
-            TreeModel model = this.TreeData;
-
-            object value = null;
-
-            if (model.GetIterFirst(out iter))
-            {
-                do
-                {
-                    if (idUser.ToString() == model.GetValue(iter, 0).ToString())
-                    {
-                        value = model.GetValue(iter, column);
-                    }
-                } while (model.IterNext(ref iter));
-            }
-
-            return value;
-        }
-
         protected void OnBtnActSVClicked(object sender, EventArgs e)
         {
-            UpdateData();
+            this.UpdateData();
         }
 
         protected void OnBtnDelSVClicked(object sender, EventArgs e)
@@ -125,7 +103,7 @@ namespace SistemaEyS.AdminForms.Tables
 
             try
             {
-                dtSolVac.DeleteFrom(SelectedID.ToString());
+                this.DtSolv.DeleteFrom(this.SelectedID.ToString());
                
                     MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
                         ButtonsType.Ok, "Eliminado");
@@ -141,7 +119,7 @@ namespace SistemaEyS.AdminForms.Tables
                     ms.Destroy();
              }
            
-            UpdateData();
+            this.UpdateData();
         }
 
 
@@ -150,13 +128,13 @@ namespace SistemaEyS.AdminForms.Tables
             if (this.SelectedID < 0)
             {
                 MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Warning,
-                    ButtonsType.Ok, "Seleccione un horario en la tabla");
+                    ButtonsType.Ok, "Seleccione una solicitud en la tabla");
                 ms.Run();
                 ms.Destroy();
                 return;
             }
 
-            upHor.Show();
+            this.updateDialog.Show();
         }
     }
 }

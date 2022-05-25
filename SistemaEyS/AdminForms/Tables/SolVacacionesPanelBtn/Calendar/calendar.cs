@@ -22,7 +22,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn.Calendar
 
         protected void OnCalendar1DaySelectedDoubleClick(object sender, EventArgs e)
         {
-            fecha(calendar1.GetDate());
+            this.fecha(calendar1.GetDate());
             this.Hide();
         }
     }

@@ -5744,7 +5744,7 @@ Base de Datos creada con MySQLWorkbench.</property>
                       </packing>
                     </child>
                     <child>
-                      <widget class="Gtk.Entry" id="fechaTxt">
+                      <widget class="Gtk.Entry" id="TxtFechaSol">
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
@@ -5784,7 +5784,7 @@ Base de Datos creada con MySQLWorkbench.</property>
                 <property name="MemberName" />
                 <property name="Spacing">6</property>
                 <child>
-                  <widget class="Gtk.ComboBoxEntry" id="idEmp">
+                  <widget class="Gtk.ComboBoxEntry" id="CmbxIDEmp">
                     <property name="MemberName" />
                     <property name="IsTextCombo">True</property>
                     <property name="Items" translatable="yes" />
@@ -5841,7 +5841,7 @@ Base de Datos creada con MySQLWorkbench.</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Entry" id="fecIni">
+                  <widget class="Gtk.Entry" id="TxtFechaIni">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="IsEditable">True</property>
@@ -5900,7 +5900,7 @@ Base de Datos creada con MySQLWorkbench.</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Entry" id="fecSal">
+                  <widget class="Gtk.Entry" id="TxtFechaFin">
                     <property name="MemberName" />
                     <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
