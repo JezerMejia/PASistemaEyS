@@ -116,7 +116,6 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Seguridad.RolSeguridad.cs" />
     <Compile Include="AdminForms\Seguridad\UserRolSeguridad.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Seguridad.UserRolSeguridad.cs" />
-    <Compile Include="AdminForms\Tables\HorPanelBtn\UpdateHorario.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.HorPanelBtn.UpdateHorario.cs" />
     <Compile Include="AdminForms\Help\AboutEyS.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Help.AboutEyS.cs" />
@@ -139,6 +138,7 @@
     <Compile Include="Database\DatosEyS\Negocio\Neg_Empleado.cs" />
     <Compile Include="AdminForms\Tables\SolVacacionesPanelBtn\UpdateDialogSolVac.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn.UpdateDialogSolVac.cs" />
+    <Compile Include="AdminForms\Tables\HorPanelBtn\UpdateHorario.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
