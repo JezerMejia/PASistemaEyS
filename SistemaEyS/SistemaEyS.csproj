@@ -142,7 +142,7 @@
     <Compile Include="Database\DatosEyS\Entidades\Ent_Horario.cs" />
     <Compile Include="Database\DatosEyS\Entidades\Ent_SolicitudVacaciones.cs" />
     <Compile Include="Database\DatosEyS\Entidades\Ent_Departamento.cs" />
-    <Compile Include="Database\DatosEyS\Entidades\En_Cargo.cs" />
+    <Compile Include="Database\DatosEyS\Entidades\Ent_Cargo.cs" />
     <Compile Include="Database\DatosEyS\Entidades\En_Asistencia.cs" />
     <Compile Include="Database\DatosEyS\Negocio\Neg_Cargo.cs" />
   </ItemGroup>
