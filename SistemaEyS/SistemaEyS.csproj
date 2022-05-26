@@ -155,7 +155,7 @@
     <Compile Include="Database\DatosSeguridad\Negocio\Neg_rol.cs" />
     <Compile Include="Database\DatosSeguridad\Negocio\Neg_opcion.cs" />
     <Compile Include="Database\DatosSeguridad\Negocio\Neg_rol_opcion.cs" />
-
+    <Compile Include="Database\DatosSeguridad\Negocio\Neg_user_rol.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
