@@ -9,20 +9,34 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
     {
         protected EmpleadosView parent;
         protected Dt_tlb_SolVacaciones DtSolVac = new Dt_tlb_SolVacaciones();
-        Dt_tlb_empleado dtEmp = new Dt_tlb_empleado();
+        protected Dt_tlb_empleado dtEmp = new Dt_tlb_empleado();
         protected ListStore DataUser;
         protected TreeModelFilter TreeData;
         protected TreeModelFilterVisibleFunc ModelFilterFunc;
-        calendar ca = new calendar();
-        public int SelectedID = -1;
-        public int SelectedUser = -1;
-        DateTime dt;
-        DateTime dtIni;
-        DateTime dtSal;
-        DateTime actFech;
-        DateTime inFech;
-        DateTime inicioFech;
-        DateTime finFech;
+        protected calendar ca = new calendar();
+        protected int _SelectedID = -1;
+        protected string idHor;
+        protected DateTime dt;
+        protected DateTime dtIni;
+        protected DateTime dtSal;
+        protected DateTime actFech;
+        protected DateTime inFech;
+        protected DateTime inicioFech;
+        protected DateTime finFech;
+
+        public int SelectedID
+        {
+            get
+            {
+                return this._SelectedID;
+            }
+            set
+            {
+                this._SelectedID = value;
+                idHor = this._SelectedID.ToString();
+            }
+        }
+
 
         public UpdateDialogSolVac() :
                 base(Gtk.WindowType.Toplevel)
@@ -179,7 +193,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 
             try
             {
-                DtSolVac.UpdateSet(this.fechaTxt.Text, this.justTxt.Buffer.Text, this.idEmp.ActiveText, this.fecIni.Text, this.fecSal.Text);
+                DtSolVac.UpdateSet(this.idHor, this.fechaTxt.Text, this.justTxt.Buffer.Text, this.idEmp.ActiveText, this.fecIni.Text, this.fecSal.Text);
                 mensaje("Guardado");
                 //ClearInput();
             }

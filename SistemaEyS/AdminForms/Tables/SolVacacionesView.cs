@@ -13,10 +13,8 @@ namespace SistemaEyS.AdminForms.Tables
     {
 
         AddDialogSolVac addDialog = new AddDialogSolVac();
-        UpdateDialogSolVac updateDialog = new UpdateDialogSolVac();
-
+        UpdateDialogSolVac UpdateDialogSolVac;
         Dt_tlb_SolVacaciones DtSolv = new Dt_tlb_SolVacaciones();
-
         TreeModelFilter TreeData;
         TreeModelFilterVisibleFunc ModelFilterFunc;
         int SelectedID = -1;
@@ -24,6 +22,7 @@ namespace SistemaEyS.AdminForms.Tables
         public SolVacacionesView()
         {
             this.Build();
+            this.UpdateDialogSolVac = new UpdateDialogSolVac();
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("ID Empleado", typeof(string), "text", new Gtk.CellRendererText()),
@@ -133,8 +132,12 @@ namespace SistemaEyS.AdminForms.Tables
                 ms.Destroy();
                 return;
             }
-
-            this.updateDialog.Show();
+            this.UpdateDialogSolVac.UpdateData();
+            this.UpdateDialogSolVac.Show();
+            this.UpdateDialogSolVac.Present();
+            this.UpdateDialogSolVac.SelectedID = this.SelectedID;
         }
+
+
     }
 }
