@@ -23,6 +23,9 @@ namespace SistemaEyS.AdminForms.Tables
         {
             this.Build();
             this.UpdateDialogSolVac = new UpdateDialogSolVac();
+            this.viewTable.SearchEntry = this.SearchSolVacTxt;
+            this.viewTable.SearchEqualFunc = new TreeViewSearchEqualFunc(this.ViewTableEqualFunc);
+
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("ID Empleado", typeof(string), "text", new Gtk.CellRendererText()),
@@ -136,6 +139,48 @@ namespace SistemaEyS.AdminForms.Tables
             this.UpdateDialogSolVac.Show();
             this.UpdateDialogSolVac.Present();
             this.UpdateDialogSolVac.SelectedID = this.SelectedID;
+        }
+
+        protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)
+        {
+            TreePath path = model.GetPath(iter);
+            //Console.WriteLine($"'{this.TxtSearch.Text}' at '{path.ToString()}'");
+            if (string.IsNullOrWhiteSpace(this.SearchSolVacTxt.Text))
+            {
+                //Console.WriteLine("Empty search");
+                return true;
+            }
+            for (int i = 0; i < model.NColumns; i++)
+            {
+                string value = (string)model.GetValue(iter, i);
+                if (string.IsNullOrEmpty(value)) return false;
+                //Console.WriteLine($"\t{i}: '{value}'");
+                if (value.ToLower().Contains(this.SearchSolVacTxt.Text.ToLower()))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        protected void OnSearchHorTxtChanged(object sender, EventArgs e)
+        {
+            this.TreeData.Refilter();
+        }
+
+        protected bool ViewTableEqualFunc(TreeModel model, int column, string key, TreeIter iter)
+        {
+            for (int i = 0; i < model.NColumns; i++)
+            {
+                string value = (string)model.GetValue(iter, i);
+                if (string.IsNullOrWhiteSpace(value)) return true;
+                if (value.ToLower().Contains(key.ToLower()))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
 
