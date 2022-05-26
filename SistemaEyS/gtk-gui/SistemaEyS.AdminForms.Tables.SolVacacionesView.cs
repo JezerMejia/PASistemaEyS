@@ -30,7 +30,6 @@ namespace SistemaEyS.AdminForms.Tables
 			this.Name = "SistemaEyS.AdminForms.Tables.SolVacacionesView";
 			// Container child SistemaEyS.AdminForms.Tables.SolVacacionesView.Gtk.Container+ContainerChild
 			this.alignment1 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
-			this.alignment1.Name = "alignment1";
 			this.alignment1.LeftPadding = ((uint)(15));
 			this.alignment1.TopPadding = ((uint)(15));
 			this.alignment1.RightPadding = ((uint)(15));

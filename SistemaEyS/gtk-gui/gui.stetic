@@ -1632,7 +1632,7 @@ IT</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Bin" id="SistemaEyS.AdminForms.Tables.EmpleadosView" design-size="540 382">
+  <widget class="Gtk.Bin" id="SistemaEyS.AdminForms.Tables.EmpleadosView" design-size="505 382">
     <property name="MemberName" />
     <property name="Visible">False</property>
     <child>
@@ -1911,7 +1911,7 @@ IT</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Bin" id="SistemaEyS.AdminForms.Tables.HorarioView" design-size="400 300">
+  <widget class="Gtk.Bin" id="SistemaEyS.AdminForms.Tables.HorarioView" design-size="403 308">
     <property name="MemberName" />
     <property name="Visible">False</property>
     <child>
@@ -1926,6 +1926,69 @@ IT</property>
             <property name="MemberName" />
             <property name="Spacing">6</property>
             <child>
+              <widget class="Gtk.Alignment" id="alignment1">
+                <property name="MemberName" />
+                <property name="Yscale">0</property>
+                <child>
+                  <widget class="Gtk.HBox" id="hbox2">
+                    <property name="MemberName" />
+                    <property name="Spacing">6</property>
+                    <child>
+                      <widget class="Gtk.Label" id="label1">
+                        <property name="MemberName" />
+                        <property name="LabelProp" translatable="yes">Buscar:</property>
+                      </widget>
+                      <packing>
+                        <property name="Position">0</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.Entry" id="SearchHorTxt">
+                        <property name="MemberName" />
+                        <property name="CanFocus">True</property>
+                        <property name="IsEditable">True</property>
+                        <property name="InvisibleChar">•</property>
+                        <signal name="Changed" handler="OnSearchHorTxtChanged" />
+                      </widget>
+                      <packing>
+                        <property name="Position">1</property>
+                        <property name="AutoSize">False</property>
+                        <property name="Expand">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.Alignment" id="alignment3">
+                        <property name="MemberName" />
+                        <property name="Xscale">0</property>
+                        <property name="Yscale">0</property>
+                        <property name="RightPadding">150</property>
+                        <child>
+                          <widget class="Gtk.Label" id="label2">
+                            <property name="MemberName" />
+                          </widget>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="Position">2</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                  </widget>
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">0</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
               <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
                 <property name="MemberName" />
                 <property name="ShadowType">In</property>
@@ -1939,7 +2002,7 @@ IT</property>
                 </child>
               </widget>
               <packing>
-                <property name="Position">0</property>
+                <property name="Position">1</property>
                 <property name="AutoSize">True</property>
               </packing>
             </child>
@@ -2021,7 +2084,7 @@ IT</property>
                 </child>
               </widget>
               <packing>
-                <property name="Position">1</property>
+                <property name="Position">2</property>
                 <property name="AutoSize">True</property>
                 <property name="Expand">False</property>
                 <property name="Fill">False</property>
