@@ -1,12 +1,16 @@
 ﻿using System;
 using Gtk;
 using SistemaEyS.DatosSeguridad.Datos;
+using SistemaEyS.DatosSeguridad.Entidades;
+using SistemaEyS.DatosSeguridad.Negocio;
 
 namespace SistemaEyS.AdminForms.Seguridad
 {
     public partial class RolSeguridad : Gtk.Window
     {
         protected Dt_tbl_rol DtRol = new Dt_tbl_rol();
+        protected Neg_rol NegRol = new Neg_rol();
+
         protected TreeModelFilter TreeData;
         protected TreeModelFilterVisibleFunc ModelFilterFunc;
         public int SelectedID = -1;
@@ -45,39 +49,31 @@ namespace SistemaEyS.AdminForms.Seguridad
             //this.FillComboboxModel();
         }
 
-        protected void BtnNewOnClicked(object sender, EventArgs e)
+        protected void ClearInput()
         {
             this.SelectedID = -1;
             this.TxtName.Text = "";
-            this.TxtEstado.Text = "";
+        }
+
+        protected void BtnNewOnClicked(object sender, EventArgs e)
+        {
+            this.ClearInput();
         }
 
         protected void BtnAddOnClicked(object sender, EventArgs args)
         {
-            if (string.IsNullOrWhiteSpace(this.TxtName.Text))
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok,
-                    "Ingrese un nombre");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(this.TxtEstado.Text))
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok,
-                    "Ingrese un estado");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
             try
             {
-                this.DtRol.InsertInto(
-                    this.TxtName.Text,
-                    this.TxtEstado.Text
-                    );
+                if (string.IsNullOrWhiteSpace(this.TxtName.Text))
+                {
+                    throw new ArgumentException("Ingrese un nombre");
+                }
+                Ent_rol rol = new Ent_rol()
+                {
+                    rol = this.TxtName.Text,
+                    estado = EntidadEstado.Añadido
+                };
+                this.NegRol.AddRol(rol);
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Info, ButtonsType.Ok,
                     "Rol agregado");
@@ -97,32 +93,27 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         protected void BtnEditOnClicked(object sender, EventArgs args)
         {
-            if (this.SelectedID < 0)
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Warning, ButtonsType.Ok,
-                    "Seleccione un rol en la tabla");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(this.TxtName.Text) ||
-                string.IsNullOrWhiteSpace(this.TxtEstado.Text))
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok,
-                    "No puede haber datos vacíos");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
             try
             {
-                this.DtRol.UpdateSet(
-                    this.SelectedID.ToString(),
-                    this.TxtName.Text, this.TxtEstado.Text
-                    );
+                if (this.SelectedID < 0)
+                {
+                    throw new ArgumentException(
+                        "Seleccione un rol en la tabla"
+                        );
+                }
+                if (string.IsNullOrWhiteSpace(this.TxtName.Text))
+                {
+                    throw new ArgumentException("Ingrese un nombre");
+                }
+
+                Ent_rol rol = new Ent_rol()
+                {
+                    id_rol = this.SelectedID,
+                    rol = this.TxtName.Text,
+                    estado = EntidadEstado.Modificado
+                };
+                this.NegRol.EditRol(rol);
+
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Info, ButtonsType.Ok, "Rol editado");
                 ms.Run();
@@ -140,40 +131,31 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         protected void BtnRemoveOnClicked(object sender, EventArgs args)
         {
-            if (this.SelectedID < 0)
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Warning, ButtonsType.Ok,
-                    "Seleccione un cargo en la tabla");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
-            string rolName = this.GetCargoValue(this.SelectedID, 1)?.ToString() ?? "";
-
-            MessageDialog deletePrompt = new MessageDialog(this, DialogFlags.Modal,
-                MessageType.Question, ButtonsType.YesNo,
-                $"¿Desea eliminar el rol \"{rolName}\" ({this.SelectedID})?");
-            int result = deletePrompt.Run();
-            deletePrompt.Destroy();
-
-            switch (result)
-            {
-                case (int)ResponseType.Yes:
-                    break;
-                default:
-                    return;
-            }
-
             try
             {
-                this.DtRol.DeleteFrom(this.SelectedID.ToString());
+                if (this.SelectedID < 0)
+                {
+                    throw new ArgumentException(
+                        "Seleccione un rol en la tabla"
+                        );
+                }
+
+                Ent_rol rol = this.NegRol.SearchRol(this.SelectedID);
+
+                MessageDialog deletePrompt = new MessageDialog(this, DialogFlags.Modal,
+                    MessageType.Question, ButtonsType.YesNo,
+                    $"¿Desea eliminar el rol \"{rol.rol}\" ({this.SelectedID})?");
+                int result = deletePrompt.Run();
+                deletePrompt.Destroy();
+
+                if ((ResponseType)result != ResponseType.Yes) return;
+
+                this.NegRol.RemoveRol(rol);
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok,
-                    "Rol eliminado");
+                    MessageType.Info, ButtonsType.Ok, "Rol eliminado");
                 ms.Run();
                 ms.Destroy();
+                this.ClearInput();
             }
             catch (Exception e)
             {
@@ -183,29 +165,7 @@ namespace SistemaEyS.AdminForms.Seguridad
                 ms.Run();
                 ms.Destroy();
             }
-            this.SelectedID = -1;
             this.UpdateData();
-        }
-
-        protected object GetCargoValue(int idCargo, int column)
-        {
-            TreeIter iter;
-            TreeModel model = this.TreeData;
-
-            object value = null;
-
-            if (model.GetIterFirst(out iter))
-            {
-                do
-                {
-                    if (idCargo.ToString() == model.GetValue(iter, 0).ToString())
-                    {
-                        value = model.GetValue(iter, column);
-                    }
-                } while (model.IterNext(ref iter));
-            }
-
-            return value;
         }
 
         protected void ViewTableOnRowActivated(object o, RowActivatedArgs args)
@@ -231,24 +191,20 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         protected void SetEntryTextFromID(int id)
         {
-            TreeIter iter;
-            if (this.TreeData.GetIterFirst(out iter))
+            try
             {
-                do
-                {
-                    if (id.ToString() == (string)this.TreeData.GetValue(iter, 0))
-                    {
-                        this.TxtName.Text = (string)TreeData.GetValue(iter, 1);
-                        this.TxtEstado.Text = (string)TreeData.GetValue(iter, 2);
-                        return;
-                    }
-                    else
-                    {
-                        this.TxtName.Text = "";
-                        this.TxtEstado.Text = "";
-                    }
-                }
-                while (TreeData.IterNext(ref iter));
+                Ent_rol rol = this.NegRol.SearchRol(id);
+
+                this.TxtName.Text = rol.rol;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info,
+                    ButtonsType.Ok, ex.Message);
+                ms.Run();
+                ms.Destroy();
             }
         }
 

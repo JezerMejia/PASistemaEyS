@@ -1,11 +1,17 @@
 ﻿using System;
 using Gtk;
 using SistemaEyS.DatosSeguridad.Datos;
+using SistemaEyS.DatosSeguridad.Entidades;
+using SistemaEyS.DatosSeguridad.Negocio;
 
 namespace SistemaEyS.AdminForms.Seguridad
 {
     public partial class UserRolSeguridad : Gtk.Window
     {
+        protected Neg_user_rol NegUserRol = new Neg_user_rol();
+        protected Neg_user NegUser = new Neg_user();
+        protected Neg_rol NegRol = new Neg_rol();
+
         protected Dt_tbl_rol DtRol = new Dt_tbl_rol();
         protected Dt_tbl_user DtUser = new Dt_tbl_user();
         protected Dt_tbl_user_rol DtUserRol = new Dt_tbl_user_rol();
@@ -78,7 +84,7 @@ namespace SistemaEyS.AdminForms.Seguridad
             this.CmbxRol.Entry.Completion.TextColumn = 0;
         }
 
-        protected void BtnNewOnClicked(object sender, EventArgs e)
+        protected void ClearInput()
         {
             this.SelectedID = -1;
             this.CmbxRol.Active = -1;
@@ -87,36 +93,33 @@ namespace SistemaEyS.AdminForms.Seguridad
             this.CmbxUsuario.Entry.Text = "";
         }
 
+        protected void BtnNewOnClicked(object sender, EventArgs e)
+        {
+            this.ClearInput();
+        }
+
         protected void BtnAddOnClicked(object sender, EventArgs args)
         {
-            if (string.IsNullOrWhiteSpace(this.CmbxUsuario.ActiveText))
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok,
-                    "Seleccione un Usuario");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(this.CmbxRol.ActiveText))
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok,
-                    "Seleccione un Rol");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
-            string idUser = this.GetUserID();
-            string idRol = this.GetRolID();
-
             try
             {
-                this.DtUserRol.InsertInto(
-                    idUser,
-                    idRol
-                    );
+                if (string.IsNullOrWhiteSpace(this.CmbxUsuario.ActiveText))
+                {
+                    throw new ArgumentException("Seleccione un Usuario");
+                }
+                if (string.IsNullOrWhiteSpace(this.CmbxRol.ActiveText))
+                {
+                    throw new ArgumentException("Seleccione un Rol");
+                }
+                string idUser = this.GetUserID();
+                string idRol = this.GetRolID();
+
+                Ent_user_rol userRol = new Ent_user_rol()
+                {
+                    id_user = Int32.Parse(idUser),
+                    id_rol = Int32.Parse(idRol),
+                };
+                this.NegUserRol.AddUserRol(userRol);
+
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Info, ButtonsType.Ok,
                     "Rol asignado");
@@ -125,10 +128,10 @@ namespace SistemaEyS.AdminForms.Seguridad
             }
             catch (Exception e)
             {
+                Console.WriteLine(e);
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Error, ButtonsType.Ok,
                     e.Message);
-                Console.WriteLine(e);
                 ms.Run();
                 ms.Destroy();
             }
@@ -137,42 +140,38 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         protected void BtnEditOnClicked(object sender, EventArgs args)
         {
-            if (this.SelectedID < 0)
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Warning, ButtonsType.Ok,
-                    "Seleccione un rol en la tabla");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(this.CmbxRol.ActiveText) ||
-                string.IsNullOrWhiteSpace(this.CmbxUsuario.ActiveText))
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok,
-                    "No puede haber datos vacíos");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
-            string idUsuario = this.GetUserID();
-            string idRol = this.GetRolID();
-
             try
             {
-                this.DtUserRol.UpdateSet(
-                    this.SelectedID.ToString(),
-                    idUsuario, idRol
-                    );
+                if (this.SelectedID < 0)
+                {
+                    throw new ArgumentException("Seleccione un Rol en la tabla");
+                }
+                if (string.IsNullOrWhiteSpace(this.CmbxRol.ActiveText) ||
+                    string.IsNullOrWhiteSpace(this.CmbxUsuario.ActiveText))
+                {
+                    throw new ArgumentException("No puede haber datos vacíos");
+                }
+
+                string idUser = this.GetUserID();
+                string idRol = this.GetRolID();
+
+                Ent_user_rol userRol = new Ent_user_rol()
+                {
+                    id_UserRol = this.SelectedID,
+                    id_user = Int32.Parse(idUser),
+                    id_rol = Int32.Parse(idRol),
+                };
+                this.NegUserRol.EditUserRol(userRol);
+
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok, "Asignación de Rol editada");
+                    MessageType.Info, ButtonsType.Ok,
+                    "Asignación de Rol editada");
                 ms.Run();
                 ms.Destroy();
             }
             catch (Exception e)
             {
+                Console.WriteLine(e);
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Error, ButtonsType.Ok, e.Message);
                 ms.Run();
@@ -183,114 +182,46 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         protected void BtnRemoveOnClicked(object sender, EventArgs args)
         {
-            if (this.SelectedID < 0)
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Warning, ButtonsType.Ok,
-                    "Seleccione un rol en la tabla");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
-            string userName = this.GetUserValue(this.SelectedUser, 0)?.ToString() ?? "";
-            string rolName = this.GetRolValue(this.SelectedRol, 0)?.ToString() ?? "";
-
-            MessageDialog deletePrompt = new MessageDialog(this, DialogFlags.Modal,
-                MessageType.Question, ButtonsType.YesNo,
-                $"¿Desea eliminar la asignación \"{userName} - {rolName}\" ({this.SelectedID})?");
-            int result = deletePrompt.Run();
-            deletePrompt.Destroy();
-
-            switch (result)
-            {
-                case (int)ResponseType.Yes:
-                    break;
-                default:
-                    return;
-            }
-
             try
             {
-                this.DtUserRol.DeleteFrom(this.SelectedID.ToString());
+                if (this.SelectedID < 0)
+                {
+                    throw new ArgumentException("Seleccione un Rol en la tabla");
+                }
+
+                Ent_user_rol userRol = this.NegUserRol.SearchUserRol(this.SelectedID);
+                Ent_user user = this.NegUser.SearchUser(userRol.id_user);
+                Ent_rol rol = this.NegRol.SearchRol(userRol.id_rol);
+
+                string userName = user.nombres + " " + user.apellidos;
+                string rolName = rol.rol;
+
+                MessageDialog deletePrompt = new MessageDialog(this, DialogFlags.Modal,
+                    MessageType.Question, ButtonsType.YesNo,
+                    $"¿Desea eliminar la asignación \"{userName} - {rolName}\" ({this.SelectedID})?");
+                int result = deletePrompt.Run();
+                deletePrompt.Destroy();
+
+                if ((ResponseType)result != ResponseType.Yes) return;
+
+                this.NegUserRol.RemoveUserRol(userRol);
+
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Info, ButtonsType.Ok,
                     "Asignación de Rol eliminada");
                 ms.Run();
                 ms.Destroy();
+                this.ClearInput();
             }
             catch (Exception e)
             {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Error, ButtonsType.Ok,
-                    e.Message);
                 Console.WriteLine(e);
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
+                    MessageType.Error, ButtonsType.Ok, e.Message);
                 ms.Run();
                 ms.Destroy();
             }
-            this.SelectedID = -1;
             this.UpdateData();
-        }
-
-        protected object GetUserRolValue(int idUserRol, int column)
-        {
-            TreeIter iter;
-            TreeModel model = this.TreeData;
-
-            object value = null;
-
-            if (model.GetIterFirst(out iter))
-            {
-                do
-                {
-                    if (idUserRol.ToString() == model.GetValue(iter, 0).ToString())
-                    {
-                        value = model.GetValue(iter, column);
-                    }
-                } while (model.IterNext(ref iter));
-            }
-
-            return value;
-        }
-        protected object GetUserValue(int idUser, int column)
-        {
-            TreeIter iter;
-            TreeModel model = this.DataUser;
-
-            object value = null;
-
-            if (model.GetIterFirst(out iter))
-            {
-                do
-                {
-                    if (idUser.ToString() == model.GetValue(iter, 1).ToString())
-                    {
-                        value = model.GetValue(iter, column);
-                    }
-                } while (model.IterNext(ref iter));
-            }
-
-            return value;
-        }
-        protected object GetRolValue(int idRol, int column)
-        {
-            TreeIter iter;
-            TreeModel model = this.DataRol;
-
-            object value = null;
-
-            if (model.GetIterFirst(out iter))
-            {
-                do
-                {
-                    if (idRol.ToString() == model.GetValue(iter, 1).ToString())
-                    {
-                        value = model.GetValue(iter, column);
-                    }
-                } while (model.IterNext(ref iter));
-            }
-
-            return value;
         }
 
         protected string GetUserID()
@@ -389,26 +320,23 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         protected void SetEntryTextFromID(int id)
         {
-            TreeIter iter;
-            if (this.TreeData.GetIterFirst(out iter))
+            try
             {
-                do
-                {
-                    if (id.ToString() == (string)this.TreeData.GetValue(iter, 0))
-                    {
-                        this.CmbxUsuario.Active = this.GetIndexFromValue(
-                            this.CmbxUsuario, (string)this.TreeData.GetValue(iter, 1));
-                        this.CmbxRol.Active = this.GetIndexFromValue(
-                            this.CmbxRol, (string)this.TreeData.GetValue(iter, 2)); ;
-                        return;
-                    }
-                    else
-                    {
-                        this.CmbxRol.Active = -1;
-                        this.CmbxUsuario.Active = -1;
-                    }
-                }
-                while (TreeData.IterNext(ref iter));
+                Ent_user_rol UserRol = this.NegUserRol.SearchUserRol(id);
+
+                this.CmbxUsuario.Active = this.GetIndexFromValue(
+                    this.CmbxUsuario, UserRol.id_user.ToString());
+                this.CmbxRol.Active = this.GetIndexFromValue(
+                    this.CmbxRol, UserRol.id_rol.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info,
+                    ButtonsType.Ok, ex.Message);
+                ms.Run();
+                ms.Destroy();
             }
         }
 
@@ -429,18 +357,14 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)
         {
-            TreePath path = model.GetPath(iter);
-            //Console.WriteLine($"'{this.TxtSearch.Text}' at '{path.ToString()}'");
             if (string.IsNullOrWhiteSpace(this.TxtSearch.Text))
             {
-                //Console.WriteLine("Empty search");
                 return true;
             }
             for (int i = 0; i < model.NColumns; i++)
             {
                 string value = (string)model.GetValue(iter, i);
                 if (string.IsNullOrEmpty(value)) return false;
-                //Console.WriteLine($"\t{i}: '{value}'");
                 if (value.ToLower().Contains(this.TxtSearch.Text.ToLower()))
                 {
                     return true;
@@ -451,7 +375,6 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         protected void TxtSearchOnChanged(object sender, EventArgs e)
         {
-            //Console.WriteLine($"Changed: '{this.TxtSearch.Text}'");
             this.TreeData.Refilter();
         }
     }

@@ -39,7 +39,6 @@ namespace SistemaEyS.AdminForms.Seguridad
                 new StoreObject("Apellido", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Email", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Contraseña temporal", typeof(string), "text", new Gtk.CellRendererText()),
-                new StoreObject("Estado", typeof(string), "text", new Gtk.CellRendererText()),
             };
             this.viewTable.SetTreeViewColumns(storeObjects);
 
