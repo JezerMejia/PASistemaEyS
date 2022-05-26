@@ -151,6 +151,8 @@
     <Compile Include="Database\DatosSeguridad\Entidades\Ent_opcion.cs" />
     <Compile Include="Database\DatosSeguridad\Entidades\Ent_user_rol.cs" />
     <Compile Include="Database\DatosSeguridad\Entidades\Ent_rol_opcion.cs" />
+    <Compile Include="Database\DatosEyS\Negocio\Neg_Asistencia.cs" />
+    <Compile Include="Database\DatosEyS\Negocio\Neg_Departamento.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />

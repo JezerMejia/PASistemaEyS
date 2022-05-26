@@ -17,11 +17,36 @@ namespace SistemaEyS.DatosEyS.Negocio
         public void ValidateID(Ent_Cargo car)
         {
             if (this.DtCar.DoesExist(
-                new DataTableParameter("idEmpleado", $"{car.idCargo}")
+                new DataTableParameter("idCargo", $"'{car.idCargo}'")
             ))
             {
                 throw new Exception("El cargo ya existe");
             }
         }
+
+        public void ValidateNombreCargo(Ent_Cargo car)
+        {
+            if (this.DtCar.DoesExist(
+                new DataTableParameter("nombreCargo", $"'{car.nombreCargo}'")
+            ))
+            {
+                throw new Exception("El nombre ya existe");
+            }
+        }
+
+        public void ValidateDescriptcionCargo(Ent_Cargo car)
+        {
+            if (this.DtCar.DoesExist(
+                new DataTableParameter("descripcionCargo", $"'{car.descripcionCargo}'")
+            ))
+            {
+                throw new Exception("La descripcion ya existe ya existe");
+            }
+        }
+
+
+
+
+
     }
 }
