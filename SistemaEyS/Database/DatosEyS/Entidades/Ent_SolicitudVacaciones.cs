@@ -5,10 +5,10 @@ namespace SistemaEyS.DatosEyS.Entidades
     {
 
         private int _idSolVacaciones;
-        private DateTime? _fechaSol;
+        private DateTime _fechaSol;
         private string _descripcionSol;
-        private DateTime? _fechaHoraInicio;
-        private DateTime? _fechaHoraFin;
+        private DateTime _fechaHoraInicio;
+        private DateTime _fechaHoraFin;
         private int _idEmpleado;
 
         public int idSolVacaciones
@@ -17,7 +17,7 @@ namespace SistemaEyS.DatosEyS.Entidades
             set => this._idSolVacaciones = value;
         }
 
-        public DateTime? fechaSol
+        public DateTime fechaSol
         {
             get => this._fechaSol;
             set => this._fechaSol = value;
@@ -32,13 +32,13 @@ namespace SistemaEyS.DatosEyS.Entidades
 
         }
 
-        public DateTime? fechaHoraInicio
+        public DateTime fechaHoraInicio
         {
             get => this._fechaHoraInicio;
             set => this._fechaHoraInicio = value;
         }
 
-        public DateTime? fechaHoraFin
+        public DateTime fechaHoraFin
         {
             get => this._fechaHoraFin;
             set => this._fechaHoraFin = value;

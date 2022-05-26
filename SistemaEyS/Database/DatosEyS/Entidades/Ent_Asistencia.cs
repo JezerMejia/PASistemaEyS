@@ -4,7 +4,7 @@ namespace SistemaEyS.DatosEyS.Entidades
     public class Ent_Asistencia
     {
         private int _idAsistencia;
-        private DateTime? _fechaAsistencia;
+        private DateTime _fechaAsistencia;
         private DateTime? _horaEntrada;
         private DateTime? _horaSalida;
         private int _idEmpleado;
@@ -15,7 +15,7 @@ namespace SistemaEyS.DatosEyS.Entidades
             set => this._idAsistencia = value;
         }
 
-        public DateTime? fechaAsistencia
+        public DateTime fechaAsistencia
         {
             get => this._fechaAsistencia;
             set => this._fechaAsistencia = value;
