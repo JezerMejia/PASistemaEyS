@@ -20,6 +20,7 @@ namespace SistemaEyS.DatosEyS.Datos
         }
         public override void UpdateModel()
         {
+            this.Model.Clear();
             IDataReader idr = null;
             StringBuilder sb = new StringBuilder();
             sb.Clear();
