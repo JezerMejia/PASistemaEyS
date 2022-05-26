@@ -17,7 +17,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
         {
             if (this.DtOpcion.DoesExist(
                 "AND",
-                new DataTableParameter("opcion", $"{opcion.opcion}")
+                new DataTableParameter("opcion", $"'{opcion.opcion}'")
             ))
             {
                 throw new Exception("El rol ya existe");

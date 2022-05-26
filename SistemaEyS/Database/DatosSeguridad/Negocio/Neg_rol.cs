@@ -17,7 +17,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
         {
             if (this.DtRol.DoesExist(
                 "AND",
-                new DataTableParameter("rol", $"{rol.rol}")
+                new DataTableParameter("rol", $"'{rol.rol}'")
             ))
             {
                 throw new Exception("El rol ya existe");
@@ -76,7 +76,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
             {
                 id_rol = Int32.Parse(store.GetValue(iter, 0).ToString()),
                 rol = store.GetValue(iter, 1).ToString(),
-                estado = (EntidadEstado)Int32.Parse(store.GetValue(iter, 7).ToString()),
+                estado = (EntidadEstado)Int32.Parse(store.GetValue(iter, 2).ToString()),
             };
 
             return user;

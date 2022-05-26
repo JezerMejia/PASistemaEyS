@@ -17,7 +17,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
         {
             if (this.DtUser.DoesExist(
                 "AND",
-                new DataTableParameter("user", $"{user.user}")
+                new DataTableParameter("user", $"'{user.user}'")
             ))
             {
                 throw new Exception("El usuario ya existe");

@@ -17,8 +17,8 @@ namespace SistemaEyS.DatosSeguridad.Negocio
         {
             if (this.DtUserRol.DoesExist(
                 "AND",
-                new DataTableParameter("id_user", $"{userRol.id_user}"),
-                new DataTableParameter("id_rol", $"{userRol.id_rol}")
+                new DataTableParameter("id_user", $"'{userRol.id_user}'"),
+                new DataTableParameter("id_rol", $"'{userRol.id_rol}'")
             ))
             {
                 throw new Exception($"La relación user-rol ya existe");
