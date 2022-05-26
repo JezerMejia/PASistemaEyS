@@ -12,11 +12,12 @@ namespace SistemaEyS.DatosSeguridad.Datos
         {
             this.conn = ConnectionSeg.OpenConnection();
             this.DBTable = "BDSistemaEyS.tbl_opcion";
-            this.Model = new ListStore(
+            this.gTypes = new Type[3] {
                 typeof(string),
                 typeof(string),
                 typeof(string)
-                );
+            };
+            this.Model = new ListStore(this.gTypes);
         }
 
         public override void UpdateModel()

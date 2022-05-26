@@ -12,11 +12,12 @@ namespace SistemaEyS.DatosSeguridad.Datos
         {
             this.conn = ConnectionSeg.OpenConnection();
             this.DBTable = "BDSistemaEyS.tbl_UserRol";
-            this.Model = new ListStore(
+            this.gTypes = new Type[3] {
                 typeof(string),
                 typeof(string),
                 typeof(string)
-                );
+            };
+            this.Model = new ListStore(this.gTypes);
         }
 
         public override void UpdateModel()
@@ -59,7 +60,6 @@ namespace SistemaEyS.DatosSeguridad.Datos
         public void InsertInto(string id_user, string id_rol)
         {
             this.InsertInto(
-                    //this.conn,
                     new DataTableParameter("id_user", $"'{id_user}'"),
                     new DataTableParameter("id_rol", $"'{id_rol}'")
                 );
@@ -68,7 +68,6 @@ namespace SistemaEyS.DatosSeguridad.Datos
         public void UpdateSet(string id_UserRol, string id_user, string id_rol)
         {
             this.UpdateSet(
-                    //this.conn,
                     new DataTableParameter("id_UserRol", id_UserRol),
                     new DataTableParameter(
                         !string.IsNullOrWhiteSpace(id_user) ? "id_user" : "",
@@ -79,7 +78,6 @@ namespace SistemaEyS.DatosSeguridad.Datos
                         $"'{id_rol}'"
                     )
                 );
-            //this.UpdateSet(id_user, user, pwd, nombres, apellidos, email, "");
         }
 
         public void DeleteFrom(string id_UserRol)
