@@ -16,6 +16,7 @@ namespace SistemaEyS.Database.DatosEyS.Negocio
         public void ValidateNombreDep(Ent_Departamento dep)
         {
             if (this.DtDep.DoesExist(
+                "AND",
                 new DataTableParameter("nombreDepartamento", $"'{dep.nombreDepartamento}'")
             ))
             {
