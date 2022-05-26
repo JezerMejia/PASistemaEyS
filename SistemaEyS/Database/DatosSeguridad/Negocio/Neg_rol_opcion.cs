@@ -3,7 +3,7 @@ using SistemaEyS.DatosSeguridad.Datos;
 using SistemaEyS.DatosSeguridad.Entidades;
 using Gtk;
 
-namespace SistemaEyS.Database.DatosSeguridad.Negocio
+namespace SistemaEyS.DatosSeguridad.Negocio
 {
     public class Neg_rol_opcion
     {
@@ -63,9 +63,9 @@ namespace SistemaEyS.Database.DatosSeguridad.Negocio
                 rolOpcion.id_opcion.ToString()
             );
         }
-        public void RemoveRolOpcion(Ent_rol_opcion rol)
+        public void RemoveRolOpcion(Ent_rol_opcion rolOpcion)
         {
-            this.DtRolOpcion.DeleteFrom(rol.id_rolOpcion.ToString());
+            this.DtRolOpcion.DeleteFrom(rolOpcion.id_rolOpcion.ToString());
         }
         public Ent_rol_opcion SearchRolOpcion(int id_rolOpcion)
         {
@@ -79,7 +79,7 @@ namespace SistemaEyS.Database.DatosSeguridad.Negocio
             TreeIter iter;
 
             if (!store.GetIterFirst(out iter))
-		        throw new NullReferenceException("No hay datos de la opción");
+		        throw new NullReferenceException("No hay datos de la relación");
 
             Ent_rol_opcion rolOpcion = new Ent_rol_opcion()
             {
