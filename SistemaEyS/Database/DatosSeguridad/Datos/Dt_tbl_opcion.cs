@@ -6,18 +6,19 @@ using SistemaEyS.Database.Connection;
 
 namespace SistemaEyS.DatosSeguridad.Datos
 {
-    public class Dt_tbl_rol : DataTableTemplate
+    public class Dt_tbl_opcion : DataTableTemplate
     {
-        public Dt_tbl_rol()
+        public Dt_tbl_opcion()
         {
             this.conn = ConnectionSeg.OpenConnection();
-            this.DBTable = "BDSistemaEyS.tbl_rol";
+            this.DBTable = "BDSistemaEyS.tbl_opcion";
             this.Model = new ListStore(
                 typeof(string),
                 typeof(string),
                 typeof(string)
                 );
         }
+
         public override void UpdateModel()
         {
             this.Model.Clear();
@@ -25,15 +26,15 @@ namespace SistemaEyS.DatosSeguridad.Datos
             IDataReader idr = null;
             StringBuilder sb = new StringBuilder();
             sb.Clear();
-            sb.Append("SELECT * FROM BDSistemaEyS.tbl_rol;");
+            sb.Append("SELECT * FROM BDSistemaEyS.tbl_opcion;");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());
                 while (idr.Read())
                 {
                     this.Model.AppendValues(
-                        idr[0].ToString(), // ID Rol
-                        idr[1].ToString(), // Nombre
+                        idr[0].ToString(), // ID opcion
+                        idr[1].ToString(), // Opcion
                         idr[2].ToString() // Estado
                         );
                 }
@@ -57,14 +58,9 @@ namespace SistemaEyS.DatosSeguridad.Datos
 
         public ListStore GetDataCmbx()
         {
-            this.UpdateModel();
             TreeIter iter;
 
-            ListStore model = new ListStore(
-                typeof(string),
-                typeof(string),
-                typeof(string)
-                );
+            ListStore model = new ListStore(this.gTypes);
 
             if (this.Model.GetIterFirst(out iter))
             {
@@ -82,23 +78,22 @@ namespace SistemaEyS.DatosSeguridad.Datos
             return model;
         }
 
-        public void InsertInto(string rol, string estado)
+        public void InsertInto(string opcion, string estado)
         {
             this.InsertInto(
-                    //this.conn,
-                    new DataTableParameter("rol", $"'{rol}'"),
+                    new DataTableParameter("opcion", $"'{opcion}'"),
                     new DataTableParameter("estado", $"'{estado}'")
                 );
         }
-
-        public void UpdateSet(string id_rol, string rol, string estado)
+        public void UpdateSet(string id_opcion, string opcion, string estado)
         {
+            Console.WriteLine(id_opcion);
             this.UpdateSet(
                     //this.conn,
-                    new DataTableParameter("id_rol", id_rol),
+                    new DataTableParameter("id_opcion", id_opcion),
                     new DataTableParameter(
-                        !string.IsNullOrWhiteSpace(rol) ? "rol" : "",
-                        $"'{rol}'"
+                        !string.IsNullOrWhiteSpace(opcion) ? "opcion" : "",
+                        $"'{opcion}'"
                         ),
                     new DataTableParameter(
                         !string.IsNullOrWhiteSpace(estado) ? "estado" : "",
@@ -106,17 +101,16 @@ namespace SistemaEyS.DatosSeguridad.Datos
                         )
                 );
         }
-
-        public void DeleteFrom(string id_rol)
+        public void DeleteFrom(string id_opcion)
         {
             this.DeleteFrom(this.conn,
-                new DataTableParameter("id_rol", id_rol)
+                new DataTableParameter("id_opcion", id_opcion)
                 );
         }
-        public void DeleteFromUpdate(string id_rol)
+        public void DeleteFromUpdate(string id_opcion)
         {
             this.UpdateSet(
-                new DataTableParameter("id_rol", id_rol),
+                new DataTableParameter("id_opcion", id_opcion),
                 new DataTableParameter("estado", "3")
                 );
         }
