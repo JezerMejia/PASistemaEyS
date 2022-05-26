@@ -9,17 +9,20 @@ namespace SistemaEyS.AdminForms.Tables
 {
     public partial class HorarioView : Gtk.Bin
     {
-        AddDialogHor adh = new AddDialogHor();
-        Dt_tlb_horario dthor = new Dt_tlb_horario();
-        TreeModelFilter TreeData;
-        TreeModelFilterVisibleFunc ModelFilterFunc;
+        //ConnectionEyS connection = ConnectionEyS.OpenConnection();
+        protected UpdateHorario UpdateHorario;
+        protected AddDialogHor adh = new AddDialogHor();
+        protected Dt_tlb_horario dthor = new Dt_tlb_horario();
+        protected TreeModelFilter TreeData;
+        protected TreeModelFilterVisibleFunc ModelFilterFunc;
         int SelectedID = -1;
-        ConnectionEyS connection = ConnectionEyS.OpenConnection();
-        UpdateHorario upHor = new UpdateHorario();
 
         public HorarioView()
         {
             this.Build();
+
+           this.UpdateHorario = new UpdateHorario();
+
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Lunes - Inicio", typeof(string), "text", new Gtk.CellRendererText()),
@@ -48,7 +51,8 @@ namespace SistemaEyS.AdminForms.Tables
             this.TreeData = new TreeModelFilter(dthor.GetData(), null);
             this.TreeData.VisibleFunc = this.ModelFilterFunc;
             this.viewTable.Model = this.TreeData;
-            //this.FillComboboxModel();
+            this.UpdateHorario.UpdateData();
+            this.viewTable.Model = this.TreeData;
         }
 
 
@@ -85,6 +89,7 @@ namespace SistemaEyS.AdminForms.Tables
             }
 
         }
+
 
         protected object GetUserValue(int idUser, int column)
         {
@@ -165,7 +170,10 @@ namespace SistemaEyS.AdminForms.Tables
                 return;
             }
 
-            upHor.Show();
+            this.UpdateHorario.UpdateData();
+            this.UpdateHorario.Show();
+            this.UpdateHorario.Present();
+            this.UpdateHorario.SelectedID = this.SelectedID;
         }
     }
 }

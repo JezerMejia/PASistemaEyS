@@ -115,7 +115,7 @@ namespace SistemaEyS.DatosEyS.Datos
         }
 
 
-        public void UpdateSet(string lunesInicio, string lunesSalida,
+        public void UpdateSet(string idHorario,string lunesInicio, string lunesSalida,
                             string martesInicio, string martesSalida,
                             string miercolesInicio, string miercolesSalida,
                             string juevesInicio, string juevesSalida,
@@ -126,7 +126,7 @@ namespace SistemaEyS.DatosEyS.Datos
 
         {
             this.UpdateSet(
-                //new DataTableParameter("idHorario", $"'{idHorario}'"),
+                new DataTableParameter("idHorario", $"'{idHorario}'"),
                 new DataTableParameter(
                     !string.IsNullOrWhiteSpace(lunesInicio) ? "lunesInicio" : "",
                     $"'{lunesInicio}'"

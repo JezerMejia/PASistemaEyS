@@ -8,9 +8,24 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 {
     public partial class UpdateHorario : Gtk.Window
     {
-        ConnectionEyS connection = ConnectionEyS.OpenConnection();
+        //ConnectionEyS connection = ConnectionEyS.OpenConnection();
         protected Dt_tlb_horario dthor = new Dt_tlb_horario();
         protected ListStore HorData;
+        string id;
+        protected int _SelectedID = -1;
+
+        public int SelectedID
+        {
+            get
+            {
+                return this._SelectedID;
+            }
+            set
+            {
+                this._SelectedID = value;
+                id = this._SelectedID.ToString();
+            }
+        }
 
         public UpdateHorario() :
                 base(Gtk.WindowType.Toplevel)
@@ -42,7 +57,6 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
                 )
             {
                 mensaje("No pueden haber datos vacios");
-                //ClearInput();
                 return;
             }
 
@@ -61,7 +75,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 
             try
             {
-                dthor.UpdateSet(this.lunesIni.ActiveText, this.lunesSal.ActiveText,
+                dthor.UpdateSet(this.id, this.lunesIni.ActiveText, this.lunesSal.ActiveText,
                             this.martesIni.ActiveText, this.martesSal.ActiveText,
                             this.miercolesIni.ActiveText, this.miercolesSal.ActiveText,
                             this.juevesIni.ActiveText, this.juevesSal.ActiveText,
@@ -77,6 +91,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
                     ButtonsType.Ok, ex.Message);
                 ms.Run();
                 ms.Destroy();
+                ClearInput();
             }
 
         }
@@ -136,6 +151,13 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
             this.domingoSal.Entry.Text = "";
 
         }
+
+        public void UpdateData()
+        {
+            this.HorData = dthor.GetData();
+            //this.SetEntryTextFromID(this.SelectedID);
+        }
+
 
     }
 }
