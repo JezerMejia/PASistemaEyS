@@ -16,6 +16,7 @@ namespace SistemaEyS.DatosEyS.Negocio
         public void ValidateID(Ent_Empleado emp)
         {
             if (this.DtEmp.DoesExist(
+                "AND",
                 new DataTableParameter("idEmpleado", $"{emp.idEmpleado}")
             ))
             {
@@ -25,6 +26,7 @@ namespace SistemaEyS.DatosEyS.Negocio
         public void ValidateCedula(Ent_Empleado emp)
         {
             if (this.DtEmp.DoesExist(
+                "AND",
                 new DataTableParameter("cedulaEmpleado", $"{emp.cedulaEmpleado}")
             ))
             {

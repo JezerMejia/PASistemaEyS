@@ -1,6 +1,7 @@
 ﻿using Gtk;
 using System;
 using System.Data;
+using System.Collections.Generic;
 
 public struct DataTableParameter
 {
@@ -46,7 +47,7 @@ namespace SistemaEyS.Database.Connection
 
             for (int i = 0; i < parameters.Length; i++)
             {
-                QueryParameters += $"{parameters[i].name},";
+                QueryParameters += $"`{parameters[i].name}`,";
                 QueryValues += $"{parameters[i].value},";
             }
             if (QueryParameters.EndsWith(","))
@@ -114,12 +115,24 @@ namespace SistemaEyS.Database.Connection
             }
         }
 
-        public virtual bool DoesExist(DataTableParameter data)
+        public virtual bool DoesExist(string op = "AND", params DataTableParameter[] data)
         {
-            IDataReader idr = null;
-            string Query = $"SELECT `{data.name}` FROM {this.DBTable} WHERE " +
-                    $"{data.name} = '{data.value}'";
+            List<string> QuerySelect = new List<string>();
+            List<string> QueryValues = new List<string>();
+            for (int i = 0; i < data.Length; i++)
+            {
+                QuerySelect.Add($"`{data[i].name}`");
+                QueryValues.Add($"`{data[i].name}` = {data[i].value}");
+            }
+
+            string QueryS = String.Join<string>(", ", QuerySelect);
+            string QueryV = String.Join<string>($" {op} ", QueryValues);
+
+            string Query = $"SELECT {QueryS} FROM {this.DBTable} WHERE " +
+                    $"{QueryV};";
             bool value = false;
+
+            IDataReader idr = null;
             try
             {
                 idr = conn.Read(CommandType.Text, Query);

@@ -151,8 +151,11 @@
     <Compile Include="Database\DatosSeguridad\Entidades\Ent_opcion.cs" />
     <Compile Include="Database\DatosSeguridad\Entidades\Ent_user_rol.cs" />
     <Compile Include="Database\DatosSeguridad\Entidades\Ent_rol_opcion.cs" />
-    <Compile Include="Database\DatosEyS\Negocio\Neg_Asistencia.cs" />
-    <Compile Include="Database\DatosEyS\Negocio\Neg_Departamento.cs" />
+
+    <Compile Include="Database\DatosSeguridad\Negocio\Neg_rol.cs" />
+    <Compile Include="Database\DatosSeguridad\Negocio\Neg_opcion.cs" />
+    <Compile Include="Database\DatosSeguridad\Negocio\Neg_rol_opcion.cs" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />

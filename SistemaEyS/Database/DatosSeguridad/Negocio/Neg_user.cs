@@ -16,6 +16,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
         public void ValidateUser(Ent_user user)
         {
             if (this.DtUser.DoesExist(
+                "AND",
                 new DataTableParameter("user", $"{user.user}")
             ))
             {
@@ -25,6 +26,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
         public void ValidateEmail(Ent_user user)
         {
             if (this.DtUser.DoesExist(
+                "AND",
                 new DataTableParameter("email", $"{user.email}")
             ))
             {
