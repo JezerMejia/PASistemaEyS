@@ -58,9 +58,9 @@ namespace SistemaEyS.DatosSeguridad.Negocio
                 ((int)opcion.estado).ToString()
             );
         }
-        public void RemoveRol(Ent_rol rol)
+        public void RemoveOpcion(Ent_opcion opcion)
         {
-            this.DtOpcion.DeleteFromUpdate(rol.id_rol.ToString());
+            this.DtOpcion.DeleteFromUpdate(opcion.id_opcion.ToString());
         }
         public Ent_opcion SearchOpcion(int id_opcion)
         {
