@@ -17,6 +17,7 @@ namespace SistemaEyS.DatosEyS.Negocio
         public void ValidateID(Ent_Cargo car)
         {
             if (this.DtCar.DoesExist(
+                "AND",
                 new DataTableParameter("idEmpleado", $"{car.idCargo}")
             ))
             {
