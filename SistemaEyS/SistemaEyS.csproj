@@ -147,6 +147,10 @@
     <Compile Include="Database\DatosEyS\Negocio\Neg_Cargo.cs" />
     <Compile Include="Database\DatosSeguridad\Datos\Dt_tbl_opcion.cs" />
     <Compile Include="Database\DatosSeguridad\Datos\Dt_tbl_rol_opcion.cs" />
+    <Compile Include="Database\DatosSeguridad\Entidades\Ent_rol.cs" />
+    <Compile Include="Database\DatosSeguridad\Entidades\Ent_opcion.cs" />
+    <Compile Include="Database\DatosSeguridad\Entidades\Ent_user_rol.cs" />
+    <Compile Include="Database\DatosSeguridad\Entidades\Ent_rol_opcion.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
