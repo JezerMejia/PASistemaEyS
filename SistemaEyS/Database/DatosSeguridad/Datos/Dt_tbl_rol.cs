@@ -26,7 +26,7 @@ namespace SistemaEyS.DatosSeguridad.Datos
             IDataReader idr = null;
             StringBuilder sb = new StringBuilder();
             sb.Clear();
-            sb.Append("SELECT * FROM BDSistemaEyS.tbl_rol;");
+            sb.Append("SELECT * FROM BDSistemaEyS.tbl_rol WHERE estado <> 3;");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());
