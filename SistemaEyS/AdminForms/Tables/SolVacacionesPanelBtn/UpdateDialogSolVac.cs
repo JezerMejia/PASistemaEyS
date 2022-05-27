@@ -2,6 +2,8 @@
 using Gtk;
 using SistemaEyS.DatosEyS.Datos;
 using SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn.Calendar;
+using SistemaEyS.DatosEyS.Entidades;
+using SistemaEyS.Database.DatosEyS.Negocio;
 
 namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 {
@@ -14,8 +16,11 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
         protected TreeModelFilter TreeData;
         protected TreeModelFilterVisibleFunc ModelFilterFunc;
         protected calendar ca = new calendar();
+        protected Neg_SolicitudVacaciones NegSolVac = new Neg_SolicitudVacaciones();
+
+        //Variables
         protected int _SelectedID = -1;
-        protected string idHor;
+        protected string idSol;
         protected DateTime dt;
         protected DateTime dtIni;
         protected DateTime dtSal;
@@ -33,7 +38,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
             set
             {
                 this._SelectedID = value;
-                idHor = this._SelectedID.ToString();
+                idSol = this._SelectedID.ToString();
             }
         }
 
@@ -43,12 +48,13 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
         {
             this.Build();
             this.Hide();
+            this.UpdateData();
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
             {
                 args.RetVal = this.HideOnDelete();
             };
 
-            UpdateData();
+
         }
 
         public void UpdateData()
@@ -56,6 +62,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
             this.DataUser = dtEmp.GetDataView();
             this.idEmp.Model = this.DataUser;
             this.FillCmbxUsuarioModel();
+            this.SetEntryTextFromID(this.SelectedID);
         }
 
         protected void FillCmbxUsuarioModel()
@@ -193,7 +200,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 
             try
             {
-                DtSolVac.UpdateSet(this.idHor, this.fechaTxt.Text, this.justTxt.Buffer.Text, this.idEmp.ActiveText, this.fecIni.Text, this.fecSal.Text);
+                DtSolVac.UpdateSet(this.idSol, this.fechaTxt.Text, this.justTxt.Buffer.Text, this.idEmp.ActiveText, this.fecIni.Text, this.fecSal.Text);
                 mensaje("Guardado");
                 //ClearInput();
             }
@@ -247,6 +254,60 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
         {
             fecSal.Sensitive = false;
             fecSal.IsEditable = false;
+        }
+
+
+        protected void SetEntryTextFromID(int id)
+        {
+            try
+            {
+                Ent_SolicitudVacaciones solVac = this.NegSolVac.SearchVacaciones(id);
+
+                this.fechaTxt.Text = solVac.fechaSol.ToString("yyyy-MM-dd") ?? "";
+                this.idEmp.Active = this.GetIndexFromValue(
+                    this.idEmp, solVac.idEmpleado.ToString());
+                this.fecIni.Text = solVac.fechaHoraInicio.ToString("yyyy-MM-dd") ?? "";
+                this.fecSal.Text = solVac.fechaHoraFin.ToString("yyyy-MM-dd") ?? "";
+                this.justTxt.Buffer.Text = solVac.descripcionSol;
+            }
+            catch (Exception ex)
+            {
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info,
+                    ButtonsType.Ok, ex.Message);
+                ms.Run();
+                ms.Destroy();
+            }
+        }
+
+
+        protected int GetIndexFromValue(ComboBox comboBox, string value)
+        {
+            if (string.IsNullOrWhiteSpace(value)) return 0;
+            int index = 0;
+            TreeModel model = comboBox.Model;
+            TreeIter iter;
+
+            if (value == "")
+            {
+                return 0;
+            }
+
+            int i = 0;
+            if (model.GetIterFirst(out iter))
+            {
+                do
+                {
+                    if (value == (string)model.GetValue(iter, 1))
+                    {
+                        index = i;
+                        break;
+                    }
+                    i++;
+                } while (model.IterNext(ref iter));
+            }
+
+            return index;
         }
 
 
