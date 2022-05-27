@@ -12,7 +12,7 @@ namespace SistemaEyS.AdminForms
         protected Window parent;
         protected uint timeout;
 
-        public AdminPanel(Window parent) :
+        public AdminPanel(Window parent, string idEmpleado) :
                 base(Gtk.WindowType.Toplevel)
         {
             this.parent = parent;

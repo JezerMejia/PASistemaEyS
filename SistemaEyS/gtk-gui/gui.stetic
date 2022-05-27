@@ -471,7 +471,7 @@ Seleccione su método de entrada al SistemaEyS</property>
                   <widget class="Gtk.Label" id="lbUser">
                     <property name="MemberName" />
                     <property name="WidthRequest">80</property>
-                    <property name="LabelProp" translatable="yes">Usuario:</property>
+                    <property name="LabelProp" translatable="yes">ID:</property>
                     <property name="Justify">Right</property>
                   </widget>
                   <packing>
@@ -485,7 +485,6 @@ Seleccione su método de entrada al SistemaEyS</property>
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="IsEditable">True</property>
-                    <property name="WidthChars">18</property>
                     <property name="InvisibleChar">•</property>
                   </widget>
                   <packing>
@@ -523,8 +522,6 @@ Seleccione su método de entrada al SistemaEyS</property>
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="IsEditable">True</property>
-                    <property name="WidthChars">18</property>
-                    <property name="Visibility">False</property>
                     <property name="InvisibleChar">•</property>
                   </widget>
                   <packing>
