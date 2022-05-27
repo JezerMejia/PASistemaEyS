@@ -471,7 +471,7 @@ Seleccione su método de entrada al SistemaEyS</property>
                   <widget class="Gtk.Label" id="lbUser">
                     <property name="MemberName" />
                     <property name="WidthRequest">80</property>
-                    <property name="LabelProp" translatable="yes">ID:</property>
+                    <property name="LabelProp" translatable="yes">Usuario:</property>
                     <property name="Justify">Right</property>
                   </widget>
                   <packing>

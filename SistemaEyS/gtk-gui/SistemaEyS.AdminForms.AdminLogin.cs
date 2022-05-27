@@ -71,7 +71,6 @@ namespace SistemaEyS.AdminForms
 			this.entUser.CanFocus = true;
 			this.entUser.Name = "entUser";
 			this.entUser.IsEditable = true;
-			this.entUser.WidthChars = 18;
 			this.entUser.InvisibleChar = '•';
 			this.hbox13.Add(this.entUser);
 			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox13[this.entUser]));
@@ -100,8 +99,6 @@ namespace SistemaEyS.AdminForms
 			this.entPassword.CanFocus = true;
 			this.entPassword.Name = "entPassword";
 			this.entPassword.IsEditable = true;
-			this.entPassword.WidthChars = 18;
-			this.entPassword.Visibility = false;
 			this.entPassword.InvisibleChar = '•';
 			this.hbox14.Add(this.entPassword);
 			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox14[this.entPassword]));

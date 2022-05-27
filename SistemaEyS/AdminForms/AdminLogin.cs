@@ -45,7 +45,7 @@ namespace SistemaEyS.AdminForms
             if (string.IsNullOrWhiteSpace(user))
             {
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, "Ingrese un ID de empleado");
+                    ButtonsType.Ok, "Ingrese un Nombre de empleado");
                 ms.Run();
                 ms.Destroy();
                 return false;
@@ -55,7 +55,7 @@ namespace SistemaEyS.AdminForms
             bool value = false;
 
             sb.Clear();
-            sb.Append($"SELECT id_user, pwd FROM Seguridad.tbl_user WHERE id_user = {user};");
+            sb.Append($"SELECT user, pwd FROM Seguridad.tbl_user WHERE user = '{user}';");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());
@@ -104,7 +104,7 @@ namespace SistemaEyS.AdminForms
             this.entUser.Text = "";
 
             MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
-                    ButtonsType.Ok, "Bienvenido Administrador");
+                    ButtonsType.Ok, "Bienvenido: " + idAdmin);
             ms.Run();
             ms.Destroy();
         }
