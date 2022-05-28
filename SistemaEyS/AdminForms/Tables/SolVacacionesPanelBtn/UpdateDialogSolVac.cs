@@ -3,31 +3,25 @@ using Gtk;
 using SistemaEyS.DatosEyS.Datos;
 using SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn.Calendar;
 using SistemaEyS.DatosEyS.Entidades;
-using SistemaEyS.Database.DatosEyS.Negocio;
+using SistemaEyS.DatosEyS.Negocio;
 
 namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 {
     public partial class UpdateDialogSolVac : Gtk.Window
     {
-        protected EmpleadosView parent;
+        protected Neg_SolicitudVacaciones NegSolVac = new Neg_SolicitudVacaciones();
+
         protected Dt_tlb_SolVacaciones DtSolVac = new Dt_tlb_SolVacaciones();
         protected Dt_tlb_empleado dtEmp = new Dt_tlb_empleado();
+
         protected ListStore DataUser;
         protected TreeModelFilter TreeData;
         protected TreeModelFilterVisibleFunc ModelFilterFunc;
-        protected calendar ca = new calendar();
-        protected Neg_SolicitudVacaciones NegSolVac = new Neg_SolicitudVacaciones();
 
-        //Variables
+        protected EmpleadosView parent;
+        protected calendar calendar = new calendar();
+
         protected int _SelectedID = -1;
-        protected string idSol;
-        protected DateTime dt;
-        protected DateTime dtIni;
-        protected DateTime dtSal;
-        protected DateTime actFech;
-        protected DateTime inFech;
-        protected DateTime inicioFech;
-        protected DateTime finFech;
 
         public int SelectedID
         {
@@ -38,10 +32,8 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
             set
             {
                 this._SelectedID = value;
-                idSol = this._SelectedID.ToString();
             }
         }
-
 
         public UpdateDialogSolVac() :
                 base(Gtk.WindowType.Toplevel)
@@ -53,8 +45,6 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
             {
                 args.RetVal = this.HideOnDelete();
             };
-
-
         }
 
         public void UpdateData()
@@ -79,13 +69,11 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
         {
             try
             {
-                dt = fechaEntrada;
                 this.fechaTxt.Text = fechaEntrada.ToString("yyyy/MM/dd");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error" + ex.Message);
-                Console.WriteLine("Error" + ex.StackTrace);
+                Console.WriteLine(ex);
                 throw;
             }
         }
@@ -94,13 +82,11 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
         {
             try
             {
-                dtIni = fechaEntrada;
                 this.fecIni.Text = fechaEntrada.ToString("yyyy/MM/dd hh:mm:ss");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error" + ex.Message);
-                Console.WriteLine("Error" + ex.StackTrace);
+                Console.WriteLine(ex);
                 throw;
             }
         }
@@ -109,153 +95,108 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
         {
             try
             {
-                dtSal = fechaEntrada;
                 this.fecSal.Text = fechaEntrada.ToString("yyyy/MM/dd hh:mm:ss");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error" + ex.Message);
-                Console.WriteLine("Error" + ex.StackTrace);
+                Console.WriteLine(ex);
                 throw;
             }
         }
 
-    
+
         protected void OnButton8Clicked(object sender, EventArgs e)
         {
-            ca.fecha = new calendar.selectFecha(this.setFecha);
-            ca.Show();
+            this.calendar.fecha = new calendar.selectFecha(this.setFecha);
+            this.calendar.Show();
         }
 
         protected void OnButton9Clicked(object sender, EventArgs e)
         {
-            ca.fecha = new calendar.selectFecha(this.setFechaIni);
-            ca.Show();
+            this.calendar.fecha = new calendar.selectFecha(this.setFechaIni);
+            this.calendar.Show();
         }
 
         protected void OnButton10Clicked(object sender, EventArgs e)
         {
-            ca.fecha = new calendar.selectFecha(this.setFechaSal);
-            ca.Show();
+            this.calendar.fecha = new calendar.selectFecha(this.setFechaSal);
+            this.calendar.Show();
         }
 
         protected void OnSaveBtnClicked(object sender, EventArgs e)
         {
-
-            if (string.IsNullOrWhiteSpace(fechaTxt.Text) ||
-               string.IsNullOrWhiteSpace(idEmp.ActiveText) ||
-               string.IsNullOrWhiteSpace(justTxt.Buffer.Text) ||
-               string.IsNullOrWhiteSpace(fecIni.Text) ||
-               string.IsNullOrWhiteSpace(fecSal.Text)
-
-               )
-            {
-                MessageDialog ms = new MessageDialog(this,
-                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
-                    "No puede haber datos vacíos");
-                ms.Run();
-                ms.Destroy();
-                //ClearInput();
-                return;
-            }
-
-            actFech = DateTime.Now.Date;
-            inFech = Convert.ToDateTime(fechaTxt.Text);
-            inicioFech = Convert.ToDateTime(fecIni.Text);
-            finFech = Convert.ToDateTime(fecSal.Text);
-
-
-            if (inFech < actFech)
-            {
-                MessageDialog ms = new MessageDialog(this,
-                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
-                    "La solicitud no puede hacerse desde el pasado, ingrese la fecha actual o mayor a esa");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
-            if (inicioFech < actFech || finFech < actFech)
-            {
-                mensaje("Una de las fecha de solicitud es menor a la fecha actual, ingrese una fecha mayor la actual");
-                return;
-            }
-
-            if (inicioFech == finFech)
-            {
-                MessageDialog ms = new MessageDialog(this,
-                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
-                    "Las fechas de las solicitudes no deben ser iguales");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
-            if (inicioFech > finFech)
-            {
-                mensaje("La fecha de inicio no puede ser menor a la de salida");
-            }
-
-
-
             try
             {
-                DtSolVac.UpdateSet(this.idSol, this.fechaTxt.Text, this.justTxt.Buffer.Text, this.idEmp.ActiveText, this.fecIni.Text, this.fecSal.Text);
-                mensaje("Guardado");
-                //ClearInput();
+                if (string.IsNullOrWhiteSpace(fechaTxt.Text) ||
+                   string.IsNullOrWhiteSpace(idEmp.ActiveText) ||
+                   string.IsNullOrWhiteSpace(justTxt.Buffer.Text) ||
+                   string.IsNullOrWhiteSpace(fecIni.Text) ||
+                   string.IsNullOrWhiteSpace(fecSal.Text)
+                   )
+                {
+                    throw new ArgumentException("No peude haber datos vacíos");
+                }
+
+                DateTime actFech = DateTime.Now.Date;
+                DateTime inFech = Convert.ToDateTime(fechaTxt.Text);
+                DateTime inicioFech = Convert.ToDateTime(fecIni.Text);
+                DateTime finFech = Convert.ToDateTime(fecSal.Text);
+
+                Ent_SolicitudVacaciones entSolVac = new Ent_SolicitudVacaciones()
+                {
+                    idSolVacaciones = this.SelectedID,
+                    descripcionSol = this.justTxt.Buffer.Text,
+                    fechaSol = DateTime.Parse(this.fechaTxt.Text),
+                    fechaHoraInicio = DateTime.Parse(this.fecIni.Text),
+                    fechaHoraFin = DateTime.Parse(this.fecSal.Text),
+                    idEmpleado = Int32.Parse(this.idEmp.ActiveText),
+                };
+                this.NegSolVac.EditSolicitudVacaciones(entSolVac);
+
+                MessageDialog ms = new MessageDialog(this,
+		                DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+			            "La solicitud fue editada");
+                ms.Run();
+                ms.Destroy();
+                this.ClearInput();
             }
             catch (Exception ex)
             {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Error,
                     ButtonsType.Ok, ex.Message);
                 ms.Run();
                 ms.Destroy();
             }
-
-            UpdateData();
-            ClearInput();
-
+            this.UpdateData();
         }
 
         protected void OnExitBtnClicked(object sender, EventArgs e)
         {
             this.Hide();
-            ClearInput();
-        }
-
-        public void mensaje(String mensaje)
-        {
-            MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
-                    ButtonsType.Ok, mensaje);
-            ms.Run();
-            ms.Destroy();
-
+            this.ClearInput();
         }
 
         public void ClearInput()
         {
-
-            fechaTxt.Text = "";
-            idEmp.Active = -1;
-            idEmp.Entry.Text = "";
-            justTxt.Buffer.Text = "";
-            fecIni.Text = "";
-            fecSal.Text = "";
-
+            this.fechaTxt.Text = "";
+            this.idEmp.Active = -1;
+            this.idEmp.Entry.Text = "";
+            this.justTxt.Buffer.Text = "";
+            this.fecIni.Text = "";
+            this.fecSal.Text = "";
         }
 
         protected void OnFecIniTextInserted(object o, TextInsertedArgs args)
         {
-            fecSal.Sensitive = true;
-            fecSal.IsEditable = true;
+            if (string.IsNullOrWhiteSpace(this.fecIni.Text))
+            {
+                this.fecSal.Sensitive = false;
+                this.fecSal.IsEditable = false;
+            };
+            this.fecSal.Sensitive = true;
+            this.fecSal.IsEditable = true;
         }
-
-        protected void OnFecIniTextDeleted(object o, TextDeletedArgs args)
-        {
-            fecSal.Sensitive = false;
-            fecSal.IsEditable = false;
-        }
-
 
         protected void SetEntryTextFromID(int id)
         {
@@ -270,13 +211,13 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
                 this.fecSal.Text = solVac.fechaHoraFin.ToString("yyyy-MM-dd") ?? "";
                 this.justTxt.Buffer.Text = solVac.descripcionSol;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageDialog ms = new MessageDialog(this,
-                    DialogFlags.Modal, MessageType.Info,
-                    ButtonsType.Ok, ex.Message);
-                ms.Run();
-                ms.Destroy();
+                this.fechaTxt.Text = "";
+                this.idEmp.Active = -1;
+                this.fecIni.Text = "";
+                this.fecSal.Text = "";
+                this.justTxt.Buffer.Text = "";
             }
         }
 
@@ -288,10 +229,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
             TreeModel model = comboBox.Model;
             TreeIter iter;
 
-            if (value == "")
-            {
-                return 0;
-            }
+            if (value == "") return 0;
 
             int i = 0;
             if (model.GetIterFirst(out iter))
@@ -309,7 +247,5 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 
             return index;
         }
-
-
     }
 }

@@ -13,8 +13,6 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
         protected Dt_tlb_empleado dtEmp = new Dt_tlb_empleado();
 
         protected ListStore DataUser;
-        protected TreeModelFilter TreeData;
-        protected TreeModelFilterVisibleFunc ModelFilterFunc;
         protected calendar Cal = new calendar();
 
         public int SelectedID = -1;
@@ -30,7 +28,6 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
             {
                 args.RetVal = this.HideOnDelete();
             };
-            //this.ModelFilterFunc = new TreeModelFilterVisibleFunc(this.TreeModelFilterVisible);
 
             this.UpdateData();
         }
@@ -111,8 +108,8 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
         public void mensaje(String mensaje)
         {
             MessageDialog ms = new MessageDialog(this,
-		            DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
-		            mensaje);
+                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                    mensaje);
             ms.Run();
             ms.Destroy();
         }
@@ -133,16 +130,16 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
             this.TxtFechaFin.Text = "";
         }
 
-        protected void OnFecIniTextInserted(object o, TextInsertedArgs args)
+        protected void TxtFechaIniOnChanged(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(this.TxtFechaIni.Text))
+            {
+                this.TxtFechaFin.Sensitive = false;
+                this.TxtFechaFin.IsEditable = false;
+                return;
+            };
             this.TxtFechaFin.Sensitive = true;
             this.TxtFechaFin.IsEditable = true;
-        }
-
-        protected void OnFecIniTextDeleted(object o, TextDeletedArgs args)
-        {
-            this.TxtFechaFin.Sensitive = false;
-            this.TxtFechaFin.IsEditable = false;
         }
 
         protected void OnSaveBtnClicked(object sender, EventArgs args)
@@ -186,18 +183,18 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
                 }
 
                 this.DtSolVac.InsertInto(
-		            this.TxtFechaSol.Text, this.justTxt.Buffer.Text,
-		            this.CmbxIDEmp.ActiveText, this.TxtFechaIni.Text,
-		            this.TxtFechaFin.Text
-		        );
+                    this.TxtFechaSol.Text, this.justTxt.Buffer.Text,
+                    this.CmbxIDEmp.ActiveText, this.TxtFechaIni.Text,
+                    this.TxtFechaFin.Text
+                );
                 this.mensaje("Guardado");
                 this.ClearInput();
             }
             catch (Exception ex)
             {
                 MessageDialog ms = new MessageDialog(this,
-		            DialogFlags.Modal, MessageType.Error, ButtonsType.Ok,
-		            ex.Message);
+                    DialogFlags.Modal, MessageType.Error, ButtonsType.Ok,
+                    ex.Message);
                 ms.Run();
                 ms.Destroy();
             }

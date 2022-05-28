@@ -78,7 +78,7 @@ namespace SistemaEyS.AdminForms
 
         protected void TablasSolicitudVacacionesActionOnActivated(object sender, EventArgs e)
         {
-            Tables.SolVacacionesView SolicitudVacaciones = new Tables.SolVacacionesView();
+            Tables.SolVacacionesView SolicitudVacaciones = new Tables.SolVacacionesView(this);
             this.AddTab(this.ntTabview, SolicitudVacaciones, "Solicitudes de vacaciones");
         }
 
