@@ -58,10 +58,11 @@ DROP TABLE IF EXISTS `BDSistemaEyS`.`Horario` ;
 
 CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Horario` (
   `idHorario` INT NOT NULL AUTO_INCREMENT,
+  `nombreHorario` VARCHAR(50) NOT NULL,
   `lunesInicio` TIME NULL DEFAULT NULL,
   `lunesSalida` TIME NULL DEFAULT NULL,
   `martesInicio` TIME NULL DEFAULT NULL,
-  `MartesSalida` TIME NULL DEFAULT NULL,
+  `martesSalida` TIME NULL DEFAULT NULL,
   `miercolesInicio` TIME NULL DEFAULT NULL,
   `miercolesSalida` TIME NULL DEFAULT NULL,
   `juevesInicio` TIME NULL DEFAULT NULL,
@@ -190,6 +191,7 @@ DROP TABLE IF EXISTS `BDSistemaEyS`.`tbl_rol` ;
 CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`tbl_rol` (
   `id_rol` INT NOT NULL AUTO_INCREMENT,
   `rol` VARCHAR(50) NOT NULL,
+  `descripcion` VARCHAR(100) NULL DEFAULT NULL,
   `estado` INT(11) NOT NULL,
   PRIMARY KEY (`id_rol`),
   UNIQUE INDEX `rol_UNIQUE` (`rol` ASC) VISIBLE,
@@ -231,6 +233,7 @@ DROP TABLE IF EXISTS `BDSistemaEyS`.`tbl_opcion` ;
 CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`tbl_opcion` (
   `id_opcion` INT(11) NOT NULL AUTO_INCREMENT,
   `opcion` VARCHAR(50) NOT NULL,
+  `descripcion` VARCHAR(100) NULL DEFAULT NULL,
   `estado` INT(11) NOT NULL,
   PRIMARY KEY (`id_opcion`),
   UNIQUE INDEX `id_opcion_UNIQUE` (`id_opcion` ASC) VISIBLE,
@@ -430,7 +433,7 @@ VALUES (
 );
 
 INSERT INTO Horario (
-idHorario,
+idHorario, nombreHorario,
 lunesInicio, lunesSalida,
 martesInicio, martesSalida,
 miercolesInicio, miercolesSalida,
@@ -440,14 +443,14 @@ sabadoInicio, sabadoSalida,
 domingoInicio, domingoSalida
 )
 VALUES (
-1,
+1, "Horario común (8AM - 5PM)",
 "8:00", "17:00",
 "8:00", "17:00",
 "8:00", "17:00",
 "8:00", "17:00",
 "8:00", "17:00",
-"8:00", "12:00",
-"8:00", "12:00"
+NULL, NULL,
+NULL, NULL
 );
 
 INSERT INTO Empleado (
@@ -505,23 +508,23 @@ VALUES (
 "alberto.jimenez@google.com", "uwu_temp", 1
 );
 
-INSERT INTO tbl_rol (id_rol, rol, estado)
+INSERT INTO tbl_rol (id_rol, rol, descripcion, estado)
 VALUES
-(1, "RRHH", 1),
-(2, "Gerencia General", 1),
-(3, "TI", 1);
+(1, "RRHH", "Recursos Humanos", 1),
+(2, "Gerencia General", "Gerencia General", 1),
+(3, "TI", "Informática", 1);
 
-INSERT INTO tbl_opcion (id_opcion, opcion, estado)
+INSERT INTO tbl_opcion (id_opcion, opcion, descripcion, estado)
 VALUES
-(1, "Tabla Empleados", 1),
-(2, "Tabla Solicitudes", 1),
-(3, "Tabla Asistencias", 1),
-(4, "Reportes", 1),
-(5, "Seguridad User", 1),
-(6, "Seguridad Rol", 1),
-(7, "Seguridad Opcion", 1),
-(8, "Seguridad UserRol", 1),
-(9, "Seguridad RolOpcion", 1)
+(1, "Tabla Empleados", "", 1),
+(2, "Tabla Solicitudes", "", 1),
+(3, "Tabla Asistencias", "", 1),
+(4, "Reportes", "", 1),
+(5, "Seguridad User", "", 1),
+(6, "Seguridad Rol", "", 1),
+(7, "Seguridad Opcion", "", 1),
+(8, "Seguridad UserRol", "", 1),
+(9, "Seguridad RolOpcion", "", 1)
 ;
 
 INSERT INTO tbl_UserRol (id_UserRol, id_user, id_rol)
