@@ -75,13 +75,13 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 
             try
             {
-                dthor.UpdateSet(this.id, this.lunesIni.ActiveText, this.lunesSal.ActiveText,
-                            this.martesIni.ActiveText, this.martesSal.ActiveText,
-                            this.miercolesIni.ActiveText, this.miercolesSal.ActiveText,
-                            this.juevesIni.ActiveText, this.juevesSal.ActiveText,
-                            this.viernesIni.ActiveText, this.viernesSal.ActiveText,
-                            this.sabadoIni.ActiveText, this.sabadoSal.ActiveText,
-                            this.domingoIni.ActiveText, this.domingoSal.ActiveText);
+                //dthor.UpdateSet(this.id, this.lunesIni.ActiveText, this.lunesSal.ActiveText,
+                //            this.martesIni.ActiveText, this.martesSal.ActiveText,
+                //            this.miercolesIni.ActiveText, this.miercolesSal.ActiveText,
+                //            this.juevesIni.ActiveText, this.juevesSal.ActiveText,
+                //            this.viernesIni.ActiveText, this.viernesSal.ActiveText,
+                //            this.sabadoIni.ActiveText, this.sabadoSal.ActiveText,
+                //            this.domingoIni.ActiveText, this.domingoSal.ActiveText);
 
                 mensaje("Guardado");
             }
