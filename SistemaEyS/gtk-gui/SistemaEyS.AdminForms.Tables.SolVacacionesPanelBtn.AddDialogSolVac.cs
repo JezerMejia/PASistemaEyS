@@ -331,8 +331,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 			this.DefaultHeight = 315;
 			this.Show();
 			this.button8.Clicked += new global::System.EventHandler(this.OnButton8Clicked);
-			this.TxtFechaIni.TextInserted += new global::Gtk.TextInsertedHandler(this.OnFecIniTextInserted);
-			this.TxtFechaIni.TextDeleted += new global::Gtk.TextDeletedHandler(this.OnFecIniTextDeleted);
+			this.TxtFechaIni.Changed += new global::System.EventHandler(this.TxtFechaIniOnChanged);
 			this.button9.Clicked += new global::System.EventHandler(this.OnButton9Clicked);
 			this.button10.Clicked += new global::System.EventHandler(this.OnButton10Clicked);
 			this.saveBtn.Clicked += new global::System.EventHandler(this.OnSaveBtnClicked);
