@@ -55,7 +55,7 @@ namespace SistemaEyS.AdminForms
             bool value = false;
 
             sb.Clear();
-            sb.Append($"SELECT user, pwd FROM Seguridad.tbl_user WHERE user = '{user}';");
+            sb.Append($"SELECT user, pwd FROM BDSistemaEyS.tbl_user WHERE user = '{user}';");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());
