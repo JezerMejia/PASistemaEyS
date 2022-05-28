@@ -1,32 +1,39 @@
 ﻿using System;
 using SistemaEyS.DatosEyS.Datos;
+using SistemaEyS.DatosEyS.Negocio;
+using SistemaEyS.DatosEyS.Entidades;
 using SistemaEyS.AdminForms.Tables.HorPanelBtn;
 using Gtk;
-using System.Data;
-using SistemaEyS.Database.Connection;
 
 namespace SistemaEyS.AdminForms.Tables
 {
     public partial class HorarioView : Gtk.Bin
     {
-        //ConnectionEyS connection = ConnectionEyS.OpenConnection();
-        protected UpdateHorario UpdateHorario;
-        protected AddDialogHor adh = new AddDialogHor();
-        protected Dt_tlb_horario dthor = new Dt_tlb_horario();
+
+        protected Neg_Horario NegHor = new Neg_Horario();
+        protected Dt_tlb_horario DtHor = new Dt_tlb_horario();
+
+        protected UpdateHorario updateDialog;
+        protected AddDialogHor addDialog = new AddDialogHor();
+
         protected TreeModelFilter TreeData;
         protected TreeModelFilterVisibleFunc ModelFilterFunc;
-        int SelectedID = -1;
+        public int SelectedID = -1;
 
-        public HorarioView()
+        Window parent;
+
+        public HorarioView(Window parent)
         {
             this.Build();
+            this.parent = parent;
 
-            this.UpdateHorario = new UpdateHorario();
+            this.updateDialog = new UpdateHorario();
             this.viewTable.SearchEntry = this.SearchHorTxt;
             this.viewTable.SearchEqualFunc = new TreeViewSearchEqualFunc(this.ViewTableEqualFunc);
 
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Nombre", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Lunes - Inicio", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Lunes - Fin", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Martes - Inicio", typeof(string), "text", new Gtk.CellRendererText()),
@@ -50,23 +57,22 @@ namespace SistemaEyS.AdminForms.Tables
 
         public void UpdateData()
         {
-            this.TreeData = new TreeModelFilter(dthor.GetData(), null);
+            this.TreeData = new TreeModelFilter(DtHor.GetData(), null);
             this.TreeData.VisibleFunc = this.ModelFilterFunc;
             this.viewTable.Model = this.TreeData;
-            this.UpdateHorario.UpdateData();
+            this.updateDialog.UpdateData();
             this.viewTable.Model = this.TreeData;
         }
 
-
         protected void btnUpdateOnClicked(object sender, EventArgs e)
         {
-            UpdateData(); 
+            this.UpdateData();
         }
 
         protected void OnBtnAddClicked(object sender, EventArgs e)
         {
-            adh.Show();
-            adh.Present();
+            this.addDialog.Show();
+            this.addDialog.Present();
         }
 
         protected void OnViewTableRowActivated(object o, RowActivatedArgs args)
@@ -89,109 +95,76 @@ namespace SistemaEyS.AdminForms.Tables
                 }
 
             }
-
-        }
-
-
-        protected object GetUserValue(int idUser, int column)
-        {
-            TreeIter iter;
-            TreeModel model = this.TreeData;
-
-            object value = null;
-
-            if (model.GetIterFirst(out iter))
-            {
-                do
-                {
-                    if (idUser.ToString() == model.GetValue(iter, 0).ToString())
-                    {
-                        value = model.GetValue(iter, column);
-                    }
-                } while (model.IterNext(ref iter));
-            }
-
-            return value;
         }
 
         protected void OnBtnDeleteClicked(object sender, EventArgs e)
         {
-            if (this.SelectedID < 0)
-            {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Warning,
-                    ButtonsType.Ok, "Seleccione un horario en la tabla");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
-            MessageDialog deletePrompt = new MessageDialog(null, DialogFlags.Modal,
-            MessageType.Question, ButtonsType.YesNo, $"¿Desea eliminar el horario ({this.SelectedID})?");
-            int result = deletePrompt.Run();
-            deletePrompt.Destroy();
-
-            switch (result)
-            {
-                case (int)ResponseType.Yes:
-                    break;
-                default:
-                    return;
-            }
-
             try
             {
-                dthor.DeleteFrom(SelectedID.ToString());
-               
-                    MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
-                        ButtonsType.Ok, "Eliminado");
-                    ms.Run();
-                    ms.Destroy();
-                    //ClearInput();
-             }
-                catch (Exception ex)
-             {
-                    MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                if (this.SelectedID < 0)
+                {
+                    throw new ArgumentException(
+                        "Seleccione un horario en la tabla"
+                        );
+                }
+
+                Ent_Horario hor = this.NegHor.SearchHorario(this.SelectedID);
+
+                MessageDialog deletePrompt = new MessageDialog(this.parent,
+                    DialogFlags.Modal, MessageType.Question, ButtonsType.YesNo,
+                    $"¿Desea eliminar el horario \"{hor.nombreHorario}\" ({this.SelectedID})?");
+                int result = deletePrompt.Run();
+                deletePrompt.Destroy();
+
+                if ((ResponseType)result != ResponseType.Yes) return;
+
+                this.NegHor.RemoveHorario(hor);
+
+                MessageDialog ms = new MessageDialog(this.parent,
+                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                    "Horario eliminado");
+                ms.Run();
+                ms.Destroy();
+            }
+            catch (Exception ex)
+            {
+                MessageDialog ms = new MessageDialog(this.parent,
+		            DialogFlags.Modal, MessageType.Error,
                     ButtonsType.Ok, ex.Message);
-                    ms.Run();
-                    ms.Destroy();
-             }
-           
-            UpdateData();
-
-
+                ms.Run();
+                ms.Destroy();
+            }
+            this.UpdateData();
         }
 
         protected void OnBtnEditClicked(object sender, EventArgs e)
         {
             if (this.SelectedID < 0)
             {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Warning,
+                MessageDialog ms = new MessageDialog(this.parent,
+		            DialogFlags.Modal, MessageType.Warning,
                     ButtonsType.Ok, "Seleccione un horario en la tabla");
                 ms.Run();
                 ms.Destroy();
                 return;
             }
 
-            this.UpdateHorario.UpdateData();
-            this.UpdateHorario.Show();
-            this.UpdateHorario.Present();
-            this.UpdateHorario.SelectedID = this.SelectedID;
+            this.updateDialog.UpdateData();
+            this.updateDialog.Show();
+            this.updateDialog.Present();
+            this.updateDialog.SelectedID = this.SelectedID;
         }
 
         protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)
         {
-            TreePath path = model.GetPath(iter);
-            //Console.WriteLine($"'{this.TxtSearch.Text}' at '{path.ToString()}'");
             if (string.IsNullOrWhiteSpace(this.SearchHorTxt.Text))
             {
-                //Console.WriteLine("Empty search");
                 return true;
             }
             for (int i = 0; i < model.NColumns; i++)
             {
                 string value = (string)model.GetValue(iter, i);
                 if (string.IsNullOrEmpty(value)) return false;
-                //Console.WriteLine($"\t{i}: '{value}'");
                 if (value.ToLower().Contains(this.SearchHorTxt.Text.ToLower()))
                 {
                     return true;
@@ -216,7 +189,6 @@ namespace SistemaEyS.AdminForms.Tables
                     return false;
                 }
             }
-
             return true;
         }
 

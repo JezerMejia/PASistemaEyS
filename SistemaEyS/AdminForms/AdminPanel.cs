@@ -66,7 +66,7 @@ namespace SistemaEyS.AdminForms
 
         protected void TablasHorariosActionOnActivated(object sender, EventArgs e)
         {
-            Tables.HorarioView horariosPanel = new Tables.HorarioView();
+            Tables.HorarioView horariosPanel = new Tables.HorarioView(this);
             this.AddTab(this.ntTabview, horariosPanel, "Horarios");
         }
 
