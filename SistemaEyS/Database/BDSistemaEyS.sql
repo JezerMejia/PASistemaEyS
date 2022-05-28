@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Asistencia` (
   PRIMARY KEY (`idAsistencia`),
   INDEX `RefEmpleado5` (`idEmpleado` ASC) VISIBLE,
   UNIQUE INDEX `idAsistencia_UNIQUE` (`idAsistencia` ASC) VISIBLE,
-  UNIQUE INDEX `fechaAsistencia_UNIQUE` (`fechaAsistencia` ASC) VISIBLE,
+  UNIQUE INDEX `fechaAsistencia_idEmpleado_UNIQUE` (`fechaAsistencia` ASC, `idEmpleado` ASC) VISIBLE,
   CONSTRAINT `RefEmpleado5`
     FOREIGN KEY (`idEmpleado`)
     REFERENCES `BDSistemaEyS`.`Empleado` (`idEmpleado`))
@@ -412,8 +412,12 @@ USE BDSistemaEyS;
 INSERT INTO Cargo (
 idCargo, nombreCargo, descripcionCargo
 )
-VALUES (
+VALUES
+(
 1, "Diseñador Web", "Diseña webs increíbles"
+),
+(
+2, "Programador", "Programa"
 );
 
 INSERT INTO Departamento (
@@ -452,12 +456,32 @@ primerApellido, segundoApellido, fechaIngreso,
 pinEmpleado, cedulaEmpleado,
 idCargo, idDepartamento, idHorario
 )
-VALUES (
+VALUES
+(
 29812, "Juan", "Ezequiel",
 "Pérez", "Jiménez", "2022-04-29",
 "1212", "0010405021900A",
 1, 1, 1
+),
+(
+31725, "Jezer", "Josué",
+"Mejía", "Otero", "2022-04-29",
+"9898", "2010511031000Y",
+2, 1, 1
+),
+(
+32229, "Leo", "Neftalís",
+"Corea", "Navarrete", "2022-04-29",
+"5454", "00000000000000",
+2, 1, 1
+),
+(
+31642, "Roire", "Martín",
+"Villavicencio", "Obregón", "2022-04-29",
+"7272", "00000000000000",
+1, 1, 1
 );
+
 INSERT INTO Asistencia (
 fechaAsistencia, HoraEntrada, horaSalida, idEmpleado
 )
