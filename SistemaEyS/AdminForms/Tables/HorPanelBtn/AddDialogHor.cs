@@ -99,6 +99,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 
         public void ClearInput()
         {
+            this.TxtName.Text = "";
             // Lunes
             this.lunesIni.Active = -1;
             this.lunesIni.Entry.Text = "";
