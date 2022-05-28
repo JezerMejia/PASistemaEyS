@@ -16,15 +16,15 @@ namespace SistemaEyS.DatosEyS.Datos
         {
             this.conn = ConnectionEyS.OpenConnection();
             this.DBTable = "BDSistemaEyS.SolVacaciones";
+            this.gTypes = new Type[6] {
+                typeof(string), typeof(string), typeof(string),
+                typeof(string), typeof(string), typeof(string)
+            };
             this.ModelView = new ListStore(
                 typeof(string), typeof(string), typeof(string),
                 typeof(string), typeof(string), typeof(string)
             );
-            this.Model = new ListStore(
-                typeof(string), typeof(string), typeof(string),
-                typeof(string), typeof(string), typeof(string),
-                typeof(string), typeof(string)
-            );
+            this.Model = new ListStore(this.gTypes);
         }
 
         public void UpdateModelEmp()
@@ -81,7 +81,7 @@ namespace SistemaEyS.DatosEyS.Datos
         }
 
         public void InsertInto(string fechaSol, string descripcionSol, string idEmpleado, string FechaHoraInicio,
-            string FechaHoraFin 
+            string FechaHoraFin
             )
         {
             this.InsertInto(

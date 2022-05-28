@@ -2,7 +2,7 @@
 using SistemaEyS.DatosEyS.Datos;
 using SistemaEyS.DatosEyS.Entidades;
 using Gtk;
-namespace SistemaEyS.Database.DatosEyS.Negocio
+namespace SistemaEyS.DatosEyS.Negocio
 {
 
 
@@ -14,34 +14,33 @@ namespace SistemaEyS.Database.DatosEyS.Negocio
         {
         }
 
-        public void ValidateID(Ent_SolicitudVacaciones solvac)
+        public void ValidateDateTime(Ent_SolicitudVacaciones solvac)
         {
-            if (this.DtSolVac.DoesExist(
-                "AND",
-                new DataTableParameter("idSolVacaciones", $"{solvac.idSolVacaciones}")
-            ))
+            if (solvac.fechaHoraInicio <= DateTime.Now)
             {
-                throw new Exception("EL id de solicitud ya existe");
+                throw new ArgumentException(
+                    "La fecha de inicio es anterior a la fecha actual"
+                    );
+            }
+            if (solvac.fechaHoraFin <= DateTime.Now)
+            {
+                throw new ArgumentException(
+                    "La fecha de fin es anterior a la fecha actual"
+                    );
+            }
+            if (solvac.fechaHoraFin <= solvac.fechaHoraInicio)
+            {
+                throw new ArgumentException(
+                    "La fecha de fin no puede ser anterior o igual a la fecha de inicio"
+                    );
             }
         }
 
-        public void ValidateIDEmpleado(Ent_SolicitudVacaciones solvac)
-        {
-            if (this.DtSolVac.DoesExist(
-                "AND",
-                new DataTableParameter("idEmpleado", $"{solvac.idEmpleado}")
-            ))
-            {
-                throw new Exception("El id ya existe");
-            }
-        }
-
-        public void AddSolicitudVacaciones(Ent_SolicitudVacaciones solvac)
+        public void AddSolicitudVacaciones(Ent_SolicitudVacaciones solVac)
         {
             try
             {
-                this.ValidateID(solvac);
-                this.ValidateIDEmpleado(solvac);
+                this.ValidateDateTime(solVac);
             }
             catch (Exception e)
             {
@@ -49,13 +48,13 @@ namespace SistemaEyS.Database.DatosEyS.Negocio
                 throw e;
             }
             this.DtSolVac.InsertInto(
-                solvac.fechaSol.ToString(), solvac.descripcionSol,
-                solvac.idEmpleado.ToString(), solvac.fechaHoraInicio.ToString(),
-                solvac.fechaHoraFin.ToString()
+                solVac.fechaSol.ToString(), solVac.descripcionSol,
+                solVac.idEmpleado.ToString(), solVac.fechaHoraInicio.ToString(),
+                solVac.fechaHoraFin.ToString()
                 );
         }
 
-        public void EditEmpleado(Ent_SolicitudVacaciones solVac)
+        public void EditSolicitudVacaciones(Ent_SolicitudVacaciones solVac)
         {
             try
             {
@@ -65,8 +64,7 @@ namespace SistemaEyS.Database.DatosEyS.Negocio
                     throw new ArgumentException(
                         "No puedes modificar el ID de una solicitud"
                     );
-                if (prevSolVac.idEmpleado != solVac.idEmpleado)
-                    this.ValidateIDEmpleado(solVac);
+                this.ValidateDateTime(solVac);
             }
             catch (Exception e)
             {
@@ -83,7 +81,7 @@ namespace SistemaEyS.Database.DatosEyS.Negocio
             );
         }
 
-        public void RemoveUser(Ent_SolicitudVacaciones solVac)
+        public void RemoveSolicitudVacaciones(Ent_SolicitudVacaciones solVac)
         {
             this.DtSolVac.DeleteFrom(solVac.idSolVacaciones.ToString());
         }
@@ -91,14 +89,11 @@ namespace SistemaEyS.Database.DatosEyS.Negocio
 
         public Ent_SolicitudVacaciones SearchVacaciones(int idSolVacaciones)
         {
-
             ListStore store = this.DtSolVac.Search(
                 new DataTableParameter("idSolVacaciones", $"{idSolVacaciones}")
             );
             if (store == null)
-                throw new NullReferenceException(
-                    "La relación la solicitud no existe"
-                );
+                throw new NullReferenceException("La solicitud no existe");
             TreeIter iter;
 
             if (!store.GetIterFirst(out iter))
@@ -108,7 +103,7 @@ namespace SistemaEyS.Database.DatosEyS.Negocio
             {
                 idSolVacaciones = Int32.Parse(store.GetValue(iter, 0).ToString()),
                 fechaSol = DateTime.Parse(store.GetValue(iter, 1)?.ToString()),
-                descripcionSol = store.GetValue(iter, 2).ToString(),
+                descripcionSol = store.GetValue(iter, 2)?.ToString(),
                 fechaHoraInicio = DateTime.Parse(store.GetValue(iter, 3)?.ToString()),
                 fechaHoraFin = DateTime.Parse(store.GetValue(iter, 4)?.ToString()),
                 idEmpleado = Int32.Parse(store.GetValue(iter, 5)?.ToString()),

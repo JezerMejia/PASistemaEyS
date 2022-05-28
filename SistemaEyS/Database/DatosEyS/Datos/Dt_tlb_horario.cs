@@ -9,30 +9,22 @@ namespace SistemaEyS.DatosEyS.Datos
     public class Dt_tlb_horario : DataTableTemplate
     {
 
-        public ListStore ModelView;
-
         public Dt_tlb_horario()
         {
             this.conn = ConnectionEyS.OpenConnection();
             this.DBTable = "BDSistemaEyS.Horario";
-            this.ModelView = new ListStore(
+            this.gTypes = new Type[16] {
                 typeof(string), typeof(string), typeof(string),
                 typeof(string), typeof(string), typeof(string),
                 typeof(string), typeof(string), typeof(string),
                 typeof(string), typeof(string), typeof(string),
-                typeof(string), typeof(string)
-            );
-            this.Model = new ListStore(
                 typeof(string), typeof(string), typeof(string),
-                typeof(string), typeof(string), typeof(string),
-                typeof(string), typeof(string), typeof(string),
-                typeof(string), typeof(string), typeof(string),
-                typeof(string), typeof(string), typeof(string), 
                 typeof(string)
-            );
+            };
+            this.Model = new ListStore(this.gTypes);
         }
 
-        public void UpdateModelEmp()
+        public void UpdateModelHor()
         {
             this.Model.Clear();
             IDataReader idr = null;
@@ -77,17 +69,12 @@ namespace SistemaEyS.DatosEyS.Datos
 
         public override void UpdateModel()
         {
-            this.UpdateModelEmp();
-            //this.UpdateModelView();
+            this.UpdateModelHor();
         }
 
-        public ListStore GetDataView()
-        {
-            this.UpdateModel();
-            return this.ModelView;
-        }
-
-        public void InsertInto(string lunesInicio, string lunesSalida,
+        public void InsertInto(
+            string nombreHorario,
+	        string lunesInicio, string lunesSalida,
             string martesInicio, string martesSalida,
             string miercolesInicio, string miercolesSalida,
             string juevesInicio, string juevesSalida,
@@ -97,6 +84,7 @@ namespace SistemaEyS.DatosEyS.Datos
             )
         {
             this.InsertInto(
+                new DataTableParameter("nombreHorario", $"'{nombreHorario}'"),
                 new DataTableParameter("lunesInicio", $"'{lunesInicio}'"),
                 new DataTableParameter("lunesSalida", $"'{lunesSalida}'"),
                 new DataTableParameter("martesInicio", $"'{martesInicio}'"),
@@ -115,18 +103,20 @@ namespace SistemaEyS.DatosEyS.Datos
         }
 
 
-        public void UpdateSet(string idHorario,string lunesInicio, string lunesSalida,
-                            string martesInicio, string martesSalida,
-                            string miercolesInicio, string miercolesSalida,
-                            string juevesInicio, string juevesSalida,
-                            string viernesInicio, string viernesSalida,
-                            string sabadoInicio, string sabadoSalida,
-                            string domingoInicio, string domingoSalida
-                            )
-
+        public void UpdateSet(
+	        string idHorario, string nombreHorario,
+	        string lunesInicio, string lunesSalida,
+            string martesInicio, string martesSalida,
+            string miercolesInicio, string miercolesSalida,
+            string juevesInicio, string juevesSalida,
+            string viernesInicio, string viernesSalida,
+            string sabadoInicio, string sabadoSalida,
+            string domingoInicio, string domingoSalida
+            )
         {
             this.UpdateSet(
                 new DataTableParameter("idHorario", $"'{idHorario}'"),
+                new DataTableParameter("nombreHorario", $"'{nombreHorario}'"),
                 new DataTableParameter(
                     !string.IsNullOrWhiteSpace(lunesInicio) ? "lunesInicio" : "",
                     $"'{lunesInicio}'"

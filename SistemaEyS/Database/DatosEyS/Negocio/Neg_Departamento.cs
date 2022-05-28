@@ -3,7 +3,7 @@ using SistemaEyS.DatosEyS.Datos;
 using SistemaEyS.DatosEyS.Entidades;
 using Gtk;
 
-namespace SistemaEyS.Database.DatosEyS.Negocio
+namespace SistemaEyS.DatosEyS.Negocio
 {
     public class Neg_Departamento
     {
