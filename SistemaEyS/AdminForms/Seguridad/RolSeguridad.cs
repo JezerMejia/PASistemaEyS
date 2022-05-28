@@ -53,6 +53,7 @@ namespace SistemaEyS.AdminForms.Seguridad
         {
             this.SelectedID = -1;
             this.TxtName.Text = "";
+            this.TxtvwDesc.Buffer.Text = "";
         }
 
         protected void BtnNewOnClicked(object sender, EventArgs e)
@@ -71,9 +72,11 @@ namespace SistemaEyS.AdminForms.Seguridad
                 Ent_rol rol = new Ent_rol()
                 {
                     rol = this.TxtName.Text,
+                    descripcion = this.TxtvwDesc.Buffer.Text,
                     estado = EntidadEstado.Añadido
                 };
                 this.NegRol.AddRol(rol);
+
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Info, ButtonsType.Ok,
                     "Rol agregado");
@@ -110,6 +113,7 @@ namespace SistemaEyS.AdminForms.Seguridad
                 {
                     id_rol = this.SelectedID,
                     rol = this.TxtName.Text,
+                    descripcion = this.TxtvwDesc.Buffer.Text,
                     estado = EntidadEstado.Modificado
                 };
                 this.NegRol.EditRol(rol);
@@ -196,6 +200,7 @@ namespace SistemaEyS.AdminForms.Seguridad
                 Ent_rol rol = this.NegRol.SearchRol(id);
 
                 this.TxtName.Text = rol.rol;
+                this.TxtvwDesc.Buffer.Text = rol.descripcion;
             }
             catch (Exception ex)
             {
