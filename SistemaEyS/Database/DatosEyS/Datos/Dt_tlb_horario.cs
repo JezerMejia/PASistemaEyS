@@ -74,7 +74,7 @@ namespace SistemaEyS.DatosEyS.Datos
 
         public void InsertInto(
             string nombreHorario,
-	        string lunesInicio, string lunesSalida,
+            string lunesInicio, string lunesSalida,
             string martesInicio, string martesSalida,
             string miercolesInicio, string miercolesSalida,
             string juevesInicio, string juevesSalida,
@@ -84,28 +84,72 @@ namespace SistemaEyS.DatosEyS.Datos
             )
         {
             this.InsertInto(
-                new DataTableParameter("nombreHorario", $"'{nombreHorario}'"),
-                new DataTableParameter("lunesInicio", $"'{lunesInicio}'"),
-                new DataTableParameter("lunesSalida", $"'{lunesSalida}'"),
-                new DataTableParameter("martesInicio", $"'{martesInicio}'"),
-                new DataTableParameter("martesSalida", $"'{martesSalida}'"),
-                new DataTableParameter("miercolesInicio", $"'{miercolesInicio}'"),
-                new DataTableParameter("miercolesSalida", $"'{miercolesSalida}'"),
-                new DataTableParameter("juevesInicio", $"'{juevesInicio}'"),
-                new DataTableParameter("juevesSalida", $"'{juevesSalida}'"),
-                new DataTableParameter("viernesInicio", $"'{viernesInicio}'"),
-                new DataTableParameter("viernesSalida", $"'{viernesSalida}'"),
-                new DataTableParameter("sabadoInicio", $"'{sabadoInicio}'"),
-                new DataTableParameter("sabadoSalida", $"'{sabadoSalida}'"),
-                new DataTableParameter("domingoInicio", $"'{domingoInicio}'"),
-                new DataTableParameter("domingoSalida", $"'{domingoSalida}'")
+                new DataTableParameter(
+                    "nombreHorario", $"'{nombreHorario}'"
+                    ),
+                new DataTableParameter(
+                    "lunesInicio",
+                    string.IsNullOrWhiteSpace(lunesInicio) ? "NULL" : $"'{lunesInicio}'"
+                    ),
+                new DataTableParameter(
+                    "lunesSalida",
+                    string.IsNullOrWhiteSpace(lunesSalida) ? "NULL" : $"'{lunesSalida}'"
+                    ),
+                new DataTableParameter(
+                    "martesInicio",
+                    string.IsNullOrWhiteSpace(martesInicio) ? "NULL" : $"'{martesInicio}'"
+                    ),
+                new DataTableParameter(
+                    "martesSalida",
+                    string.IsNullOrWhiteSpace(martesSalida) ? "NULL" : $"'{martesSalida}'"
+                    ),
+                new DataTableParameter(
+                    "miercolesInicio",
+                    string.IsNullOrWhiteSpace(miercolesInicio) ? "NULL" : $"'{miercolesInicio}'"
+                    ),
+                new DataTableParameter(
+                    "miercolesSalida",
+                    string.IsNullOrWhiteSpace(miercolesSalida) ? "NULL" : $"'{miercolesSalida}'"
+                    ),
+                new DataTableParameter(
+                    "juevesInicio",
+                    string.IsNullOrWhiteSpace(juevesInicio) ? "NULL" : $"'{juevesInicio}'"
+                    ),
+                new DataTableParameter(
+                    "juevesSalida",
+                    string.IsNullOrWhiteSpace(juevesSalida) ? "NULL" : $"'{juevesSalida}'"
+                    ),
+                new DataTableParameter(
+                    "viernesInicio",
+                    string.IsNullOrWhiteSpace(viernesInicio) ? "NULL" : $"'{viernesInicio}'"
+                    ),
+                new DataTableParameter(
+                    "viernesSalida",
+                    string.IsNullOrWhiteSpace(viernesSalida) ? "NULL" : $"'{viernesSalida}'"
+                    ),
+                new DataTableParameter(
+                    "sabadoInicio",
+                    string.IsNullOrWhiteSpace(sabadoInicio) ? "NULL" : $"'{sabadoInicio}'"
+                    ),
+                new DataTableParameter(
+                    "sabadoSalida",
+                    string.IsNullOrWhiteSpace(sabadoSalida) ? "NULL" : $"'{sabadoSalida}'"
+                    ),
+                new DataTableParameter(
+                    "domingoInicio",
+                    string.IsNullOrWhiteSpace(domingoInicio) ? "NULL" : $"'{domingoInicio}'"
+                    ),
+                new DataTableParameter(
+                    "domingoSalida",
+                    string.IsNullOrWhiteSpace(domingoSalida) ? "NULL" : $"'{domingoSalida}'"
+                    )
                 );
         }
 
 
         public void UpdateSet(
-	        string idHorario, string nombreHorario,
-	        string lunesInicio, string lunesSalida,
+            string idHorario, string nombreHorario,
+            string lunesInicio, string lunesSalida,
             string martesInicio, string martesSalida,
             string miercolesInicio, string miercolesSalida,
             string juevesInicio, string juevesSalida,

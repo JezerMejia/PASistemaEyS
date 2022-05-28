@@ -5,6 +5,7 @@ namespace SistemaEyS.DatosEyS.Entidades
     {
 
         private int _idHorario;
+        private string _nombreHorario;
         private DateTime? _lunesInicio;
         private DateTime? _lunesSalida;
         private DateTime? _martesInicio;
@@ -24,6 +25,13 @@ namespace SistemaEyS.DatosEyS.Entidades
         {
             get => this._idHorario;
             set => this._idHorario = value;
+        }
+        public string nombreHorario
+        {
+            get => this._nombreHorario;
+            set => this._nombreHorario = value?.Substring(
+                0, value.Length > 50 ? 50 : value.Length
+		        );
         }
 
         //Lunes
