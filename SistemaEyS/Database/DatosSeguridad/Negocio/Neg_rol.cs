@@ -36,7 +36,8 @@ namespace SistemaEyS.DatosSeguridad.Negocio
                 throw e;
             }
             this.DtRol.InsertInto(
-                rol.rol, ((int)rol.estado).ToString()
+                rol.rol, rol.descripcion,
+		        ((int)rol.estado).ToString()
             );
         }
         public void EditRol(Ent_rol rol)
@@ -55,6 +56,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
             }
             this.DtRol.UpdateSet(
                 rol.id_rol.ToString(), rol.rol,
+                rol.descripcion,
                 ((int)rol.estado).ToString()
             );
         }
@@ -76,7 +78,8 @@ namespace SistemaEyS.DatosSeguridad.Negocio
             {
                 id_rol = Int32.Parse(store.GetValue(iter, 0).ToString()),
                 rol = store.GetValue(iter, 1).ToString(),
-                estado = (EntidadEstado)Int32.Parse(store.GetValue(iter, 2).ToString()),
+                descripcion = store.GetValue(iter, 2).ToString(),
+                estado = (EntidadEstado)Int32.Parse(store.GetValue(iter, 3).ToString()),
             };
 
             return user;

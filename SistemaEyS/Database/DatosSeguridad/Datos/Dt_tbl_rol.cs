@@ -12,7 +12,8 @@ namespace SistemaEyS.DatosSeguridad.Datos
         {
             this.conn = ConnectionSeg.OpenConnection();
             this.DBTable = "BDSistemaEyS.tbl_rol";
-            this.gTypes = new Type[3] {
+            this.gTypes = new Type[4] {
+                typeof(string),
                 typeof(string),
                 typeof(string),
                 typeof(string)
@@ -35,7 +36,8 @@ namespace SistemaEyS.DatosSeguridad.Datos
                     this.Model.AppendValues(
                         idr[0].ToString(), // ID Rol
                         idr[1].ToString(), // Nombre
-                        idr[2].ToString() // Estado
+                        idr[2].ToString(), // Descripción
+                        idr[3].ToString() // Estado
                         );
                 }
             }
@@ -61,11 +63,7 @@ namespace SistemaEyS.DatosSeguridad.Datos
             this.UpdateModel();
             TreeIter iter;
 
-            ListStore model = new ListStore(
-                typeof(string),
-                typeof(string),
-                typeof(string)
-                );
+            ListStore model = new ListStore(this.gTypes);
 
             if (this.Model.GetIterFirst(out iter))
             {
@@ -83,16 +81,17 @@ namespace SistemaEyS.DatosSeguridad.Datos
             return model;
         }
 
-        public void InsertInto(string rol, string estado)
+        public void InsertInto(string rol, string descripcion, string estado)
         {
             this.InsertInto(
                     //this.conn,
                     new DataTableParameter("rol", $"'{rol}'"),
+                    new DataTableParameter("descripcion", $"'{descripcion}'"),
                     new DataTableParameter("estado", $"'{estado}'")
                 );
         }
 
-        public void UpdateSet(string id_rol, string rol, string estado)
+        public void UpdateSet(string id_rol, string rol, string descripcion, string estado)
         {
             this.UpdateSet(
                     //this.conn,
@@ -100,6 +99,10 @@ namespace SistemaEyS.DatosSeguridad.Datos
                     new DataTableParameter(
                         !string.IsNullOrWhiteSpace(rol) ? "rol" : "",
                         $"'{rol}'"
+                        ),
+                    new DataTableParameter(
+                        !string.IsNullOrWhiteSpace(descripcion) ? "descripcion" : "",
+                        $"'{descripcion}'"
                         ),
                     new DataTableParameter(
                         !string.IsNullOrWhiteSpace(estado) ? "estado" : "",

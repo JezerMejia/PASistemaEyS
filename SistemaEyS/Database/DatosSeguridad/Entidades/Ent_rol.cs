@@ -9,6 +9,7 @@ namespace SistemaEyS.DatosSeguridad.Entidades
 
         private int _id_rol;
         private string _rol;
+        private string _descripcion;
         private int _estado;
 
         public int id_rol
@@ -21,6 +22,13 @@ namespace SistemaEyS.DatosSeguridad.Entidades
             get => this._rol;
             set => this._rol = value.Substring(
                 0, value.Length > 50 ? 50 : value.Length
+                );
+        }
+        public string descripcion
+        {
+            get => this._descripcion;
+            set => this._descripcion = value?.Substring(
+                0, value.Length > 100 ? 100 : value.Length
 		        );
         }
 

@@ -12,7 +12,8 @@ namespace SistemaEyS.DatosSeguridad.Datos
         {
             this.conn = ConnectionSeg.OpenConnection();
             this.DBTable = "BDSistemaEyS.tbl_opcion";
-            this.gTypes = new Type[3] {
+            this.gTypes = new Type[4] {
+                typeof(string),
                 typeof(string),
                 typeof(string),
                 typeof(string)
@@ -36,7 +37,8 @@ namespace SistemaEyS.DatosSeguridad.Datos
                     this.Model.AppendValues(
                         idr[0].ToString(), // ID opcion
                         idr[1].ToString(), // Opcion
-                        idr[2].ToString() // Estado
+                        idr[2].ToString(), // Descripción
+                        idr[3].ToString() // Estado
                         );
                 }
             }
@@ -79,14 +81,15 @@ namespace SistemaEyS.DatosSeguridad.Datos
             return model;
         }
 
-        public void InsertInto(string opcion, string estado)
+        public void InsertInto(string opcion, string descripcion, string estado)
         {
             this.InsertInto(
                     new DataTableParameter("opcion", $"'{opcion}'"),
+                    new DataTableParameter("descripcion", $"'{descripcion}'"),
                     new DataTableParameter("estado", $"'{estado}'")
                 );
         }
-        public void UpdateSet(string id_opcion, string opcion, string estado)
+        public void UpdateSet(string id_opcion, string opcion, string descripcion, string estado)
         {
             Console.WriteLine(id_opcion);
             this.UpdateSet(
@@ -95,6 +98,10 @@ namespace SistemaEyS.DatosSeguridad.Datos
                     new DataTableParameter(
                         !string.IsNullOrWhiteSpace(opcion) ? "opcion" : "",
                         $"'{opcion}'"
+                        ),
+                    new DataTableParameter(
+                        !string.IsNullOrWhiteSpace(descripcion) ? "descripcion" : "",
+                        $"'{descripcion}'"
                         ),
                     new DataTableParameter(
                         !string.IsNullOrWhiteSpace(estado) ? "estado" : "",

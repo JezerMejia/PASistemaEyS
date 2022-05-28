@@ -20,7 +20,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
                 new DataTableParameter("opcion", $"'{opcion.opcion}'")
             ))
             {
-                throw new Exception("El rol ya existe");
+                throw new Exception("La opción ya existe");
             }
 	    }
 
@@ -36,7 +36,8 @@ namespace SistemaEyS.DatosSeguridad.Negocio
                 throw e;
             }
             this.DtOpcion.InsertInto(
-                opcion.opcion, ((int)opcion.estado).ToString()
+                opcion.opcion, opcion.descripcion,
+		        ((int)opcion.estado).ToString()
             );
         }
         public void EditOpcion(Ent_opcion opcion)
@@ -55,6 +56,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
             }
             this.DtOpcion.UpdateSet(
                 opcion.id_opcion.ToString(), opcion.opcion,
+                opcion.descripcion,
                 ((int)opcion.estado).ToString()
             );
         }
@@ -67,7 +69,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
             ListStore store = this.DtOpcion.Search(
                 new DataTableParameter("id_opcion", $"{id_opcion}")
             );
-            if (store == null) throw new NullReferenceException("El rol no existe");
+            if (store == null) throw new NullReferenceException("La opción no existe");
             TreeIter iter;
 
             if (!store.GetIterFirst(out iter)) throw new NullReferenceException("No hay datos de la opción");
@@ -76,7 +78,8 @@ namespace SistemaEyS.DatosSeguridad.Negocio
             {
                 id_opcion = Int32.Parse(store.GetValue(iter, 0).ToString()),
                 opcion = store.GetValue(iter, 1).ToString(),
-                estado = (EntidadEstado)Int32.Parse(store.GetValue(iter, 7).ToString()),
+                descripcion = store.GetValue(iter, 2).ToString(),
+                estado = (EntidadEstado)Int32.Parse(store.GetValue(iter, 3).ToString()),
             };
 
             return opcion;
