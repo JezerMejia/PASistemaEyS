@@ -7,7 +7,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 {
     public partial class AddDialogSolVac : Gtk.Window
     {
-        protected EmpleadosView parent;
+        protected SolVacacionesView parent;
 
         protected Dt_tlb_SolVacaciones DtSolVac = new Dt_tlb_SolVacaciones();
         protected Dt_tlb_empleado dtEmp = new Dt_tlb_empleado();
@@ -18,11 +18,12 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
         public int SelectedID = -1;
         public int SelectedUser = -1;
 
-        public AddDialogSolVac() :
+        public AddDialogSolVac(SolVacacionesView parent) :
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
             this.Hide();
+            this.parent = parent;
 
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
             {
@@ -189,6 +190,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
                 );
                 this.mensaje("Guardado");
                 this.ClearInput();
+                this.parent.UpdateData();
             }
             catch (Exception ex)
             {
@@ -198,7 +200,6 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
                 ms.Run();
                 ms.Destroy();
             }
-            this.UpdateData();
         }
     }
 }

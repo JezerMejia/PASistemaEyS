@@ -14,8 +14,8 @@ namespace SistemaEyS.AdminForms.Tables
         protected Dt_tlb_SolVacaciones DtSolv = new Dt_tlb_SolVacaciones();
         protected Neg_SolicitudVacaciones NegSolVac = new Neg_SolicitudVacaciones();
 
-        protected AddDialogSolVac addDialog = new AddDialogSolVac();
-        protected UpdateDialogSolVac updateDialog = new UpdateDialogSolVac();
+        protected AddDialogSolVac addDialog;
+        protected UpdateDialogSolVac updateDialog;
 
         protected TreeModelFilter TreeData;
         protected TreeModelFilterVisibleFunc ModelFilterFunc;
@@ -27,6 +27,9 @@ namespace SistemaEyS.AdminForms.Tables
         {
             this.Build();
             this.parent = parent;
+
+            this.addDialog = new AddDialogSolVac(this);
+            this.updateDialog = new UpdateDialogSolVac(this);
 
             this.ModelFilterFunc = new TreeModelFilterVisibleFunc(this.TreeModelFilterVisible);
 
@@ -51,6 +54,9 @@ namespace SistemaEyS.AdminForms.Tables
             this.TreeData = new TreeModelFilter(this.DtSolv.GetData(), null);
             this.TreeData.VisibleFunc = this.ModelFilterFunc;
             this.viewTable.Model = this.TreeData;
+
+            this.addDialog.UpdateData();
+            this.updateDialog.UpdateData();
         }
 
         protected void OnBtnAddSVClicked(object sender, EventArgs e)
@@ -92,16 +98,16 @@ namespace SistemaEyS.AdminForms.Tables
                 {
                     throw new ArgumentException(
                         "Seleccione un horario en la tabla"
-			            );
+                        );
                 }
 
                 Ent_SolicitudVacaciones solVac =
-		            this.NegSolVac.SearchVacaciones(this.SelectedID);
+                    this.NegSolVac.SearchVacaciones(this.SelectedID);
 
                 MessageDialog deletePrompt = new MessageDialog(this.parent,
-		            DialogFlags.Modal,
+                    DialogFlags.Modal,
                     MessageType.Question, ButtonsType.YesNo,
-		            $"¿Desea eliminar la solicitud \"{solVac.descripcionSol}\" ({this.SelectedID})?");
+                    $"¿Desea eliminar la solicitud \"{solVac.descripcionSol}\" ({this.SelectedID})?");
 
                 int result = deletePrompt.Run();
                 deletePrompt.Destroy();
@@ -114,7 +120,7 @@ namespace SistemaEyS.AdminForms.Tables
             catch (Exception ex)
             {
                 MessageDialog ms = new MessageDialog(this.parent,
-		            DialogFlags.Modal, MessageType.Error,
+                    DialogFlags.Modal, MessageType.Error,
                     ButtonsType.Ok, ex.Message);
                 ms.Run();
                 ms.Destroy();
@@ -128,7 +134,7 @@ namespace SistemaEyS.AdminForms.Tables
             if (this.SelectedID < 0)
             {
                 MessageDialog ms = new MessageDialog(this.parent,
-		            DialogFlags.Modal, MessageType.Warning,
+                    DialogFlags.Modal, MessageType.Warning,
                     ButtonsType.Ok, "Seleccione una solicitud en la tabla");
                 ms.Run();
                 ms.Destroy();

@@ -18,8 +18,8 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
         protected TreeModelFilter TreeData;
         protected TreeModelFilterVisibleFunc ModelFilterFunc;
 
-        protected EmpleadosView parent;
         protected calendar calendar = new calendar();
+        protected SolVacacionesView parent;
 
         protected int _SelectedID = -1;
 
@@ -35,11 +35,13 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
             }
         }
 
-        public UpdateDialogSolVac() :
+        public UpdateDialogSolVac(SolVacacionesView parent) :
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
             this.Hide();
+            this.parent = parent;
+
             this.UpdateData();
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
             {
@@ -159,6 +161,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
                 ms.Run();
                 ms.Destroy();
                 this.ClearInput();
+                this.parent.UpdateData();
             }
             catch (Exception ex)
             {
@@ -168,7 +171,6 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
                 ms.Run();
                 ms.Destroy();
             }
-            this.UpdateData();
         }
 
         protected void OnExitBtnClicked(object sender, EventArgs e)
