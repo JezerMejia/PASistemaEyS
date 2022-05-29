@@ -168,15 +168,35 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
             try
             {
                 Ent_Horario hor = this.entHor.SearchHorario(id);
-                
-                this.lunesIni.Active = this.GetIndexFromValue(
-                    this.lunesIni, hor.lunesInicio.ToString());
-                
-                this.lunesSal.Active = this.GetIndexFromValue(
-                    this.lunesSal, hor.lunesSalida.ToString());
 
-                this.martesIni.Active = this.GetIndexFromValue(
-                    this.martesIni, hor.martesInicio.ToString());
+                this.lunesIni.Entry.Text = hor.lunesInicio?.ToString("HH:mm");
+
+                this.lunesSal.Entry.Text = hor.lunesSalida?.ToString("HH:mm");
+
+                this.martesIni.Entry.Text = hor.martesInicio?.ToString("HH:mm");
+
+                this.martesSal.Entry.Text = hor.martesSalida?.ToString("HH:mm");
+
+                this.miercolesIni.Entry.Text = hor.miercolesInicio?.ToString("HH:mm");
+
+                this.miercolesSal.Entry.Text = hor.miercolesSalida?.ToString("HH:mm");
+
+                this.juevesIni.Entry.Text = hor.juevesInicio?.ToString("HH:mm");
+
+                this.juevesSal.Entry.Text = hor.juevesSalida?.ToString("HH:mm");
+
+                this.viernesIni.Entry.Text = hor.viernesInicio?.ToString("HH:mm");
+
+                this.viernesSal.Entry.Text = hor.viernesSalida?.ToString("HH:mm");
+
+                this.sabadoIni.Entry.Text = hor.sabadoInicio?.ToString("HH:mm");
+
+                this.sabadoSal.Entry.Text = hor.sabadoSalida?.ToString("HH:mm");
+
+                this.domingoIni.Entry.Text = hor.domingoInicio?.ToString("HH:mm");
+
+                this.domingoSal.Entry.Text = hor.domingoSalida?.ToString("HH:mm");
+
 
                 /*
                 this.martesSal.Active = this.GetIndexFromValue(
