@@ -1,23 +1,20 @@
 ﻿using System;
-using System.Data;
-using System.Text;
 using Gtk;
-using SistemaEyS.Database.Connection;
+using SistemaEyS.DatosEyS.Entidades;
+using SistemaEyS.DatosEyS.Negocio;
 
 namespace SistemaEyS.UserForms
 {
     public partial class UserLogin : Gtk.Window
     {
         protected Window parent;
-        ConnectionEyS conn = ConnectionEyS.OpenConnection();
+        protected Neg_Empleado NegEmp = new Neg_Empleado();
 
         public UserLogin(Window parent) :
                 base(Gtk.WindowType.Toplevel)
         {
             this.parent = parent;
             this.Build();
-            this.lbUser.WidthChars = 10;
-            this.lbPassword.WidthChars = 10;
         }
 
         public void Close()
@@ -26,70 +23,50 @@ namespace SistemaEyS.UserForms
             this.parent.Show();
         }
 
-        private bool LogIn(string user, string password)
-        {
-            if (string.IsNullOrWhiteSpace(user))
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, "Ingrese un ID de empleado");
-                ms.Run();
-                ms.Destroy();
-                return false;
-            }
-            StringBuilder sb = new StringBuilder();
-            IDataReader idr = null;
-            bool value = false;
-
-            sb.Clear();
-            sb.Append($"SELECT idEmpleado, pinEmpleado FROM BDSistemaEyS.Empleado WHERE idEmpleado = {user};");
-            try
-            {
-                idr = conn.Read(CommandType.Text, sb.ToString());
-
-                if (!idr.Read()) throw new Exception("Empleado no encontrado");
-                if (idr[1].ToString() == password)
-                {
-                    value = true;
-                } else
-                {
-                    throw new Exception("Contraseña incorrecta");
-                }
-            }
-            catch (Exception e)
-            {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, e.Message);
-                ms.Run();
-                ms.Destroy();
-            }
-            finally
-            {
-                if (idr != null && !idr.IsClosed)
-                {
-                    idr.Close();
-                }
-            }
-            return value;
-        }
-
         protected void OnDeleteEvent(object o, DeleteEventArgs args)
         {
             this.Close();
         }
 
-        protected void btnEnterOnClicked(object sender, EventArgs e)
+        protected void btnEnterOnClicked(object sender, EventArgs argss)
         {
-            string idEmpleado = this.entUser.Text;
-            string pwdEmpleado = this.entPassword.Text;
-
-            if (!LogIn(idEmpleado, pwdEmpleado))
+            Ent_Empleado empleado;
+            try
             {
+                if (string.IsNullOrWhiteSpace(this.entUser.Text))
+                    throw new ArgumentException("Escriba un nombre de usuario");
+
+                if (string.IsNullOrWhiteSpace(this.entPassword.Text))
+                    throw new ArgumentException("Escriba una contraseña");
+
+                string userID = this.entUser.Text;
+
+                empleado = this.NegEmp.SearchEmpleado(Int32.Parse(userID));
+
+                if (empleado.pinEmpleado != this.entPassword.Text)
+                    throw new Exception("Contraseña incorrecta");
+
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                    $"¡Bienvenido, {empleado.GetFullName()}!");
+                ms.Run();
+                ms.Destroy();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Error,
+                    ButtonsType.Ok, e.Message);
+                ms.Run();
+                ms.Destroy();
                 return;
             }
 
-            UserAssistanceForm assistanceForm = new UserAssistanceForm(this, idEmpleado);
+            UserAssistanceForm assistanceForm = new UserAssistanceForm(this, empleado.idEmpleado);
             assistanceForm.Show();
             this.Hide();
+
             this.entPassword.Text = "";
             this.entUser.Text = "";
         }

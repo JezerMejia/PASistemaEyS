@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Data;
-using System.Text;
 using Gtk;
 using SistemaEyS.DatosSeguridad.Entidades;
 using SistemaEyS.DatosSeguridad.Negocio;
@@ -10,7 +8,6 @@ namespace SistemaEyS.AdminForms
     public partial class AdminLogin : Gtk.Window
     {
         protected Window parent;
-        protected string idAdministrador;
         protected Neg_user NegUser = new Neg_user();
 
         public AdminLogin(Window parent) :

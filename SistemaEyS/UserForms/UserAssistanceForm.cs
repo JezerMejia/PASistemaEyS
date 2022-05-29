@@ -1,6 +1,8 @@
 ﻿using System;
 using Gtk;
 using SistemaEyS.DatosEyS.Datos;
+using SistemaEyS.DatosEyS.Negocio;
+using SistemaEyS.DatosEyS.Entidades;
 
 namespace SistemaEyS.UserForms
 {
@@ -8,13 +10,19 @@ namespace SistemaEyS.UserForms
     {
         protected Window parent;
         protected uint timeout;
-        protected string idEmpleado;
+        protected int idEmpleado;
 
         protected Dt_tlb_asistencia DtAssis = new Dt_tlb_asistencia();
         protected Dt_tlb_empleado DtEmp = new Dt_tlb_empleado();
+
+        protected Neg_Empleado NegEmp = new Neg_Empleado();
+        protected Neg_Asistencia NegAsis = new Neg_Asistencia();
+
         protected ListStore EmpModel;
 
-        public UserAssistanceForm(Window parent, string idEmpleado) :
+        protected Ent_Empleado Empleado;
+
+        public UserAssistanceForm(Window parent, int idEmpleado) :
                 base(Gtk.WindowType.Toplevel)
         {
             this.parent = parent;
@@ -26,25 +34,9 @@ namespace SistemaEyS.UserForms
 
         public void UpdateData()
         {
-            this.EmpModel = this.DtEmp.GetDataView();
-            this.lbWelcome.Text = $"¡Bienvenido, {this.GetEmpleadoName()}!";
-        }
+            this.Empleado = this.NegEmp.SearchEmpleado(this.idEmpleado);
 
-        protected string GetEmpleadoName()
-        {
-            TreeIter iter;
-            if (this.EmpModel.GetIterFirst(out iter))
-            {
-                do
-                {
-                    if (this.idEmpleado == this.EmpModel.GetValue(iter, 0).ToString())
-                    {
-                        return this.EmpModel.GetValue(iter, 1).ToString();
-                    }
-                }
-                while (this.EmpModel.IterNext(ref iter));
-            }
-            return "";
+            this.lbWelcome.Text = $"¡Bienvenido, {this.Empleado.GetFullName()}!";
         }
 
         protected void SetDateTimeTimeout()
@@ -55,7 +47,7 @@ namespace SistemaEyS.UserForms
         protected bool UpdateDateTime()
         {
             DateTime dateTime = DateTime.Now;
-            string str = dateTime.ToString("yyyy-MM-dd h:mm:ss tt");
+            string str = dateTime.ToString("yyyy-MM-dd hh:mm:ss tt");
             this.lbDateTime.Text = str;
             this.clockwidget1.QueueDraw();
             return true;
@@ -67,11 +59,13 @@ namespace SistemaEyS.UserForms
 
             try
             {
-                this.DtAssis.InsertEnterAssistance(
-                    this.idEmpleado,
-                    now.ToString("yyyy-MM-dd"),
-                    now.ToString("HH:mm:ss")
-                );
+                Ent_Asistencia asis = new Ent_Asistencia()
+                {
+                    idEmpleado = this.Empleado.idEmpleado,
+                    fechaAsistencia = now.Date,
+                    horaEntrada = now
+                };
+                this.NegAsis.MarkAssistance(asis);
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Info, ButtonsType.Ok,
                     "Marcado de entrada exitoso");
@@ -80,6 +74,7 @@ namespace SistemaEyS.UserForms
             }
             catch (Exception e)
             {
+                Console.WriteLine(e);
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Error, ButtonsType.Ok,
                     "Error al marcar la entrada: " + e.Message);
@@ -93,11 +88,13 @@ namespace SistemaEyS.UserForms
 
             try
             {
-                this.DtAssis.InsertExitAssistance(
-                    this.idEmpleado,
-                    now.ToString("yyyy-MM-dd"),
-                    now.ToString("HH:mm:ss")
-                );
+                Ent_Asistencia asis = new Ent_Asistencia()
+                {
+                    idEmpleado = this.Empleado.idEmpleado,
+                    fechaAsistencia = now.Date,
+                    horaSalida = now
+                };
+                this.NegAsis.MarkAssistance(asis);
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Info, ButtonsType.Ok,
                     "Marcado de salida exitoso");
@@ -106,6 +103,7 @@ namespace SistemaEyS.UserForms
             }
             catch (Exception e)
             {
+                Console.WriteLine(e);
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Error, ButtonsType.Ok,
                     "Error al marcar la salida: " + e.Message);
