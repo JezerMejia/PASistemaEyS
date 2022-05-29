@@ -104,9 +104,9 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 
 		private global::Gtk.HBox hbox7;
 
-		private global::Gtk.Button button15;
+		private global::Gtk.Button BtnSave;
 
-		private global::Gtk.Button button13;
+		private global::Gtk.Button BtnCancel;
 
 		protected virtual void Build()
 		{
@@ -132,6 +132,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.vbox10.Spacing = 6;
 			// Container child vbox10.Gtk.Box+BoxChild
 			this.alignment1 = new global::Gtk.Alignment(0.5F, 0.5F, 0F, 1F);
+			this.alignment1.Name = "alignment1";
 			// Container child alignment1.Gtk.Container+ContainerChild
 			this.hbox2 = new global::Gtk.HBox();
 			this.hbox2.Name = "hbox2";
@@ -649,33 +650,39 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.hbox7.Name = "hbox7";
 			this.hbox7.Spacing = 10;
 			// Container child hbox7.Gtk.Box+BoxChild
-			this.button15 = new global::Gtk.Button();
-			this.button15.CanFocus = true;
-			this.button15.Name = "button15";
-			this.button15.UseUnderline = true;
-			this.button15.Label = global::Mono.Unix.Catalog.GetString("Guardar");
-			this.hbox7.Add(this.button15);
-			global::Gtk.Box.BoxChild w47 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.button15]));
-			w47.Position = 0;
-			w47.Expand = false;
-			w47.Fill = false;
-			// Container child hbox7.Gtk.Box+BoxChild
-			this.button13 = new global::Gtk.Button();
-			this.button13.CanFocus = true;
-			this.button13.Name = "button13";
-			this.button13.UseUnderline = true;
-			this.button13.Label = global::Mono.Unix.Catalog.GetString("Cancelar");
-			this.hbox7.Add(this.button13);
-			global::Gtk.Box.BoxChild w48 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.button13]));
-			w48.Position = 1;
+			this.BtnSave = new global::Gtk.Button();
+			this.BtnSave.CanFocus = true;
+			this.BtnSave.Name = "BtnSave";
+			this.BtnSave.UseUnderline = true;
+			this.BtnSave.Label = global::Mono.Unix.Catalog.GetString("Guardar");
+			global::Gtk.Image w47 = new global::Gtk.Image();
+			w47.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-apply", global::Gtk.IconSize.Menu);
+			this.BtnSave.Image = w47;
+			this.hbox7.Add(this.BtnSave);
+			global::Gtk.Box.BoxChild w48 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.BtnSave]));
+			w48.Position = 0;
 			w48.Expand = false;
 			w48.Fill = false;
-			this.alignment18.Add(this.hbox7);
-			this.vbox5.Add(this.alignment18);
-			global::Gtk.Box.BoxChild w50 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.alignment18]));
+			// Container child hbox7.Gtk.Box+BoxChild
+			this.BtnCancel = new global::Gtk.Button();
+			this.BtnCancel.CanFocus = true;
+			this.BtnCancel.Name = "BtnCancel";
+			this.BtnCancel.UseUnderline = true;
+			this.BtnCancel.Label = global::Mono.Unix.Catalog.GetString("Cancelar");
+			global::Gtk.Image w49 = new global::Gtk.Image();
+			w49.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-cancel", global::Gtk.IconSize.Menu);
+			this.BtnCancel.Image = w49;
+			this.hbox7.Add(this.BtnCancel);
+			global::Gtk.Box.BoxChild w50 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.BtnCancel]));
 			w50.Position = 1;
 			w50.Expand = false;
 			w50.Fill = false;
+			this.alignment18.Add(this.hbox7);
+			this.vbox5.Add(this.alignment18);
+			global::Gtk.Box.BoxChild w52 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.alignment18]));
+			w52.Position = 1;
+			w52.Expand = false;
+			w52.Fill = false;
 			this.alignment17.Add(this.vbox5);
 			this.Add(this.alignment17);
 			if ((this.Child != null))
@@ -683,10 +690,10 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 				this.Child.ShowAll();
 			}
 			this.DefaultWidth = 550;
-			this.DefaultHeight = 426;
+			this.DefaultHeight = 434;
 			this.Show();
-			this.button15.Clicked += new global::System.EventHandler(this.OnButton15Clicked);
-			this.button13.Clicked += new global::System.EventHandler(this.OnButton13Clicked);
+			this.BtnSave.Clicked += new global::System.EventHandler(this.BtnSaveOnClicked);
+			this.BtnCancel.Clicked += new global::System.EventHandler(this.BtnCancelOnClicked);
 		}
 	}
 }

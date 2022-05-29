@@ -655,28 +655,34 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			this.BtnSave.Name = "BtnSave";
 			this.BtnSave.UseUnderline = true;
 			this.BtnSave.Label = global::Mono.Unix.Catalog.GetString("Guardar");
+			global::Gtk.Image w47 = new global::Gtk.Image();
+			w47.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-apply", global::Gtk.IconSize.Menu);
+			this.BtnSave.Image = w47;
 			this.hbox7.Add(this.BtnSave);
-			global::Gtk.Box.BoxChild w47 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.BtnSave]));
-			w47.Position = 0;
-			w47.Expand = false;
-			w47.Fill = false;
+			global::Gtk.Box.BoxChild w48 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.BtnSave]));
+			w48.Position = 0;
+			w48.Expand = false;
+			w48.Fill = false;
 			// Container child hbox7.Gtk.Box+BoxChild
 			this.BtnCancel = new global::Gtk.Button();
 			this.BtnCancel.CanFocus = true;
 			this.BtnCancel.Name = "BtnCancel";
 			this.BtnCancel.UseUnderline = true;
 			this.BtnCancel.Label = global::Mono.Unix.Catalog.GetString("Cancelar");
+			global::Gtk.Image w49 = new global::Gtk.Image();
+			w49.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-cancel", global::Gtk.IconSize.Menu);
+			this.BtnCancel.Image = w49;
 			this.hbox7.Add(this.BtnCancel);
-			global::Gtk.Box.BoxChild w48 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.BtnCancel]));
-			w48.Position = 1;
-			w48.Expand = false;
-			w48.Fill = false;
-			this.alignment18.Add(this.hbox7);
-			this.vbox5.Add(this.alignment18);
-			global::Gtk.Box.BoxChild w50 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.alignment18]));
+			global::Gtk.Box.BoxChild w50 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.BtnCancel]));
 			w50.Position = 1;
 			w50.Expand = false;
 			w50.Fill = false;
+			this.alignment18.Add(this.hbox7);
+			this.vbox5.Add(this.alignment18);
+			global::Gtk.Box.BoxChild w52 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.alignment18]));
+			w52.Position = 1;
+			w52.Expand = false;
+			w52.Fill = false;
 			this.alignment17.Add(this.vbox5);
 			this.Add(this.alignment17);
 			if ((this.Child != null))
@@ -684,7 +690,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 				this.Child.ShowAll();
 			}
 			this.DefaultWidth = 467;
-			this.DefaultHeight = 426;
+			this.DefaultHeight = 434;
 			this.Show();
 			this.BtnSave.Clicked += new global::System.EventHandler(this.BtnSaveOnClicked);
 			this.BtnCancel.Clicked += new global::System.EventHandler(this.BtnCancelOnClicked);

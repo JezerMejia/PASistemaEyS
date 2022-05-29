@@ -129,6 +129,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.vbox6.Spacing = 6;
 			// Container child vbox6.Gtk.Box+BoxChild
 			this.hbox1 = new global::Gtk.HBox();
+			this.hbox1.Name = "hbox1";
 			this.hbox1.Spacing = 6;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.vbox7 = new global::Gtk.VBox();
