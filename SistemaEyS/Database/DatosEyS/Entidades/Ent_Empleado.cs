@@ -138,5 +138,15 @@ namespace SistemaEyS.DatosEyS.Entidades
         public Ent_Empleado()
         {
         }
+
+        public string GetFullName()
+        {
+            string[] arr = {
+                this.primerNombre, this.segundoNombre,
+                this.primerApellido, this.segundoApellido
+	            };
+
+            return string.Join<string>(" ", arr);
+        }
     }
 }
