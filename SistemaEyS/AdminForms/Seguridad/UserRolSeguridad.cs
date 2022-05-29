@@ -53,7 +53,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         public void UpdateData()
         {
-            this.TreeData = new TreeModelFilter(DtUserRol.GetData(), null);
+            this.TreeData = new TreeModelFilter(DtUserRol.GetDataView(), null);
             this.TreeData.VisibleFunc = this.ModelFilterFunc;
             this.viewTable.Model = this.TreeData;
 
