@@ -107,6 +107,7 @@ namespace SistemaEyS.DatosEyS.Negocio
         public Ent_Horario SearchHorario(int idHorario)
         {
             ListStore store = this.DtHor.Search(
+                "AND",
                 new DataTableParameter("idHorario", $"{idHorario}")
             );
             if (store == null) throw new NullReferenceException("El horario no existe");
@@ -119,33 +120,33 @@ namespace SistemaEyS.DatosEyS.Negocio
                 idHorario = Int32.Parse(store.GetValue(iter, 0).ToString()),
                 nombreHorario = store.GetValue(iter, 1).ToString(),
                 lunesInicio = this.StringToDateTime(
-		                            store.GetValue(iter, 2).ToString()),
+                                    store.GetValue(iter, 2).ToString()),
                 lunesSalida = this.StringToDateTime(
-		                            store.GetValue(iter, 3).ToString()),
+                                    store.GetValue(iter, 3).ToString()),
                 martesInicio = this.StringToDateTime(
-		                            store.GetValue(iter, 4).ToString()),
+                                    store.GetValue(iter, 4).ToString()),
                 martesSalida = this.StringToDateTime(
-		                            store.GetValue(iter, 5).ToString()),
+                                    store.GetValue(iter, 5).ToString()),
                 miercolesInicio = this.StringToDateTime(
-		                            store.GetValue(iter, 6).ToString()),
+                                    store.GetValue(iter, 6).ToString()),
                 miercolesSalida = this.StringToDateTime(
-		                            store.GetValue(iter, 7).ToString()),
+                                    store.GetValue(iter, 7).ToString()),
                 juevesInicio = this.StringToDateTime(
-		                            store.GetValue(iter, 8).ToString()),
+                                    store.GetValue(iter, 8).ToString()),
                 juevesSalida = this.StringToDateTime(
-		                            store.GetValue(iter, 9).ToString()),
+                                    store.GetValue(iter, 9).ToString()),
                 viernesInicio = this.StringToDateTime(
-		                            store.GetValue(iter, 10).ToString()),
+                                    store.GetValue(iter, 10).ToString()),
                 viernesSalida = this.StringToDateTime(
-		                            store.GetValue(iter, 11).ToString()),
+                                    store.GetValue(iter, 11).ToString()),
                 sabadoInicio = this.StringToDateTime(
-		                            store.GetValue(iter, 12).ToString()),
+                                    store.GetValue(iter, 12).ToString()),
                 sabadoSalida = this.StringToDateTime(
-		                            store.GetValue(iter, 13).ToString()),
+                                    store.GetValue(iter, 13).ToString()),
                 domingoInicio = this.StringToDateTime(
-		                            store.GetValue(iter, 14).ToString()),
+                                    store.GetValue(iter, 14).ToString()),
                 domingoSalida = this.StringToDateTime(
-		                            store.GetValue(iter, 15).ToString()),
+                                    store.GetValue(iter, 15).ToString()),
             };
 
             return hor;

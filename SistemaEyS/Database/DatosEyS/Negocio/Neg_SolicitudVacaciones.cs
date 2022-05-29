@@ -90,6 +90,7 @@ namespace SistemaEyS.DatosEyS.Negocio
         public Ent_SolicitudVacaciones SearchVacaciones(int idSolVacaciones)
         {
             ListStore store = this.DtSolVac.Search(
+                "AND",
                 new DataTableParameter("idSolVacaciones", $"{idSolVacaciones}")
             );
             if (store == null)

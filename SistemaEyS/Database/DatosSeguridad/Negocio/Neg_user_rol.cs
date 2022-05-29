@@ -23,7 +23,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
             {
                 throw new Exception($"La relación user-rol ya existe");
             }
-	    }
+        }
 
         public void AddUserRol(Ent_user_rol userRol)
         {
@@ -37,7 +37,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
                 throw e;
             }
             this.DtUserRol.InsertInto(
-		        userRol.id_user.ToString(),
+                userRol.id_user.ToString(),
                 userRol.id_rol.ToString()
             );
         }
@@ -46,10 +46,10 @@ namespace SistemaEyS.DatosSeguridad.Negocio
             try
             {
                 Ent_user_rol prevUserRol =
-		            this.SearchUserRol(userRol.id_UserRol);
+                    this.SearchUserRol(userRol.id_UserRol);
 
                 if (prevUserRol.id_user != userRol.id_user ||
-		            prevUserRol.id_rol != userRol.id_rol)
+                    prevUserRol.id_rol != userRol.id_rol)
                     this.ValidateRelation(userRol);
             }
             catch (Exception e)
@@ -60,7 +60,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
             this.DtUserRol.UpdateSet(
                 userRol.id_UserRol.ToString(),
                 userRol.id_user.ToString(),
-		        userRol.id_rol.ToString()
+                userRol.id_rol.ToString()
             );
         }
         public void RemoveUserRol(Ent_user_rol userRol)
@@ -70,16 +70,17 @@ namespace SistemaEyS.DatosSeguridad.Negocio
         public Ent_user_rol SearchUserRol(int id_UserRol)
         {
             ListStore store = this.DtUserRol.Search(
+                "AND",
                 new DataTableParameter("id_UserRol", $"{id_UserRol}")
             );
             if (store == null)
-		        throw new NullReferenceException(
-		            "La relación user-rol no existe"
-		        );
+                throw new NullReferenceException(
+                    "La relación user-rol no existe"
+                );
             TreeIter iter;
 
             if (!store.GetIterFirst(out iter))
-		        throw new NullReferenceException("No hay datos de la relación");
+                throw new NullReferenceException("No hay datos de la relación");
 
             Ent_user_rol userRol = new Ent_user_rol()
             {

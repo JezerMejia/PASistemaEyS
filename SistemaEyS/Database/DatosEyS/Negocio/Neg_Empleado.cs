@@ -152,7 +152,8 @@ namespace SistemaEyS.DatosEyS.Negocio
         public Ent_Empleado SearchEmpleado(int idEmpleado)
         {
             ListStore store = this.DtEmp.Search(
-                new DataTableParameter("idEmpleado", $"{idEmpleado}")
+                "AND",
+                new DataTableParameter("idEmpleado", $"'{idEmpleado}'")
             );
             if (store == null) throw new NullReferenceException("El empleado no existe");
             TreeIter iter;

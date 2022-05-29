@@ -22,7 +22,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
             {
                 throw new Exception("El rol ya existe");
             }
-	    }
+        }
 
         public void AddRol(Ent_rol rol)
         {
@@ -37,7 +37,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
             }
             this.DtRol.InsertInto(
                 rol.rol, rol.descripcion,
-		        ((int)rol.estado).ToString()
+                ((int)rol.estado).ToString()
             );
         }
         public void EditRol(Ent_rol rol)
@@ -67,6 +67,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
         public Ent_rol SearchRol(int id_rol)
         {
             ListStore store = this.DtRol.Search(
+                "AND",
                 new DataTableParameter("id_rol", $"{id_rol}")
             );
             if (store == null) throw new NullReferenceException("El rol no existe");

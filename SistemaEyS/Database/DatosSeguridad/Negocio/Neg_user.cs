@@ -103,6 +103,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
         public Ent_user SearchUser(int id_user)
         {
             ListStore store = this.DtUser.Search(
+                "AND",
                 new DataTableParameter("id_user", $"{id_user}")
             );
 
@@ -111,6 +112,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
         public Ent_user SearchUser(string user)
         {
             ListStore store = this.DtUser.Search(
+                "AND",
                 new DataTableParameter("user", $"{user}")
             );
 
