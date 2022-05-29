@@ -24,5 +24,78 @@ namespace SistemaEyS.DatosEyS.Negocio
             }
         }
 
+        public void AddDepartamento(Ent_Departamento dep)
+        {
+            try
+            {
+                this.ValidateNombreDep(dep);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw e;
+            }
+            this.DtDep.InsertInto(
+                dep.nombreDepartamento,
+                dep.descripcionDepartamento,
+                dep.extensionDepartamento
+                );
+        }
+
+        public void EditCargo(Ent_Departamento dep)
+        {
+            try
+            {
+                Ent_Departamento prevCargo = this.SearchDep(dep.idDepartamento);
+
+                if (dep.nombreDepartamento != prevCargo.nombreDepartamento)
+                    this.ValidateNombreDep(dep);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw e;
+            }
+            this.DtDep.UpdateSet(
+                dep.idDepartamento.ToString(),
+                dep.nombreDepartamento,
+                dep.descripcionDepartamento,
+                dep.extensionDepartamento
+                );
+        }
+
+        public void RemoveCargo(Ent_Departamento dep)
+        {
+            this.DtDep.DeleteFrom(dep.idDepartamento.ToString());
+        }
+
+        protected Ent_Departamento GetDepartamento(ListStore store)
+        {
+            if (store == null) throw new NullReferenceException("El departamento no existe");
+            TreeIter iter;
+
+            if (!store.GetIterFirst(out iter)) throw new NullReferenceException("No hay datos en el departamento");
+
+            Ent_Departamento dep = new Ent_Departamento()
+            {
+                idDepartamento = Int32.Parse(store.GetValue(iter, 0).ToString()),
+                nombreDepartamento = store.GetValue(iter, 1).ToString(),
+                descripcionDepartamento = store.GetValue(iter, 2).ToString(),
+            };
+
+            return dep;
+        }
+
+        public Ent_Departamento SearchDep(int idDep)
+        {
+            ListStore store = this.DtDep.Search(
+                "AND",
+                new DataTableParameter("idDep", $"{idDep}")
+            );
+
+            return this.GetDepartamento(store);
+        }
+
+
     }
 }
