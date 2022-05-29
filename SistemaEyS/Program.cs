@@ -16,6 +16,7 @@ namespace SistemaEyS
             win.Show();
             Application.Run();
 
+            ConnectionSeg.CloseConnection();
             ConnectionEyS.CloseConnection();
         }
     }
