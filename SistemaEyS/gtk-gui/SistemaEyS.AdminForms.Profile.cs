@@ -48,7 +48,7 @@ namespace SistemaEyS.AdminForms
 			// Widget SistemaEyS.AdminForms.Profile
 			this.Name = "SistemaEyS.AdminForms.Profile";
 			this.Title = global::Mono.Unix.Catalog.GetString("Administrador | Perfil");
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			this.Modal = true;
 			// Container child SistemaEyS.AdminForms.Profile.Gtk.Container+ContainerChild
 			this.alignment1 = new global::Gtk.Alignment(0.5F, 0.5F, 1F, 1F);

@@ -6828,7 +6828,7 @@ Base de Datos creada con MySQLWorkbench.</property>
   <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Profile" design-size="396 297">
     <property name="MemberName" />
     <property name="Title" translatable="yes">Administrador | Perfil</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="WindowPosition">Center</property>
     <property name="Modal">True</property>
     <child>
       <widget class="Gtk.Alignment" id="alignment1">
