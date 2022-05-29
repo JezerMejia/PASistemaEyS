@@ -164,6 +164,8 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Profile.cs" />
     <Compile Include="AdminForms\Seguridad\RolOpcionSeguridad.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Seguridad.RolOpcionSeguridad.cs" />
+    <Compile Include="AdminForms\Seguridad\OpcionSeguridad.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Seguridad.OpcionSeguridad.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />

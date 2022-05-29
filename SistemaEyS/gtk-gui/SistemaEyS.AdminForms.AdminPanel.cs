@@ -68,6 +68,8 @@ namespace SistemaEyS.AdminForms
 
 		private global::Gtk.Action RolesAction1;
 
+		private global::Gtk.Action OpcionesAction;
+
 		private global::Gtk.Alignment alignment1;
 
 		private global::Gtk.VBox vbox4;
@@ -187,6 +189,9 @@ namespace SistemaEyS.AdminForms
 			this.RolesAction1 = new global::Gtk.Action("RolesAction1", global::Mono.Unix.Catalog.GetString("Roles"), null, null);
 			this.RolesAction1.ShortLabel = global::Mono.Unix.Catalog.GetString("Roles");
 			w1.Add(this.RolesAction1, null);
+			this.OpcionesAction = new global::Gtk.Action("OpcionesAction", global::Mono.Unix.Catalog.GetString("Opciones"), null, null);
+			this.OpcionesAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Opciones");
+			w1.Add(this.OpcionesAction, null);
 			this.UIManager.InsertActionGroup(w1, 0);
 			this.AddAccelGroup(this.UIManager.AccelGroup);
 			this.Name = "SistemaEyS.AdminForms.AdminPanel";
@@ -220,9 +225,10 @@ namespace SistemaEyS.AdminForms
 					"ction\' action=\'UsuariosAction\'><menuitem name=\'ConfiguracinAction\' action=\'Confi" +
 					"guracinAction\'/><menuitem name=\'RolesAction1\' action=\'RolesAction1\'/></menu><men" +
 					"uitem name=\'RolesAction\' action=\'RolesAction\'/><menuitem name=\'OpcionesDeRolActi" +
-					"on\' action=\'OpcionesDeRolAction\'/></menu><menu name=\'AyudaAction\' action=\'AyudaA" +
-					"ction\'><menuitem name=\'dialogInfoAction\' action=\'dialogInfoAction\'/><menuitem na" +
-					"me=\'HelpSistemaEySAction\' action=\'HelpSistemaEySAction\'/></menu></menubar></ui>");
+					"on\' action=\'OpcionesDeRolAction\'/><menuitem name=\'OpcionesAction\' action=\'Opcion" +
+					"esAction\'/></menu><menu name=\'AyudaAction\' action=\'AyudaAction\'><menuitem name=\'" +
+					"dialogInfoAction\' action=\'dialogInfoAction\'/><menuitem name=\'HelpSistemaEySActio" +
+					"n\' action=\'HelpSistemaEySAction\'/></menu></menubar></ui>");
 			this.menuBar = ((global::Gtk.MenuBar)(this.UIManager.GetWidget("/menuBar")));
 			this.menuBar.Name = "menuBar";
 			this.vbox4.Add(this.menuBar);
@@ -301,6 +307,7 @@ namespace SistemaEyS.AdminForms
 			this.DepartamentosAction.Activated += new global::System.EventHandler(this.AjustesDepartamentosOnActivated);
 			this.ConfiguracinAction.Activated += new global::System.EventHandler(this.SeguridadUsuariosConfOnActivated);
 			this.RolesAction1.Activated += new global::System.EventHandler(this.SeguridadUsuariosRolesOnActivated);
+			this.OpcionesAction.Activated += new global::System.EventHandler(this.OnOpcionesActionActivated);
 		}
 	}
 }
