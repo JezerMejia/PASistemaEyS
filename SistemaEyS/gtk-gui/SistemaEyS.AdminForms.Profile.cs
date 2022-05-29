@@ -88,6 +88,7 @@ namespace SistemaEyS.AdminForms
 			this.TxtUser.Name = "TxtUser";
 			this.TxtUser.IsEditable = false;
 			this.TxtUser.WidthChars = 25;
+			this.TxtUser.InvisibleChar = '●';
 			this.hbox6.Add(this.TxtUser);
 			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.TxtUser]));
 			w2.PackType = ((global::Gtk.PackType)(1));
@@ -117,6 +118,7 @@ namespace SistemaEyS.AdminForms
 			this.TxtName.Name = "TxtName";
 			this.TxtName.IsEditable = false;
 			this.TxtName.WidthChars = 25;
+			this.TxtName.InvisibleChar = '●';
 			this.hbox7.Add(this.TxtName);
 			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox7[this.TxtName]));
 			w5.PackType = ((global::Gtk.PackType)(1));
@@ -146,6 +148,7 @@ namespace SistemaEyS.AdminForms
 			this.TxtSurname.Name = "TxtSurname";
 			this.TxtSurname.IsEditable = false;
 			this.TxtSurname.WidthChars = 25;
+			this.TxtSurname.InvisibleChar = '●';
 			this.hbox8.Add(this.TxtSurname);
 			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox8[this.TxtSurname]));
 			w8.PackType = ((global::Gtk.PackType)(1));
@@ -175,6 +178,7 @@ namespace SistemaEyS.AdminForms
 			this.TxtEmail.Name = "TxtEmail";
 			this.TxtEmail.IsEditable = false;
 			this.TxtEmail.WidthChars = 25;
+			this.TxtEmail.InvisibleChar = '●';
 			this.hbox9.Add(this.TxtEmail);
 			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox9[this.TxtEmail]));
 			w11.PackType = ((global::Gtk.PackType)(1));
