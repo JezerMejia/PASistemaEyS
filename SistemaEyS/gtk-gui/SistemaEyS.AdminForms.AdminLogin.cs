@@ -8,23 +8,25 @@ namespace SistemaEyS.AdminForms
 
 		private global::Gtk.VBox vbox9;
 
-		private global::Gtk.HBox hbox13;
+		private global::Gtk.VBox vbox1;
 
-		private global::Gtk.Label lbUser;
+		private global::Gtk.HBox hbox13;
 
 		private global::Gtk.Entry entUser;
 
-		private global::Gtk.HBox hbox14;
+		private global::Gtk.Label lbUser;
 
-		private global::Gtk.Label lbPassword;
+		private global::Gtk.HBox hbox14;
 
 		private global::Gtk.Entry entPassword;
 
+		private global::Gtk.Label lbPassword;
+
 		private global::Gtk.HBox hbox1;
 
-		private global::Gtk.Label lbRole;
-
 		private global::Gtk.ComboBox combobox2;
+
+		private global::Gtk.Label lbRole;
 
 		private global::Gtk.Alignment alignment11;
 
@@ -53,64 +55,90 @@ namespace SistemaEyS.AdminForms
 			this.vbox9.Name = "vbox9";
 			this.vbox9.Spacing = 30;
 			// Container child vbox9.Gtk.Box+BoxChild
+			this.vbox1 = new global::Gtk.VBox();
+			this.vbox1.Name = "vbox1";
+			this.vbox1.Spacing = 20;
+			// Container child vbox1.Gtk.Box+BoxChild
 			this.hbox13 = new global::Gtk.HBox();
 			this.hbox13.Name = "hbox13";
 			this.hbox13.Spacing = 6;
-			// Container child hbox13.Gtk.Box+BoxChild
-			this.lbUser = new global::Gtk.Label();
-			this.lbUser.WidthRequest = 80;
-			this.lbUser.Name = "lbUser";
-			this.lbUser.LabelProp = global::Mono.Unix.Catalog.GetString("Usuario:");
-			this.lbUser.Justify = ((global::Gtk.Justification)(1));
-			this.hbox13.Add(this.lbUser);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox13[this.lbUser]));
-			w1.Position = 0;
-			w1.Fill = false;
 			// Container child hbox13.Gtk.Box+BoxChild
 			this.entUser = new global::Gtk.Entry();
 			this.entUser.CanFocus = true;
 			this.entUser.Name = "entUser";
 			this.entUser.IsEditable = true;
+			this.entUser.WidthChars = 25;
 			this.entUser.InvisibleChar = '•';
 			this.hbox13.Add(this.entUser);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox13[this.entUser]));
+			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox13[this.entUser]));
+			w1.PackType = ((global::Gtk.PackType)(1));
+			w1.Position = 0;
+			w1.Expand = false;
+			// Container child hbox13.Gtk.Box+BoxChild
+			this.lbUser = new global::Gtk.Label();
+			this.lbUser.Name = "lbUser";
+			this.lbUser.LabelProp = global::Mono.Unix.Catalog.GetString("Usuario:");
+			this.lbUser.Justify = ((global::Gtk.Justification)(1));
+			this.hbox13.Add(this.lbUser);
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox13[this.lbUser]));
+			w2.PackType = ((global::Gtk.PackType)(1));
 			w2.Position = 1;
-			this.vbox9.Add(this.hbox13);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox9[this.hbox13]));
+			w2.Expand = false;
+			w2.Fill = false;
+			this.vbox1.Add(this.hbox13);
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.hbox13]));
 			w3.Position = 0;
 			w3.Expand = false;
 			w3.Fill = false;
-			// Container child vbox9.Gtk.Box+BoxChild
+			// Container child vbox1.Gtk.Box+BoxChild
 			this.hbox14 = new global::Gtk.HBox();
 			this.hbox14.Name = "hbox14";
 			this.hbox14.Spacing = 6;
-			// Container child hbox14.Gtk.Box+BoxChild
-			this.lbPassword = new global::Gtk.Label();
-			this.lbPassword.WidthRequest = 80;
-			this.lbPassword.Name = "lbPassword";
-			this.lbPassword.LabelProp = global::Mono.Unix.Catalog.GetString("Contraseña:");
-			this.lbPassword.Justify = ((global::Gtk.Justification)(1));
-			this.hbox14.Add(this.lbPassword);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox14[this.lbPassword]));
-			w4.Position = 0;
-			w4.Fill = false;
 			// Container child hbox14.Gtk.Box+BoxChild
 			this.entPassword = new global::Gtk.Entry();
 			this.entPassword.CanFocus = true;
 			this.entPassword.Name = "entPassword";
 			this.entPassword.IsEditable = true;
+			this.entPassword.WidthChars = 25;
+			this.entPassword.Visibility = false;
 			this.entPassword.InvisibleChar = '•';
 			this.hbox14.Add(this.entPassword);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox14[this.entPassword]));
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox14[this.entPassword]));
+			w4.PackType = ((global::Gtk.PackType)(1));
+			w4.Position = 0;
+			w4.Expand = false;
+			// Container child hbox14.Gtk.Box+BoxChild
+			this.lbPassword = new global::Gtk.Label();
+			this.lbPassword.Name = "lbPassword";
+			this.lbPassword.LabelProp = global::Mono.Unix.Catalog.GetString("Contraseña:");
+			this.lbPassword.Justify = ((global::Gtk.Justification)(1));
+			this.hbox14.Add(this.lbPassword);
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox14[this.lbPassword]));
+			w5.PackType = ((global::Gtk.PackType)(1));
 			w5.Position = 1;
-			this.vbox9.Add(this.hbox14);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox9[this.hbox14]));
+			w5.Fill = false;
+			this.vbox1.Add(this.hbox14);
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.hbox14]));
 			w6.Position = 1;
 			w6.Expand = false;
 			w6.Fill = false;
-			// Container child vbox9.Gtk.Box+BoxChild
+			// Container child vbox1.Gtk.Box+BoxChild
 			this.hbox1 = new global::Gtk.HBox();
 			this.hbox1.Spacing = 6;
+			// Container child hbox1.Gtk.Box+BoxChild
+			this.combobox2 = global::Gtk.ComboBox.NewText();
+			this.combobox2.AppendText(global::Mono.Unix.Catalog.GetString("RRHH"));
+			this.combobox2.AppendText(global::Mono.Unix.Catalog.GetString("Gerencia General"));
+			this.combobox2.AppendText(global::Mono.Unix.Catalog.GetString("IT"));
+			this.combobox2.WidthRequest = 180;
+			this.combobox2.Name = "combobox2";
+			this.combobox2.Active = 0;
+			this.hbox1.Add(this.combobox2);
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.combobox2]));
+			w7.PackType = ((global::Gtk.PackType)(1));
+			w7.Position = 0;
+			w7.Expand = false;
+			w7.Fill = false;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.lbRole = new global::Gtk.Label();
 			this.lbRole.WidthRequest = 80;
@@ -118,25 +146,21 @@ namespace SistemaEyS.AdminForms
 			this.lbRole.LabelProp = global::Mono.Unix.Catalog.GetString("Rol:");
 			this.lbRole.Justify = ((global::Gtk.Justification)(1));
 			this.hbox1.Add(this.lbRole);
-			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.lbRole]));
-			w7.Position = 0;
-			w7.Fill = false;
-			// Container child hbox1.Gtk.Box+BoxChild
-			this.combobox2 = global::Gtk.ComboBox.NewText();
-			this.combobox2.AppendText(global::Mono.Unix.Catalog.GetString("RRHH"));
-			this.combobox2.AppendText(global::Mono.Unix.Catalog.GetString("Gerencia General"));
-			this.combobox2.AppendText(global::Mono.Unix.Catalog.GetString("IT"));
-			this.combobox2.Name = "combobox2";
-			this.combobox2.Active = 0;
-			this.hbox1.Add(this.combobox2);
-			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.combobox2]));
+			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.lbRole]));
+			w8.PackType = ((global::Gtk.PackType)(1));
 			w8.Position = 1;
+			w8.Expand = false;
 			w8.Fill = false;
-			this.vbox9.Add(this.hbox1);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox9[this.hbox1]));
+			this.vbox1.Add(this.hbox1);
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.hbox1]));
 			w9.Position = 2;
 			w9.Expand = false;
 			w9.Fill = false;
+			this.vbox9.Add(this.vbox1);
+			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.vbox9[this.vbox1]));
+			w10.Position = 0;
+			w10.Expand = false;
+			w10.Fill = false;
 			// Container child vbox9.Gtk.Box+BoxChild
 			this.alignment11 = new global::Gtk.Alignment(0.5F, 0.5F, 0F, 0F);
 			this.alignment11.Name = "alignment11";
@@ -151,41 +175,41 @@ namespace SistemaEyS.AdminForms
 			this.btnExit.Name = "btnExit";
 			this.btnExit.UseUnderline = true;
 			this.btnExit.Label = global::Mono.Unix.Catalog.GetString("Salir");
-			global::Gtk.Image w10 = new global::Gtk.Image();
-			w10.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-undo", global::Gtk.IconSize.Menu);
-			this.btnExit.Image = w10;
+			global::Gtk.Image w11 = new global::Gtk.Image();
+			w11.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-undo", global::Gtk.IconSize.Menu);
+			this.btnExit.Image = w11;
 			this.hbox2.Add(this.btnExit);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.btnExit]));
-			w11.Position = 0;
-			w11.Expand = false;
-			w11.Fill = false;
+			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.btnExit]));
+			w12.Position = 0;
+			w12.Expand = false;
+			w12.Fill = false;
 			// Container child hbox2.Gtk.Box+BoxChild
 			this.btnEnter = new global::Gtk.Button();
 			this.btnEnter.CanFocus = true;
 			this.btnEnter.Name = "btnEnter";
 			this.btnEnter.UseUnderline = true;
 			this.btnEnter.Label = global::Mono.Unix.Catalog.GetString("Entrar");
-			global::Gtk.Image w12 = new global::Gtk.Image();
-			w12.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-redo", global::Gtk.IconSize.Menu);
-			this.btnEnter.Image = w12;
+			global::Gtk.Image w13 = new global::Gtk.Image();
+			w13.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-redo", global::Gtk.IconSize.Menu);
+			this.btnEnter.Image = w13;
 			this.hbox2.Add(this.btnEnter);
-			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.btnEnter]));
-			w13.Position = 1;
-			w13.Expand = false;
-			w13.Fill = false;
+			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.btnEnter]));
+			w14.Position = 1;
+			w14.Expand = false;
+			w14.Fill = false;
 			this.alignment11.Add(this.hbox2);
 			this.vbox9.Add(this.alignment11);
-			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.vbox9[this.alignment11]));
-			w15.Position = 3;
-			w15.Fill = false;
-			w15.Padding = ((uint)(10));
+			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.vbox9[this.alignment11]));
+			w16.Position = 1;
+			w16.Fill = false;
+			w16.Padding = ((uint)(10));
 			this.alignment10.Add(this.vbox9);
 			this.Add(this.alignment10);
 			if ((this.Child != null))
 			{
 				this.Child.ShowAll();
 			}
-			this.DefaultWidth = 448;
+			this.DefaultWidth = 473;
 			this.DefaultHeight = 326;
 			this.Show();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
