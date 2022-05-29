@@ -91,7 +91,7 @@ namespace SistemaEyS.DatosEyS.Negocio
         {
             ListStore store = this.DtSolVac.Search(
                 "AND",
-                new DataTableParameter("idSolVacaciones", $"{idSolVacaciones}")
+                new DataTableParameter("idSolVacaciones", $"'{idSolVacaciones}'")
             );
             if (store == null)
                 throw new NullReferenceException("La solicitud no existe");

@@ -71,7 +71,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
         {
             ListStore store = this.DtRolOpcion.Search(
                 "AND",
-                new DataTableParameter("id_rolOpcion", $"{id_rolOpcion}")
+                new DataTableParameter("id_rolOpcion", $"'{id_rolOpcion}'")
             );
             if (store == null)
                 throw new NullReferenceException(

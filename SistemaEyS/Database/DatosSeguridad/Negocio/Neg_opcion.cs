@@ -68,7 +68,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
         {
             ListStore store = this.DtOpcion.Search(
                 "AND",
-                new DataTableParameter("id_opcion", $"{id_opcion}")
+                new DataTableParameter("id_opcion", $"'{id_opcion}'")
             );
             if (store == null) throw new NullReferenceException("La opción no existe");
             TreeIter iter;

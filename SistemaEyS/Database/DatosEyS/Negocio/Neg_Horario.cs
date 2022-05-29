@@ -108,7 +108,7 @@ namespace SistemaEyS.DatosEyS.Negocio
         {
             ListStore store = this.DtHor.Search(
                 "AND",
-                new DataTableParameter("idHorario", $"{idHorario}")
+                new DataTableParameter("idHorario", $"'{idHorario}'")
             );
             if (store == null) throw new NullReferenceException("El horario no existe");
             TreeIter iter;

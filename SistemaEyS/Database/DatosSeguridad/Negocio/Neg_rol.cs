@@ -68,7 +68,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
         {
             ListStore store = this.DtRol.Search(
                 "AND",
-                new DataTableParameter("id_rol", $"{id_rol}")
+                new DataTableParameter("id_rol", $"'{id_rol}'")
             );
             if (store == null) throw new NullReferenceException("El rol no existe");
             TreeIter iter;
