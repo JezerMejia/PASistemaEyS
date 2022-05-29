@@ -297,6 +297,7 @@ namespace SistemaEyS.AdminForms
 			this.CargosAction.Activated += new global::System.EventHandler(this.AjustesCargosOnActivated);
 			this.SolicitudesDeVacacionesAction.Activated += new global::System.EventHandler(this.TablasSolicitudVacacionesActionOnActivated);
 			this.SolicitudDeVacacionesAction.Activated += new global::System.EventHandler(this.TablasSolicitudVacacionesActionOnActivated);
+			this.OpcionesDeRolAction.Activated += new global::System.EventHandler(this.OnOpcionesDeRolActionActivated);
 			this.DepartamentosAction.Activated += new global::System.EventHandler(this.AjustesDepartamentosOnActivated);
 			this.ConfiguracinAction.Activated += new global::System.EventHandler(this.SeguridadUsuariosConfOnActivated);
 			this.RolesAction1.Activated += new global::System.EventHandler(this.SeguridadUsuariosRolesOnActivated);
