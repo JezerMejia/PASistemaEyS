@@ -41,11 +41,12 @@ DROP TABLE IF EXISTS `BDSistemaEyS`.`Departamento` ;
 
 CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Departamento` (
   `idDepartamento` INT NOT NULL AUTO_INCREMENT,
-  `nombreDepartamento` VARCHAR(25) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `nombreDepartamento` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
   `descripcionDepartamento` VARCHAR(100) CHARACTER SET 'utf8' NULL DEFAULT NULL,
   `extensionDepartamento` VARCHAR(5) CHARACTER SET 'utf8' NULL DEFAULT NULL,
   PRIMARY KEY (`idDepartamento`),
-  UNIQUE INDEX `idDepartamento_UNIQUE` (`idDepartamento` ASC) VISIBLE)
+  UNIQUE INDEX `idDepartamento_UNIQUE` (`idDepartamento` ASC) VISIBLE,
+  UNIQUE INDEX `nombreDepartamento_UNIQUE` (`nombreDepartamento` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -74,7 +75,8 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Horario` (
   `domingoInicio` TIME NULL DEFAULT NULL,
   `domingoSalida` TIME NULL DEFAULT NULL,
   PRIMARY KEY (`idHorario`),
-  UNIQUE INDEX `idHorario_UNIQUE` (`idHorario` ASC) VISIBLE)
+  UNIQUE INDEX `idHorario_UNIQUE` (`idHorario` ASC) VISIBLE,
+  UNIQUE INDEX `nombreHorario_UNIQUE` (`nombreHorario` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -91,9 +93,13 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Empleado` (
   `segundoNombre` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
   `primerApellido` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
   `segundoApellido` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
-  `fechaIngreso` DATETIME NULL DEFAULT NULL,
+  `fechaIngreso` DATE NULL DEFAULT NULL,
+  `fechaNacimiento` DATE NULL,
   `cedulaEmpleado` VARCHAR(14) CHARACTER SET 'utf8' NULL,
-  `pinEmpleado` VARCHAR(30) CHARACTER SET 'utf8' NULL,
+  `pinEmpleado` VARCHAR(30) CHARACTER SET 'utf8' NOT NULL,
+  `telefonoEmpleado` VARCHAR(15) NULL,
+  `emailPersonal` VARCHAR(50) NULL,
+  `emailEmpresarial` VARCHAR(50) NULL,
   `idCargo` INT NULL,
   `idDepartamento` INT NULL,
   `idHorario` INT NULL,
@@ -102,6 +108,10 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Empleado` (
   INDEX `RefDepartamento4` (`idDepartamento` ASC) VISIBLE,
   INDEX `RefHorario6` (`idHorario` ASC) VISIBLE,
   UNIQUE INDEX `idEmpleado_UNIQUE` (`idEmpleado` ASC) VISIBLE,
+  UNIQUE INDEX `telefonoEmpleado_UNIQUE` (`telefonoEmpleado` ASC) VISIBLE,
+  UNIQUE INDEX `emailPersonal_UNIQUE` (`emailPersonal` ASC) VISIBLE,
+  UNIQUE INDEX `emailEmpresarial_UNIQUE` (`emailEmpresarial` ASC) VISIBLE,
+  UNIQUE INDEX `cedulaEmpleado_UNIQUE` (`cedulaEmpleado` ASC) VISIBLE,
   CONSTRAINT `RefCargo3`
     FOREIGN KEY (`idCargo`)
     REFERENCES `BDSistemaEyS`.`Cargo` (`idCargo`),
@@ -271,7 +281,7 @@ USE `BDSistemaEyS` ;
 -- -----------------------------------------------------
 -- Placeholder table for view `BDSistemaEyS`.`vwEmpleado`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`vwEmpleado` (`ID` INT, `Nombre` INT, `Apellido` INT, `Ingreso` INT, `Cédula` INT, `PIN` INT, `Cargo` INT, `Departamento` INT, `"ID Horario"` INT);
+CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`vwEmpleado` (`ID` INT, `Nombre` INT, `Apellido` INT, `PIN` INT, `Ingreso` INT, `"Fecha de Nacimiento"` INT, `"Cédula"` INT, `"Teléfono"` INT, `"Email Personal"` INT, `"Email Empresarial"` INT, `Cargo` INT, `Departamento` INT, `"Horario"` INT);
 
 -- -----------------------------------------------------
 -- Placeholder table for view `BDSistemaEyS`.`vwRolOpcion`
@@ -304,18 +314,24 @@ SELECT
 Empleado.idEmpleado as ID,
 CONCAT(Empleado.primernombre, " ", Empleado.segundoNombre) as Nombre,
 CONCAT(Empleado.primerApellido, " ", Empleado.segundoApellido) as Apellido,
-Empleado.fechaIngreso as Ingreso,
-Empleado.cedulaEmpleado as Cédula,
 Empleado.pinEmpleado as PIN,
+Empleado.fechaIngreso as Ingreso,
+Empleado.fechaNacimiento as "Fecha de Nacimiento",
+Empleado.cedulaEmpleado as "Cédula",
+Empleado.telefonoEmpleado as "Teléfono",
+Empleado.emailPersonal as "Email Personal",
+Empleado.emailEmpresarial as "Email Empresarial",
 Cargo.nombreCargo as Cargo,
 Departamento.nombreDepartamento as Departamento,
-idHorario as "ID Horario"
+Horario.nombreHorario as "Horario"
 FROM
 BDSistemaEyS.Empleado as Empleado
 LEFT JOIN
 BDSistemaEyS.Departamento as Departamento ON Empleado.idDepartamento = Departamento.idDepartamento
 LEFT JOIN
 BDSistemaEyS.Cargo as Cargo ON Empleado.idCargo = Cargo.idCargo
+LEFT JOIN
+BDSistemaEyS.Horario as Horario ON Empleado.idHorario = Horario.idHorario
 ;
 
 -- -----------------------------------------------------
@@ -456,6 +472,8 @@ NULL, NULL
 INSERT INTO Empleado (
 idEmpleado, primerNombre, segundoNombre,
 primerApellido, segundoApellido, fechaIngreso,
+fechaNacimiento, telefonoEmpleado,
+emailPersonal, emailEmpresarial,
 pinEmpleado, cedulaEmpleado,
 idCargo, idDepartamento, idHorario
 )
@@ -463,25 +481,33 @@ VALUES
 (
 29812, "Juan", "Ezequiel",
 "Pérez", "Jiménez", "2022-04-29",
+"2002-09-06", "76129076",
+"juan@gmail.com", NULL,
 "1212", "0010405021900A",
 1, 1, 1
 ),
 (
 31725, "Jezer", "Josué",
 "Mejía", "Otero", "2022-04-29",
+"2003-11-05", "81211855",
+"jezer@gmail.com", NULL,
 "9898", "2010511031000Y",
 2, 1, 1
 ),
 (
 32229, "Leo", "Neftalís",
 "Corea", "Navarrete", "2022-04-29",
-"5454", "00000000000000",
+"2003-01-01", "00005454",
+"leo@gmail.com", NULL,
+"5454", "00000000000001",
 2, 1, 1
 ),
 (
 31642, "Roire", "Martín",
 "Villavicencio", "Obregón", "2022-04-29",
-"7272", "00000000000000",
+"2003-01-01", "00007272",
+"roire@gmail.com", NULL,
+"7272", "00000000000002",
 1, 1, 1
 );
 
