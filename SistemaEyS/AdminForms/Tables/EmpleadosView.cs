@@ -35,12 +35,16 @@ namespace SistemaEyS.AdminForms.Tables
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Nombre", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Apellido", typeof(string), "text", new Gtk.CellRendererText()),
-                new StoreObject("Ingreso", typeof(string), "text", new Gtk.CellRendererText()),
-                new StoreObject("Cédula", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("PIN", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Ingreso", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Nacimiento", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Cédula", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Teléfono", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Email Personal", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Email Empresarial", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Cargo", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Departamento", typeof(string), "text", new Gtk.CellRendererText()),
-                new StoreObject("ID Horario", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Horario", typeof(string), "text", new Gtk.CellRendererText()),
             };
             this.viewTable.SetTreeViewColumns(storeObjects);
 
@@ -93,10 +97,10 @@ namespace SistemaEyS.AdminForms.Tables
                 ms.Destroy();
                 return;
             }
+            this.UpdateDialog.SelectedID = this.SelectedID;
             this.UpdateDialog.UpdateData();
             this.UpdateDialog.Show();
             this.UpdateDialog.Present();
-            this.UpdateDialog.SelectedID = this.SelectedID;
         }
 
         protected void BtnDeleteOnClicked(object sender, EventArgs args)
