@@ -39,13 +39,14 @@ namespace SistemaEyS.DatosEyS.Datos
                 {
                     this.Model.AppendValues(
                         idr[0].ToString(), // ID
-                        idr[1].ToString(), idr[2].ToString(), // Lunes
-                        idr[3].ToString(), idr[4].ToString(), // Martes
-                        idr[5].ToString(), idr[6].ToString(), // Miércoles
-                        idr[7].ToString(), idr[8].ToString(), // Jueves
-                        idr[9].ToString(), idr[10].ToString(), // Viernes
-                        idr[11].ToString(), idr[12].ToString(), // Sábado
-                        idr[13].ToString(), idr[14].ToString() // Domingo
+                        idr[1].ToString(), // Nombre
+                        idr[2].ToString(), idr[3].ToString(), // Lunes
+                        idr[4].ToString(), idr[5].ToString(), // Martes
+                        idr[6].ToString(), idr[7].ToString(), // Miércoles
+                        idr[8].ToString(), idr[9].ToString(), // Jueves
+                        idr[10].ToString(), idr[11].ToString(), // Viernes
+                        idr[12].ToString(), idr[13].ToString(), // Sábado
+                        idr[14].ToString(), idr[15].ToString() // Domingo
                     );
                 }
             }
@@ -64,6 +65,30 @@ namespace SistemaEyS.DatosEyS.Datos
                     idr.Close();
                 }
             }
+        }
+
+        public ListStore GetDataCmbx()
+        {
+            this.UpdateModel();
+            TreeIter iter;
+
+            ListStore model = new ListStore(
+                typeof(string),
+                typeof(string)
+                );
+
+            if (this.Model.GetIterFirst(out iter))
+            {
+                do
+                {
+                    model.AppendValues(
+                        this.Model.GetValue(iter, 1),
+                        this.Model.GetValue(iter, 0)
+                    );
+                }
+                while (this.Model.IterNext(ref iter));
+            }
+            return model;
         }
 
 
