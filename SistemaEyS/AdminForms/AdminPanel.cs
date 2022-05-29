@@ -11,11 +11,13 @@ namespace SistemaEyS.AdminForms
     {
         protected Window parent;
         protected uint timeout;
+        public int UserID;
 
-        public AdminPanel(Window parent, string idEmpleado) :
+        public AdminPanel(Window parent, int userID) :
                 base(Gtk.WindowType.Toplevel)
         {
             this.parent = parent;
+            this.UserID = userID;
             this.Build();
             this.SetDateTimeTimeout();
         }

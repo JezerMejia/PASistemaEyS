@@ -2,27 +2,23 @@
 using System.Data;
 using System.Text;
 using Gtk;
-using SistemaEyS.Database.Connection;
-using SistemaEyS.DatosSeguridad.Datos;
+using SistemaEyS.DatosSeguridad.Entidades;
+using SistemaEyS.DatosSeguridad.Negocio;
 
 namespace SistemaEyS.AdminForms
 {
     public partial class AdminLogin : Gtk.Window
     {
-        ConnectionEyS conn = ConnectionEyS.OpenConnection();
         protected Window parent;
         protected string idAdministrador;
+        protected Neg_user NegUser = new Neg_user();
 
         public AdminLogin(Window parent) :
                 base(Gtk.WindowType.Toplevel)
         {
             this.parent = parent;
             this.Build();
-            this.lbUser.WidthChars = 15;
-            this.lbPassword.WidthChars = 15;
-            this.lbRole.WidthChars = 15;
         }
-
 
         public void Close()
         {
@@ -40,75 +36,48 @@ namespace SistemaEyS.AdminForms
             this.Close();
         }
 
-        private bool LogIn(string user, string password)
+        protected void btnEnterOnClicked(object sender, EventArgs args)
         {
-            if (string.IsNullOrWhiteSpace(user))
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal, MessageType.Error,
-                    ButtonsType.Ok, "Ingrese un Nombre de empleado");
-                ms.Run();
-                ms.Destroy();
-                return false;
-            }
-            StringBuilder sb = new StringBuilder();
-            IDataReader idr = null;
-            bool value = false;
-
-            sb.Clear();
-            sb.Append($"SELECT user, pwd FROM BDSistemaEyS.tbl_user WHERE user = '{user}';");
+            Ent_user user;
             try
             {
-                idr = conn.Read(CommandType.Text, sb.ToString());
+                if (string.IsNullOrWhiteSpace(this.entUser.Text))
+                    throw new ArgumentException("Escriba un nombre de usuario");
 
-                if (!idr.Read()) throw new Exception("Empleado no encontrado");
-                if (idr[1].ToString() == password)
-                {
-                    value = true;
-                }
-                else
-                {
+                if (string.IsNullOrWhiteSpace(this.entPassword.Text))
+                    throw new ArgumentException("Escriba una contraseña");
+
+                string userAdmin = this.entUser.Text;
+                string pwdAdmin = this.entPassword.Text;
+
+                user = this.NegUser.SearchUser(userAdmin);
+
+                if (user.pwd != this.entPassword.Text)
                     throw new Exception("Contraseña incorrecta");
-                }
+
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                    $"¡Bienvenido, {user.nombres}!");
+                ms.Run();
+                ms.Destroy();
             }
             catch (Exception e)
             {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                Console.WriteLine(e);
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Error,
                     ButtonsType.Ok, e.Message);
                 ms.Run();
                 ms.Destroy();
-            }
-            finally
-            {
-                if (idr != null && !idr.IsClosed)
-                {
-                    idr.Close();
-                }
-            }
-            return value;
-        }
-
-        protected void btnEnterOnClicked(object sender, EventArgs e)
-        {
-            string idAdmin = this.entUser.Text;
-            string pwdAdmin = this.entPassword.Text;
-
-            if (!LogIn(idAdmin, pwdAdmin))
-            {
                 return;
             }
 
-            AdminPanel adminPan = new AdminPanel(this, idAdmin);
+            AdminPanel adminPan = new AdminPanel(this, user.id_user);
             adminPan.Show();
             this.Hide();
+
             this.entPassword.Text = "";
             this.entUser.Text = "";
-
-            MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
-                    ButtonsType.Ok, "Bienvenido: " + idAdmin);
-            ms.Run();
-            ms.Destroy();
         }
-
-
     }
 }
