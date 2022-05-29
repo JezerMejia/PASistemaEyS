@@ -14,7 +14,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 
 		private global::Gtk.HBox hbox5;
 
-		private global::Gtk.Entry TxtName;
+		private global::Gtk.Entry opcionTxt;
 
 		private global::Gtk.Alignment alignment3;
 
@@ -24,7 +24,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 
 		private global::Gtk.ScrolledWindow GtkScrolledWindow1;
 
-		private global::Gtk.TextView TxtvwDesc;
+		private global::Gtk.TextView desTxt;
 
 		private global::Gtk.Alignment alignment4;
 
@@ -86,14 +86,14 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.hbox5.Name = "hbox5";
 			this.hbox5.Spacing = 6;
 			// Container child hbox5.Gtk.Box+BoxChild
-			this.TxtName = new global::Gtk.Entry();
-			this.TxtName.CanFocus = true;
-			this.TxtName.Name = "TxtName";
-			this.TxtName.IsEditable = true;
-			this.TxtName.WidthChars = 20;
-			this.TxtName.InvisibleChar = '●';
-			this.hbox5.Add(this.TxtName);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.TxtName]));
+			this.opcionTxt = new global::Gtk.Entry();
+			this.opcionTxt.CanFocus = true;
+			this.opcionTxt.Name = "opcionTxt";
+			this.opcionTxt.IsEditable = true;
+			this.opcionTxt.WidthChars = 20;
+			this.opcionTxt.InvisibleChar = '●';
+			this.hbox5.Add(this.opcionTxt);
+			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.opcionTxt]));
 			w1.PackType = ((global::Gtk.PackType)(1));
 			w1.Position = 0;
 			w1.Expand = false;
@@ -127,11 +127,11 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.GtkScrolledWindow1.Name = "GtkScrolledWindow1";
 			this.GtkScrolledWindow1.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow1.Gtk.Container+ContainerChild
-			this.TxtvwDesc = new global::Gtk.TextView();
-			this.TxtvwDesc.WidthRequest = 136;
-			this.TxtvwDesc.CanFocus = true;
-			this.TxtvwDesc.Name = "TxtvwDesc";
-			this.GtkScrolledWindow1.Add(this.TxtvwDesc);
+			this.desTxt = new global::Gtk.TextView();
+			this.desTxt.WidthRequest = 136;
+			this.desTxt.CanFocus = true;
+			this.desTxt.Name = "desTxt";
+			this.GtkScrolledWindow1.Add(this.desTxt);
 			this.hbox6.Add(this.GtkScrolledWindow1);
 			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.GtkScrolledWindow1]));
 			w6.PackType = ((global::Gtk.PackType)(1));
@@ -308,6 +308,11 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.DefaultWidth = 429;
 			this.DefaultHeight = 385;
 			this.Show();
+			this.BtnNew.Clicked += new global::System.EventHandler(this.OnBtnNewClicked);
+			this.BtnAdd.Clicked += new global::System.EventHandler(this.OnBtnAddClicked);
+			this.BtnEdit.Clicked += new global::System.EventHandler(this.OnBtnEditClicked);
+			this.BtnRemove.Clicked += new global::System.EventHandler(this.OnBtnRemoveClicked);
+			this.viewTable.RowActivated += new global::Gtk.RowActivatedHandler(this.OnViewTableRowActivated);
 		}
 	}
 }
