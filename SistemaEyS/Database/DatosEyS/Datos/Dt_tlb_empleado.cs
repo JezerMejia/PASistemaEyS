@@ -14,11 +14,12 @@ namespace SistemaEyS.DatosEyS.Datos
         {
             this.conn = ConnectionEyS.OpenConnection();
             this.DBTable = "BDSistemaEyS.Empleado";
-            this.gTypes = new Type[11] {
+            this.gTypes = new Type[15] {
                 typeof(string), typeof(string), typeof(string),
                 typeof(string), typeof(string), typeof(string),
                 typeof(string), typeof(string), typeof(string),
-                typeof(string), typeof(string)
+                typeof(string), typeof(string), typeof(string),
+                typeof(string), typeof(string), typeof(string),
             };
             this.ModelView = new ListStore(this.gTypes);
             this.Model = new ListStore(this.gTypes);
@@ -41,13 +42,18 @@ namespace SistemaEyS.DatosEyS.Datos
                         idr[0].ToString(), // ID
                         idr[1].ToString(), // Nombre
                         idr[2].ToString(), // Apellido
-                        idr.IsDBNull(3) ? "" :
-                            idr.GetDateTime(3).ToString("yyyy-MM-dd"), // fechaIngreso
-                        idr[4].ToString(), // CedulaEmpleado
-                        idr[5].ToString(), // Contraseña
-                        idr[6].ToString(), // Cargo
-                        idr[7].ToString(), // Departamento
-                        idr[8].ToString() // ID Horario
+                        idr[3].ToString(), // PIN
+                        idr.IsDBNull(4) ? "" :
+                            idr.GetDateTime(4).ToString("yyyy-MM-dd"), // fechaIngreso
+                        idr.IsDBNull(5) ? "" :
+                            idr.GetDateTime(5).ToString("yyyy-MM-dd"), // fechaNacimiento
+                        idr[6].ToString(), // CedulaEmpleado
+                        idr[7].ToString(), // Teléfono
+                        idr[8].ToString(), // Email personal
+                        idr[9].ToString(), // Email empresarial
+                        idr[10].ToString(), // Cargo
+                        idr[11].ToString(), // Departamento
+                        idr[12].ToString() // Horario
                     );
                 }
             }
@@ -89,11 +95,16 @@ namespace SistemaEyS.DatosEyS.Datos
                         idr[4].ToString(), // segundoApellido
                         idr.IsDBNull(5) ? "" :
                             idr.GetDateTime(5).ToString("yyyy-MM-dd"), // fechaIngreso
-                        idr[6].ToString(), // cedulaEmpleado
-                        idr[7].ToString(), // Contraseña
-                        idr[8].ToString(), // idcargo
-                        idr[9].ToString(),  // idDepartamento
-                        idr[10].ToString() // idHorario
+                        idr.IsDBNull(6) ? "" :
+                            idr.GetDateTime(6).ToString("yyyy-MM-dd"), // fechaNacimiento
+                        idr[7].ToString(), // CedulaEmpleado
+                        idr[8].ToString(), // PIN
+                        idr[9].ToString(), // Teléfono
+                        idr[10].ToString(), // Email personal
+                        idr[11].ToString(), // Email empresarial
+                        idr[12].ToString(), // idCargo
+                        idr[13].ToString(), // idDepartamento
+                        idr[14].ToString() // idHorario
                     );
                 }
             }
@@ -140,10 +151,14 @@ namespace SistemaEyS.DatosEyS.Datos
                 );
         }
 
-        public void UpdateSet(string idEmpleado, string primerNombre,
-            string segundoNombre, string primerApellido, string segundoApellido,
-            string pinEmpleado, string cedulaEmpleado, string fechaIngreso,
-            string idCargo, string idDepartamento, string idHorario)
+        public void UpdateSet(
+            string idEmpleado, string primerNombre, string segundoNombre,
+            string primerApellido, string segundoApellido,
+            string pinEmpleado, string cedulaEmpleado,
+            string fechaIngreso, string fechaNacimiento, string telefonoEmpleado,
+            string emailPersonal, string emailEmpresarial,
+            string idCargo, string idDepartamento, string idHorario
+            )
         {
             this.UpdateSet(
                 new DataTableParameter("idEmpleado", $"'{idEmpleado}'"),
@@ -174,6 +189,22 @@ namespace SistemaEyS.DatosEyS.Datos
                 new DataTableParameter(
                     !string.IsNullOrWhiteSpace(fechaIngreso) ? "fechaIngreso" : "",
                     $"'{fechaIngreso}'"
+                    ),
+                new DataTableParameter(
+                    !string.IsNullOrWhiteSpace(fechaNacimiento) ? "fechaNacimiento" : "",
+                    $"'{fechaNacimiento}'"
+                    ),
+                new DataTableParameter(
+                    !string.IsNullOrWhiteSpace(telefonoEmpleado) ? "telefonoEmpleado" : "",
+                    $"'{telefonoEmpleado}'"
+                    ),
+                new DataTableParameter(
+                    !string.IsNullOrWhiteSpace(emailPersonal) ? "emailPersonal" : "",
+                    $"'{emailPersonal}'"
+                    ),
+                new DataTableParameter(
+                    !string.IsNullOrWhiteSpace(emailEmpresarial) ? "emailEmpresarial" : "",
+                    $"'{emailEmpresarial}'"
                     ),
                 new DataTableParameter(
                     !string.IsNullOrWhiteSpace(idCargo) ? "idCargo" : "",

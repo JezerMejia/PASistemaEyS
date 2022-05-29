@@ -27,10 +27,46 @@ namespace SistemaEyS.DatosEyS.Negocio
         {
             if (this.DtEmp.DoesExist(
                 "AND",
-                new DataTableParameter("cedulaEmpleado", $"{emp.cedulaEmpleado}")
+                new DataTableParameter("cedulaEmpleado", $"'{emp.cedulaEmpleado}'")
             ))
             {
                 throw new Exception("La cédula ya existe");
+            }
+        }
+        public void ValidateEmailPersonal(Ent_Empleado emp)
+        {
+            if (
+                !string.IsNullOrWhiteSpace(emp.emailPersonal) &&
+                this.DtEmp.DoesExist(
+                    "AND",
+                    new DataTableParameter("emailPersonal", $"'{emp.emailPersonal}'")
+            ))
+            {
+                throw new Exception("El correo personal ya está registrado");
+            }
+        }
+        public void ValidateEmailEmpresarial(Ent_Empleado emp)
+        {
+            if (
+                !string.IsNullOrWhiteSpace(emp.emailEmpresarial) &&
+                this.DtEmp.DoesExist(
+                    "AND",
+                    new DataTableParameter("emailEmpresarial", $"'{emp.emailEmpresarial}'")
+            ))
+            {
+                throw new Exception("El correo empresarial ya está registrado");
+            }
+        }
+        public void ValidateTelefono(Ent_Empleado emp)
+        {
+            if (
+                !string.IsNullOrWhiteSpace(emp.telefonoEmpleado) &&
+                this.DtEmp.DoesExist(
+                    "AND",
+                    new DataTableParameter("telefonoEmpleado", $"'{emp.telefonoEmpleado}'")
+            ))
+            {
+                throw new Exception("El número de teléfono ya está registrado");
             }
         }
 
@@ -40,6 +76,9 @@ namespace SistemaEyS.DatosEyS.Negocio
             {
                 this.ValidateID(emp);
                 this.ValidateCedula(emp);
+                this.ValidateTelefono(emp);
+                this.ValidateEmailPersonal(emp);
+                this.ValidateEmailEmpresarial(emp);
             }
             catch (Exception e)
             {
@@ -65,6 +104,12 @@ namespace SistemaEyS.DatosEyS.Negocio
                     );
                 if (prevEmp.cedulaEmpleado != emp.cedulaEmpleado)
                     this.ValidateCedula(emp);
+                if (prevEmp.telefonoEmpleado != emp.telefonoEmpleado)
+                    this.ValidateTelefono(emp);
+                if (prevEmp.emailPersonal != emp.emailPersonal)
+                    this.ValidateEmailPersonal(emp);
+                if (prevEmp.emailEmpresarial != emp.emailEmpresarial)
+                    this.ValidateEmailEmpresarial(emp);
             }
             catch (Exception e)
             {
@@ -77,6 +122,10 @@ namespace SistemaEyS.DatosEyS.Negocio
                 emp.primerApellido, emp.segundoApellido,
                 emp.pinEmpleado, emp.cedulaEmpleado,
                 emp.fechaIngreso?.ToString("yyyy-MM-dd"),
+                emp.fechaNacimiento?.ToString("yyyy-MM-dd"),
+                emp.telefonoEmpleado,
+                emp.emailPersonal,
+                emp.emailEmpresarial,
                 emp.idCargo?.ToString() ?? "NULL",
                 emp.idDepartamento?.ToString() ?? "NULL",
                 emp.idHorario?.ToString() ?? "NULL"
@@ -86,6 +135,19 @@ namespace SistemaEyS.DatosEyS.Negocio
         {
             //this.DtEmp.DeleteFromUpdate(emp.idEmpleado.ToString());
             this.DtEmp.DeleteFrom(emp.idEmpleado.ToString());
+        }
+
+        public DateTime? StringToDateTime(string value)
+        {
+            if (!string.IsNullOrWhiteSpace(value))
+                return DateTime.Parse(value);
+            return null;
+        }
+        public int? StringToInt(string value)
+        {
+            if (!string.IsNullOrWhiteSpace(value))
+                return Int32.Parse(value);
+            return null;
         }
         public Ent_Empleado SearchEmpleado(int idEmpleado)
         {
@@ -97,24 +159,6 @@ namespace SistemaEyS.DatosEyS.Negocio
 
             if (!store.GetIterFirst(out iter)) throw new NullReferenceException("No hay datos del empleado");
 
-            DateTime? fechaIngreso = null;
-            if (!string.IsNullOrWhiteSpace((string)store.GetValue(iter, 5)))
-            {
-                fechaIngreso = DateTime.Parse((string) store.GetValue(iter, 5));
-            }
-            int? idCargo = null;
-            if (!string.IsNullOrWhiteSpace((string)store.GetValue(iter, 8))) {
-                idCargo = Int32.Parse((string)store.GetValue(iter, 8));
-	        }
-            int? idDep = null;
-            if (!string.IsNullOrWhiteSpace((string)store.GetValue(iter, 9))) {
-                idDep = Int32.Parse((string)store.GetValue(iter, 9));
-	        }
-            int? idHor = null;
-            if (!string.IsNullOrWhiteSpace((string)store.GetValue(iter, 10))) {
-                idHor = Int32.Parse((string)store.GetValue(iter, 10));
-	        }
-
             Ent_Empleado user = new Ent_Empleado()
             {
                 idEmpleado = Int32.Parse(store.GetValue(iter, 0).ToString()),
@@ -122,12 +166,26 @@ namespace SistemaEyS.DatosEyS.Negocio
                 segundoNombre = store.GetValue(iter, 2)?.ToString() ?? "",
                 primerApellido = store.GetValue(iter, 3)?.ToString() ?? "",
                 segundoApellido = store.GetValue(iter, 4)?.ToString() ?? "",
-                fechaIngreso = fechaIngreso,
-                cedulaEmpleado = store.GetValue(iter, 6)?.ToString() ?? "",
-                pinEmpleado = store.GetValue(iter, 7)?.ToString() ?? "",
-                idCargo = idCargo,
-                idDepartamento = idDep,
-                idHorario = idHor
+                fechaIngreso = this.StringToDateTime(
+                        (string) store.GetValue(iter, 5)
+                        ),
+                fechaNacimiento = this.StringToDateTime(
+                        (string) store.GetValue(iter, 6)
+                        ),
+                cedulaEmpleado = store.GetValue(iter, 7)?.ToString() ?? "",
+                pinEmpleado = store.GetValue(iter, 8)?.ToString() ?? "",
+                telefonoEmpleado = store.GetValue(iter, 9)?.ToString() ?? "",
+                emailPersonal = store.GetValue(iter, 10)?.ToString() ?? "",
+                emailEmpresarial = store.GetValue(iter, 11)?.ToString() ?? "",
+                idCargo = this.StringToInt(
+                        (string) store.GetValue(iter, 12)
+                        ),
+                idDepartamento = this.StringToInt(
+                        (string) store.GetValue(iter, 13)
+                        ),
+                idHorario = this.StringToInt(
+                        (string) store.GetValue(iter, 14)
+                        ),
             };
 
             return user;
