@@ -44,23 +44,47 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
 		private global::Gtk.HBox hbox16;
 
-		private global::Gtk.Entry password;
+		private global::Gtk.Entry TxtPassword;
 
 		private global::Gtk.Label label8;
+
+		private global::Gtk.HBox hbox21;
+
+		private global::Gtk.Entry TxtPersonalEmail;
+
+		private global::Gtk.Label label14;
+
+		private global::Gtk.HBox hbox22;
+
+		private global::Gtk.Entry TxtCorporativeEmail;
+
+		private global::Gtk.Label label15;
 
 		private global::Gtk.VBox vbox2;
 
 		private global::Gtk.HBox hbox4;
 
-		private global::Gtk.Entry dIngress;
+		private global::Gtk.Entry TxtEntryDate;
 
 		private global::Gtk.Label label3;
 
+		private global::Gtk.HBox hbox6;
+
+		private global::Gtk.Entry TxtBornDate;
+
+		private global::Gtk.Label label9;
+
 		private global::Gtk.HBox hbox5;
 
-		private global::Gtk.Entry Icard;
+		private global::Gtk.Entry TxtIdCard;
 
 		private global::Gtk.Label label4;
+
+		private global::Gtk.HBox hbox17;
+
+		private global::Gtk.Entry TxtTelephone;
+
+		private global::Gtk.Label label13;
 
 		private global::Gtk.HBox hbox18;
 
@@ -76,7 +100,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 
 		private global::Gtk.HBox hbox20;
 
-		private global::Gtk.Entry idHor;
+		private global::Gtk.ComboBox CmbHorario;
 
 		private global::Gtk.Label label12;
 
@@ -105,7 +129,6 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.vbox6.Spacing = 6;
 			// Container child vbox6.Gtk.Box+BoxChild
 			this.hbox1 = new global::Gtk.HBox();
-			this.hbox1.Name = "hbox1";
 			this.hbox1.Spacing = 6;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.vbox7 = new global::Gtk.VBox();
@@ -117,6 +140,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.hbox13.Spacing = 6;
 			// Container child hbox13.Gtk.Box+BoxChild
 			this.TxtID = new global::Gtk.Entry();
+			this.TxtID.Sensitive = false;
 			this.TxtID.Name = "TxtID";
 			this.TxtID.IsEditable = false;
 			this.TxtID.WidthChars = 20;
@@ -270,14 +294,14 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.hbox16.Name = "hbox16";
 			this.hbox16.Spacing = 6;
 			// Container child hbox16.Gtk.Box+BoxChild
-			this.password = new global::Gtk.Entry();
-			this.password.CanFocus = true;
-			this.password.Name = "password";
-			this.password.IsEditable = true;
-			this.password.WidthChars = 20;
-			this.password.InvisibleChar = '•';
-			this.hbox16.Add(this.password);
-			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.hbox16[this.password]));
+			this.TxtPassword = new global::Gtk.Entry();
+			this.TxtPassword.CanFocus = true;
+			this.TxtPassword.Name = "TxtPassword";
+			this.TxtPassword.IsEditable = true;
+			this.TxtPassword.WidthChars = 20;
+			this.TxtPassword.InvisibleChar = '•';
+			this.hbox16.Add(this.TxtPassword);
+			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.hbox16[this.TxtPassword]));
 			w16.PackType = ((global::Gtk.PackType)(1));
 			w16.Position = 0;
 			w16.Expand = false;
@@ -296,9 +320,71 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			w18.Position = 5;
 			w18.Expand = false;
 			w18.Fill = false;
-			this.hbox1.Add(this.vbox7);
-			global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.vbox7]));
+			// Container child vbox7.Gtk.Box+BoxChild
+			this.hbox21 = new global::Gtk.HBox();
+			this.hbox21.Name = "hbox21";
+			this.hbox21.Spacing = 6;
+			// Container child hbox21.Gtk.Box+BoxChild
+			this.TxtPersonalEmail = new global::Gtk.Entry();
+			this.TxtPersonalEmail.CanFocus = true;
+			this.TxtPersonalEmail.Name = "TxtPersonalEmail";
+			this.TxtPersonalEmail.IsEditable = true;
+			this.TxtPersonalEmail.WidthChars = 20;
+			this.TxtPersonalEmail.InvisibleChar = '•';
+			this.hbox21.Add(this.TxtPersonalEmail);
+			global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.hbox21[this.TxtPersonalEmail]));
+			w19.PackType = ((global::Gtk.PackType)(1));
 			w19.Position = 0;
+			w19.Expand = false;
+			// Container child hbox21.Gtk.Box+BoxChild
+			this.label14 = new global::Gtk.Label();
+			this.label14.Name = "label14";
+			this.label14.LabelProp = global::Mono.Unix.Catalog.GetString("Correo Personal:");
+			this.hbox21.Add(this.label14);
+			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.hbox21[this.label14]));
+			w20.PackType = ((global::Gtk.PackType)(1));
+			w20.Position = 1;
+			w20.Expand = false;
+			w20.Fill = false;
+			this.vbox7.Add(this.hbox21);
+			global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.vbox7[this.hbox21]));
+			w21.Position = 6;
+			w21.Expand = false;
+			w21.Fill = false;
+			// Container child vbox7.Gtk.Box+BoxChild
+			this.hbox22 = new global::Gtk.HBox();
+			this.hbox22.Name = "hbox22";
+			this.hbox22.Spacing = 6;
+			// Container child hbox22.Gtk.Box+BoxChild
+			this.TxtCorporativeEmail = new global::Gtk.Entry();
+			this.TxtCorporativeEmail.CanFocus = true;
+			this.TxtCorporativeEmail.Name = "TxtCorporativeEmail";
+			this.TxtCorporativeEmail.IsEditable = true;
+			this.TxtCorporativeEmail.WidthChars = 20;
+			this.TxtCorporativeEmail.InvisibleChar = '•';
+			this.hbox22.Add(this.TxtCorporativeEmail);
+			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.hbox22[this.TxtCorporativeEmail]));
+			w22.PackType = ((global::Gtk.PackType)(1));
+			w22.Position = 0;
+			w22.Expand = false;
+			// Container child hbox22.Gtk.Box+BoxChild
+			this.label15 = new global::Gtk.Label();
+			this.label15.Name = "label15";
+			this.label15.LabelProp = global::Mono.Unix.Catalog.GetString("Correo Empresarial:");
+			this.hbox22.Add(this.label15);
+			global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.hbox22[this.label15]));
+			w23.PackType = ((global::Gtk.PackType)(1));
+			w23.Position = 1;
+			w23.Expand = false;
+			w23.Fill = false;
+			this.vbox7.Add(this.hbox22);
+			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.vbox7[this.hbox22]));
+			w24.Position = 7;
+			w24.Expand = false;
+			w24.Fill = false;
+			this.hbox1.Add(this.vbox7);
+			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.vbox7]));
+			w25.Position = 0;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.vbox2 = new global::Gtk.VBox();
 			this.vbox2.Name = "vbox2";
@@ -308,63 +394,125 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.hbox4.Name = "hbox4";
 			this.hbox4.Spacing = 6;
 			// Container child hbox4.Gtk.Box+BoxChild
-			this.dIngress = new global::Gtk.Entry();
-			this.dIngress.CanFocus = true;
-			this.dIngress.Name = "dIngress";
-			this.dIngress.IsEditable = true;
-			this.dIngress.WidthChars = 20;
-			this.dIngress.InvisibleChar = '•';
-			this.hbox4.Add(this.dIngress);
-			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.dIngress]));
-			w20.PackType = ((global::Gtk.PackType)(1));
-			w20.Position = 0;
-			w20.Expand = false;
+			this.TxtEntryDate = new global::Gtk.Entry();
+			this.TxtEntryDate.CanFocus = true;
+			this.TxtEntryDate.Name = "TxtEntryDate";
+			this.TxtEntryDate.IsEditable = true;
+			this.TxtEntryDate.WidthChars = 20;
+			this.TxtEntryDate.InvisibleChar = '•';
+			this.hbox4.Add(this.TxtEntryDate);
+			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.TxtEntryDate]));
+			w26.PackType = ((global::Gtk.PackType)(1));
+			w26.Position = 0;
+			w26.Expand = false;
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.label3 = new global::Gtk.Label();
 			this.label3.Name = "label3";
 			this.label3.LabelProp = global::Mono.Unix.Catalog.GetString("Fecha de Ingreso:");
 			this.hbox4.Add(this.label3);
-			global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.label3]));
-			w21.PackType = ((global::Gtk.PackType)(1));
-			w21.Position = 1;
-			w21.Expand = false;
-			w21.Fill = false;
+			global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.label3]));
+			w27.PackType = ((global::Gtk.PackType)(1));
+			w27.Position = 1;
+			w27.Expand = false;
+			w27.Fill = false;
 			this.vbox2.Add(this.hbox4);
-			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hbox4]));
-			w22.Position = 0;
-			w22.Expand = false;
-			w22.Fill = false;
+			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hbox4]));
+			w28.Position = 0;
+			w28.Expand = false;
+			w28.Fill = false;
+			// Container child vbox2.Gtk.Box+BoxChild
+			this.hbox6 = new global::Gtk.HBox();
+			this.hbox6.Name = "hbox6";
+			this.hbox6.Spacing = 6;
+			// Container child hbox6.Gtk.Box+BoxChild
+			this.TxtBornDate = new global::Gtk.Entry();
+			this.TxtBornDate.CanFocus = true;
+			this.TxtBornDate.Name = "TxtBornDate";
+			this.TxtBornDate.IsEditable = true;
+			this.TxtBornDate.WidthChars = 20;
+			this.TxtBornDate.InvisibleChar = '•';
+			this.hbox6.Add(this.TxtBornDate);
+			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.TxtBornDate]));
+			w29.PackType = ((global::Gtk.PackType)(1));
+			w29.Position = 0;
+			w29.Expand = false;
+			// Container child hbox6.Gtk.Box+BoxChild
+			this.label9 = new global::Gtk.Label();
+			this.label9.Name = "label9";
+			this.label9.LabelProp = global::Mono.Unix.Catalog.GetString("Fecha de Nacimiento:");
+			this.hbox6.Add(this.label9);
+			global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.label9]));
+			w30.PackType = ((global::Gtk.PackType)(1));
+			w30.Position = 1;
+			w30.Expand = false;
+			w30.Fill = false;
+			this.vbox2.Add(this.hbox6);
+			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hbox6]));
+			w31.Position = 1;
+			w31.Expand = false;
+			w31.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.hbox5 = new global::Gtk.HBox();
 			this.hbox5.Name = "hbox5";
 			this.hbox5.Spacing = 6;
 			// Container child hbox5.Gtk.Box+BoxChild
-			this.Icard = new global::Gtk.Entry();
-			this.Icard.CanFocus = true;
-			this.Icard.Name = "Icard";
-			this.Icard.IsEditable = true;
-			this.Icard.WidthChars = 20;
-			this.Icard.InvisibleChar = '•';
-			this.hbox5.Add(this.Icard);
-			global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.Icard]));
-			w23.PackType = ((global::Gtk.PackType)(1));
-			w23.Position = 0;
-			w23.Expand = false;
+			this.TxtIdCard = new global::Gtk.Entry();
+			this.TxtIdCard.CanFocus = true;
+			this.TxtIdCard.Name = "TxtIdCard";
+			this.TxtIdCard.IsEditable = true;
+			this.TxtIdCard.WidthChars = 20;
+			this.TxtIdCard.InvisibleChar = '•';
+			this.hbox5.Add(this.TxtIdCard);
+			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.TxtIdCard]));
+			w32.PackType = ((global::Gtk.PackType)(1));
+			w32.Position = 0;
+			w32.Expand = false;
 			// Container child hbox5.Gtk.Box+BoxChild
 			this.label4 = new global::Gtk.Label();
 			this.label4.Name = "label4";
 			this.label4.LabelProp = global::Mono.Unix.Catalog.GetString("Cédula de Identidad:");
 			this.hbox5.Add(this.label4);
-			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.label4]));
-			w24.PackType = ((global::Gtk.PackType)(1));
-			w24.Position = 1;
-			w24.Expand = false;
-			w24.Fill = false;
+			global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.label4]));
+			w33.PackType = ((global::Gtk.PackType)(1));
+			w33.Position = 1;
+			w33.Expand = false;
+			w33.Fill = false;
 			this.vbox2.Add(this.hbox5);
-			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hbox5]));
-			w25.Position = 1;
-			w25.Expand = false;
-			w25.Fill = false;
+			global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hbox5]));
+			w34.Position = 2;
+			w34.Expand = false;
+			w34.Fill = false;
+			// Container child vbox2.Gtk.Box+BoxChild
+			this.hbox17 = new global::Gtk.HBox();
+			this.hbox17.Name = "hbox17";
+			this.hbox17.Spacing = 6;
+			// Container child hbox17.Gtk.Box+BoxChild
+			this.TxtTelephone = new global::Gtk.Entry();
+			this.TxtTelephone.CanFocus = true;
+			this.TxtTelephone.Name = "TxtTelephone";
+			this.TxtTelephone.IsEditable = true;
+			this.TxtTelephone.WidthChars = 20;
+			this.TxtTelephone.InvisibleChar = '•';
+			this.hbox17.Add(this.TxtTelephone);
+			global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(this.hbox17[this.TxtTelephone]));
+			w35.PackType = ((global::Gtk.PackType)(1));
+			w35.Position = 0;
+			w35.Expand = false;
+			// Container child hbox17.Gtk.Box+BoxChild
+			this.label13 = new global::Gtk.Label();
+			this.label13.Name = "label13";
+			this.label13.LabelProp = global::Mono.Unix.Catalog.GetString("Teléfono:");
+			this.hbox17.Add(this.label13);
+			global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.hbox17[this.label13]));
+			w36.PackType = ((global::Gtk.PackType)(1));
+			w36.Position = 1;
+			w36.Expand = false;
+			w36.Fill = false;
+			this.vbox2.Add(this.hbox17);
+			global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hbox17]));
+			w37.Position = 3;
+			w37.Expand = false;
+			w37.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.hbox18 = new global::Gtk.HBox();
 			this.hbox18.Name = "hbox18";
@@ -374,26 +522,26 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.CmbCargo.WidthRequest = 150;
 			this.CmbCargo.Name = "CmbCargo";
 			this.hbox18.Add(this.CmbCargo);
-			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.hbox18[this.CmbCargo]));
-			w26.PackType = ((global::Gtk.PackType)(1));
-			w26.Position = 0;
-			w26.Expand = false;
-			w26.Fill = false;
+			global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.hbox18[this.CmbCargo]));
+			w38.PackType = ((global::Gtk.PackType)(1));
+			w38.Position = 0;
+			w38.Expand = false;
+			w38.Fill = false;
 			// Container child hbox18.Gtk.Box+BoxChild
 			this.label10 = new global::Gtk.Label();
 			this.label10.Name = "label10";
 			this.label10.LabelProp = global::Mono.Unix.Catalog.GetString("Cargo:");
 			this.hbox18.Add(this.label10);
-			global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.hbox18[this.label10]));
-			w27.PackType = ((global::Gtk.PackType)(1));
-			w27.Position = 1;
-			w27.Expand = false;
-			w27.Fill = false;
+			global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.hbox18[this.label10]));
+			w39.PackType = ((global::Gtk.PackType)(1));
+			w39.Position = 1;
+			w39.Expand = false;
+			w39.Fill = false;
 			this.vbox2.Add(this.hbox18);
-			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hbox18]));
-			w28.Position = 2;
-			w28.Expand = false;
-			w28.Fill = false;
+			global::Gtk.Box.BoxChild w40 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hbox18]));
+			w40.Position = 4;
+			w40.Expand = false;
+			w40.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.hbox19 = new global::Gtk.HBox();
 			this.hbox19.Name = "hbox19";
@@ -403,67 +551,65 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.CmbDep.WidthRequest = 150;
 			this.CmbDep.Name = "CmbDep";
 			this.hbox19.Add(this.CmbDep);
-			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.CmbDep]));
-			w29.PackType = ((global::Gtk.PackType)(1));
-			w29.Position = 0;
-			w29.Expand = false;
-			w29.Fill = false;
+			global::Gtk.Box.BoxChild w41 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.CmbDep]));
+			w41.PackType = ((global::Gtk.PackType)(1));
+			w41.Position = 0;
+			w41.Expand = false;
+			w41.Fill = false;
 			// Container child hbox19.Gtk.Box+BoxChild
 			this.label11 = new global::Gtk.Label();
 			this.label11.Name = "label11";
 			this.label11.LabelProp = global::Mono.Unix.Catalog.GetString("Departamento:");
 			this.hbox19.Add(this.label11);
-			global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.label11]));
-			w30.PackType = ((global::Gtk.PackType)(1));
-			w30.Position = 1;
-			w30.Expand = false;
-			w30.Fill = false;
+			global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.hbox19[this.label11]));
+			w42.PackType = ((global::Gtk.PackType)(1));
+			w42.Position = 1;
+			w42.Expand = false;
+			w42.Fill = false;
 			this.vbox2.Add(this.hbox19);
-			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hbox19]));
-			w31.Position = 3;
-			w31.Expand = false;
-			w31.Fill = false;
+			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hbox19]));
+			w43.Position = 5;
+			w43.Expand = false;
+			w43.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.hbox20 = new global::Gtk.HBox();
 			this.hbox20.Name = "hbox20";
 			this.hbox20.Spacing = 6;
 			// Container child hbox20.Gtk.Box+BoxChild
-			this.idHor = new global::Gtk.Entry();
-			this.idHor.CanFocus = true;
-			this.idHor.Name = "idHor";
-			this.idHor.IsEditable = true;
-			this.idHor.WidthChars = 20;
-			this.idHor.InvisibleChar = '•';
-			this.hbox20.Add(this.idHor);
-			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.hbox20[this.idHor]));
-			w32.PackType = ((global::Gtk.PackType)(1));
-			w32.Position = 0;
-			w32.Expand = false;
+			this.CmbHorario = global::Gtk.ComboBox.NewText();
+			this.CmbHorario.WidthRequest = 150;
+			this.CmbHorario.Name = "CmbHorario";
+			this.hbox20.Add(this.CmbHorario);
+			global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.hbox20[this.CmbHorario]));
+			w44.PackType = ((global::Gtk.PackType)(1));
+			w44.Position = 0;
+			w44.Expand = false;
+			w44.Fill = false;
 			// Container child hbox20.Gtk.Box+BoxChild
 			this.label12 = new global::Gtk.Label();
 			this.label12.Name = "label12";
 			this.label12.LabelProp = global::Mono.Unix.Catalog.GetString("Horario:");
 			this.hbox20.Add(this.label12);
-			global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.hbox20[this.label12]));
-			w33.PackType = ((global::Gtk.PackType)(1));
-			w33.Position = 1;
-			w33.Expand = false;
-			w33.Fill = false;
+			global::Gtk.Box.BoxChild w45 = ((global::Gtk.Box.BoxChild)(this.hbox20[this.label12]));
+			w45.PackType = ((global::Gtk.PackType)(1));
+			w45.Position = 1;
+			w45.Expand = false;
+			w45.Fill = false;
 			this.vbox2.Add(this.hbox20);
-			global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hbox20]));
-			w34.Position = 4;
-			w34.Expand = false;
-			w34.Fill = false;
+			global::Gtk.Box.BoxChild w46 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hbox20]));
+			w46.Position = 6;
+			w46.Expand = false;
+			w46.Fill = false;
 			this.hbox1.Add(this.vbox2);
-			global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.vbox2]));
-			w35.Position = 1;
-			w35.Expand = false;
-			w35.Fill = false;
+			global::Gtk.Box.BoxChild w47 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.vbox2]));
+			w47.Position = 1;
+			w47.Expand = false;
+			w47.Fill = false;
 			this.vbox6.Add(this.hbox1);
-			global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.hbox1]));
-			w36.Position = 0;
-			w36.Expand = false;
-			w36.Fill = false;
+			global::Gtk.Box.BoxChild w48 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.hbox1]));
+			w48.Position = 0;
+			w48.Expand = false;
+			w48.Fill = false;
 			// Container child vbox6.Gtk.Box+BoxChild
 			this.alignment6 = new global::Gtk.Alignment(0.5F, 0.5F, 0F, 0F);
 			this.alignment6.Name = "alignment6";
@@ -478,34 +624,34 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
 			this.BtnAccept.Name = "BtnAccept";
 			this.BtnAccept.UseUnderline = true;
 			this.BtnAccept.Label = global::Mono.Unix.Catalog.GetString("Aceptar");
-			global::Gtk.Image w37 = new global::Gtk.Image();
-			w37.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-apply", global::Gtk.IconSize.Menu);
-			this.BtnAccept.Image = w37;
+			global::Gtk.Image w49 = new global::Gtk.Image();
+			w49.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-apply", global::Gtk.IconSize.Menu);
+			this.BtnAccept.Image = w49;
 			this.hbox12.Add(this.BtnAccept);
-			global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.BtnAccept]));
-			w38.Position = 0;
-			w38.Expand = false;
-			w38.Fill = false;
+			global::Gtk.Box.BoxChild w50 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.BtnAccept]));
+			w50.Position = 0;
+			w50.Expand = false;
+			w50.Fill = false;
 			// Container child hbox12.Gtk.Box+BoxChild
 			this.BtnCancel = new global::Gtk.Button();
 			this.BtnCancel.CanFocus = true;
 			this.BtnCancel.Name = "BtnCancel";
 			this.BtnCancel.UseUnderline = true;
 			this.BtnCancel.Label = global::Mono.Unix.Catalog.GetString("Cancelar");
-			global::Gtk.Image w39 = new global::Gtk.Image();
-			w39.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-cancel", global::Gtk.IconSize.Menu);
-			this.BtnCancel.Image = w39;
+			global::Gtk.Image w51 = new global::Gtk.Image();
+			w51.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-cancel", global::Gtk.IconSize.Menu);
+			this.BtnCancel.Image = w51;
 			this.hbox12.Add(this.BtnCancel);
-			global::Gtk.Box.BoxChild w40 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.BtnCancel]));
-			w40.Position = 1;
-			w40.Expand = false;
-			w40.Fill = false;
+			global::Gtk.Box.BoxChild w52 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.BtnCancel]));
+			w52.Position = 1;
+			w52.Expand = false;
+			w52.Fill = false;
 			this.alignment6.Add(this.hbox12);
 			this.vbox6.Add(this.alignment6);
-			global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.alignment6]));
-			w42.Position = 1;
-			w42.Expand = false;
-			w42.Fill = false;
+			global::Gtk.Box.BoxChild w54 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.alignment6]));
+			w54.Position = 1;
+			w54.Expand = false;
+			w54.Fill = false;
 			this.alignment5.Add(this.vbox6);
 			this.Add(this.alignment5);
 			if ((this.Child != null))

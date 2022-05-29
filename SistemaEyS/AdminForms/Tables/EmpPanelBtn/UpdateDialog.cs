@@ -13,9 +13,11 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
         protected Dt_tlb_empleado DtEmp = new Dt_tlb_empleado();
         protected Dt_tbl_cargo DtCargo = new Dt_tbl_cargo();
         protected Dt_tbl_departamento DtDep = new Dt_tbl_departamento();
+        protected Dt_tlb_horario DtHor = new Dt_tlb_horario();
         protected ListStore EmpData;
         protected ListStore CargoData;
         protected ListStore DepData;
+        protected ListStore HorData;
 
         protected int _SelectedID = -1;
         public int SelectedID
@@ -51,8 +53,10 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             this.EmpData = DtEmp.GetData();
             this.CargoData = DtCargo.GetDataCmbx();
             this.DepData = DtDep.GetDataCmbx();
+            this.HorData = DtHor.GetDataCmbx();
             this.FillCmbCargoModel();
             this.FillCmbDepModel();
+            this.FillCmbHorarioModel();
 
             this.SetEntryTextFromID(this.SelectedID);
         }
@@ -72,6 +76,15 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             this.DepData.InsertWithValues(0, "Ninguno", "0", "");
             this.CmbDep.Model = this.DepData;
             this.CmbDep.Active = -1;
+        }
+
+        protected void FillCmbHorarioModel()
+        {
+            ListStore model = (ListStore)this.CmbHorario.Model;
+            model.Clear();
+            this.HorData.InsertWithValues(0, "Ninguno", "0");
+            this.CmbHorario.Model = this.HorData;
+            this.CmbHorario.Active = -1;
         }
 
         protected int GetIndexFromValue(ComboBox comboBox, string value)
@@ -119,30 +132,40 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 this.secondName.Text = emp.segundoNombre;
                 this.surname.Text = emp.primerApellido;
                 this.secondSurname.Text = emp.segundoApellido;
-                this.dIngress.Text = emp.fechaIngreso?.ToString("yyyy-MM-dd") ?? "";
-                this.Icard.Text = emp.cedulaEmpleado;
-                this.password.Text = emp.pinEmpleado;
-                this.password.Text = emp.pinEmpleado;
+                this.TxtEntryDate.Text = emp.fechaIngreso?.ToString("yyyy-MM-dd") ?? "";
+                this.TxtBornDate.Text = emp.fechaNacimiento?.ToString("yyyy-MM-dd") ?? "";
+                this.TxtIdCard.Text = emp.cedulaEmpleado;
+                this.TxtPassword.Text = emp.pinEmpleado;
+                this.TxtTelephone.Text = emp.telefonoEmpleado;
+                this.TxtPersonalEmail.Text = emp.emailPersonal;
+                this.TxtCorporativeEmail.Text = emp.emailEmpresarial;
+
                 this.CmbCargo.Active = this.GetIndexFromValue(
                     this.CmbCargo, emp.idCargo?.ToString());
                 this.CmbDep.Active = this.GetIndexFromValue(
                     this.CmbDep, emp.idDepartamento?.ToString());
-                this.idHor.Text = emp.idHorario?.ToString() ?? "";
+                this.CmbHorario.Active = this.GetIndexFromValue(
+		            this.CmbHorario, emp.idHorario?.ToString());
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //Console.WriteLine(ex);
                 this.name.Text = "";
                 this.secondName.Text = "";
                 this.surname.Text = "";
                 this.secondSurname.Text = "";
-                this.dIngress.Text = "";
-                this.Icard.Text = "";
-                this.password.Text = "";
-                this.password.Text = "";
+                this.TxtEntryDate.Text = "";
+                this.TxtBornDate.Text = "";
+                this.TxtIdCard.Text = "";
+                this.TxtPassword.Text = "";
+                this.TxtPassword.Text = "";
+                this.TxtTelephone.Text = "";
+                this.TxtPersonalEmail.Text = "";
+                this.TxtCorporativeEmail.Text = "";
+
                 this.CmbCargo.Active = -1;
                 this.CmbDep.Active = -1;
-                this.idHor.Text = "";
+                this.CmbHorario.Active = -1;
             }
         }
 
@@ -166,18 +189,22 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             try
             {
                 DateTime? fechaIngreso = null;
-                if (!string.IsNullOrWhiteSpace(this.dIngress.Text))
+                if (!string.IsNullOrWhiteSpace(this.TxtEntryDate.Text))
                 {
-                    if (!Regex.IsMatch(this.dIngress.Text,
+                    if (!Regex.IsMatch(this.TxtEntryDate.Text,
                         @"^([0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])$")
                     )
                         throw new FormatException("Fecha de ingreso inválida");
-                    fechaIngreso = DateTime.Parse(this.dIngress.Text);
+                    fechaIngreso = DateTime.Parse(this.TxtEntryDate.Text);
                 }
-                int? idHor = null;
-                if (!string.IsNullOrWhiteSpace(this.idHor.Text))
+                DateTime? fechaNac = null;
+                if (!string.IsNullOrWhiteSpace(this.TxtBornDate.Text))
                 {
-                    idHor = Int32.Parse(this.idHor.Text);
+                    if (!Regex.IsMatch(this.TxtBornDate.Text,
+                        @"^([0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])$")
+                    )
+                        throw new FormatException("Fecha de nacimiento inválida");
+                    fechaNac = DateTime.Parse(this.TxtBornDate.Text);
                 }
                 Ent_Empleado emp = new Ent_Empleado()
                 {
@@ -186,30 +213,21 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                     segundoNombre = this.secondName.Text,
                     primerApellido = this.surname.Text,
                     segundoApellido = this.secondSurname.Text,
-                    pinEmpleado = this.password.Text,
-                    cedulaEmpleado = this.Icard.Text,
+                    pinEmpleado = this.TxtPassword.Text,
+                    cedulaEmpleado = this.TxtIdCard.Text,
                     fechaIngreso = fechaIngreso,
+                    fechaNacimiento = fechaNac,
+                    telefonoEmpleado = this.TxtTelephone.Text,
+                    emailPersonal = this.TxtPersonalEmail.Text,
+                    emailEmpresarial = this.TxtCorporativeEmail.Text,
                     idCargo = this.GetActiveID(this.CmbCargo),
                     idDepartamento = this.GetActiveID(this.CmbDep),
-                    idHorario = idHor,
+                    idHorario = this.GetActiveID(this.CmbHorario),
                 };
                 this.NegEmp.EditEmpleado(emp);
-                //this.DtEmp.UpdateSet(
-                //    idEmpleado,
-                //    this.name.Text,
-                //    this.secondName.Text,
-                //    this.surname.Text,
-                //    this.secondSurname.Text,
-                //    this.password.Text,
-                //    this.Icard.Text,
-                //    this.dIngress.Text,
-                //    this.GetActiveID(this.CmbCargo),
-                //    this.GetActiveID(this.CmbDep),
-                //    this.idHor.Text
-                //    );
                 MessageDialog ms = new MessageDialog(this,
                     DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
-                    "Guardado");
+                    "El Empleado fue editado");
                 ms.Run();
                 ms.Destroy();
             }
@@ -232,11 +250,12 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             this.secondName.Text = "";
             this.surname.Text = "";
             this.secondSurname.Text = "";
-            this.dIngress.Text = "";
-            this.Icard.Text = "";
-            this.password.Text = "";
+            this.TxtEntryDate.Text = "";
+            this.TxtIdCard.Text = "";
+            this.TxtPassword.Text = "";
             this.CmbCargo.Active = -1;
             this.CmbDep.Active = -1;
+            this.CmbHorario.Active = -1;
         }
 
         protected void BtnCancelOnClicked(object sender, EventArgs e)
