@@ -130,5 +130,11 @@ namespace SistemaEyS.AdminForms
             Profile profile = new Profile(this, this.UserID);
             profile.Show();
         }
+
+        protected void OnOpcionesDeRolActionActivated(object sender, EventArgs e)
+        {
+            RolOpcionSeguridad rolSeg = new RolOpcionSeguridad();
+            rolSeg.Show();
+        }
     }
 }

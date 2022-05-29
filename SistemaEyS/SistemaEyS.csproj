@@ -162,6 +162,8 @@
     <Compile Include="Database\DatosEyS\Negocio\Neg_Horario.cs" />
     <Compile Include="AdminForms\Profile.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Profile.cs" />
+    <Compile Include="AdminForms\Seguridad\RolOpcionSeguridad.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Seguridad.RolOpcionSeguridad.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
