@@ -291,7 +291,7 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`vwRolOpcion` (`ID Rol` INT, `Rol` INT
 -- -----------------------------------------------------
 -- Placeholder table for view `BDSistemaEyS`.`vwUserRol`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`vwUserRol` (`ID Usuario` INT, `Usuario` INT, `Contraseña` INT, `Nombres` INT, `Apellidos` INT, `Email` INT, `Contraseña temp` INT, `Estado` INT, `ID Rol` INT, `Rol` INT);
+CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`vwUserRol` (`ID UserRol` INT, `Usuario` INT, `Rol` INT);
 
 -- -----------------------------------------------------
 -- Placeholder table for view `BDSistemaEyS`.`vwAsistencia`
@@ -361,15 +361,8 @@ DROP VIEW IF EXISTS `BDSistemaEyS`.`vwUserRol` ;
 USE `BDSistemaEyS`;
 CREATE  OR REPLACE VIEW `vwUserRol` AS
 SELECT
-`tbur`.`id_user` AS `ID Usuario`,
+`tbur`.`id_UserRol` AS `ID UserRol`,
 `tbus`.`user` AS `Usuario`,
-`tbus`.`pwd` AS `Contraseña`,
-`tbus`.`nombres` AS `Nombres`,
-`tbus`.`apellidos` AS `Apellidos`,
-`tbus`.`email` AS `Email`,
-`tbus`.`pwd_temp` AS `Contraseña temp`,
-`tbus`.`estado` AS `Estado`,
-`tbur`.`id_rol` AS `ID Rol`,
 `tbr`.`rol` AS `Rol`
 FROM
 `tbl_UserRol` AS `tbur`
