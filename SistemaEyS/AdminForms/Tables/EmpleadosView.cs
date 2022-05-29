@@ -1,6 +1,9 @@
 ﻿using System;
 using Gtk;
 using SistemaEyS.DatosEyS.Datos;
+using SistemaEyS.DatosEyS.Negocio;
+using SistemaEyS.DatosEyS.Entidades;
+
 using SistemaEyS.AdminForms.Tables.EmpPanelBtn;
 
 namespace SistemaEyS.AdminForms.Tables
@@ -8,6 +11,8 @@ namespace SistemaEyS.AdminForms.Tables
     public partial class EmpleadosView : Gtk.Bin
     {
         protected Dt_tlb_empleado DtEmp = new Dt_tlb_empleado();
+        protected Neg_Empleado NegEmp = new Neg_Empleado();
+
         protected AddDialog AddDialog;
         protected UpdateDialog UpdateDialog;
 
@@ -198,26 +203,19 @@ namespace SistemaEyS.AdminForms.Tables
 
         protected void SetEntryTextFromID(int id)
         {
-            TreeIter iter;
-            if (this.TreeData.GetIterFirst(out iter))
+            try
             {
-                do
-                {
-                    if (id.ToString() == (string)this.TreeData.GetValue(iter, 0))
-                    {
-                        this.CmbxIDEmpleado.Active = this.GetIndexFromValue(
-                            this.CmbxIDEmpleado,
-                            (string) this.TreeData.GetValue(iter, 0)
-                            );
-                        return;
-                    }
-                    else
-                    {
-                        this.CmbxIDEmpleado.Active = -1;
-                        this.CmbxIDEmpleado.Entry.Text = "";
-                    }
-                }
-                while (TreeData.IterNext(ref iter));
+                Ent_Empleado emp = this.NegEmp.SearchEmpleado(id);
+
+                this.CmbxIDEmpleado.Active = this.GetIndexFromValue(
+                    this.CmbxIDEmpleado,
+                    emp.idEmpleado.ToString()
+                    );
+            }
+            catch (Exception ex)
+            {
+                this.CmbxIDEmpleado.Active = -1;
+                this.CmbxIDEmpleado.Entry.Text = "";
             }
         }
 

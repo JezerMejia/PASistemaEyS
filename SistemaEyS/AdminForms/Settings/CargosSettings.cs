@@ -1,12 +1,16 @@
 ﻿using System;
 using Gtk;
 using SistemaEyS.DatosEyS.Datos;
+using SistemaEyS.DatosEyS.Negocio;
+using SistemaEyS.DatosEyS.Entidades;
 
 namespace SistemaEyS.AdminForms.Settings
 {
     public partial class CargosSettings : Gtk.Window
     {
         protected Dt_tbl_cargo DtCargo = new Dt_tbl_cargo();
+        protected Neg_Cargo NegCargo = new Neg_Cargo();
+
         protected TreeModelFilter TreeData;
         protected TreeModelFilterVisibleFunc ModelFilterFunc;
         public int SelectedID = -1;
@@ -54,24 +58,21 @@ namespace SistemaEyS.AdminForms.Settings
 
         protected void BtnAddOnClicked(object sender, EventArgs args)
         {
-            if (string.IsNullOrWhiteSpace(this.TxtName.Text))
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok,
-                    "Ingrese un nombre");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
             try
             {
-                this.DtCargo.InsertInto(
-                    this.TxtName.Text,
-                    this.TxtDescription.Buffer.Text
-                    );
+                if (string.IsNullOrWhiteSpace(this.TxtName.Text))
+                {
+                    throw new ArgumentException("Ingrese un nombre");
+                }
+                Ent_Cargo cargo = new Ent_Cargo()
+                {
+                    nombreCargo = this.TxtName.Text,
+                    descripcionCargo = this.TxtDescription.Buffer.Text,
+                };
+                this.NegCargo.AddCargo(cargo);
+
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok,
-                    "Cargo agregado");
+                    MessageType.Info, ButtonsType.Ok, "Cargo añadido");
                 ms.Run();
                 ms.Destroy();
             }
@@ -88,31 +89,23 @@ namespace SistemaEyS.AdminForms.Settings
 
         protected void BtnEditOnClicked(object sender, EventArgs args)
         {
-            if (this.SelectedID < 0)
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Warning, ButtonsType.Ok,
-                    "Seleccione un cargo en la tabla");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(TxtName.Text))
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok,
-                    "No puede haber datos vacíos");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
             try
             {
-                this.DtCargo.UpdateSet(
-                    this.SelectedID.ToString(),
-                    this.TxtName.Text, this.TxtDescription.Buffer.Text
-                    );
+                if (this.SelectedID < 0)
+                    throw new ArgumentException(
+			            "Seleccione un cargo en la tabla"
+			            );
+                if (string.IsNullOrWhiteSpace(this.TxtName.Text))
+                    throw new ArgumentException("Ingrese un nombre");
+
+                Ent_Cargo cargo = new Ent_Cargo()
+                {
+                    idCargo = this.SelectedID,
+                    nombreCargo = this.TxtName.Text,
+                    descripcionCargo = this.TxtDescription.Buffer.Text,
+                };
+                this.NegCargo.EditCargo(cargo);
+
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Info, ButtonsType.Ok, "Cargo editado");
                 ms.Run();
@@ -130,72 +123,38 @@ namespace SistemaEyS.AdminForms.Settings
 
         protected void BtnRemoveOnClicked(object sender, EventArgs args)
         {
-            if (this.SelectedID < 0)
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Warning, ButtonsType.Ok,
-                    "Seleccione un cargo en la tabla");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
-            string cargoName = this.GetCargoValue(this.SelectedID, 1)?.ToString() ?? "";
-
-            MessageDialog deletePrompt = new MessageDialog(this, DialogFlags.Modal,
-                MessageType.Question, ButtonsType.YesNo,
-                $"¿Desea eliminar el cargo \"{cargoName}\" ({this.SelectedID})?");
-            int result = deletePrompt.Run();
-            deletePrompt.Destroy();
-
-            switch (result)
-            {
-                case (int)ResponseType.Yes:
-                    break;
-                default:
-                    return;
-            }
-
             try
             {
-                this.DtCargo.DeleteFrom(this.SelectedID.ToString());
+                if (this.SelectedID < 0)
+                    throw new ArgumentException(
+			            "Seleccione un cargo en la tabla"
+			            );
+                Ent_Cargo cargo = this.NegCargo.SearchCargo(this.SelectedID);
+
+                MessageDialog deletePrompt = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Question, ButtonsType.YesNo,
+                    $"¿Desea eliminar el cargo \"{cargo.nombreCargo}\" ({this.SelectedID})?");
+                int result = deletePrompt.Run();
+                deletePrompt.Destroy();
+
+                if ((ResponseType)result != ResponseType.Yes) return;
+
+                this.NegCargo.RemoveCargo(cargo);
+
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok,
-                    "Cargo eliminado");
+                    MessageType.Info, ButtonsType.Ok, "Cargo eliminado");
                 ms.Run();
                 ms.Destroy();
             }
             catch (Exception e)
             {
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Error, ButtonsType.Ok,
-                    e.Message);
+                    MessageType.Error, ButtonsType.Ok, e.Message);
                 ms.Run();
                 ms.Destroy();
             }
             this.SelectedID = -1;
             this.UpdateData();
-        }
-
-        protected object GetCargoValue(int idCargo, int column)
-        {
-            TreeIter iter;
-            TreeModel model = this.TreeData;
-
-            object value = null;
-
-            if (model.GetIterFirst(out iter))
-            {
-                do
-                {
-                    if (idCargo.ToString() == model.GetValue(iter, 0).ToString())
-                    {
-                        value = model.GetValue(iter, column);
-                    }
-                } while (model.IterNext(ref iter));
-            }
-
-            return value;
         }
 
         protected void ViewTableOnRowActivated(object o, RowActivatedArgs args)
@@ -221,25 +180,20 @@ namespace SistemaEyS.AdminForms.Settings
 
         protected void SetEntryTextFromID(int id)
         {
-            TreeIter iter;
-            if (this.TreeData.GetIterFirst(out iter))
+            try
             {
-                do
-                {
-                    if (id.ToString() == (string)this.TreeData.GetValue(iter, 0))
-                    {
-                        this.TxtName.Text = (string)TreeData.GetValue(iter, 1);
-                        this.TxtDescription.Buffer.Text =
-                            (string)TreeData.GetValue(iter, 2);
-                        return;
-                    }
-                    else
-                    {
-                        this.TxtName.Text = "";
-                        this.TxtDescription.Buffer.Text = "";
-                    }
-                }
-                while (TreeData.IterNext(ref iter));
+                Ent_Cargo cargo = this.NegCargo.SearchCargo(id);
+
+                this.TxtName.Text = cargo.nombreCargo;
+                this.TxtDescription.Buffer.Text = cargo.descripcionCargo;
+            }
+            catch (Exception ex)
+            {
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info,
+                    ButtonsType.Ok, ex.Message);
+                ms.Run();
+                ms.Destroy();
             }
         }
 
@@ -259,17 +213,13 @@ namespace SistemaEyS.AdminForms.Settings
 
         protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)
         {
-            TreePath path = model.GetPath(iter);
-            //Console.WriteLine($"'{this.TxtSearch.Text}' at '{path.ToString()}'");
             if (string.IsNullOrWhiteSpace(this.TxtSearch.Text))
             {
-                //Console.WriteLine("Empty search");
                 return true;
             }
             for (int i = 0; i < model.NColumns; i++)
             {
                 string value = (string)model.GetValue(iter, i);
-                //Console.WriteLine($"\t{i}: '{value}'");
                 if (value.ToLower().Contains(this.TxtSearch.Text.ToLower()))
                 {
                     return true;
@@ -280,7 +230,6 @@ namespace SistemaEyS.AdminForms.Settings
 
         protected void TxtSearchOnChanged(object sender, EventArgs e)
         {
-            //Console.WriteLine($"Changed: '{this.TxtSearch.Text}'");
             this.TreeData.Refilter();
         }
     }
