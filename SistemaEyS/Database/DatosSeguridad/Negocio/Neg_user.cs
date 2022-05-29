@@ -27,7 +27,7 @@ namespace SistemaEyS.DatosSeguridad.Negocio
         {
             if (this.DtUser.DoesExist(
                 "AND",
-                new DataTableParameter("email", $"{user.email}")
+                new DataTableParameter("email", $"'{user.email}'")
             ))
             {
                 throw new Exception("El correo ya existe");
