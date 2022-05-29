@@ -12,11 +12,12 @@ namespace SistemaEyS.DatosEyS.Datos
         {
             this.conn = ConnectionEyS.OpenConnection();
             this.DBTable = "BDSistemaEyS.Asistencia";
-            this.Model = new ListStore(
+            this.gTypes = new Type[5] {
                 typeof(string), typeof(string),
                 typeof(string), typeof(string),
                 typeof(string)
-                );
+            };
+            this.Model = new ListStore(this.gTypes);
         }
         public override void UpdateModel()
         {
@@ -53,6 +54,49 @@ namespace SistemaEyS.DatosEyS.Datos
                 {
                     idr.Close();
                 }
+            }
+        }
+
+        public void InsertInto(
+            string idEmpleado, string fechaAsistencia,
+            string horaEntrada, string horaSalida
+        )
+        {
+            this.InsertInto(
+                new DataTableParameter("idEmpleado", $"'{idEmpleado}'"),
+                new DataTableParameter("fechaAsistencia", $"'{fechaAsistencia}'"),
+                new DataTableParameter(
+                    "horaEntrada",
+                    string.IsNullOrWhiteSpace(horaEntrada) ? "NULL" : $"'{horaEntrada}'"
+                    ),
+                new DataTableParameter(
+                    "horaSalida",
+                    string.IsNullOrWhiteSpace(horaSalida) ? "NULL" : $"'{horaSalida}'"
+                    )
+                );
+        }
+        public void UpdateSet(
+            string idEmpleado, string fechaAsistencia,
+            string horaEntrada, string horaSalida
+        )
+        {
+            horaEntrada = string.IsNullOrWhiteSpace(horaEntrada) ? "NULL" : $"'{horaEntrada}'";
+            horaSalida = string.IsNullOrWhiteSpace(horaSalida) ? "NULL" : $"'{horaSalida}'";
+
+            string Query = $"UPDATE {this.DBTable} SET " +
+                $"`horaEntrada` = {horaEntrada}, " +
+                $"`horaSalida` = {horaSalida} " +
+                $"WHERE `idEmpleado` = '{idEmpleado}' AND `fechaAsistencia` = '{fechaAsistencia}'";
+
+            try
+            {
+                this.conn.Execute(CommandType.Text, Query);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(Query);
+                Console.WriteLine(e);
+                throw e;
             }
         }
 
