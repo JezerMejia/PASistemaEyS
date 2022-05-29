@@ -35,7 +35,7 @@ namespace SistemaEyS.AdminForms.Seguridad
             };
 
             StoreObject[] storeObjects = {
-                new StoreObject("ID Rol-Opcion", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Rol", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Opcion", typeof(string), "text", new Gtk.CellRendererText()),
             };
