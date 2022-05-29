@@ -136,5 +136,13 @@ namespace SistemaEyS.AdminForms
             RolOpcionSeguridad rolSeg = new RolOpcionSeguridad();
             rolSeg.Show();
         }
+
+        protected void OnOpcionesActionActivated(object sender, EventArgs e)
+        {
+            OpcionSeguridad opcSeg = new OpcionSeguridad();
+
+            opcSeg.Show();
+        }
+
     }
 }
