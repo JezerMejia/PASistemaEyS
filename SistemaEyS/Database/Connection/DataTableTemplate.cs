@@ -155,15 +155,23 @@ namespace SistemaEyS.Database.Connection
             }
             return value;
         }
-        public ListStore Search(DataTableParameter data)
+        public ListStore Search(string op = "AND", params DataTableParameter[] data)
         {
             ListStore store = new ListStore(
                 this.gTypes
             );
 
+            List<string> QueryValues = new List<string>();
+            for (int i = 0; i < data.Length; i++)
+            {
+                QueryValues.Add($"`{data[i].name}` = {data[i].value}");
+            }
+
+            string QueryV = String.Join<string>($" {op} ", QueryValues);
+
             IDataReader idr = null;
             string Query = $"SELECT * FROM {this.DBTable} WHERE " +
-                $"`{data.name}` = '{data.value}';";
+                    $"{QueryV};";
             try
             {
                 idr = conn.Read(CommandType.Text, Query);
