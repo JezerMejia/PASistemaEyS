@@ -145,7 +145,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 this.CmbDep.Active = this.GetIndexFromValue(
                     this.CmbDep, emp.idDepartamento?.ToString());
                 this.CmbHorario.Active = this.GetIndexFromValue(
-		            this.CmbHorario, emp.idHorario?.ToString());
+                    this.CmbHorario, emp.idHorario?.ToString());
             }
             catch (Exception)
             {

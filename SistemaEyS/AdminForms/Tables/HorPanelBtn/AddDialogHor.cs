@@ -8,7 +8,6 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 {
     public partial class AddDialogHor : Gtk.Window
     {
-        //Dt_tlb_horario DtHor = new Dt_tlb_horario();
         protected Neg_Horario NegHor = new Neg_Horario();
         public int SelectedID = -1;
 
@@ -23,7 +22,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
             };
         }
 
-        protected void OnButton15Clicked(object sender, EventArgs e)
+        protected void BtnSaveOnClicked(object sender, EventArgs e)
         {
             try
             {
@@ -79,19 +78,20 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 
                 this.NegHor.AddHorario(hor);
 
-                mensaje("Guardado");
+                this.mensaje("Guardado");
                 this.ClearInput();
             }
             catch (Exception ex)
             {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Error,
                     ButtonsType.Ok, ex.Message);
                 ms.Run();
                 ms.Destroy();
             }
         }
 
-        protected void OnButton13Clicked(object sender, EventArgs e)
+        protected void BtnCancelOnClicked(object sender, EventArgs e)
         {
             this.ClearInput();
             this.Hide();
@@ -145,8 +145,9 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 
         public void mensaje(String mensaje)
         {
-            MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
-                    ButtonsType.Ok, mensaje);
+            MessageDialog ms = new MessageDialog(this,
+                DialogFlags.Modal, MessageType.Info,
+                ButtonsType.Ok, mensaje);
             ms.Run();
             ms.Destroy();
         }

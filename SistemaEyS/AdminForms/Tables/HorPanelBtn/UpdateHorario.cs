@@ -10,11 +10,9 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 {
     public partial class UpdateHorario : Gtk.Window
     {
-        protected Neg_Horario entHor = new Neg_Horario();
-        //ConnectionEyS connection = ConnectionEyS.OpenConnection();
-        protected Dt_tlb_horario dthor = new Dt_tlb_horario();
+        protected Neg_Horario NegHor = new Neg_Horario();
+        protected Dt_tlb_horario DtHor = new Dt_tlb_horario();
         protected ListStore HorData;
-        string id;
         protected int _SelectedID = -1;
 
         public int SelectedID
@@ -26,7 +24,6 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
             set
             {
                 this._SelectedID = value;
-                id = this._SelectedID.ToString();
             }
         }
 
@@ -44,80 +41,91 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 
         public void UpdateData()
         {
-            this.HorData = dthor.GetData();
+            this.HorData = DtHor.GetData();
             this.SetEntryTextFromID(this.SelectedID);
         }
 
-        protected void OnButton15Clicked(object sender, EventArgs e)
+        protected void BtnSaveOnClicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(lunesIni.ActiveText) ||
-                string.IsNullOrWhiteSpace(lunesSal.ActiveText) ||
-                string.IsNullOrWhiteSpace(martesIni.ActiveText) ||
-                string.IsNullOrWhiteSpace(martesSal.ActiveText) ||
-                string.IsNullOrWhiteSpace(miercolesIni.ActiveText) ||
-                string.IsNullOrWhiteSpace(miercolesSal.ActiveText) ||
-                string.IsNullOrWhiteSpace(juevesIni.ActiveText) ||
-                string.IsNullOrWhiteSpace(juevesSal.ActiveText) ||
-                string.IsNullOrWhiteSpace(viernesIni.ActiveText) ||
-                string.IsNullOrWhiteSpace(viernesSal.ActiveText) ||
-                string.IsNullOrWhiteSpace(sabadoIni.ActiveText) ||
-                string.IsNullOrWhiteSpace(sabadoSal.ActiveText) ||
-                string.IsNullOrWhiteSpace(domingoIni.ActiveText) ||
-                string.IsNullOrWhiteSpace(domingoSal.ActiveText)
-                )
-            {
-                mensaje("No pueden haber datos vacios");
-                return;
-            }
-
-            if (lunesIni.ActiveText.Equals(lunesSal.ActiveText) ||
-                martesIni.ActiveText.Equals(martesSal.ActiveText) ||
-                miercolesIni.ActiveText.Equals(miercolesSal.ActiveText) ||
-                juevesIni.ActiveText.Equals(juevesSal.ActiveText) ||
-                viernesIni.ActiveText.Equals(viernesSal.ActiveText) ||
-                sabadoIni.ActiveText.Equals(sabadoSal.ActiveText) ||
-                domingoIni.ActiveText.Equals(domingoSal.ActiveText))
-            {
-
-                mensaje("Entrada y salida no pueden ser iguales");
-                return;
-            }
-
             try
             {
-                //dthor.UpdateSet(this.id, this.lunesIni.ActiveText, this.lunesSal.ActiveText,
-                //            this.martesIni.ActiveText, this.martesSal.ActiveText,
-                //            this.miercolesIni.ActiveText, this.miercolesSal.ActiveText,
-                //            this.juevesIni.ActiveText, this.juevesSal.ActiveText,
-                //            this.viernesIni.ActiveText, this.viernesSal.ActiveText,
-                //            this.sabadoIni.ActiveText, this.sabadoSal.ActiveText,
-                //            this.domingoIni.ActiveText, this.domingoSal.ActiveText);
+                if (string.IsNullOrWhiteSpace(this.TxtName.Text))
+                    throw new ArgumentException("Ingrese un nombre para el Horario");
 
-                mensaje("Guardado");
+                Ent_Horario hor = new Ent_Horario()
+                {
+                    idHorario = this.SelectedID,
+                    nombreHorario = this.TxtName.Text,
+                    lunesInicio = this.NegHor.StringToDateTime(
+                            this.lunesIni.ActiveText
+                            ),
+                    lunesSalida = this.NegHor.StringToDateTime(
+                            this.lunesSal.ActiveText
+                            ),
+                    martesInicio = this.NegHor.StringToDateTime(
+                            this.martesIni.ActiveText
+                            ),
+                    martesSalida = this.NegHor.StringToDateTime(
+                            this.martesSal.ActiveText
+                            ),
+                    miercolesInicio = this.NegHor.StringToDateTime(
+                            this.miercolesIni.ActiveText
+                            ),
+                    miercolesSalida = this.NegHor.StringToDateTime(
+                            this.miercolesSal.ActiveText
+                            ),
+                    juevesInicio = this.NegHor.StringToDateTime(
+                            this.juevesIni.ActiveText
+                            ),
+                    juevesSalida = this.NegHor.StringToDateTime(
+                            this.juevesSal.ActiveText
+                            ),
+                    viernesInicio = this.NegHor.StringToDateTime(
+                            this.viernesIni.ActiveText
+                            ),
+                    viernesSalida = this.NegHor.StringToDateTime(
+                            this.viernesSal.ActiveText
+                            ),
+                    sabadoInicio = this.NegHor.StringToDateTime(
+                            this.sabadoIni.ActiveText
+                            ),
+                    sabadoSalida = this.NegHor.StringToDateTime(
+                            this.sabadoSal.ActiveText
+                            ),
+                    domingoInicio = this.NegHor.StringToDateTime(
+                            this.domingoIni.ActiveText
+                            ),
+                    domingoSalida = this.NegHor.StringToDateTime(
+                            this.domingoSal.ActiveText
+                            ),
+                };
+
+                this.NegHor.EditEmpleado(hor);
+
+                this.mensaje("Guardado");
             }
             catch (Exception ex)
             {
-                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                MessageDialog ms = new MessageDialog(this,
+		            DialogFlags.Modal, MessageType.Error,
                     ButtonsType.Ok, ex.Message);
                 ms.Run();
                 ms.Destroy();
-                ClearInput();
             }
-
         }
 
         public void mensaje(String mensaje)
         {
-            MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info,
-                    ButtonsType.Ok, mensaje);
+            MessageDialog ms = new MessageDialog(this,
+		        DialogFlags.Modal, MessageType.Info,
+                ButtonsType.Ok, mensaje);
             ms.Run();
             ms.Destroy();
-
         }
 
         public void ClearInput()
         {
-
+            this.TxtName.Text = "";
             // Lunes
             this.lunesIni.Active = -1;
             this.lunesIni.Entry.Text = "";
@@ -159,124 +167,47 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
             this.domingoIni.Entry.Text = "";
             this.domingoSal.Active = -1;
             this.domingoSal.Entry.Text = "";
-
         }
-
 
         protected void SetEntryTextFromID(int id)
         {
             try
             {
-                Ent_Horario hor = this.entHor.SearchHorario(id);
+                Ent_Horario hor = this.NegHor.SearchHorario(id);
 
-                this.lunesIni.Entry.Text = hor.lunesInicio?.ToString("HH:mm");
+                this.TxtName.Text = hor.nombreHorario;
 
-                this.lunesSal.Entry.Text = hor.lunesSalida?.ToString("HH:mm");
+                this.lunesIni.Entry.Text = hor.lunesInicio?.ToString("HH:mm") ?? "";
 
-                this.martesIni.Entry.Text = hor.martesInicio?.ToString("HH:mm");
+                this.lunesSal.Entry.Text = hor.lunesSalida?.ToString("HH:mm") ?? "";
 
-                this.martesSal.Entry.Text = hor.martesSalida?.ToString("HH:mm");
+                this.martesIni.Entry.Text = hor.martesInicio?.ToString("HH:mm") ?? "";
 
-                this.miercolesIni.Entry.Text = hor.miercolesInicio?.ToString("HH:mm");
+                this.martesSal.Entry.Text = hor.martesSalida?.ToString("HH:mm") ?? "";
 
-                this.miercolesSal.Entry.Text = hor.miercolesSalida?.ToString("HH:mm");
+                this.miercolesIni.Entry.Text = hor.miercolesInicio?.ToString("HH:mm") ?? "";
 
-                this.juevesIni.Entry.Text = hor.juevesInicio?.ToString("HH:mm");
+                this.miercolesSal.Entry.Text = hor.miercolesSalida?.ToString("HH:mm") ?? "";
 
-                this.juevesSal.Entry.Text = hor.juevesSalida?.ToString("HH:mm");
+                this.juevesIni.Entry.Text = hor.juevesInicio?.ToString("HH:mm") ?? "";
 
-                this.viernesIni.Entry.Text = hor.viernesInicio?.ToString("HH:mm");
+                this.juevesSal.Entry.Text = hor.juevesSalida?.ToString("HH:mm") ?? "";
 
-                this.viernesSal.Entry.Text = hor.viernesSalida?.ToString("HH:mm");
+                this.viernesIni.Entry.Text = hor.viernesInicio?.ToString("HH:mm") ?? "";
 
-                this.sabadoIni.Entry.Text = hor.sabadoInicio?.ToString("HH:mm");
+                this.viernesSal.Entry.Text = hor.viernesSalida?.ToString("HH:mm") ?? "";
 
-                this.sabadoSal.Entry.Text = hor.sabadoSalida?.ToString("HH:mm");
+                this.sabadoIni.Entry.Text = hor.sabadoInicio?.ToString("HH:mm") ?? "";
 
-                this.domingoIni.Entry.Text = hor.domingoInicio?.ToString("HH:mm");
+                this.sabadoSal.Entry.Text = hor.sabadoSalida?.ToString("HH:mm") ?? "";
 
-                this.domingoSal.Entry.Text = hor.domingoSalida?.ToString("HH:mm");
+                this.domingoIni.Entry.Text = hor.domingoInicio?.ToString("HH:mm") ?? "";
 
-
-                /*
-                this.martesSal.Active = this.GetIndexFromValue(
-                    this.martesSal, hor.martesSalida.ToString());
-
-                this.miercolesIni.Active = this.GetIndexFromValue(
-                    this.miercolesIni, hor.miercolesInicio.ToString());
-
-                this.miercolesSal.Active = this.GetIndexFromValue(
-                    this.miercolesSal, hor.miercolesSalida.ToString());
-
-                this.juevesIni.Active = this.GetIndexFromValue(
-                    this.juevesIni, hor.juevesInicio.ToString());
-
-                this.juevesSal.Active = this.GetIndexFromValue(
-                    this.juevesSal, hor.juevesSalida.ToString());
-
-                this.viernesIni.Active = this.GetIndexFromValue(
-                    this.viernesIni, hor.viernesInicio.ToString());
-
-                this.viernesSal.Active = this.GetIndexFromValue(
-                    this.viernesSal, hor.viernesSalida.ToString());
-
-                this.sabadoIni.Active = this.GetIndexFromValue(
-                    this.sabadoIni, hor.sabadoInicio.ToString());
-
-                this.sabadoSal.Active = this.GetIndexFromValue(
-                    this.sabadoSal, hor.sabadoSalida.ToString());
-
-                this.domingoIni.Active = this.GetIndexFromValue(
-                    this.domingoIni, hor.domingoInicio.ToString());
-
-                this.domingoSal.Active = this.GetIndexFromValue(
-                    this.domingoSal, hor.domingoSalida.ToString());*/
+                this.domingoSal.Entry.Text = hor.domingoSalida?.ToString("HH:mm") ?? "";
             }
-
             catch (Exception)
             {
-                // Lunes
-                this.lunesIni.Active = -1;
-                this.lunesIni.Entry.Text = "";
-                this.lunesSal.Active = -1;
-                this.lunesSal.Entry.Text = "";
-
-                //Martes
-                this.martesIni.Active = -1;
-                this.martesIni.Entry.Text = "";
-                this.martesSal.Active = -1;
-                this.martesSal.Entry.Text = "";
-
-                //Miercoles
-                this.miercolesIni.Active = -1;
-                this.miercolesIni.Entry.Text = "";
-                this.miercolesSal.Active = -1;
-                this.miercolesSal.Entry.Text = "";
-
-                //Jueves
-                this.juevesIni.Active = -1;
-                this.juevesIni.Entry.Text = "";
-                this.juevesSal.Active = -1;
-                this.juevesSal.Entry.Text = "";
-
-                //Viernes
-                this.viernesIni.Active = -1;
-                this.viernesIni.Entry.Text = "";
-                this.viernesSal.Active = -1;
-                this.viernesSal.Entry.Text = "";
-
-                //Sabado
-                this.sabadoIni.Active = -1;
-                this.sabadoIni.Entry.Text = "";
-                this.sabadoSal.Active = -1;
-                this.sabadoSal.Entry.Text = "";
-
-                //Domingo
-                this.domingoIni.Active = -1;
-                this.domingoIni.Entry.Text = "";
-                this.domingoSal.Active = -1;
-                this.domingoSal.Entry.Text = "";
-
+                this.ClearInput();
             }
         }
 
@@ -306,6 +237,9 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
             return index;
         }
 
-
+        protected void BtnCancelOnClicked(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }
