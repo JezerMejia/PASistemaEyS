@@ -287,6 +287,7 @@ namespace SistemaEyS.AdminForms
 			this.DefaultHeight = 430;
 			this.Show();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
+			this.PerfilAction.Activated += new global::System.EventHandler(this.PerfilActionOnActivated);
 			this.closeAction.Activated += new global::System.EventHandler(this.actCloseOnActivated);
 			this.EmpleadosAction.Activated += new global::System.EventHandler(this.TablasEmpleadosActionOnActivated);
 			this.HorariosAction.Activated += new global::System.EventHandler(this.TablasHorariosActionOnActivated);

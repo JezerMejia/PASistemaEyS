@@ -160,6 +160,8 @@
     <Compile Include="Database\DatosSeguridad\Negocio\Neg_user_rol.cs" />
     <Compile Include="Database\DatosEyS\Negocio\Neg_SolicitudVacaciones.cs" />
     <Compile Include="Database\DatosEyS\Negocio\Neg_Horario.cs" />
+    <Compile Include="AdminForms\Profile.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Profile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />

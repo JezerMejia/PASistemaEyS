@@ -24,7 +24,6 @@ namespace SistemaEyS.AdminForms
         public void Close()
         {
             GLib.Source.Remove(this.timeout);
-            ConnectionSeg.CloseConnection();
             this.Destroy();
             this.parent.Show();
         }
@@ -124,6 +123,12 @@ namespace SistemaEyS.AdminForms
         {
             Help.AboutEyS aboutEyS = new Help.AboutEyS();
             aboutEyS.Show();
+        }
+
+        protected void PerfilActionOnActivated(object sender, EventArgs e)
+        {
+            Profile profile = new Profile(this, this.UserID);
+            profile.Show();
         }
     }
 }
