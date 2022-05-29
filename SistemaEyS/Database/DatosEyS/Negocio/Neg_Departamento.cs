@@ -42,13 +42,13 @@ namespace SistemaEyS.DatosEyS.Negocio
                 );
         }
 
-        public void EditCargo(Ent_Departamento dep)
+        public void EditDepartamento(Ent_Departamento dep)
         {
             try
             {
-                Ent_Departamento prevCargo = this.SearchDep(dep.idDepartamento);
+                Ent_Departamento prevDep = this.SearchDep(dep.idDepartamento);
 
-                if (dep.nombreDepartamento != prevCargo.nombreDepartamento)
+                if (dep.nombreDepartamento != prevDep.nombreDepartamento)
                     this.ValidateNombreDep(dep);
             }
             catch (Exception e)
@@ -64,7 +64,7 @@ namespace SistemaEyS.DatosEyS.Negocio
                 );
         }
 
-        public void RemoveCargo(Ent_Departamento dep)
+        public void RemoveDepartamento(Ent_Departamento dep)
         {
             this.DtDep.DeleteFrom(dep.idDepartamento.ToString());
         }
@@ -81,21 +81,20 @@ namespace SistemaEyS.DatosEyS.Negocio
                 idDepartamento = Int32.Parse(store.GetValue(iter, 0).ToString()),
                 nombreDepartamento = store.GetValue(iter, 1).ToString(),
                 descripcionDepartamento = store.GetValue(iter, 2).ToString(),
+                extensionDepartamento = store.GetValue(iter, 3).ToString()
             };
 
             return dep;
         }
 
-        public Ent_Departamento SearchDep(int idDep)
+        public Ent_Departamento SearchDep(int idDepartamento)
         {
             ListStore store = this.DtDep.Search(
                 "AND",
-                new DataTableParameter("idDep", $"{idDep}")
+                new DataTableParameter("idDepartamento", $"'{idDepartamento}'")
             );
 
             return this.GetDepartamento(store);
         }
-
-
     }
 }

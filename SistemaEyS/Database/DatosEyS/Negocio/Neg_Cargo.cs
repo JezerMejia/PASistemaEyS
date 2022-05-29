@@ -97,7 +97,7 @@ namespace SistemaEyS.DatosEyS.Negocio
         {
             ListStore store = this.DtCar.Search(
                 "AND",
-                new DataTableParameter("idCargo", $"{idCargo}")
+                new DataTableParameter("idCargo", $"'{idCargo}'")
             );
 
             return this.GetCargo(store);
