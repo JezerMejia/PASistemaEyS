@@ -149,10 +149,11 @@ namespace SistemaEyS.AdminForms.Tables
                 return;
             }
 
+            this.updateDialog.SelectedID = this.SelectedID;
             this.updateDialog.UpdateData();
             this.updateDialog.Show();
             this.updateDialog.Present();
-            this.updateDialog.SelectedID = this.SelectedID;
+
         }
 
         protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)
