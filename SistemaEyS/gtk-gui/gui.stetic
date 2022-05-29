@@ -4,7 +4,6 @@
     <images-root-path>..</images-root-path>
   </configuration>
   <import>
-    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../../SistemaEySLibrary/bin/Debug/SistemaEySLibrary.dll" />
     <widget-library name="../bin/Debug/SistemaEyS.exe" internal="true" />
   </import>
@@ -816,6 +815,7 @@ IT</property>
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Opciones de rol</property>
         <property name="ShortLabel" translatable="yes">Opciones de rol</property>
+        <signal name="Activated" handler="OnOpcionesDeRolActionActivated" />
       </action>
       <action id="DepartamentosAction">
         <property name="Type">Action</property>
@@ -999,6 +999,7 @@ IT</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="PackType">End</property>
@@ -1046,6 +1047,7 @@ IT</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="PackType">End</property>
@@ -1268,6 +1270,7 @@ IT</property>
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
                         <property name="WidthChars">30</property>
+                        <property name="InvisibleChar">●</property>
                         <signal name="Changed" handler="TxtSearchOnChanged" />
                       </widget>
                       <packing>
@@ -1366,6 +1369,7 @@ IT</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="PackType">End</property>
@@ -1588,6 +1592,7 @@ IT</property>
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
                         <property name="WidthChars">30</property>
+                        <property name="InvisibleChar">●</property>
                         <signal name="Changed" handler="TxtSearchOnChanged" />
                       </widget>
                       <packing>
@@ -1731,6 +1736,7 @@ IT</property>
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
                         <property name="WidthChars">30</property>
+                        <property name="InvisibleChar">●</property>
                         <signal name="Changed" handler="TxtSearchOnChanged" />
                       </widget>
                       <packing>
@@ -2599,6 +2605,7 @@ IT</property>
                                 <property name="IsEditable">True</property>
                                 <property name="WidthChars">25</property>
                                 <property name="MaxLength">30</property>
+                                <property name="InvisibleChar">●</property>
                               </widget>
                               <packing>
                                 <property name="PackType">End</property>
@@ -2739,6 +2746,7 @@ IT</property>
                             <property name="Sensitive">False</property>
                             <property name="IsEditable">False</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                             <signal name="Changed" handler="TxtIDOnChanged" />
                           </widget>
                           <packing>
@@ -3466,6 +3474,7 @@ IT</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -3509,6 +3518,7 @@ IT</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -3551,6 +3561,7 @@ IT</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -3596,6 +3607,7 @@ Email:</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -3648,6 +3660,7 @@ Email:</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -3690,6 +3703,7 @@ Email:</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -3733,6 +3747,7 @@ Contraseña:</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -3874,6 +3889,7 @@ Contraseña:</property>
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
                         <property name="WidthChars">30</property>
+                        <property name="InvisibleChar">●</property>
                         <signal name="Changed" handler="TxtSearchOnChanged" />
                       </widget>
                       <packing>
@@ -3986,6 +4002,7 @@ Contraseña:</property>
                                 <property name="MemberName" />
                                 <property name="CanFocus">True</property>
                                 <property name="IsEditable">True</property>
+                                <property name="InvisibleChar">●</property>
                               </widget>
                               <packing>
                                 <property name="Position">1</property>
@@ -4699,6 +4716,7 @@ Contraseña:</property>
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
                             <property name="WidthChars">20</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="PackType">End</property>
@@ -4914,6 +4932,7 @@ Contraseña:</property>
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
                         <property name="WidthChars">30</property>
+                        <property name="InvisibleChar">●</property>
                         <signal name="Changed" handler="TxtSearchOnChanged" />
                       </widget>
                       <packing>
@@ -5219,6 +5238,7 @@ Contraseña:</property>
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
                         <property name="WidthChars">30</property>
+                        <property name="InvisibleChar">●</property>
                       </widget>
                       <packing>
                         <property name="Position">1</property>
@@ -5329,6 +5349,7 @@ Contraseña:</property>
                                 <property name="MemberName" />
                                 <property name="CanFocus">True</property>
                                 <property name="IsEditable">True</property>
+                                <property name="InvisibleChar">●</property>
                               </widget>
                               <packing>
                                 <property name="Position">1</property>
@@ -6872,6 +6893,7 @@ Base de Datos creada con MySQLWorkbench.</property>
                             <property name="MemberName" />
                             <property name="IsEditable">False</property>
                             <property name="WidthChars">25</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="PackType">End</property>
@@ -6910,6 +6932,7 @@ Base de Datos creada con MySQLWorkbench.</property>
                             <property name="MemberName" />
                             <property name="IsEditable">False</property>
                             <property name="WidthChars">25</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="PackType">End</property>
@@ -6948,6 +6971,7 @@ Base de Datos creada con MySQLWorkbench.</property>
                             <property name="MemberName" />
                             <property name="IsEditable">False</property>
                             <property name="WidthChars">25</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="PackType">End</property>
@@ -6986,6 +7010,7 @@ Base de Datos creada con MySQLWorkbench.</property>
                             <property name="MemberName" />
                             <property name="IsEditable">False</property>
                             <property name="WidthChars">25</property>
+                            <property name="InvisibleChar">●</property>
                           </widget>
                           <packing>
                             <property name="PackType">End</property>
@@ -7052,6 +7077,306 @@ Base de Datos creada con MySQLWorkbench.</property>
                 <property name="AutoSize">True</property>
                 <property name="Expand">False</property>
                 <property name="Fill">False</property>
+              </packing>
+            </child>
+          </widget>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Seguridad.RolOpcionSeguridad" design-size="429 365">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">RolOpcionSeguridad</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <child>
+      <widget class="Gtk.Alignment" id="alignment2">
+        <property name="MemberName" />
+        <property name="LeftPadding">10</property>
+        <property name="TopPadding">10</property>
+        <property name="RightPadding">10</property>
+        <property name="BottomPadding">10</property>
+        <child>
+          <widget class="Gtk.VBox" id="vbox1">
+            <property name="MemberName" />
+            <property name="Spacing">16</property>
+            <child>
+              <widget class="Gtk.HBox" id="hbox3">
+                <property name="MemberName" />
+                <property name="Homogeneous">True</property>
+                <property name="Spacing">6</property>
+                <child>
+                  <widget class="Gtk.VBox" id="vbox4">
+                    <property name="MemberName" />
+                    <property name="Spacing">6</property>
+                    <child>
+                      <widget class="Gtk.HBox" id="hbox5">
+                        <property name="MemberName" />
+                        <property name="Spacing">6</property>
+                        <child>
+                          <widget class="Gtk.ComboBoxEntry" id="rolTxt">
+                            <property name="MemberName" />
+                            <property name="IsTextCombo">True</property>
+                            <property name="Items" translatable="yes" />
+                          </widget>
+                          <packing>
+                            <property name="PackType">End</property>
+                            <property name="Position">0</property>
+                            <property name="AutoSize">True</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.Alignment" id="alignment3">
+                            <property name="MemberName" />
+                            <property name="Xalign">1</property>
+                            <child>
+                              <widget class="Gtk.Label" id="label">
+                                <property name="MemberName" />
+                                <property name="Xalign">1</property>
+                                <property name="LabelProp" translatable="yes">Rol:</property>
+                                <property name="Justify">Right</property>
+                              </widget>
+                            </child>
+                          </widget>
+                          <packing>
+                            <property name="PackType">End</property>
+                            <property name="Position">1</property>
+                            <property name="AutoSize">False</property>
+                            <property name="Expand">False</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="Position">0</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.HBox" id="hbox6">
+                        <property name="MemberName" />
+                        <property name="Spacing">6</property>
+                        <child>
+                          <widget class="Gtk.ComboBoxEntry" id="opcionTxt">
+                            <property name="MemberName" />
+                            <property name="IsTextCombo">True</property>
+                            <property name="Items" translatable="yes" />
+                          </widget>
+                          <packing>
+                            <property name="PackType">End</property>
+                            <property name="Position">0</property>
+                            <property name="AutoSize">True</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.Alignment" id="alignment4">
+                            <property name="MemberName" />
+                            <property name="Xalign">1</property>
+                            <child>
+                              <widget class="Gtk.Label" id="label4">
+                                <property name="MemberName" />
+                                <property name="Xalign">1</property>
+                                <property name="LabelProp" translatable="yes">Opcion:</property>
+                                <property name="Justify">Right</property>
+                              </widget>
+                            </child>
+                          </widget>
+                          <packing>
+                            <property name="PackType">End</property>
+                            <property name="Position">1</property>
+                            <property name="AutoSize">False</property>
+                            <property name="Expand">False</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="Position">1</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">False</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">0</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.HBox" id="hbox15">
+                <property name="MemberName" />
+                <property name="Spacing">6</property>
+                <child>
+                  <widget class="Gtk.Button" id="BtnRemove">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextAndIcon</property>
+                    <property name="Icon">stock:gtk-delete Menu</property>
+                    <property name="Label" translatable="yes">Quitar</property>
+                    <property name="UseUnderline">True</property>
+                  </widget>
+                  <packing>
+                    <property name="PackType">End</property>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Button" id="BtnEdit">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextAndIcon</property>
+                    <property name="Icon">stock:gtk-edit Menu</property>
+                    <property name="Label" translatable="yes">_Editar</property>
+                    <property name="UseUnderline">True</property>
+                  </widget>
+                  <packing>
+                    <property name="PackType">End</property>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Button" id="BtnAdd">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextAndIcon</property>
+                    <property name="Icon">stock:gtk-add Menu</property>
+                    <property name="Label" translatable="yes">_Añadir</property>
+                    <property name="UseUnderline">True</property>
+                  </widget>
+                  <packing>
+                    <property name="PackType">End</property>
+                    <property name="Position">2</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Button" id="BtnNew">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextAndIcon</property>
+                    <property name="Icon">stock:gtk-new Menu</property>
+                    <property name="Label" translatable="yes">Nuevo</property>
+                    <property name="UseUnderline">True</property>
+                  </widget>
+                  <packing>
+                    <property name="PackType">End</property>
+                    <property name="Position">3</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">1</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.VBox" id="vbox2">
+                <property name="MemberName" />
+                <property name="Spacing">6</property>
+                <child>
+                  <widget class="Gtk.HBox" id="hbox1">
+                    <property name="MemberName" />
+                    <property name="Spacing">6</property>
+                    <child>
+                      <widget class="Gtk.Label" id="label1">
+                        <property name="MemberName" />
+                        <property name="LabelProp" translatable="yes">Buscar:</property>
+                      </widget>
+                      <packing>
+                        <property name="Position">0</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.Entry" id="TxtSearch">
+                        <property name="MemberName" />
+                        <property name="CanFocus">True</property>
+                        <property name="IsEditable">True</property>
+                        <property name="WidthChars">30</property>
+                        <property name="InvisibleChar">•</property>
+                      </widget>
+                      <packing>
+                        <property name="Position">1</property>
+                        <property name="AutoSize">False</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.Button" id="BtnUpdate">
+                        <property name="MemberName" />
+                        <property name="CanFocus">True</property>
+                        <property name="Type">TextAndIcon</property>
+                        <property name="Icon">stock:gtk-refresh Menu</property>
+                        <property name="Label" translatable="yes">Actualizar</property>
+                        <property name="UseUnderline">True</property>
+                      </widget>
+                      <packing>
+                        <property name="PackType">End</property>
+                        <property name="Position">2</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
+                    <property name="MemberName" />
+                    <property name="ShadowType">In</property>
+                    <child>
+                      <widget class="SistemaEySLibrary.ViewTableTemplate" id="viewTable">
+                        <property name="MemberName" />
+                        <property name="CanFocus">True</property>
+                        <property name="ShowScrollbars">True</property>
+                      </widget>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">True</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">2</property>
+                <property name="AutoSize">True</property>
               </packing>
             </child>
           </widget>
