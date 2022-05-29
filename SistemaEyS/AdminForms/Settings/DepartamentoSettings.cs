@@ -1,12 +1,16 @@
 ﻿using System;
 using Gtk;
 using SistemaEyS.DatosEyS.Datos;
+using SistemaEyS.DatosEyS.Entidades;
+using SistemaEyS.DatosEyS.Negocio;
 
 namespace SistemaEyS.AdminForms.Settings
 {
     public partial class DepartamentoSettings : Gtk.Window
     {
         protected Dt_tbl_departamento DtDep = new Dt_tbl_departamento();
+        protected Neg_Departamento NegDep = new Neg_Departamento();
+
         protected TreeModelFilter TreeData;
         protected TreeModelFilterVisibleFunc ModelFilterFunc;
         public int SelectedID = -1;
@@ -61,25 +65,22 @@ namespace SistemaEyS.AdminForms.Settings
 
         protected void BtnAddOnClicked(object sender, EventArgs args)
         {
-            if (string.IsNullOrWhiteSpace(this.TxtName.Text))
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok,
-                    "Ingrese un nombre");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
             try
             {
-                this.DtDep.InsertInto(
-                    this.TxtName.Text,
-                    this.TxtDescription.Buffer.Text,
-                    this.TxtExt.Text
-                    );
+                if (string.IsNullOrWhiteSpace(this.TxtName.Text))
+                {
+                    throw new ArgumentException("Ingrese un nombre");
+                }
+                Ent_Departamento dep = new Ent_Departamento()
+                {
+                    nombreDepartamento = this.TxtName.Text,
+                    descripcionDepartamento = this.TxtDescription.Buffer.Text,
+                    extensionDepartamento = this.TxtExt.Text,
+                };
+                this.NegDep.AddDepartamento(dep);
+
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok,
-                    "Departamento agregado");
+                    MessageType.Info, ButtonsType.Ok, "Departamento agregado");
                 ms.Run();
                 ms.Destroy();
             }
@@ -96,32 +97,24 @@ namespace SistemaEyS.AdminForms.Settings
 
         protected void BtnEditOnClicked(object sender, EventArgs args)
         {
-            if (this.SelectedID < 0)
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Warning, ButtonsType.Ok,
-                    "Seleccione un departamento en la tabla");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(TxtName.Text))
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok,
-                    "No puede haber datos vacíos");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
             try
             {
-                this.DtDep.UpdateSet(
-                    this.SelectedID.ToString(),
-                    this.TxtName.Text, this.TxtDescription.Buffer.Text,
-                    this.TxtExt.Text
-                    );
+                if (this.SelectedID < 0)
+                    throw new ArgumentException(
+			            "Seleccione un departamento en la tabla"
+			            );
+                if (string.IsNullOrWhiteSpace(this.TxtName.Text))
+                    throw new ArgumentException("Ingrese un nombre");
+
+                Ent_Departamento dep = new Ent_Departamento()
+                {
+                    idDepartamento = this.SelectedID,
+                    nombreDepartamento = this.TxtName.Text,
+                    descripcionDepartamento = this.TxtDescription.Buffer.Text,
+                    extensionDepartamento = this.TxtExt.Text,
+                };
+                this.NegDep.EditDepartamento(dep);
+
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Info, ButtonsType.Ok, "Departamento editado");
                 ms.Run();
@@ -139,72 +132,38 @@ namespace SistemaEyS.AdminForms.Settings
 
         protected void BtnRemoveOnClicked(object sender, EventArgs args)
         {
-            if (this.SelectedID < 0)
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Warning, ButtonsType.Ok,
-                    "Seleccione un departamento en la tabla");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
-            string deptName = this.GetDeptValue(this.SelectedID, 1)?.ToString() ?? "";
-
-            MessageDialog deletePrompt = new MessageDialog(this, DialogFlags.Modal,
-                MessageType.Question, ButtonsType.YesNo,
-                $"¿Desea eliminar el departamento \"{deptName}\" ({this.SelectedID})?");
-            int result = deletePrompt.Run();
-            deletePrompt.Destroy();
-
-            switch (result)
-            {
-                case (int)ResponseType.Yes:
-                    break;
-                default:
-                    return;
-            }
-
             try
             {
-                this.DtDep.DeleteFrom(this.SelectedID.ToString());
+                if (this.SelectedID < 0)
+                    throw new ArgumentException(
+			            "Seleccione un departamento en la tabla"
+			            );
+                Ent_Departamento dep = this.NegDep.SearchDep(this.SelectedID);
+
+                MessageDialog deletePrompt = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Question, ButtonsType.YesNo,
+                    $"¿Desea eliminar el departamento \"{dep.nombreDepartamento}\" ({this.SelectedID})?");
+                int result = deletePrompt.Run();
+                deletePrompt.Destroy();
+
+                if ((ResponseType)result != ResponseType.Yes) return;
+
+                this.NegDep.RemoveDepartamento(dep);
+
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok,
-                    "Departamento eliminado");
+                    MessageType.Info, ButtonsType.Ok, "Departamento eliminado");
                 ms.Run();
                 ms.Destroy();
             }
             catch (Exception e)
             {
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Error, ButtonsType.Ok,
-                    e.Message);
+                    MessageType.Error, ButtonsType.Ok, e.Message);
                 ms.Run();
                 ms.Destroy();
             }
             this.SelectedID = -1;
             this.UpdateData();
-        }
-
-        protected object GetDeptValue(int idDept, int column)
-        {
-            TreeIter iter;
-            TreeModel model = this.TreeData;
-
-            object value = null;
-
-            if (model.GetIterFirst(out iter))
-            {
-                do
-                {
-                    if (idDept.ToString() == model.GetValue(iter, 0).ToString())
-                    {
-                        value = model.GetValue(iter, column);
-                    }
-                } while (model.IterNext(ref iter));
-            }
-
-            return value;
         }
 
         protected void ViewTableOnRowActivated(object o, RowActivatedArgs args)
@@ -230,25 +189,21 @@ namespace SistemaEyS.AdminForms.Settings
 
         protected void SetEntryTextFromID(int id)
         {
-            TreeIter iter;
-            if (this.TreeData.GetIterFirst(out iter))
+            try
             {
-                do
-                {
-                    if (id.ToString() == (string)this.TreeData.GetValue(iter, 0))
-                    {
-                        this.TxtName.Text = (string)TreeData.GetValue(iter, 1);
-                        this.TxtDescription.Buffer.Text =
-                            (string)TreeData.GetValue(iter, 2);
-                        return;
-                    }
-                    else
-                    {
-                        this.TxtName.Text = "";
-                        this.TxtDescription.Buffer.Text = "";
-                    }
-                }
-                while (TreeData.IterNext(ref iter));
+                Ent_Departamento dep = this.NegDep.SearchDep(id);
+
+                this.TxtName.Text = dep.nombreDepartamento;
+                this.TxtDescription.Buffer.Text = dep.descripcionDepartamento;
+                this.TxtExt.Text = dep.extensionDepartamento;
+            }
+            catch (Exception ex)
+            {
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info,
+                    ButtonsType.Ok, ex.Message);
+                ms.Run();
+                ms.Destroy();
             }
         }
 
@@ -262,23 +217,18 @@ namespace SistemaEyS.AdminForms.Settings
                     return false;
                 }
             }
-
             return true;
         }
 
         protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)
         {
-            TreePath path = model.GetPath(iter);
-            //Console.WriteLine($"'{this.TxtSearch.Text}' at '{path.ToString()}'");
             if (string.IsNullOrWhiteSpace(this.TxtSearch.Text))
             {
-                //Console.WriteLine("Empty search");
                 return true;
             }
             for (int i = 0; i < model.NColumns; i++)
             {
                 string value = (string)model.GetValue(iter, i);
-                //Console.WriteLine($"\t{i}: '{value}'");
                 if (value.ToLower().Contains(this.TxtSearch.Text.ToLower()))
                 {
                     return true;
@@ -289,7 +239,6 @@ namespace SistemaEyS.AdminForms.Settings
 
         protected void TxtSearchOnChanged(object sender, EventArgs e)
         {
-            //Console.WriteLine($"Changed: '{this.TxtSearch.Text}'");
             this.TreeData.Refilter();
         }
     }
