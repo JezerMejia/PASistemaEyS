@@ -12,10 +12,11 @@ namespace SistemaEyS.DatosEyS.Datos
         {
             this.conn = ConnectionEyS.OpenConnection();
             this.DBTable = "BDSistemaEyS.Departamento";
-            this.Model = new ListStore(
+            this.gTypes = new Type[4] {
                 typeof(string), typeof(string),
                 typeof(string), typeof(string)
-                );
+            };
+            this.Model = new ListStore(this.gTypes);
         }
 
         public override void UpdateModel()
