@@ -79,11 +79,8 @@ namespace SistemaEyS.DatosSeguridad.Negocio
         {
             this.DtUser.DeleteFromUpdate(user.id_user.ToString());
         }
-        public Ent_user SearchUser(int id_user)
+        protected Ent_user GetUser(ListStore store)
         {
-            ListStore store = this.DtUser.Search(
-                new DataTableParameter("id_user", $"{id_user}")
-            );
             if (store == null) throw new NullReferenceException("El usuario no existe");
             TreeIter iter;
 
@@ -102,6 +99,22 @@ namespace SistemaEyS.DatosSeguridad.Negocio
             };
 
             return user;
+        }
+        public Ent_user SearchUser(int id_user)
+        {
+            ListStore store = this.DtUser.Search(
+                new DataTableParameter("id_user", $"{id_user}")
+            );
+
+            return this.GetUser(store);
+        }
+        public Ent_user SearchUser(string user)
+        {
+            ListStore store = this.DtUser.Search(
+                new DataTableParameter("user", $"{user}")
+            );
+
+            return this.GetUser(store);
         }
     }
 }
