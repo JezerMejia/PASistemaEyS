@@ -14,18 +14,19 @@ namespace SistemaEyS.AdminForms.Tables
             StoreObject[] storeObjects = {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("ID Empleado", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("Empleado", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Fecha", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Entrada", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Salida", typeof(string), "text", new Gtk.CellRendererText()),
             };
             this.viewTable.SetTreeViewColumns(storeObjects);
 
-            this.viewTable.Model = DtAssis.GetData();
+            this.viewTable.Model = DtAssis.GetDataView();
         }
 
         protected void btnUpdateOnClicked(object sender, EventArgs e)
         {
-            this.viewTable.Model = DtAssis.GetData();
+            this.viewTable.Model = DtAssis.GetDataView();
         }
     }
 }
