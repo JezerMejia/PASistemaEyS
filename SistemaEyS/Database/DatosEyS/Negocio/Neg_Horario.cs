@@ -61,7 +61,8 @@ namespace SistemaEyS.DatosEyS.Negocio
                 hor.juevesInicio?.ToString("HH:mm:ss"), hor.juevesSalida?.ToString("HH:mm:ss"),
                 hor.viernesInicio?.ToString("HH:mm:ss"), hor.viernesSalida?.ToString("HH:mm:ss"),
                 hor.sabadoInicio?.ToString("HH:mm:ss"), hor.sabadoSalida?.ToString("HH:mm:ss"),
-                hor.domingoInicio?.ToString("HH:mm:ss"), hor.domingoSalida?.ToString("HH:mm:ss")
+                hor.domingoInicio?.ToString("HH:mm:ss"), hor.domingoSalida?.ToString("HH:mm:ss"),
+                ((int)hor.estado).ToString()
                 );
         }
         public void EditEmpleado(Ent_Horario hor)
@@ -90,7 +91,8 @@ namespace SistemaEyS.DatosEyS.Negocio
                 hor.juevesInicio?.ToString("HH:mm:ss"), hor.juevesSalida?.ToString("HH:mm:ss"),
                 hor.viernesInicio?.ToString("HH:mm:ss"), hor.viernesSalida?.ToString("HH:mm:ss"),
                 hor.sabadoInicio?.ToString("HH:mm:ss"), hor.sabadoSalida?.ToString("HH:mm:ss"),
-                hor.domingoInicio?.ToString("HH:mm:ss"), hor.domingoSalida?.ToString("HH:mm:ss")
+                hor.domingoInicio?.ToString("HH:mm:ss"), hor.domingoSalida?.ToString("HH:mm:ss"),
+                ((int)hor.estado).ToString()
                 );
         }
         public void RemoveHorario(Ent_Horario hor)
@@ -102,6 +104,12 @@ namespace SistemaEyS.DatosEyS.Negocio
         {
             if (!string.IsNullOrWhiteSpace(value))
                 return DateTime.Parse(value);
+            return null;
+        }
+        public int? StringToInt(string value)
+        {
+            if (!string.IsNullOrWhiteSpace(value))
+                return Int32.Parse(value);
             return null;
         }
         public Ent_Horario SearchHorario(int idHorario)
@@ -147,6 +155,9 @@ namespace SistemaEyS.DatosEyS.Negocio
                                     store.GetValue(iter, 14).ToString()),
                 domingoSalida = this.StringToDateTime(
                                     store.GetValue(iter, 15).ToString()),
+                estado = (EntidadEstado) this.StringToInt(
+                        (string) store.GetValue(iter, 16)
+			            )
             };
 
             return hor;

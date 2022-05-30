@@ -77,6 +77,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
                     domingoSalida = this.NegHor.StringToDateTime(
                             this.domingoSal.ActiveText
                             ),
+                    estado = EntidadEstado.Añadido
                 };
 
                 this.NegHor.AddHorario(hor);

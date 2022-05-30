@@ -16,9 +16,10 @@ namespace SistemaEyS.DatosEyS.Datos
         {
             this.conn = ConnectionEyS.OpenConnection();
             this.DBTable = "BDSistemaEyS.SolVacaciones";
-            this.gTypes = new Type[6] {
+            this.gTypes = new Type[7] {
                 typeof(string), typeof(string), typeof(string),
-                typeof(string), typeof(string), typeof(string)
+                typeof(string), typeof(string), typeof(string),
+                typeof(string)
             };
             this.ModelView = new ListStore(
                 typeof(string), typeof(string), typeof(string),
@@ -33,7 +34,7 @@ namespace SistemaEyS.DatosEyS.Datos
             IDataReader idr = null;
             StringBuilder sb = new StringBuilder();
             sb.Clear();
-            sb.Append("SELECT * FROM BDSistemaEyS.SolVacaciones;");
+            sb.Append("SELECT * FROM BDSistemaEyS.SolVacaciones WHERE estado <> 3;");
             try
             {
                 idr = this.conn.Read(CommandType.Text, sb.ToString());
@@ -46,7 +47,8 @@ namespace SistemaEyS.DatosEyS.Datos
                         idr[1].ToString(), // Fecha de Solicitud
                         idr[2].ToString(), // Descripción
                         idr[3].ToString(), // Inicio
-                        idr[4].ToString() // Fin
+                        idr[4].ToString(), // Fin
+                        idr[6].ToString() // Estado
                     );
                 }
             }
@@ -80,23 +82,29 @@ namespace SistemaEyS.DatosEyS.Datos
             return this.ModelView;
         }
 
-        public void InsertInto(string fechaSol, string descripcionSol, string idEmpleado, string FechaHoraInicio,
-            string FechaHoraFin
+        public void InsertInto(
+	        string fechaSol, string descripcionSol, string idEmpleado,
+	        string fechaHoraInicio, string fechaHoraFin,
+            string estado
             )
         {
             this.InsertInto(
                 new DataTableParameter("fechaSol", $"'{fechaSol}'"),
                 new DataTableParameter("descripcionSol", $"'{descripcionSol}'"),
                 new DataTableParameter("idEmpleado", $"'{idEmpleado}'"),
-                new DataTableParameter("FechaHoraInicio", $"'{FechaHoraInicio}'"),
-                new DataTableParameter("FechaHoraFin", $"'{FechaHoraFin}'")
+                new DataTableParameter("fechaHoraInicio", $"'{fechaHoraInicio}'"),
+                new DataTableParameter("fechaHoraFin", $"'{fechaHoraFin}'"),
+                new DataTableParameter("estado", $"'{estado}'")
                 );
         }
 
 
-        public void UpdateSet(string idSolVacaciones, string fechaSol, string descripcionSol, string idEmpleado, string FechaHoraInicio,
-                                string FechaHoraFin)
-
+        public void UpdateSet(
+	        string idSolVacaciones, string fechaSol, string descripcionSol,
+	        string idEmpleado,
+	        string fechaHoraInicio, string fechaHoraFin,
+            string estado
+	        )
         {
             this.UpdateSet(
                 new DataTableParameter("idSolVacaciones", $"'{idSolVacaciones}'"),
@@ -113,23 +121,26 @@ namespace SistemaEyS.DatosEyS.Datos
                     $"'{idEmpleado}'"
                     ),
                 new DataTableParameter(
-                    !string.IsNullOrWhiteSpace(FechaHoraInicio) ? "FechaHoraInicio" : "",
-                    $"'{FechaHoraInicio}'"
+                    !string.IsNullOrWhiteSpace(fechaHoraInicio) ? "fechaHoraInicio" : "",
+                    $"'{fechaHoraInicio}'"
                     ),
                 new DataTableParameter(
-                    !string.IsNullOrWhiteSpace(FechaHoraFin) ? "FechaHoraFin" : "",
-                    $"'{FechaHoraFin}'"
+                    !string.IsNullOrWhiteSpace(fechaHoraFin) ? "fechaHoraFin" : "",
+                    $"'{fechaHoraFin}'"
+                    ),
+                new DataTableParameter(
+                    !string.IsNullOrWhiteSpace(estado) ? "estado" : "",
+                    $"'{estado}'"
                     )
-
                 );
         }
 
         public void DeleteFrom(string idSolVacaciones)
         {
-            this.DeleteFrom(this.conn,
-                new DataTableParameter("idSolVacaciones", $"'{idSolVacaciones}'")
+            this.UpdateSet(
+                new DataTableParameter("idSolVacaciones", idSolVacaciones),
+                new DataTableParameter("estado", "3")
                 );
         }
-
     }
 }

@@ -20,6 +20,7 @@ namespace SistemaEyS.DatosEyS.Entidades
         private DateTime? _sabadoSalida;
         private DateTime? _domingoInicio;
         private DateTime? _domingoSalida;
+        private int _estado;
 
         public int idHorario
         {
@@ -117,6 +118,12 @@ namespace SistemaEyS.DatosEyS.Entidades
         {
             get => this._domingoSalida;
             set => this._domingoSalida = value;
+        }
+
+        public EntidadEstado estado
+        {
+            get => (EntidadEstado)this._estado;
+            set => this._estado = (int)value;
         }
 
         public DateTime? GetTodayInicio()

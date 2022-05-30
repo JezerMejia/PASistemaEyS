@@ -49,7 +49,8 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                     primerApellido = this.TxtLastName.Text,
                     segundoApellido = this.TxtSecondLastName.Text,
                     pinEmpleado = this.TxtPIN.Text,
-                    cedulaEmpleado = this.TxtCedula.Text
+                    cedulaEmpleado = this.TxtCedula.Text,
+                    estado = EntidadEstado.Añadido
                 };
                 this.NegEmp.AddEmpleado(emp);
 

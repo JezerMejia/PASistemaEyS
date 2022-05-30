@@ -68,6 +68,7 @@ namespace SistemaEyS.AdminForms.Settings
                 {
                     nombreCargo = this.TxtName.Text,
                     descripcionCargo = this.TxtDescription.Buffer.Text,
+                    estado = EntidadEstado.Añadido
                 };
                 this.NegCargo.AddCargo(cargo);
 
@@ -103,6 +104,7 @@ namespace SistemaEyS.AdminForms.Settings
                     idCargo = this.SelectedID,
                     nombreCargo = this.TxtName.Text,
                     descripcionCargo = this.TxtDescription.Buffer.Text,
+                    estado = EntidadEstado.Modificado
                 };
                 this.NegCargo.EditCargo(cargo);
 

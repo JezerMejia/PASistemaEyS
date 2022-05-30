@@ -90,6 +90,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
                     domingoSalida = this.NegHor.StringToDateTime(
                             this.domingoSal.ActiveText
                             ),
+                    estado = EntidadEstado.Modificado
                 };
 
                 this.NegHor.EditEmpleado(hor);

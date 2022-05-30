@@ -76,6 +76,7 @@ namespace SistemaEyS.AdminForms.Settings
                     nombreDepartamento = this.TxtName.Text,
                     descripcionDepartamento = this.TxtDescription.Buffer.Text,
                     extensionDepartamento = this.TxtExt.Text,
+                    estado = EntidadEstado.Añadido,
                 };
                 this.NegDep.AddDepartamento(dep);
 
@@ -112,6 +113,7 @@ namespace SistemaEyS.AdminForms.Settings
                     nombreDepartamento = this.TxtName.Text,
                     descripcionDepartamento = this.TxtDescription.Buffer.Text,
                     extensionDepartamento = this.TxtExt.Text,
+                    estado = EntidadEstado.Modificado,
                 };
                 this.NegDep.EditDepartamento(dep);
 

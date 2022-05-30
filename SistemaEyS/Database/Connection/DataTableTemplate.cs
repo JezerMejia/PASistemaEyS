@@ -172,7 +172,7 @@ namespace SistemaEyS.Database.Connection
             List<string> QueryValues = new List<string>();
             for (int i = 0; i < data.Length; i++)
             {
-                QueryValues.Add($"`{data[i].name}` = {data[i].value}");
+                QueryValues.Add($"`{data[i].name}` {data[i].comparator} {data[i].value}");
             }
 
             string QueryV = String.Join<string>($" {op} ", QueryValues);

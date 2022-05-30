@@ -20,6 +20,7 @@ namespace SistemaEyS.DatosEyS.Entidades
         private int? _idCargo;
         private int? _idDepartamento;
         private int? _idHorario;
+        private int _estado;
 
         public int idEmpleado
         {
@@ -133,6 +134,12 @@ namespace SistemaEyS.DatosEyS.Entidades
         {
             get => this._idHorario;
             set => this._idHorario = value;
+        }
+
+        public EntidadEstado estado
+        {
+            get => (EntidadEstado)this._estado;
+            set => this._estado = (int)value;
         }
 
         public Ent_Empleado()

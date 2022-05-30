@@ -6,6 +6,7 @@ namespace SistemaEyS.DatosEyS.Entidades
         private int _idCargo;
         private string _nombreCargo;
         private string _descripcionCargo;
+        private int _estado;
 
         public int idCargo
         {
@@ -27,6 +28,12 @@ namespace SistemaEyS.DatosEyS.Entidades
             set => this._descripcionCargo = value?.Substring(
                 0, value.Length > 100 ? 100 : value.Length
                 );
+        }
+
+        public EntidadEstado estado
+        {
+            get => (EntidadEstado)this._estado;
+            set => this._estado = (int)value;
         }
 
         public Ent_Cargo()
