@@ -156,5 +156,12 @@ namespace SistemaEyS.AdminForms
                 new Reports.EntradaSalida();
             entSalReport.Show();
         }
+
+        protected void OnDepartamentosAction1Activated(object sender, EventArgs e)
+        {
+            AdminForms.Reports.DepartamentoReport depReport =
+                new Reports.DepartamentoReport();
+            depReport.Show();
+        }
     }
 }
