@@ -304,6 +304,7 @@ namespace SistemaEyS.AdminForms
 			this.EmpleadosAction.Activated += new global::System.EventHandler(this.TablasEmpleadosActionOnActivated);
 			this.HorariosAction.Activated += new global::System.EventHandler(this.TablasHorariosActionOnActivated);
 			this.EntradasSalidasAction.Activated += new global::System.EventHandler(this.TablasEntradasSalidasActionOnActivated);
+			this.EntradasSalidasAction1.Activated += new global::System.EventHandler(this.OnEntradasSalidasAction1Activated);
 			this.HelpSistemaEySAction.Activated += new global::System.EventHandler(this.HelpSistemaEySActionOnActivated);
 			this.RolesAction.Activated += new global::System.EventHandler(this.SeguridadRolesOnActivated);
 			this.CargosAction.Activated += new global::System.EventHandler(this.AjustesCargosOnActivated);

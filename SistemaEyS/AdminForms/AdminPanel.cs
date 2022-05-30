@@ -2,6 +2,7 @@
 using Gtk;
 using SistemaEySLibrary;
 using SistemaEyS.AdminForms.Seguridad;
+using SistemaEyS.AdminForms.Reports;
 
 namespace SistemaEyS.AdminForms
 {
@@ -147,6 +148,13 @@ namespace SistemaEyS.AdminForms
             AdminForms.Reports.EmpleadosReport empleadosReport =
                 new Reports.EmpleadosReport();
             empleadosReport.Show();
+        }
+
+        protected void OnEntradasSalidasAction1Activated(object sender, EventArgs e)
+        {
+            AdminForms.Reports.EntradaSalida entSalReport =
+                new Reports.EntradaSalida();
+            entSalReport.Show();
         }
     }
 }

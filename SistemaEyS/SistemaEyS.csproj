@@ -187,6 +187,8 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Seguridad.OpcionSeguridad.cs" />
     <Compile Include="AdminForms\Reports\EmpleadosReport.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Reports.EmpleadosReport.cs" />
+    <Compile Include="AdminForms\Reports\EntradaSalida.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Reports.EntradaSalida.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
