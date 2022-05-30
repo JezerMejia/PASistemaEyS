@@ -12,7 +12,8 @@ namespace SistemaEyS.DatosEyS.Datos
         {
             this.conn = ConnectionEyS.OpenConnection();
             this.DBTable = "BDSistemaEyS.Cargo";
-            this.gTypes = new Type[3] {
+            this.gTypes = new Type[4] {
+                typeof(string),
                 typeof(string),
                 typeof(string),
                 typeof(string)
@@ -36,7 +37,8 @@ namespace SistemaEyS.DatosEyS.Datos
                     this.Model.AppendValues(
                         idr[0].ToString(), // ID
                         idr[1].ToString(), // Nombre
-                        idr[2].ToString()  // Descripción
+                        idr[2].ToString(), // Descripcion
+                        idr[3].ToString()  // Estado
                     );
                 }
             }
@@ -64,6 +66,7 @@ namespace SistemaEyS.DatosEyS.Datos
             ListStore model = new ListStore(
                 typeof(string),
                 typeof(string),
+                typeof(string),
                 typeof(string)
                 );
 
@@ -74,7 +77,8 @@ namespace SistemaEyS.DatosEyS.Datos
                     model.AppendValues(
                         this.Model.GetValue(iter, 1),
                         this.Model.GetValue(iter, 0),
-                        this.Model.GetValue(iter, 2)
+                        this.Model.GetValue(iter, 2),
+                        this.Model.GetValue(iter, 3)
                     );
                 }
                 while (this.Model.IterNext(ref iter));
@@ -83,15 +87,16 @@ namespace SistemaEyS.DatosEyS.Datos
             return model;
         }
 
-        public void InsertInto(string nombre, string descripcion)
+        public void InsertInto(string nombre, string descripcion, string estado)
         {
             this.InsertInto(
                     new DataTableParameter("nombreCargo", $"'{nombre}'"),
-                    new DataTableParameter("descripcionCargo", $"'{descripcion}'")
+                    new DataTableParameter("descripcionCargo", $"'{descripcion}'"),
+                    new DataTableParameter("descripcionCargo", $"'{estado}'")
                 );
         }
 
-        public void UpdateSet(string idCargo, string nombre, string descripcion)
+        public void UpdateSet(string idCargo, string nombre, string descripcion, string estado)
         {
             this.UpdateSet(
                     new DataTableParameter("idCargo", $"'{idCargo}'"),
@@ -102,6 +107,10 @@ namespace SistemaEyS.DatosEyS.Datos
                     new DataTableParameter(
                         !string.IsNullOrWhiteSpace(descripcion) ? "descripcionCargo" : "",
                         $"'{descripcion}'"
+                        ),
+                    new DataTableParameter(
+                        !string.IsNullOrWhiteSpace(descripcion) ? "estado" : "",
+                        $"'{estado}'"
                         )
                 );
         }
