@@ -110,42 +110,35 @@ namespace SistemaEyS.AdminForms.Tables
 
         protected void BtnDeleteOnClicked(object sender, EventArgs args)
         {
-            if (this.SelectedID < 0)
-            {
-                MessageDialog ms = new MessageDialog(this.parent,
-                    DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok,
-                    "Seleccione un usuario en la tabla");
-                ms.Run();
-                ms.Destroy();
-                return;
-            }
-
-            string userName = this.GetEmpValue(this.SelectedID, 1)?.ToString() ?? "";
-            string userLastname = this.GetEmpValue(this.SelectedID, 2)?.ToString() ?? "";
-            string userFullname = $"{userName} {userLastname}";
-
-            MessageDialog deletePrompt = new MessageDialog(this.parent, DialogFlags.Modal,
-                MessageType.Question, ButtonsType.YesNo,
-                $"¿Desea eliminar el usuario \"{userFullname}\" ({this.SelectedID})?");
-            int result = deletePrompt.Run();
-            deletePrompt.Destroy();
-
-            switch (result)
-            {
-                case (int)ResponseType.Yes:
-                    break;
-                default:
-                    return;
-            }
-
             try
             {
-                this.DtEmp.DeleteFrom(this.SelectedID.ToString());
+                if (this.SelectedID < 0)
+                {
+                    throw new ArgumentException(
+                        "Seleccione un empleado en la tabla"
+                        );
+                }
+
+                Ent_Empleado emp = this.NegEmp.SearchEmpleado(this.SelectedID);
+
+                string empFullname = emp.GetFullName();
+
+                MessageDialog deletePrompt = new MessageDialog(this.parent, DialogFlags.Modal,
+                    MessageType.Question, ButtonsType.YesNo,
+                    $"¿Desea eliminar el empleado \"{empFullname}\" ({this.SelectedID})?");
+                int result = deletePrompt.Run();
+                deletePrompt.Destroy();
+
+                if ((ResponseType)result != ResponseType.Yes) return;
+
+                this.NegEmp.RemoveEmpleado(emp);
+
                 MessageDialog ms = new MessageDialog(this.parent,
                     DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
                     "Empleado eliminado");
                 ms.Run();
                 ms.Destroy();
+                this.SelectedID = -1;
             }
             catch (Exception e)
             {
@@ -155,29 +148,7 @@ namespace SistemaEyS.AdminForms.Tables
                 ms.Run();
                 ms.Destroy();
             }
-            this.SelectedID = -1;
             this.UpdateData();
-        }
-
-        protected object GetEmpValue(int idEmpleado, int column)
-        {
-            TreeIter iter;
-            TreeModel model = this.TreeData;
-
-            object value = null;
-
-            if (model.GetIterFirst(out iter))
-            {
-                do
-                {
-                    if (idEmpleado.ToString() == model.GetValue(iter, 0).ToString())
-                    {
-                        value = model.GetValue(iter, column);
-                    }
-                } while (model.IterNext(ref iter));
-            }
-
-            return value;
         }
 
         protected void ViewTableOnRowActivated(object o, RowActivatedArgs args)
@@ -264,18 +235,14 @@ namespace SistemaEyS.AdminForms.Tables
 
         protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)
         {
-            TreePath path = model.GetPath(iter);
-            //Console.WriteLine($"'{this.TxtSearch.Text}' at '{path.ToString()}'");
             if (string.IsNullOrWhiteSpace(this.TxtSearch.Text))
             {
-                //Console.WriteLine("Empty search");
                 return true;
             }
             for (int i = 0; i < model.NColumns; i++)
             {
                 string value = (string)model.GetValue(iter, i);
                 if (string.IsNullOrEmpty(value)) return false;
-                //Console.WriteLine($"\t{i}: '{value}'");
                 if (value.ToLower().Contains(this.TxtSearch.Text.ToLower()))
                 {
                     return true;
@@ -293,13 +260,7 @@ namespace SistemaEyS.AdminForms.Tables
         {
             try
             {
-                object value = this.GetEmpValue(
-                    Int32.Parse(this.CmbxIDEmpleado.ActiveText), 0
-                );
-                if (value != null)
-                {
-                    this.SelectedID = Int32.Parse(value.ToString());
-                }
+                this.SelectedID = Int32.Parse(this.CmbxIDEmpleado.ActiveText);
             }
             catch (Exception)
             {

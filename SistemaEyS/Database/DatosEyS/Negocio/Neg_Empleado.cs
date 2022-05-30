@@ -131,7 +131,7 @@ namespace SistemaEyS.DatosEyS.Negocio
                 emp.idHorario?.ToString() ?? "NULL"
             );
         }
-        public void RemoveUser(Ent_Empleado emp)
+        public void RemoveEmpleado(Ent_Empleado emp)
         {
             //this.DtEmp.DeleteFromUpdate(emp.idEmpleado.ToString());
             this.DtEmp.DeleteFrom(emp.idEmpleado.ToString());

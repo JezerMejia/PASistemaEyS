@@ -155,7 +155,6 @@ namespace SistemaEyS.AdminForms.Tables
             this.updateDialog.UpdateData();
             this.updateDialog.Show();
             this.updateDialog.Present();
-
         }
 
         protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)

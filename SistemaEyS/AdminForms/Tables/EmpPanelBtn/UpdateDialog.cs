@@ -176,7 +176,6 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
             TreeIter iter;
             if (comboBox.GetActiveIter(out iter))
             {
-                //Console.WriteLine($"ID: {id}");
                 string v = (string)model.GetValue(iter, 1);
                 if (string.IsNullOrWhiteSpace(v) || v == "0") return null;
                 id = Int32.Parse(v);
@@ -225,6 +224,8 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                     idHorario = this.GetActiveID(this.CmbHorario),
                 };
                 this.NegEmp.EditEmpleado(emp);
+
+                this.parent.UpdateData();
                 MessageDialog ms = new MessageDialog(this,
                     DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
                     "El Empleado fue editado");
@@ -240,8 +241,6 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 ms.Run();
                 ms.Destroy();
             }
-
-            this.parent.UpdateData();
         }
 
         public void ClearInput()
