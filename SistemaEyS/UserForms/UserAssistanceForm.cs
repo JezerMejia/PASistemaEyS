@@ -14,9 +14,11 @@ namespace SistemaEyS.UserForms
 
         protected Dt_tlb_asistencia DtAssis = new Dt_tlb_asistencia();
         protected Dt_tlb_empleado DtEmp = new Dt_tlb_empleado();
+        protected Dt_tlb_horario DtHor = new Dt_tlb_horario();
 
         protected Neg_Empleado NegEmp = new Neg_Empleado();
         protected Neg_Asistencia NegAsis = new Neg_Asistencia();
+        protected Neg_Horario NegHor = new Neg_Horario();
 
         protected ListStore EmpModel;
 
@@ -32,11 +34,30 @@ namespace SistemaEyS.UserForms
             this.SetDateTimeTimeout();
         }
 
-        public void UpdateData()
+        public void SetSensitiveData()
         {
-            this.Empleado = this.NegEmp.SearchEmpleado(this.idEmpleado);
+            if (this.Empleado.idHorario == null)
+            {
+                this.lbInfo.Text =
+                    "Aún no tienes asignado un horario\n" +
+                    "Comuníquese con RRHH";
+                this.btnMarkEntry.Sensitive = false;
+                this.btnMarkExit.Sensitive = false;
+                return;
+            }
+            Ent_Horario hor = this.NegHor.SearchHorario((int)this.Empleado.idHorario);
+            DateTime? todayInicio = hor.GetTodayInicio();
+            DateTime? todaySalida = hor.GetTodaySalida();
 
-            this.lbWelcome.Text = $"¡Bienvenido, {this.Empleado.GetFullName()}!";
+            if (todayInicio == null || todaySalida == null)
+            {
+                this.lbInfo.Text =
+                    "Hoy no tienes que trabajar\n" +
+                    "¡Pase un buen día!";
+                this.btnMarkEntry.Sensitive = false;
+                this.btnMarkExit.Sensitive = false;
+                return;
+            }
 
             this.btnMarkEntry.Sensitive = true;
             this.btnMarkExit.Sensitive = true;
@@ -59,19 +80,33 @@ namespace SistemaEyS.UserForms
             if (entradaExists)
             {
                 this.btnMarkEntry.Sensitive = false;
-                this.lbInfo.Text = "¡Te esperamos al final del día!";
+                this.lbInfo.Text =
+                    "¡Te esperamos al final del día!\n" +
+		            $"Tu jornada termina a las {todaySalida?.ToString("hh:mm:ss tt")}.";
             }
             else
             {
                 this.btnMarkExit.Sensitive = false;
-                this.lbInfo.Text = "¡Es hora de marcar tu asistencia!";
+                this.lbInfo.Text =
+                    "¡Es hora de marcar tu asistencia!\n" +
+		            $"Tu jornada inicia a las {todayInicio?.ToString("hh:mm:ss tt")}.";
             }
 
             if (salidaExists)
             {
                 this.btnMarkExit.Sensitive = false;
-                this.lbInfo.Text = "Has completado tu jornada de hoy.\n¡Que tengas un buen día!";
+                this.lbInfo.Text =
+                    "Has completado tu jornada de hoy.\n¡Que tengas un buen día!";
             }
+        }
+
+        public void UpdateData()
+        {
+            this.Empleado = this.NegEmp.SearchEmpleado(this.idEmpleado);
+
+            this.lbWelcome.Text = $"¡Bienvenido, {this.Empleado.GetFullName()}!";
+
+            this.SetSensitiveData();
         }
 
         protected void SetDateTimeTimeout()
