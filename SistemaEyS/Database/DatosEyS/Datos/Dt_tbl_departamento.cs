@@ -12,9 +12,9 @@ namespace SistemaEyS.DatosEyS.Datos
         {
             this.conn = ConnectionEyS.OpenConnection();
             this.DBTable = "BDSistemaEyS.Departamento";
-            this.gTypes = new Type[4] {
+            this.gTypes = new Type[5] {
                 typeof(string), typeof(string),
-                typeof(string), typeof(string)
+                typeof(string), typeof(string), typeof(string)
             };
             this.Model = new ListStore(this.gTypes);
         }
@@ -36,7 +36,8 @@ namespace SistemaEyS.DatosEyS.Datos
                         idr[0].ToString(), // ID
                         idr[1].ToString(), // Nombre
                         idr[2].ToString(), // Descripción
-                        idr[3].ToString()  // Extensión
+                        idr[3].ToString(), // Extensión
+                        idr[4].ToString()  // Estado
                     );
                 }
             }
@@ -74,7 +75,8 @@ namespace SistemaEyS.DatosEyS.Datos
                         this.Model.GetValue(iter, 1),
                         this.Model.GetValue(iter, 0),
                         this.Model.GetValue(iter, 2),
-                        this.Model.GetValue(iter, 3)
+                        this.Model.GetValue(iter, 3),
+                        this.Model.GetValue(iter, 4)
                     );
                 }
                 while (this.Model.IterNext(ref iter));
@@ -83,16 +85,17 @@ namespace SistemaEyS.DatosEyS.Datos
             return model;
         }
 
-        public void InsertInto(string nombre, string descripcion, string extension)
+        public void InsertInto(string nombre, string descripcion, string extension, string estado)
         {
             this.InsertInto(
                     new DataTableParameter("nombreDepartamento", $"'{nombre}'"),
                     new DataTableParameter("descripcionDepartamento", $"'{descripcion}'"),
-                    new DataTableParameter("extensionDepartamento", $"'{extension}'")
+                    new DataTableParameter("extensionDepartamento", $"'{extension}'"),
+                    new DataTableParameter("estado", $"'{estado}'")
                 );
         }
 
-        public void UpdateSet(string idDepartamento, string nombre, string descripcion, string extension)
+        public void UpdateSet(string idDepartamento, string nombre, string descripcion, string extension, string estado)
         {
             this.UpdateSet(
                     new DataTableParameter("idDepartamento", $"'{idDepartamento}'"),
@@ -107,6 +110,10 @@ namespace SistemaEyS.DatosEyS.Datos
                     new DataTableParameter(
                         !string.IsNullOrWhiteSpace(extension) ? "extensionDepartamento" : "",
                         $"'{extension}'"
+                        ),
+                    new DataTableParameter(
+                        !string.IsNullOrWhiteSpace(extension) ? "estado" : "",
+                        $"'{estado}'"
                         )
                 );
         }

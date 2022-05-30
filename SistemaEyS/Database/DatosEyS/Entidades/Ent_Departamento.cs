@@ -7,6 +7,7 @@ namespace SistemaEyS.DatosEyS.Entidades
         private string _nombreDepartamento;
         private string _descripcionDepartamento;
         private string _extensionDepartamento;
+        private string _estado;
 
         public int idDepartamento
         {
@@ -36,6 +37,12 @@ namespace SistemaEyS.DatosEyS.Entidades
             set => this._extensionDepartamento = value?.Substring(
                 0, value.Length > 5 ? 5 : value.Length
                 );
+        }
+
+        public string estado
+        {
+            get => this._estado;
+            set => this._estado = value;
         }
 
         public Ent_Departamento()

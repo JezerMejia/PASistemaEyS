@@ -38,7 +38,8 @@ namespace SistemaEyS.DatosEyS.Negocio
             this.DtDep.InsertInto(
                 dep.nombreDepartamento,
                 dep.descripcionDepartamento,
-                dep.extensionDepartamento
+                dep.extensionDepartamento,
+                dep.estado
                 );
         }
 
@@ -60,7 +61,8 @@ namespace SistemaEyS.DatosEyS.Negocio
                 dep.idDepartamento.ToString(),
                 dep.nombreDepartamento,
                 dep.descripcionDepartamento,
-                dep.extensionDepartamento
+                dep.extensionDepartamento,
+                dep.estado
                 );
         }
 
@@ -81,7 +83,9 @@ namespace SistemaEyS.DatosEyS.Negocio
                 idDepartamento = Int32.Parse(store.GetValue(iter, 0).ToString()),
                 nombreDepartamento = store.GetValue(iter, 1).ToString(),
                 descripcionDepartamento = store.GetValue(iter, 2).ToString(),
-                extensionDepartamento = store.GetValue(iter, 3).ToString()
+                extensionDepartamento = store.GetValue(iter, 3).ToString(),
+                estado = store.GetValue(iter, 4).ToString(),
+
             };
 
             return dep;
