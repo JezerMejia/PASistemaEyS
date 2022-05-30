@@ -4689,7 +4689,7 @@ Contraseña:</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Seguridad.RolSeguridad" design-size="429 423">
+  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Seguridad.RolSeguridad" design-size="445 423">
     <property name="MemberName" />
     <property name="Title" translatable="yes">RolSeguridad</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -5003,7 +5003,7 @@ Contraseña:</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Seguridad.UserRolSeguridad" design-size="429 383">
+  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Seguridad.UserRolSeguridad" design-size="445 383">
     <property name="MemberName" />
     <property name="Title" translatable="yes">Seguridad | Roles de Usuario</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -7091,7 +7091,7 @@ Base de Datos creada con MySQLWorkbench.</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Seguridad.RolOpcionSeguridad" design-size="429 365">
+  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Seguridad.RolOpcionSeguridad" design-size="445 365">
     <property name="MemberName" />
     <property name="Title" translatable="yes">RolOpcionSeguridad</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -7235,6 +7235,7 @@ Base de Datos creada con MySQLWorkbench.</property>
                     <property name="Icon">stock:gtk-delete Menu</property>
                     <property name="Label" translatable="yes">Quitar</property>
                     <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="OnBtnRemoveClicked" />
                   </widget>
                   <packing>
                     <property name="PackType">End</property>
@@ -7252,6 +7253,7 @@ Base de Datos creada con MySQLWorkbench.</property>
                     <property name="Icon">stock:gtk-edit Menu</property>
                     <property name="Label" translatable="yes">_Editar</property>
                     <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="OnBtnEditClicked" />
                   </widget>
                   <packing>
                     <property name="PackType">End</property>
@@ -7269,6 +7271,7 @@ Base de Datos creada con MySQLWorkbench.</property>
                     <property name="Icon">stock:gtk-add Menu</property>
                     <property name="Label" translatable="yes">_Añadir</property>
                     <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="OnBtnAddClicked" />
                   </widget>
                   <packing>
                     <property name="PackType">End</property>
@@ -7286,6 +7289,7 @@ Base de Datos creada con MySQLWorkbench.</property>
                     <property name="Icon">stock:gtk-new Menu</property>
                     <property name="Label" translatable="yes">Nuevo</property>
                     <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="OnBtnNewClicked" />
                   </widget>
                   <packing>
                     <property name="PackType">End</property>
@@ -7368,10 +7372,16 @@ Base de Datos creada con MySQLWorkbench.</property>
                     <property name="MemberName" />
                     <property name="ShadowType">In</property>
                     <child>
-                      <widget class="SistemaEySLibrary.ViewTableTemplate" id="viewTable">
+                      <widget class="Gtk.Viewport" id="GtkViewport">
                         <property name="MemberName" />
-                        <property name="CanFocus">True</property>
-                        <property name="ShowScrollbars">True</property>
+                        <property name="ShadowType">None</property>
+                        <child>
+                          <widget class="SistemaEySLibrary.ViewTableTemplate" id="viewTable">
+                            <property name="MemberName" />
+                            <property name="CanFocus">True</property>
+                            <property name="ShowScrollbars">True</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                   </widget>
@@ -7391,7 +7401,7 @@ Base de Datos creada con MySQLWorkbench.</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Seguridad.OpcionSeguridad" design-size="429 385">
+  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Seguridad.OpcionSeguridad" design-size="445 385">
     <property name="MemberName" />
     <property name="Title" translatable="yes">OpcionSeguridad</property>
     <property name="WindowPosition">CenterOnParent</property>

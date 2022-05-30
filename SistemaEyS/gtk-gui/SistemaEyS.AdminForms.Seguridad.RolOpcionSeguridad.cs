@@ -230,7 +230,6 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.vbox2.Spacing = 6;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.hbox1 = new global::Gtk.HBox();
-			this.hbox1.Name = "hbox1";
 			this.hbox1.Spacing = 6;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.label1 = new global::Gtk.Label();
@@ -278,25 +277,33 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
+			global::Gtk.Viewport w25 = new global::Gtk.Viewport();
+			w25.ShadowType = ((global::Gtk.ShadowType)(0));
+			// Container child GtkViewport.Gtk.Container+ContainerChild
 			this.viewTable = new global::SistemaEySLibrary.ViewTableTemplate();
 			this.viewTable.CanFocus = true;
 			this.viewTable.Name = "viewTable";
-			this.GtkScrolledWindow.Add(this.viewTable);
+			w25.Add(this.viewTable);
+			this.GtkScrolledWindow.Add(w25);
 			this.vbox2.Add(this.GtkScrolledWindow);
-			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.GtkScrolledWindow]));
-			w26.Position = 1;
+			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.GtkScrolledWindow]));
+			w28.Position = 1;
 			this.vbox1.Add(this.vbox2);
-			global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.vbox2]));
-			w27.Position = 2;
+			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.vbox2]));
+			w29.Position = 2;
 			this.alignment2.Add(this.vbox1);
 			this.Add(this.alignment2);
 			if ((this.Child != null))
 			{
 				this.Child.ShowAll();
 			}
-			this.DefaultWidth = 429;
+			this.DefaultWidth = 445;
 			this.DefaultHeight = 365;
 			this.Show();
+			this.BtnNew.Clicked += new global::System.EventHandler(this.OnBtnNewClicked);
+			this.BtnAdd.Clicked += new global::System.EventHandler(this.OnBtnAddClicked);
+			this.BtnEdit.Clicked += new global::System.EventHandler(this.OnBtnEditClicked);
+			this.BtnRemove.Clicked += new global::System.EventHandler(this.OnBtnRemoveClicked);
 		}
 	}
 }

@@ -305,7 +305,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 			{
 				this.Child.ShowAll();
 			}
-			this.DefaultWidth = 429;
+			this.DefaultWidth = 445;
 			this.DefaultHeight = 385;
 			this.Show();
 			this.BtnNew.Clicked += new global::System.EventHandler(this.OnBtnNewClicked);
