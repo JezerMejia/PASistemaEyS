@@ -31,7 +31,7 @@ namespace SistemaEyS.DatosEyS.Entidades
             get => this._nombreHorario;
             set => this._nombreHorario = value?.Substring(
                 0, value.Length > 50 ? 50 : value.Length
-		        );
+                );
         }
 
         //Lunes
@@ -119,7 +119,52 @@ namespace SistemaEyS.DatosEyS.Entidades
             set => this._domingoSalida = value;
         }
 
-
+        public DateTime? GetTodayInicio()
+        {
+            DayOfWeek today = DateTime.Now.DayOfWeek;
+            switch (today)
+            {
+                case DayOfWeek.Monday:
+                    return this.lunesInicio;
+                case DayOfWeek.Tuesday:
+                    return this.martesInicio;
+                case DayOfWeek.Wednesday:
+                    return this.miercolesInicio;
+                case DayOfWeek.Thursday:
+                    return this.juevesInicio;
+                case DayOfWeek.Friday:
+                    return this.viernesInicio;
+                case DayOfWeek.Saturday:
+                    return this.sabadoInicio;
+                case DayOfWeek.Sunday:
+                    return this.domingoInicio;
+                default:
+                    return null;
+            }
+        }
+        public DateTime? GetTodaySalida()
+        {
+            DayOfWeek today = DateTime.Now.DayOfWeek;
+            switch (today)
+            {
+                case DayOfWeek.Monday:
+                    return this.lunesSalida;
+                case DayOfWeek.Tuesday:
+                    return this.martesSalida;
+                case DayOfWeek.Wednesday:
+                    return this.miercolesSalida;
+                case DayOfWeek.Thursday:
+                    return this.juevesSalida;
+                case DayOfWeek.Friday:
+                    return this.viernesSalida;
+                case DayOfWeek.Saturday:
+                    return this.sabadoSalida;
+                case DayOfWeek.Sunday:
+                    return this.domingoSalida;
+                default:
+                    return null;
+            }
+        }
 
         public Ent_Horario()
         {
