@@ -6829,6 +6829,7 @@ Base de Datos creada con MySQLWorkbench.</property>
     <property name="Title" translatable="yes">Administrador | Perfil</property>
     <property name="WindowPosition">Center</property>
     <property name="Modal">True</property>
+    <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
       <widget class="Gtk.Alignment" id="alignment1">
         <property name="MemberName" />

@@ -45,10 +45,20 @@ namespace SistemaEyS.AdminForms
             }
         }
 
-        protected void BtnExitOnClicked(object sender, EventArgs e)
+        public void Close()
         {
             this.parent.Sensitive = true;
             this.Destroy();
+        }
+
+        protected void BtnExitOnClicked(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        protected void OnDeleteEvent(object o, DeleteEventArgs args)
+        {
+            this.Close();
         }
     }
 }
