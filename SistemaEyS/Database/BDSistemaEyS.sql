@@ -28,7 +28,8 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Cargo` (
   `nombreCargo` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
   `descripcionCargo` VARCHAR(100) CHARACTER SET 'utf8' NOT NULL,
   PRIMARY KEY (`idCargo`),
-  UNIQUE INDEX `idCargo_UNIQUE` (`idCargo` ASC) VISIBLE)
+  UNIQUE INDEX `idCargo_UNIQUE` (`idCargo` ASC) VISIBLE,
+  UNIQUE INDEX `nombreCargo_UNIQUE` (`nombreCargo` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -342,7 +343,7 @@ DROP VIEW IF EXISTS `BDSistemaEyS`.`vwRolOpcion` ;
 USE `BDSistemaEyS`;
 CREATE  OR REPLACE VIEW `vwRolOpcion` AS
 SELECT
-`tbrop`.`id_rol` AS `ID Rol`,
+`tbrop`.`id_rolOpcion` AS `ID Rol`,
 `tbr`.`rol` AS `Rol`,
 `tbopc`.`opcion` AS `Opción`
 FROM
@@ -538,7 +539,7 @@ VALUES
 (1, "Tabla Empleados", "", 1),
 (2, "Tabla Solicitudes", "", 1),
 (3, "Tabla Asistencias", "", 1),
-(4, "Reportes", "", 1),
+(4, "Reportes", "Ver reportes :D", 1),
 (5, "Seguridad User", "", 1),
 (6, "Seguridad Rol", "", 1),
 (7, "Seguridad Opcion", "", 1),
