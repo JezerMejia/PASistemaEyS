@@ -10,7 +10,7 @@ namespace SistemaEyS.AdminForms.Reports
 {
     public partial class DepartamentoReport : Gtk.Window
     {
-        protected string TempFileName = "/tmp/SistemaEyS-Reporte-EntradaSalida.xlsx";
+        protected string TempFileName = "/tmp/SistemaEyS-Reporte-Departamento.xlsx";
 
         protected Dt_tbl_departamento Dtdep = new Dt_tbl_departamento();
 
