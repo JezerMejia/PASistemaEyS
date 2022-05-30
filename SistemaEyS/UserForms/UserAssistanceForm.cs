@@ -37,6 +37,41 @@ namespace SistemaEyS.UserForms
             this.Empleado = this.NegEmp.SearchEmpleado(this.idEmpleado);
 
             this.lbWelcome.Text = $"¡Bienvenido, {this.Empleado.GetFullName()}!";
+
+            this.btnMarkEntry.Sensitive = true;
+            this.btnMarkExit.Sensitive = true;
+
+            bool entradaExists =
+                this.DtAssis.DoesExist(
+                    "AND",
+                    new DataTableParameter("idEmpleado", $"'{this.Empleado.idEmpleado}'"),
+                    new DataTableParameter("fechaAsistencia", $"'{DateTime.Now.ToString("yyyy-MM-dd")}'"),
+                    new DataTableParameter("horaEntrada", $"NULL", "IS NOT")
+                    );
+            bool salidaExists =
+                this.DtAssis.DoesExist(
+                    "AND",
+                    new DataTableParameter("idEmpleado", $"'{this.Empleado.idEmpleado}'"),
+                    new DataTableParameter("fechaAsistencia", $"'{DateTime.Now.ToString("yyyy-MM-dd")}'"),
+                    new DataTableParameter("horaSalida", $"NULL", "IS NOT")
+                    );
+
+            if (entradaExists)
+            {
+                this.btnMarkEntry.Sensitive = false;
+                this.lbInfo.Text = "¡Te esperamos al final del día!";
+            }
+            else
+            {
+                this.btnMarkExit.Sensitive = false;
+                this.lbInfo.Text = "¡Es hora de marcar tu asistencia!";
+            }
+
+            if (salidaExists)
+            {
+                this.btnMarkExit.Sensitive = false;
+                this.lbInfo.Text = "Has completado tu jornada de hoy.\n¡Que tengas un buen día!";
+            }
         }
 
         protected void SetDateTimeTimeout()
@@ -71,6 +106,7 @@ namespace SistemaEyS.UserForms
                     "Marcado de entrada exitoso");
                 ms.Run();
                 ms.Destroy();
+                this.UpdateData();
             }
             catch (Exception e)
             {
@@ -100,6 +136,7 @@ namespace SistemaEyS.UserForms
                     "Marcado de salida exitoso");
                 ms.Run();
                 ms.Destroy();
+                this.UpdateData();
             }
             catch (Exception e)
             {
