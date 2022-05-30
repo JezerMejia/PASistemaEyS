@@ -2,8 +2,6 @@
 using Gtk;
 using SistemaEySLibrary;
 using SistemaEyS.AdminForms.Seguridad;
-using SistemaEyS.Database.Connection;
-using SistemaEyS.AdminForms.Tables;
 
 namespace SistemaEyS.AdminForms
 {
@@ -144,5 +142,11 @@ namespace SistemaEyS.AdminForms
             opcSeg.Show();
         }
 
+        protected void EmpleadosReportActionOnActivated(object sender, EventArgs e)
+        {
+            AdminForms.Reports.EmpleadosReport empleadosReport =
+                new Reports.EmpleadosReport();
+            empleadosReport.Show();
+        }
     }
 }

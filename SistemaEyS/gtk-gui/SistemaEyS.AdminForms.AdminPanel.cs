@@ -70,6 +70,8 @@ namespace SistemaEyS.AdminForms
 
 		private global::Gtk.Action OpcionesAction;
 
+		private global::Gtk.Action EmpleadosReportAction;
+
 		private global::Gtk.Alignment alignment1;
 
 		private global::Gtk.VBox vbox4;
@@ -192,6 +194,9 @@ namespace SistemaEyS.AdminForms
 			this.OpcionesAction = new global::Gtk.Action("OpcionesAction", global::Mono.Unix.Catalog.GetString("Opciones"), null, null);
 			this.OpcionesAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Opciones");
 			w1.Add(this.OpcionesAction, null);
+			this.EmpleadosReportAction = new global::Gtk.Action("EmpleadosReportAction", global::Mono.Unix.Catalog.GetString("Empleados"), null, null);
+			this.EmpleadosReportAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Empleados");
+			w1.Add(this.EmpleadosReportAction, null);
 			this.UIManager.InsertActionGroup(w1, 0);
 			this.AddAccelGroup(this.UIManager.AccelGroup);
 			this.Name = "SistemaEyS.AdminForms.AdminPanel";
@@ -218,17 +223,18 @@ namespace SistemaEyS.AdminForms
 					"ction=\'HorasExtrasAction\'/><menuitem name=\'HorasSuplementariasAction\' action=\'Ho" +
 					"rasSuplementariasAction\'/><menuitem name=\'AusenciasAction\' action=\'AusenciasActi" +
 					"on\'/><menuitem name=\'NovedadesAsistenciaAction\' action=\'NovedadesAsistenciaActio" +
-					"n\'/><menuitem name=\'PermisosAction\' action=\'PermisosAction\'/></menu><menu name=\'" +
-					"AjustesAction\' action=\'AjustesAction\'><menuitem name=\'CargosAction\' action=\'Carg" +
-					"osAction\'/><menuitem name=\'DepartamentosAction\' action=\'DepartamentosAction\'/></" +
-					"menu><menu name=\'SeguridadAction\' action=\'SeguridadAction\'><menu name=\'UsuariosA" +
-					"ction\' action=\'UsuariosAction\'><menuitem name=\'ConfiguracinAction\' action=\'Confi" +
-					"guracinAction\'/><menuitem name=\'RolesAction1\' action=\'RolesAction1\'/></menu><men" +
-					"uitem name=\'RolesAction\' action=\'RolesAction\'/><menuitem name=\'OpcionesDeRolActi" +
-					"on\' action=\'OpcionesDeRolAction\'/><menuitem name=\'OpcionesAction\' action=\'Opcion" +
-					"esAction\'/></menu><menu name=\'AyudaAction\' action=\'AyudaAction\'><menuitem name=\'" +
-					"dialogInfoAction\' action=\'dialogInfoAction\'/><menuitem name=\'HelpSistemaEySActio" +
-					"n\' action=\'HelpSistemaEySAction\'/></menu></menubar></ui>");
+					"n\'/><menuitem name=\'PermisosAction\' action=\'PermisosAction\'/><menuitem name=\'Emp" +
+					"leadosReportAction\' action=\'EmpleadosReportAction\'/></menu><menu name=\'AjustesAc" +
+					"tion\' action=\'AjustesAction\'><menuitem name=\'CargosAction\' action=\'CargosAction\'" +
+					"/><menuitem name=\'DepartamentosAction\' action=\'DepartamentosAction\'/></menu><men" +
+					"u name=\'SeguridadAction\' action=\'SeguridadAction\'><menu name=\'UsuariosAction\' ac" +
+					"tion=\'UsuariosAction\'><menuitem name=\'ConfiguracinAction\' action=\'ConfiguracinAc" +
+					"tion\'/><menuitem name=\'RolesAction1\' action=\'RolesAction1\'/></menu><menuitem nam" +
+					"e=\'RolesAction\' action=\'RolesAction\'/><menuitem name=\'OpcionesDeRolAction\' actio" +
+					"n=\'OpcionesDeRolAction\'/><menuitem name=\'OpcionesAction\' action=\'OpcionesAction\'" +
+					"/></menu><menu name=\'AyudaAction\' action=\'AyudaAction\'><menuitem name=\'dialogInf" +
+					"oAction\' action=\'dialogInfoAction\'/><menuitem name=\'HelpSistemaEySAction\' action" +
+					"=\'HelpSistemaEySAction\'/></menu></menubar></ui>");
 			this.menuBar = ((global::Gtk.MenuBar)(this.UIManager.GetWidget("/menuBar")));
 			this.menuBar.Name = "menuBar";
 			this.vbox4.Add(this.menuBar);
@@ -308,6 +314,7 @@ namespace SistemaEyS.AdminForms
 			this.ConfiguracinAction.Activated += new global::System.EventHandler(this.SeguridadUsuariosConfOnActivated);
 			this.RolesAction1.Activated += new global::System.EventHandler(this.SeguridadUsuariosRolesOnActivated);
 			this.OpcionesAction.Activated += new global::System.EventHandler(this.OnOpcionesActionActivated);
+			this.EmpleadosReportAction.Activated += new global::System.EventHandler(this.EmpleadosReportActionOnActivated);
 		}
 	}
 }
