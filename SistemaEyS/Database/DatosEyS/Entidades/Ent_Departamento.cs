@@ -7,7 +7,7 @@ namespace SistemaEyS.DatosEyS.Entidades
         private string _nombreDepartamento;
         private string _descripcionDepartamento;
         private string _extensionDepartamento;
-        private string _estado;
+        private int _estado;
 
         public int idDepartamento
         {
@@ -39,10 +39,10 @@ namespace SistemaEyS.DatosEyS.Entidades
                 );
         }
 
-        public string estado
+        public EntidadEstado estado
         {
-            get => this._estado;
-            set => this._estado = value;
+            get => (EntidadEstado)this._estado;
+            set => this._estado = (int)value;
         }
 
         public Ent_Departamento()

@@ -30,11 +30,6 @@ namespace SistemaEyS.Database.Connection
             try
             {
                 conexion.conn.Open();
-                ms = new MessageDialog(null, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok, "Se abrió la conexión al apartado de Seguridad");
-                ms.SetPosition(WindowPosition.Center);
-                ms.Run();
-                ms.Destroy();
             }
             catch (Exception e)
             {

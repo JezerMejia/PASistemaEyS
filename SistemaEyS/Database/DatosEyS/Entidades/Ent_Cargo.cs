@@ -6,7 +6,7 @@ namespace SistemaEyS.DatosEyS.Entidades
         private int _idCargo;
         private string _nombreCargo;
         private string _descripcionCargo;
-        private string _estado;
+        private int _estado;
 
         public int idCargo
         {
@@ -30,10 +30,10 @@ namespace SistemaEyS.DatosEyS.Entidades
                 );
         }
 
-        public string estado
+        public EntidadEstado estado
         {
-            get => this._estado;
-            set => this._estado = value;
+            get => (EntidadEstado)this._estado;
+            set => this._estado = (int)value;
         }
 
         public Ent_Cargo()

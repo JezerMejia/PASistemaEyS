@@ -14,7 +14,8 @@ namespace SistemaEyS.DatosEyS.Datos
             this.DBTable = "BDSistemaEyS.Departamento";
             this.gTypes = new Type[5] {
                 typeof(string), typeof(string),
-                typeof(string), typeof(string), typeof(string)
+                typeof(string), typeof(string), 
+                typeof(string),
             };
             this.Model = new ListStore(this.gTypes);
         }
@@ -26,7 +27,7 @@ namespace SistemaEyS.DatosEyS.Datos
             IDataReader idr = null;
             StringBuilder sb = new StringBuilder();
             sb.Clear();
-            sb.Append("SELECT * FROM BDSistemaEyS.Departamento;");
+            sb.Append("SELECT * FROM BDSistemaEyS.Departamento WHERE estado <> 3;");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());
@@ -84,44 +85,51 @@ namespace SistemaEyS.DatosEyS.Datos
 
             return model;
         }
-
-        public void InsertInto(string nombre, string descripcion, string extension, string estado)
+        public void InsertInto(
+            string nombre, string descripcion, string extension,
+            string estado
+            )
         {
             this.InsertInto(
-                    new DataTableParameter("nombreDepartamento", $"'{nombre}'"),
-                    new DataTableParameter("descripcionDepartamento", $"'{descripcion}'"),
-                    new DataTableParameter("extensionDepartamento", $"'{extension}'"),
-                    new DataTableParameter("estado", $"'{estado}'")
+                new DataTableParameter("nombreDepartamento", $"'{nombre}'"),
+                new DataTableParameter("descripcionDepartamento", $"'{descripcion}'"),
+                new DataTableParameter("extensionDepartamento", $"'{extension}'"),
+                new DataTableParameter("estado", $"'{estado}'")
                 );
         }
 
-        public void UpdateSet(string idDepartamento, string nombre, string descripcion, string extension, string estado)
+        public void UpdateSet(
+            string idDepartamento, string nombre,
+            string descripcion, string extension,
+            string estado
+            )
         {
             this.UpdateSet(
-                    new DataTableParameter("idDepartamento", $"'{idDepartamento}'"),
-                    new DataTableParameter(
-                        !string.IsNullOrWhiteSpace(nombre) ? "nombreDepartamento" : "",
-                        $"'{nombre}'"
-                        ),
-                    new DataTableParameter(
-                        !string.IsNullOrWhiteSpace(descripcion) ? "descripcionDepartamento" : "",
-                        $"'{descripcion}'"
-                        ),
-                    new DataTableParameter(
-                        !string.IsNullOrWhiteSpace(extension) ? "extensionDepartamento" : "",
-                        $"'{extension}'"
-                        ),
-                    new DataTableParameter(
-                        !string.IsNullOrWhiteSpace(extension) ? "estado" : "",
-                        $"'{estado}'"
-                        )
+                new DataTableParameter("idDepartamento", $"'{idDepartamento}'"),
+                new DataTableParameter(
+                    !string.IsNullOrWhiteSpace(nombre) ? "nombreDepartamento" : "",
+                    $"'{nombre}'"
+                    ),
+                new DataTableParameter(
+                    !string.IsNullOrWhiteSpace(descripcion) ? "descripcionDepartamento" : "",
+                    $"'{descripcion}'"
+                    ),
+                new DataTableParameter(
+                    !string.IsNullOrWhiteSpace(extension) ? "extensionDepartamento" : "",
+                    $"'{extension}'"
+                    ),
+                new DataTableParameter(
+                    !string.IsNullOrWhiteSpace(estado) ? "estado" : "",
+                    $"'{estado}'"
+                    )
                 );
         }
 
         public void DeleteFrom(string idDepartamento)
         {
-            this.DeleteFrom(this.conn,
-                new DataTableParameter("idDepartamento", $"'{idDepartamento}'")
+            this.UpdateSet(
+                new DataTableParameter("idDepartamento", idDepartamento),
+                new DataTableParameter("estado", "3")
                 );
         }
     }

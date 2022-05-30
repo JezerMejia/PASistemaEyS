@@ -38,7 +38,7 @@ namespace SistemaEyS.DatosEyS.Negocio
             this.DtCar.InsertInto(
                 cargo.nombreCargo,
                 cargo.descripcionCargo,
-                cargo.estado
+                ((int)cargo.estado).ToString()
                 );
         }
         public void EditCargo(Ent_Cargo cargo)
@@ -59,7 +59,7 @@ namespace SistemaEyS.DatosEyS.Negocio
                 cargo.idCargo.ToString(),
                 cargo.nombreCargo,
                 cargo.descripcionCargo,
-                cargo.estado
+                ((int)cargo.estado).ToString()
                 );
         }
         public void RemoveCargo(Ent_Cargo cargo)
@@ -91,7 +91,9 @@ namespace SistemaEyS.DatosEyS.Negocio
                 idCargo = Int32.Parse(store.GetValue(iter, 0).ToString()),
                 nombreCargo = store.GetValue(iter, 1).ToString(),
                 descripcionCargo = store.GetValue(iter, 2).ToString(),
-                estado = store.GetValue(iter, 3).ToString()
+                estado = (EntidadEstado) this.StringToInt(
+                        (string) store.GetValue(iter, 3)
+                        )
             };
 
             return cargo;

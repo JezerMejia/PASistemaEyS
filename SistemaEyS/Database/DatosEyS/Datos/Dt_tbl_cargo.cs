@@ -28,7 +28,7 @@ namespace SistemaEyS.DatosEyS.Datos
             IDataReader idr = null;
             StringBuilder sb = new StringBuilder();
             sb.Clear();
-            sb.Append("SELECT * FROM BDSistemaEyS.Cargo;");
+            sb.Append("SELECT * FROM BDSistemaEyS.Cargo WHERE estado <> 3;");
             try
             {
                 idr = conn.Read(CommandType.Text, sb.ToString());
@@ -37,7 +37,7 @@ namespace SistemaEyS.DatosEyS.Datos
                     this.Model.AppendValues(
                         idr[0].ToString(), // ID
                         idr[1].ToString(), // Nombre
-                        idr[2].ToString(), // Descripcion
+                        idr[2].ToString(), // Descripción
                         idr[3].ToString()  // Estado
                     );
                 }
@@ -90,35 +90,39 @@ namespace SistemaEyS.DatosEyS.Datos
         public void InsertInto(string nombre, string descripcion, string estado)
         {
             this.InsertInto(
-                    new DataTableParameter("nombreCargo", $"'{nombre}'"),
-                    new DataTableParameter("descripcionCargo", $"'{descripcion}'"),
-                    new DataTableParameter("descripcionCargo", $"'{estado}'")
+                new DataTableParameter("nombreCargo", $"'{nombre}'"),
+                new DataTableParameter("descripcionCargo", $"'{descripcion}'"),
+                new DataTableParameter("estado", $"'{estado}'")
                 );
         }
 
-        public void UpdateSet(string idCargo, string nombre, string descripcion, string estado)
+        public void UpdateSet(
+            string idCargo, string nombre, string descripcion,
+            string estado
+            )
         {
             this.UpdateSet(
-                    new DataTableParameter("idCargo", $"'{idCargo}'"),
-                    new DataTableParameter(
-                        !string.IsNullOrWhiteSpace(nombre) ? "nombreCargo" : "",
-                        $"'{nombre}'"
-                        ),
-                    new DataTableParameter(
-                        !string.IsNullOrWhiteSpace(descripcion) ? "descripcionCargo" : "",
-                        $"'{descripcion}'"
-                        ),
-                    new DataTableParameter(
-                        !string.IsNullOrWhiteSpace(descripcion) ? "estado" : "",
-                        $"'{estado}'"
-                        )
+                new DataTableParameter("idCargo", $"'{idCargo}'"),
+                new DataTableParameter(
+                    !string.IsNullOrWhiteSpace(nombre) ? "nombreCargo" : "",
+                    $"'{nombre}'"
+                    ),
+                new DataTableParameter(
+                    !string.IsNullOrWhiteSpace(descripcion) ? "descripcionCargo" : "",
+                    $"'{descripcion}'"
+                    ),
+                new DataTableParameter(
+                    !string.IsNullOrWhiteSpace(estado) ? "estado" : "",
+                    $"'{estado}'"
+                    )
                 );
         }
 
         public void DeleteFrom(string idCargo)
         {
-            this.DeleteFrom(this.conn,
-                new DataTableParameter("idCargo", $"'{idCargo}'")
+            this.UpdateSet(
+                new DataTableParameter("idCargo", idCargo),
+                new DataTableParameter("estado", "3")
                 );
         }
     }

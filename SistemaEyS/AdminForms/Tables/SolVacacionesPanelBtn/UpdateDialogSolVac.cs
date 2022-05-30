@@ -21,19 +21,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
         protected calendar calendar = new calendar();
         protected SolVacacionesView parent;
 
-        protected int _SelectedID = -1;
-
-        public int SelectedID
-        {
-            get
-            {
-                return this._SelectedID;
-            }
-            set
-            {
-                this._SelectedID = value;
-            }
-        }
+        public int SelectedID = -1;
 
         public UpdateDialogSolVac(SolVacacionesView parent) :
                 base(Gtk.WindowType.Toplevel)
@@ -152,6 +140,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
                     fechaHoraInicio = DateTime.Parse(this.fecIni.Text),
                     fechaHoraFin = DateTime.Parse(this.fecSal.Text),
                     idEmpleado = Int32.Parse(this.idEmp.ActiveText),
+                    estado = EntidadEstado.Modificado,
                 };
                 this.NegSolVac.EditSolicitudVacaciones(entSolVac);
 

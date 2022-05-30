@@ -113,7 +113,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			global::Stetic.Gui.Initialize(this);
 			// Widget SistemaEyS.AdminForms.Tables.HorPanelBtn.UpdateHorario
 			this.Name = "SistemaEyS.AdminForms.Tables.HorPanelBtn.UpdateHorario";
-			this.Title = global::Mono.Unix.Catalog.GetString("UpdateHorario");
+			this.Title = global::Mono.Unix.Catalog.GetString("Actualizar Horario");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 			// Container child SistemaEyS.AdminForms.Tables.HorPanelBtn.UpdateHorario.Gtk.Container+ContainerChild
 			this.alignment17 = new global::Gtk.Alignment(0.5F, 0.5F, 0F, 0F);
@@ -689,8 +689,8 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			{
 				this.Child.ShowAll();
 			}
-			this.DefaultWidth = 467;
-			this.DefaultHeight = 434;
+			this.DefaultWidth = 478;
+			this.DefaultHeight = 452;
 			this.Show();
 			this.BtnSave.Clicked += new global::System.EventHandler(this.BtnSaveOnClicked);
 			this.BtnCancel.Clicked += new global::System.EventHandler(this.BtnCancelOnClicked);

@@ -10,6 +10,7 @@ namespace SistemaEyS.DatosEyS.Entidades
         private DateTime _fechaHoraInicio;
         private DateTime _fechaHoraFin;
         private int _idEmpleado;
+        private int _estado;
 
         public int idSolVacaciones
         {
@@ -48,6 +49,12 @@ namespace SistemaEyS.DatosEyS.Entidades
         {
             get => this._idEmpleado;
             set => this._idEmpleado = value;
+        }
+
+        public EntidadEstado estado
+        {
+            get => (EntidadEstado)this._estado;
+            set => this._estado = (int)value;
         }
 
         public Ent_SolicitudVacaciones()

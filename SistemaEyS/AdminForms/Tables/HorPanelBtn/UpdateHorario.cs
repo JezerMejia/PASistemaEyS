@@ -13,25 +13,17 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
         protected Neg_Horario NegHor = new Neg_Horario();
         protected Dt_tlb_horario DtHor = new Dt_tlb_horario();
         protected ListStore HorData;
-        protected int _SelectedID = -1;
 
-        public int SelectedID
-        {
-            get
-            {
-                return this._SelectedID;
-            }
-            set
-            {
-                this._SelectedID = value;
-            }
-        }
+        protected HorarioView parent;
 
-        public UpdateHorario() :
+        public int SelectedID;
+
+        public UpdateHorario(HorarioView parent) :
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
             this.Hide();
+            this.parent = parent;
             this.UpdateData();
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
             {
@@ -98,9 +90,11 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
                     domingoSalida = this.NegHor.StringToDateTime(
                             this.domingoSal.ActiveText
                             ),
+                    estado = EntidadEstado.Modificado
                 };
 
                 this.NegHor.EditEmpleado(hor);
+                this.parent.UpdateData();
 
                 this.mensaje("Guardado");
             }

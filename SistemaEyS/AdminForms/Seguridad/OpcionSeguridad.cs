@@ -47,40 +47,6 @@ namespace SistemaEyS.AdminForms.Seguridad
             this.TreeData = new TreeModelFilter(DtOpc.GetData(), null);
             this.TreeData.VisibleFunc = this.ModelFilterFunc;
             this.viewTable.Model = this.TreeData;
-
-        }
-
-        protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)
-        {
-            if (string.IsNullOrWhiteSpace(this.TxtSearch.Text))
-            {
-                return true;
-            }
-            for (int i = 0; i < model.NColumns; i++)
-            {
-                string value = (string)model.GetValue(iter, i);
-                if (string.IsNullOrEmpty(value)) return false;
-                if (value.ToLower().Contains(this.TxtSearch.Text.ToLower()))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        protected bool ViewTableEqualFunc(TreeModel model, int column, string key, TreeIter iter)
-        {
-            for (int i = 0; i < model.NColumns; i++)
-            {
-                string value = (string)model.GetValue(iter, i);
-                if (string.IsNullOrWhiteSpace(value)) return true;
-                if (value.ToLower().Contains(key.ToLower()))
-                {
-                    return false;
-                }
-            }
-
-            return true;
         }
 
         protected void ClearInput()
@@ -107,7 +73,7 @@ namespace SistemaEyS.AdminForms.Seguridad
                 {
                     opcion = this.opcionTxt.Text,
                     descripcion = this.desTxt.Buffer.Text,
-                    //estado = EntidadEstado.Añadido
+                    estado = EntidadEstado.Añadido
                 };
                 this.NegOpc.AddOpcion(opc);
 
@@ -126,26 +92,6 @@ namespace SistemaEyS.AdminForms.Seguridad
                 ms.Destroy();
             }
             this.UpdateData();
-        }
-
-        protected void SetEntryTextFromID(int id)
-        {
-            try
-            {
-                Ent_opcion EntOpc = this.NegOpc.SearchOpcion(id);
-
-                this.opcionTxt.Text = EntOpc.opcion;
-                this.desTxt.Buffer.Text = EntOpc.descripcion;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                MessageDialog ms = new MessageDialog(this,
-                    DialogFlags.Modal, MessageType.Info,
-                    ButtonsType.Ok, ex.Message);
-                ms.Run();
-                ms.Destroy();
-            }
         }
 
         protected void OnBtnEditClicked(object sender, EventArgs e)
@@ -187,6 +133,80 @@ namespace SistemaEyS.AdminForms.Seguridad
             this.UpdateData();
         }
 
+        protected void OnBtnRemoveClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.SelectedID < 0)
+                {
+                    throw new ArgumentException(
+                        "Seleccione una opción en la tabla"
+                        );
+                }
+
+                Ent_opcion opc = this.NegOpc.SearchOpcion(this.SelectedID);
+
+                MessageDialog deletePrompt = new MessageDialog(this, DialogFlags.Modal,
+                    MessageType.Question, ButtonsType.YesNo,
+                    $"¿Desea eliminar la opción \"{opc.opcion}\" ({this.SelectedID})?");
+                int result = deletePrompt.Run();
+                deletePrompt.Destroy();
+
+                if ((ResponseType)result != ResponseType.Yes) return;
+
+                this.NegOpc.RemoveOpcion(opc);
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
+                    MessageType.Info, ButtonsType.Ok, "Opción eliminada");
+                ms.Run();
+                ms.Destroy();
+                this.ClearInput();
+            }
+            catch (Exception ex)
+            {
+                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
+                    MessageType.Error, ButtonsType.Ok,
+                    ex.Message);
+                ms.Run();
+                ms.Destroy();
+            }
+            this.UpdateData();
+        }
+
+        protected void SetEntryTextFromID(int id)
+        {
+            try
+            {
+                Ent_opcion EntOpc = this.NegOpc.SearchOpcion(id);
+
+                this.opcionTxt.Text = EntOpc.opcion;
+                this.desTxt.Buffer.Text = EntOpc.descripcion;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info,
+                    ButtonsType.Ok, ex.Message);
+                ms.Run();
+                ms.Destroy();
+            }
+        }
+
+        protected bool ViewTableEqualFunc(TreeModel model, int column, string key, TreeIter iter)
+        {
+            for (int i = 0; i < model.NColumns; i++)
+            {
+                string value = (string)model.GetValue(iter, i);
+                if (string.IsNullOrWhiteSpace(value)) return true;
+                if (value.ToLower().Contains(key.ToLower()))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         protected void OnViewTableRowActivated(object o, RowActivatedArgs args)
         {
             TreeSelection selection = this.viewTable.Selection;
@@ -208,43 +228,27 @@ namespace SistemaEyS.AdminForms.Seguridad
             }
         }
 
-        protected void OnBtnRemoveClicked(object sender, EventArgs e)
+        protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)
         {
-            try
+            if (string.IsNullOrWhiteSpace(this.TxtSearch.Text))
             {
-                if (this.SelectedID < 0)
+                return true;
+            }
+            for (int i = 0; i < model.NColumns; i++)
+            {
+                string value = (string)model.GetValue(iter, i);
+                if (string.IsNullOrEmpty(value)) return false;
+                if (value.ToLower().Contains(this.TxtSearch.Text.ToLower()))
                 {
-                    throw new ArgumentException(
-                        "Seleccione un rol en la tabla"
-                        );
+                    return true;
                 }
-
-                Ent_opcion opc = this.NegOpc.SearchOpcion(this.SelectedID);
-
-                MessageDialog deletePrompt = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Question, ButtonsType.YesNo,
-                    $"¿Desea eliminar el rol \"{opc.id_opcion}\" ({this.SelectedID})?");
-                int result = deletePrompt.Run();
-                deletePrompt.Destroy();
-
-                if ((ResponseType)result != ResponseType.Yes) return;
-
-                this.NegOpc.RemoveOpcion(opc);
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok, "Rol eliminado");
-                ms.Run();
-                ms.Destroy();
-                this.ClearInput();
             }
-            catch (Exception ex)
-            {
-                MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Error, ButtonsType.Ok,
-                    ex.Message);
-                ms.Run();
-                ms.Destroy();
-            }
-            this.UpdateData();
+            return false;
+        }
+
+        protected void TxtSearchOnChanged(object sender, EventArgs e)
+        {
+            this.TreeData.Refilter();
         }
     }
 }

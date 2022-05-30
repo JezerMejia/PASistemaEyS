@@ -61,6 +61,7 @@ namespace SistemaEyS.DatosSeguridad.Datos
 
         public ListStore GetDataCmbx()
         {
+            this.UpdateModel();
             TreeIter iter;
 
             ListStore model = new ListStore(this.gTypes);

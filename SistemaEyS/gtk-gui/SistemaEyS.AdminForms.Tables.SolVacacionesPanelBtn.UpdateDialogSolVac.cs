@@ -67,7 +67,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
 			global::Stetic.Gui.Initialize(this);
 			// Widget SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn.UpdateDialogSolVac
 			this.Name = "SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn.UpdateDialogSolVac";
-			this.Title = global::Mono.Unix.Catalog.GetString("UpdateDialogSolVac");
+			this.Title = global::Mono.Unix.Catalog.GetString("Actualizar Solicitud de Vacaciones");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 			// Container child SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn.UpdateDialogSolVac.Gtk.Container+ContainerChild
 			this.alignment1 = new global::Gtk.Alignment(0.5F, 0.5F, 0F, 0F);

@@ -11,11 +11,14 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
         protected Neg_Horario NegHor = new Neg_Horario();
         public int SelectedID = -1;
 
-        public AddDialogHor() :
+        protected HorarioView parent;
+
+        public AddDialogHor(HorarioView parent) :
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
             this.Hide();
+            this.parent = parent;
             this.DeleteEvent += delegate (object obj, DeleteEventArgs args)
             {
                 args.RetVal = this.HideOnDelete();
@@ -74,9 +77,12 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
                     domingoSalida = this.NegHor.StringToDateTime(
                             this.domingoSal.ActiveText
                             ),
+                    estado = EntidadEstado.Añadido
                 };
 
                 this.NegHor.AddHorario(hor);
+
+                this.parent.UpdateData();
 
                 this.mensaje("Guardado");
                 this.ClearInput();

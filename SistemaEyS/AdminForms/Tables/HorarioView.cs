@@ -14,7 +14,7 @@ namespace SistemaEyS.AdminForms.Tables
         protected Dt_tlb_horario DtHor = new Dt_tlb_horario();
 
         protected UpdateHorario updateDialog;
-        protected AddDialogHor addDialog = new AddDialogHor();
+        protected AddDialogHor addDialog;
 
         protected TreeModelFilter TreeData;
         protected TreeModelFilterVisibleFunc ModelFilterFunc;
@@ -26,8 +26,11 @@ namespace SistemaEyS.AdminForms.Tables
         {
             this.Build();
             this.parent = parent;
+            this.addDialog = new AddDialogHor(this);
+            this.updateDialog = new UpdateHorario(this);
 
-            this.updateDialog = new UpdateHorario();
+            this.ModelFilterFunc = new TreeModelFilterVisibleFunc(this.TreeModelFilterVisible);
+
             this.viewTable.SearchEntry = this.SearchHorTxt;
             this.viewTable.SearchEqualFunc = new TreeViewSearchEqualFunc(this.ViewTableEqualFunc);
 
@@ -61,7 +64,6 @@ namespace SistemaEyS.AdminForms.Tables
             this.TreeData.VisibleFunc = this.ModelFilterFunc;
             this.viewTable.Model = this.TreeData;
             this.updateDialog.UpdateData();
-            this.viewTable.Model = this.TreeData;
         }
 
         protected void btnUpdateOnClicked(object sender, EventArgs e)
@@ -153,7 +155,6 @@ namespace SistemaEyS.AdminForms.Tables
             this.updateDialog.UpdateData();
             this.updateDialog.Show();
             this.updateDialog.Present();
-
         }
 
         protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)

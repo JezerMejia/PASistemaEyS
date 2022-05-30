@@ -22,6 +22,8 @@ namespace SistemaEyS.UserForms
 
 		private global::Gtk.Label lbWelcome;
 
+		private global::Gtk.Label lbInfo;
+
 		private global::Gtk.HBox btnHBoxWrapper;
 
 		private global::Gtk.Label label12;
@@ -62,7 +64,7 @@ namespace SistemaEyS.UserForms
 			// Container child alignment9.Gtk.Container+ContainerChild
 			this.vbox8 = new global::Gtk.VBox();
 			this.vbox8.Name = "vbox8";
-			this.vbox8.Spacing = 30;
+			this.vbox8.Spacing = 20;
 			// Container child vbox8.Gtk.Box+BoxChild
 			this.vbox3 = new global::Gtk.VBox();
 			this.vbox3.Name = "vbox3";
@@ -88,6 +90,7 @@ namespace SistemaEyS.UserForms
 			w3.Position = 1;
 			w3.Expand = false;
 			w3.Fill = false;
+			w3.Padding = ((uint)(20));
 			this.vbox8.Add(this.vbox3);
 			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox8[this.vbox3]));
 			w4.Position = 0;
@@ -104,6 +107,16 @@ namespace SistemaEyS.UserForms
 			w5.Expand = false;
 			w5.Fill = false;
 			// Container child vbox8.Gtk.Box+BoxChild
+			this.lbInfo = new global::Gtk.Label();
+			this.lbInfo.Name = "lbInfo";
+			this.lbInfo.LabelProp = global::Mono.Unix.Catalog.GetString("Info");
+			this.lbInfo.Justify = ((global::Gtk.Justification)(2));
+			this.vbox8.Add(this.lbInfo);
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox8[this.lbInfo]));
+			w6.Position = 2;
+			w6.Expand = false;
+			w6.Fill = false;
+			// Container child vbox8.Gtk.Box+BoxChild
 			this.btnHBoxWrapper = new global::Gtk.HBox();
 			this.btnHBoxWrapper.Name = "btnHBoxWrapper";
 			this.btnHBoxWrapper.Spacing = 6;
@@ -111,9 +124,9 @@ namespace SistemaEyS.UserForms
 			this.label12 = new global::Gtk.Label();
 			this.label12.Name = "label12";
 			this.btnHBoxWrapper.Add(this.label12);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.btnHBoxWrapper[this.label12]));
-			w6.Position = 0;
-			w6.Fill = false;
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.btnHBoxWrapper[this.label12]));
+			w7.Position = 0;
+			w7.Fill = false;
 			// Container child btnHBoxWrapper.Gtk.Box+BoxChild
 			this.btnHBox = new global::Gtk.HBox();
 			this.btnHBox.Name = "btnHBox";
@@ -124,50 +137,51 @@ namespace SistemaEyS.UserForms
 			this.btnMarkEntry.Name = "btnMarkEntry";
 			this.btnMarkEntry.UseUnderline = true;
 			this.btnMarkEntry.Label = global::Mono.Unix.Catalog.GetString("Marcar Entrada");
-			global::Gtk.Image w7 = new global::Gtk.Image();
-			w7.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-dialog-authentication", global::Gtk.IconSize.Menu);
-			this.btnMarkEntry.Image = w7;
+			global::Gtk.Image w8 = new global::Gtk.Image();
+			w8.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-dialog-authentication", global::Gtk.IconSize.Menu);
+			this.btnMarkEntry.Image = w8;
 			this.btnHBox.Add(this.btnMarkEntry);
-			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.btnHBox[this.btnMarkEntry]));
-			w8.Position = 0;
-			w8.Expand = false;
-			w8.Fill = false;
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.btnHBox[this.btnMarkEntry]));
+			w9.Position = 0;
+			w9.Expand = false;
+			w9.Fill = false;
 			// Container child btnHBox.Gtk.Box+BoxChild
 			this.btnMarkExit = new global::Gtk.Button();
 			this.btnMarkExit.CanFocus = true;
 			this.btnMarkExit.Name = "btnMarkExit";
 			this.btnMarkExit.UseUnderline = true;
 			this.btnMarkExit.Label = global::Mono.Unix.Catalog.GetString("Marcar Salida");
-			global::Gtk.Image w9 = new global::Gtk.Image();
-			w9.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "stock_lock", global::Gtk.IconSize.Menu);
-			this.btnMarkExit.Image = w9;
+			global::Gtk.Image w10 = new global::Gtk.Image();
+			w10.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "stock_lock", global::Gtk.IconSize.Menu);
+			this.btnMarkExit.Image = w10;
 			this.btnHBox.Add(this.btnMarkExit);
-			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.btnHBox[this.btnMarkExit]));
-			w10.Position = 1;
-			w10.Expand = false;
-			w10.Fill = false;
-			this.btnHBoxWrapper.Add(this.btnHBox);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.btnHBoxWrapper[this.btnHBox]));
+			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.btnHBox[this.btnMarkExit]));
 			w11.Position = 1;
 			w11.Expand = false;
 			w11.Fill = false;
+			this.btnHBoxWrapper.Add(this.btnHBox);
+			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.btnHBoxWrapper[this.btnHBox]));
+			w12.Position = 1;
+			w12.Expand = false;
+			w12.Fill = false;
 			// Container child btnHBoxWrapper.Gtk.Box+BoxChild
 			this.label11 = new global::Gtk.Label();
 			this.label11.Name = "label11";
 			this.btnHBoxWrapper.Add(this.label11);
-			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.btnHBoxWrapper[this.label11]));
-			w12.Position = 2;
-			w12.Fill = false;
-			this.vbox8.Add(this.btnHBoxWrapper);
-			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.vbox8[this.btnHBoxWrapper]));
+			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.btnHBoxWrapper[this.label11]));
 			w13.Position = 2;
-			w13.Expand = false;
 			w13.Fill = false;
+			this.vbox8.Add(this.btnHBoxWrapper);
+			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.vbox8[this.btnHBoxWrapper]));
+			w14.Position = 3;
+			w14.Expand = false;
+			w14.Fill = false;
+			w14.Padding = ((uint)(10));
 			this.alignment9.Add(this.vbox8);
 			this.mainVerticalBox.Add(this.alignment9);
-			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.mainVerticalBox[this.alignment9]));
-			w15.Position = 0;
-			w15.Fill = false;
+			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.mainVerticalBox[this.alignment9]));
+			w16.Position = 0;
+			w16.Fill = false;
 			// Container child mainVerticalBox.Gtk.Box+BoxChild
 			this.exitBtnAlignment = new global::Gtk.Alignment(0F, 1F, 0F, 0F);
 			this.exitBtnAlignment.Name = "exitBtnAlignment";
@@ -177,15 +191,15 @@ namespace SistemaEyS.UserForms
 			this.btnExit.Name = "btnExit";
 			this.btnExit.UseUnderline = true;
 			this.btnExit.Label = global::Mono.Unix.Catalog.GetString("Salir");
-			global::Gtk.Image w16 = new global::Gtk.Image();
-			w16.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-undo", global::Gtk.IconSize.Menu);
-			this.btnExit.Image = w16;
+			global::Gtk.Image w17 = new global::Gtk.Image();
+			w17.Pixbuf = global::Stetic.IconLoader.LoadIcon(this, "gtk-undo", global::Gtk.IconSize.Menu);
+			this.btnExit.Image = w17;
 			this.exitBtnAlignment.Add(this.btnExit);
 			this.mainVerticalBox.Add(this.exitBtnAlignment);
-			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.mainVerticalBox[this.exitBtnAlignment]));
-			w18.Position = 1;
-			w18.Expand = false;
-			w18.Fill = false;
+			global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.mainVerticalBox[this.exitBtnAlignment]));
+			w19.Position = 1;
+			w19.Expand = false;
+			w19.Fill = false;
 			this.mainLayout.Add(this.mainVerticalBox);
 			this.Add(this.mainLayout);
 			if ((this.Child != null))

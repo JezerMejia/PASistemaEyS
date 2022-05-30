@@ -14,7 +14,7 @@ namespace SistemaEyS.AdminForms.Tables
 
 		private global::Gtk.Label label1;
 
-		private global::Gtk.Entry SearchSolVacTxt;
+		private global::Gtk.Entry TxtSearch;
 
 		private global::Gtk.Alignment alignment3;
 
@@ -68,13 +68,13 @@ namespace SistemaEyS.AdminForms.Tables
 			w1.Expand = false;
 			w1.Fill = false;
 			// Container child hbox2.Gtk.Box+BoxChild
-			this.SearchSolVacTxt = new global::Gtk.Entry();
-			this.SearchSolVacTxt.CanFocus = true;
-			this.SearchSolVacTxt.Name = "SearchSolVacTxt";
-			this.SearchSolVacTxt.IsEditable = true;
-			this.SearchSolVacTxt.InvisibleChar = '•';
-			this.hbox2.Add(this.SearchSolVacTxt);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.SearchSolVacTxt]));
+			this.TxtSearch = new global::Gtk.Entry();
+			this.TxtSearch.CanFocus = true;
+			this.TxtSearch.Name = "TxtSearch";
+			this.TxtSearch.IsEditable = true;
+			this.TxtSearch.InvisibleChar = '•';
+			this.hbox2.Add(this.TxtSearch);
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.TxtSearch]));
 			w2.Position = 1;
 			w2.Expand = false;
 			// Container child hbox2.Gtk.Box+BoxChild
@@ -184,7 +184,7 @@ namespace SistemaEyS.AdminForms.Tables
 				this.Child.ShowAll();
 			}
 			this.Hide();
-			this.SearchSolVacTxt.Changed += new global::System.EventHandler(this.OnSearchHorTxtChanged);
+			this.TxtSearch.Changed += new global::System.EventHandler(this.TxtSearchOnChanged);
 			this.viewTable.RowActivated += new global::Gtk.RowActivatedHandler(this.OnViewTableRowActivated);
 			this.BtnAddSV.Clicked += new global::System.EventHandler(this.OnBtnAddSVClicked);
 			this.BtnUpSV.Clicked += new global::System.EventHandler(this.OnBtnUpSVClicked);

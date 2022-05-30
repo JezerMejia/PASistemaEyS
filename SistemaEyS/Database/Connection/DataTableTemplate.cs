@@ -9,9 +9,17 @@ public struct DataTableParameter
     {
         this.name = name;
         this.value = value;
+        this.comparator = "=";
+    }
+    public DataTableParameter(string name, string value, string comparator)
+    {
+        this.name = name;
+        this.value = value;
+        this.comparator = comparator;
     }
     public string name;
     public string value;
+    public string comparator;
 }
 
 namespace SistemaEyS.Database.Connection
@@ -122,7 +130,7 @@ namespace SistemaEyS.Database.Connection
             for (int i = 0; i < data.Length; i++)
             {
                 QuerySelect.Add($"`{data[i].name}`");
-                QueryValues.Add($"`{data[i].name}` = {data[i].value}");
+                QueryValues.Add($"`{data[i].name}` {data[i].comparator} {data[i].value}");
             }
 
             string QueryS = String.Join<string>(", ", QuerySelect);
@@ -164,7 +172,7 @@ namespace SistemaEyS.Database.Connection
             List<string> QueryValues = new List<string>();
             for (int i = 0; i < data.Length; i++)
             {
-                QueryValues.Add($"`{data[i].name}` = {data[i].value}");
+                QueryValues.Add($"`{data[i].name}` {data[i].comparator} {data[i].value}");
             }
 
             string QueryV = String.Join<string>($" {op} ", QueryValues);

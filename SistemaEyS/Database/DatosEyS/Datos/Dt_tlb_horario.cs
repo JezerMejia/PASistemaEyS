@@ -13,13 +13,13 @@ namespace SistemaEyS.DatosEyS.Datos
         {
             this.conn = ConnectionEyS.OpenConnection();
             this.DBTable = "BDSistemaEyS.Horario";
-            this.gTypes = new Type[16] {
+            this.gTypes = new Type[17] {
                 typeof(string), typeof(string), typeof(string),
                 typeof(string), typeof(string), typeof(string),
                 typeof(string), typeof(string), typeof(string),
                 typeof(string), typeof(string), typeof(string),
                 typeof(string), typeof(string), typeof(string),
-                typeof(string)
+                typeof(string), typeof(string)
             };
             this.Model = new ListStore(this.gTypes);
         }
@@ -30,7 +30,7 @@ namespace SistemaEyS.DatosEyS.Datos
             IDataReader idr = null;
             StringBuilder sb = new StringBuilder();
             sb.Clear();
-            sb.Append("SELECT * FROM BDSistemaEyS.Horario;");
+            sb.Append("SELECT * FROM BDSistemaEyS.Horario WHERE estado <> 3;");
             try
             {
                 idr = this.conn.Read(CommandType.Text, sb.ToString());
@@ -46,7 +46,8 @@ namespace SistemaEyS.DatosEyS.Datos
                         idr[8].ToString(), idr[9].ToString(), // Jueves
                         idr[10].ToString(), idr[11].ToString(), // Viernes
                         idr[12].ToString(), idr[13].ToString(), // Sábado
-                        idr[14].ToString(), idr[15].ToString() // Domingo
+                        idr[14].ToString(), idr[15].ToString(), // Domingo
+                        idr[16].ToString() // Estado
                     );
                 }
             }
@@ -105,7 +106,8 @@ namespace SistemaEyS.DatosEyS.Datos
             string juevesInicio, string juevesSalida,
             string viernesInicio, string viernesSalida,
             string sabadoInicio, string sabadoSalida,
-            string domingoInicio, string domingoSalida
+            string domingoInicio, string domingoSalida,
+            string estado
             )
         {
             this.InsertInto(
@@ -167,7 +169,8 @@ namespace SistemaEyS.DatosEyS.Datos
                 new DataTableParameter(
                     "domingoSalida",
                     string.IsNullOrWhiteSpace(domingoSalida) ? "NULL" : $"'{domingoSalida}'"
-                    )
+                    ),
+                new DataTableParameter("estado", $"'{estado}'")
                 );
         }
 
@@ -180,7 +183,8 @@ namespace SistemaEyS.DatosEyS.Datos
             string juevesInicio, string juevesSalida,
             string viernesInicio, string viernesSalida,
             string sabadoInicio, string sabadoSalida,
-            string domingoInicio, string domingoSalida
+            string domingoInicio, string domingoSalida,
+            string estado
             )
         {
             this.UpdateSet(
@@ -241,17 +245,20 @@ namespace SistemaEyS.DatosEyS.Datos
                 new DataTableParameter(
                     !string.IsNullOrWhiteSpace(domingoSalida) ? "domingoSalida" : "",
                     $"'{domingoSalida}'"
+                    ),
+                new DataTableParameter(
+                    !string.IsNullOrWhiteSpace(estado) ? "estado" : "",
+                    $"'{estado}'"
                     )
-
                 );
         }
 
         public void DeleteFrom(string idHorario)
         {
-            this.DeleteFrom(this.conn,
-                new DataTableParameter("idHorario", $"'{idHorario}'")
+            this.UpdateSet(
+                new DataTableParameter("idHorario", idHorario),
+                new DataTableParameter("estado", "3")
                 );
         }
-
     }
 }

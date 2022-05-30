@@ -49,16 +49,18 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                     primerApellido = this.TxtLastName.Text,
                     segundoApellido = this.TxtSecondLastName.Text,
                     pinEmpleado = this.TxtPIN.Text,
-                    cedulaEmpleado = this.TxtCedula.Text
+                    cedulaEmpleado = this.TxtCedula.Text,
+                    estado = EntidadEstado.Añadido
                 };
                 this.NegEmp.AddEmpleado(emp);
 
+                this.parent.UpdateData();
                 MessageDialog ms = new MessageDialog(this,
                     DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
-                    "Agregado");
+                    "Empleado agregado");
                 ms.Run();
                 ms.Destroy();
-                ClearInput();
+                this.ClearInput();
             }
             catch (Exception e)
             {
@@ -68,7 +70,6 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                 ms.Run();
                 ms.Destroy();
             }
-            this.parent.UpdateData();
         }
 
         protected void BtnCancelOnClicked(object sender, EventArgs e)

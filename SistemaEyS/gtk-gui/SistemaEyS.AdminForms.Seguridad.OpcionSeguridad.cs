@@ -305,13 +305,14 @@ namespace SistemaEyS.AdminForms.Seguridad
 			{
 				this.Child.ShowAll();
 			}
-			this.DefaultWidth = 429;
+			this.DefaultWidth = 445;
 			this.DefaultHeight = 385;
 			this.Show();
 			this.BtnNew.Clicked += new global::System.EventHandler(this.OnBtnNewClicked);
 			this.BtnAdd.Clicked += new global::System.EventHandler(this.OnBtnAddClicked);
 			this.BtnEdit.Clicked += new global::System.EventHandler(this.OnBtnEditClicked);
 			this.BtnRemove.Clicked += new global::System.EventHandler(this.OnBtnRemoveClicked);
+			this.TxtSearch.Changed += new global::System.EventHandler(this.TxtSearchOnChanged);
 			this.viewTable.RowActivated += new global::Gtk.RowActivatedHandler(this.OnViewTableRowActivated);
 		}
 	}

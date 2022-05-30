@@ -8,6 +8,8 @@ namespace SistemaEyS.DatosEyS.Datos
 {
     public class Dt_tlb_asistencia : DataTableTemplate
     {
+        public ListStore ModelView;
+
         public Dt_tlb_asistencia()
         {
             this.conn = ConnectionEyS.OpenConnection();
@@ -18,8 +20,13 @@ namespace SistemaEyS.DatosEyS.Datos
                 typeof(string)
             };
             this.Model = new ListStore(this.gTypes);
+            this.ModelView = new ListStore(
+                typeof(string), typeof(string),
+                typeof(string), typeof(string),
+                typeof(string), typeof(string)
+		        );
         }
-        public override void UpdateModel()
+        public void UpdateModelAsis()
         {
             this.Model.Clear();
             IDataReader idr = null;
@@ -55,6 +62,56 @@ namespace SistemaEyS.DatosEyS.Datos
                     idr.Close();
                 }
             }
+        }
+        public void UpdateModelView()
+        {
+            this.ModelView.Clear();
+            IDataReader idr = null;
+            StringBuilder sb = new StringBuilder();
+            sb.Clear();
+            sb.Append("SELECT * FROM BDSistemaEyS.vwAsistencia;");
+            try
+            {
+                idr = conn.Read(CommandType.Text, sb.ToString());
+
+                while (idr.Read())
+                {
+                    this.ModelView.AppendValues(
+                        idr[0].ToString(), // ID
+                        idr[1].ToString(), // ID Empleado
+                        idr[2].ToString(), // Empleado
+                        idr.GetDateTime(3).ToString("yyyy-MM-dd"), // Fecha
+                        idr[4].ToString(), // Entrada
+                        idr[5].ToString() // Salida
+                    );
+                }
+            }
+            catch (Exception e)
+            {
+                MessageDialog ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error,
+                    ButtonsType.Ok, e.Message);
+                ms.Run();
+                ms.Destroy();
+            }
+            finally
+            {
+                if (idr != null && !idr.IsClosed)
+                {
+                    idr.Close();
+                }
+            }
+        }
+
+        public override void UpdateModel()
+        {
+            this.UpdateModelAsis();
+            this.UpdateModelView();
+        }
+
+        public ListStore GetDataView()
+        {
+            this.UpdateModel();
+            return this.ModelView;
         }
 
         public void InsertInto(

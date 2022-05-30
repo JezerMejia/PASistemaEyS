@@ -27,8 +27,10 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Cargo` (
   `idCargo` INT NOT NULL AUTO_INCREMENT,
   `nombreCargo` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
   `descripcionCargo` VARCHAR(100) CHARACTER SET 'utf8' NOT NULL,
+  `estado` INT NOT NULL DEFAULT 1,
   PRIMARY KEY (`idCargo`),
-  UNIQUE INDEX `idCargo_UNIQUE` (`idCargo` ASC) VISIBLE)
+  UNIQUE INDEX `idCargo_UNIQUE` (`idCargo` ASC) VISIBLE,
+  UNIQUE INDEX `nombreCargo_UNIQUE` (`nombreCargo` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -44,6 +46,7 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Departamento` (
   `nombreDepartamento` VARCHAR(25) CHARACTER SET 'utf8' NOT NULL,
   `descripcionDepartamento` VARCHAR(100) CHARACTER SET 'utf8' NULL DEFAULT NULL,
   `extensionDepartamento` VARCHAR(5) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `estado` INT NOT NULL DEFAULT 1,
   PRIMARY KEY (`idDepartamento`),
   UNIQUE INDEX `idDepartamento_UNIQUE` (`idDepartamento` ASC) VISIBLE,
   UNIQUE INDEX `nombreDepartamento_UNIQUE` (`nombreDepartamento` ASC) VISIBLE)
@@ -74,6 +77,7 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Horario` (
   `sabadoSalida` TIME NULL DEFAULT NULL,
   `domingoInicio` TIME NULL DEFAULT NULL,
   `domingoSalida` TIME NULL DEFAULT NULL,
+  `estado` INT NOT NULL DEFAULT 1,
   PRIMARY KEY (`idHorario`),
   UNIQUE INDEX `idHorario_UNIQUE` (`idHorario` ASC) VISIBLE,
   UNIQUE INDEX `nombreHorario_UNIQUE` (`nombreHorario` ASC) VISIBLE)
@@ -103,6 +107,7 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`Empleado` (
   `idCargo` INT NULL,
   `idDepartamento` INT NULL,
   `idHorario` INT NULL,
+  `estado` INT NOT NULL DEFAULT 1,
   PRIMARY KEY (`idEmpleado`),
   INDEX `RefCargo3` (`idCargo` ASC) VISIBLE,
   INDEX `RefDepartamento4` (`idDepartamento` ASC) VISIBLE,
@@ -161,6 +166,7 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`SolVacaciones` (
   `fechaHoraInicio` DATETIME NOT NULL,
   `fechaHoraFin` DATETIME NOT NULL,
   `idEmpleado` INT NOT NULL,
+  `estado` INT NOT NULL DEFAULT 1,
   PRIMARY KEY (`idSolVacaciones`),
   INDEX `RefEmpleado8` (`idEmpleado` ASC) VISIBLE,
   UNIQUE INDEX `idSolVacaciones_UNIQUE` (`idSolVacaciones` ASC) VISIBLE,
@@ -296,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`vwUserRol` (`ID UserRol` INT, `Usuari
 -- -----------------------------------------------------
 -- Placeholder table for view `BDSistemaEyS`.`vwAsistencia`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`vwAsistencia` (`"ID"` INT, `"Fecha"` INT, `"Hora de Entrada"` INT, `"Hora de Salida"` INT, `"ID Empleado"` INT, `"Empleado"` INT);
+CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`vwAsistencia` (`"ID"` INT, `"ID Empleado"` INT, `"Empleado"` INT, `"Fecha"` INT, `"Hora de Entrada"` INT, `"Hora de Salida"` INT);
 
 -- -----------------------------------------------------
 -- Placeholder table for view `BDSistemaEyS`.`vwSolVacaciones`
@@ -332,6 +338,8 @@ LEFT JOIN
 BDSistemaEyS.Cargo as Cargo ON Empleado.idCargo = Cargo.idCargo
 LEFT JOIN
 BDSistemaEyS.Horario as Horario ON Empleado.idHorario = Horario.idHorario
+WHERE
+Empleado.estado <> 3
 ;
 
 -- -----------------------------------------------------
@@ -342,7 +350,7 @@ DROP VIEW IF EXISTS `BDSistemaEyS`.`vwRolOpcion` ;
 USE `BDSistemaEyS`;
 CREATE  OR REPLACE VIEW `vwRolOpcion` AS
 SELECT
-`tbrop`.`id_rol` AS `ID Rol`,
+`tbrop`.`id_rolOpcion` AS `ID Rol`,
 `tbr`.`rol` AS `Rol`,
 `tbopc`.`opcion` AS `Opción`
 FROM
@@ -381,11 +389,11 @@ USE `BDSistemaEyS`;
 CREATE  OR REPLACE VIEW `vwAsistencia` AS
 SELECT
 Asistencia.idAsistencia AS "ID",
+Asistencia.idEmpleado AS "ID Empleado",
+CONCAT(Empleado.Nombre, " ", Empleado.Apellido) As "Empleado",
 Asistencia.fechaAsistencia AS "Fecha",
 Asistencia.horaEntrada AS "Hora de Entrada",
-Asistencia.horaSalida AS "Hora de Salida",
-Asistencia.idEmpleado AS "ID Empleado",
-CONCAT(Empleado.Nombre, " ", Empleado.Apellido) As "Empleado"
+Asistencia.horaSalida AS "Hora de Salida"
 FROM
 BDSistemaEyS.Asistencia AS Asistencia
 LEFT JOIN
@@ -409,7 +417,9 @@ CONCAT(Empleado.Nombre, " ", Empleado.Apellido) AS "Empleado"
 FROM
 BDSistemaEyS.SolVacaciones AS Sol
 LEFT JOIN
-BDSistemaEyS.vwEmpleado AS Empleado ON Sol.idEmpleado = Empleado.ID;
+BDSistemaEyS.vwEmpleado AS Empleado ON Sol.idEmpleado = Empleado.ID
+WHERE
+Sol.estado <> 3;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -422,23 +432,23 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 USE BDSistemaEyS;
 
 INSERT INTO Cargo (
-idCargo, nombreCargo, descripcionCargo
+idCargo, nombreCargo, descripcionCargo, estado
 )
 VALUES
 (
-1, "Diseñador Web", "Diseña webs increíbles"
+1, "Diseñador Web", "Diseña webs increíbles", 1
 ),
 (
-2, "Programador", "Programa"
+2, "Programador", "Programa", 1
 );
 
 INSERT INTO Departamento (
 idDepartamento, nombreDepartamento, descripcionDepartamento,
-extensionDepartamento
+extensionDepartamento, estado
 )
 VALUES (
 1, "Diseño", "Departamento enfocado en el diseño.",
-"336"
+"336", 1
 );
 
 INSERT INTO Horario (
@@ -449,7 +459,8 @@ miercolesInicio, miercolesSalida,
 juevesInicio, juevesSalida,
 viernesInicio, viernesSalida,
 sabadoInicio, sabadoSalida,
-domingoInicio, domingoSalida
+domingoInicio, domingoSalida,
+estado
 )
 VALUES (
 1, "Horario común (8AM - 5PM)",
@@ -459,7 +470,8 @@ VALUES (
 "8:00", "17:00",
 "8:00", "17:00",
 NULL, NULL,
-NULL, NULL
+NULL, NULL,
+1
 );
 
 INSERT INTO Empleado (
@@ -468,7 +480,7 @@ primerApellido, segundoApellido, fechaIngreso,
 fechaNacimiento, telefonoEmpleado,
 emailPersonal, emailEmpresarial,
 pinEmpleado, cedulaEmpleado,
-idCargo, idDepartamento, idHorario
+idCargo, idDepartamento, idHorario, estado
 )
 VALUES
 (
@@ -477,7 +489,7 @@ VALUES
 "2002-09-06", "76129076",
 "juan@gmail.com", NULL,
 "1212", "0010405021900A",
-1, 1, 1
+1, 1, 1, 1
 ),
 (
 31725, "Jezer", "Josué",
@@ -485,7 +497,7 @@ VALUES
 "2003-11-05", "81211855",
 "jezer@gmail.com", NULL,
 "9898", "2010511031000Y",
-2, 1, 1
+2, 1, 1, 1
 ),
 (
 32229, "Leo", "Neftalís",
@@ -493,7 +505,7 @@ VALUES
 "2003-01-01", "00005454",
 "leo@gmail.com", NULL,
 "5454", "00000000000001",
-2, 1, 1
+2, 1, 1, 1
 ),
 (
 31642, "Roire", "Martín",
@@ -501,7 +513,7 @@ VALUES
 "2003-01-01", "00007272",
 "roire@gmail.com", NULL,
 "7272", "00000000000002",
-1, 1, 1
+1, 1, 1, 1
 );
 
 INSERT INTO Asistencia (
@@ -522,10 +534,24 @@ INSERT INTO tbl_user (
 id_user, user, pwd, nombres, apellidos,
 email, pwd_temp, estado
 )
-VALUES (
-1, "jimeneza", "uwu", "Alberto", "Jiménez",
+VALUES
+(
+1, "albertoj", "uwu", "Alberto", "Jiménez",
 "alberto.jimenez@google.com", "uwu_temp", 1
-);
+),
+(
+2, "jezerm", "uwu", "Jezer", "Mejía",
+"jezer.mejia@gmail.com", "", 1
+),
+(
+3, "roirev", "uwu", "Roire", "Villavicencio",
+"roire.villavicencio@gmail.com", "", 1
+),
+(
+4, "leoc", "uwu", "Leo", "Corea",
+"leo.corea@gmail.com", "", 1
+)
+;
 
 INSERT INTO tbl_rol (id_rol, rol, descripcion, estado)
 VALUES
@@ -538,7 +564,7 @@ VALUES
 (1, "Tabla Empleados", "", 1),
 (2, "Tabla Solicitudes", "", 1),
 (3, "Tabla Asistencias", "", 1),
-(4, "Reportes", "", 1),
+(4, "Reportes", "Ver reportes :D", 1),
 (5, "Seguridad User", "", 1),
 (6, "Seguridad Rol", "", 1),
 (7, "Seguridad Opcion", "", 1),

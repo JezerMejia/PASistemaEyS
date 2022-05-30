@@ -39,7 +39,7 @@ namespace SistemaEyS.DatosEyS.Negocio
                 dep.nombreDepartamento,
                 dep.descripcionDepartamento,
                 dep.extensionDepartamento,
-                dep.estado
+                ((int)dep.estado).ToString()
                 );
         }
 
@@ -62,7 +62,7 @@ namespace SistemaEyS.DatosEyS.Negocio
                 dep.nombreDepartamento,
                 dep.descripcionDepartamento,
                 dep.extensionDepartamento,
-                dep.estado
+                ((int)dep.estado).ToString()
                 );
         }
 
@@ -71,6 +71,12 @@ namespace SistemaEyS.DatosEyS.Negocio
             this.DtDep.DeleteFrom(dep.idDepartamento.ToString());
         }
 
+        public int? StringToInt(string value)
+        {
+            if (!string.IsNullOrWhiteSpace(value))
+                return Int32.Parse(value);
+            return null;
+        }
         protected Ent_Departamento GetDepartamento(ListStore store)
         {
             if (store == null) throw new NullReferenceException("El departamento no existe");
@@ -84,8 +90,9 @@ namespace SistemaEyS.DatosEyS.Negocio
                 nombreDepartamento = store.GetValue(iter, 1).ToString(),
                 descripcionDepartamento = store.GetValue(iter, 2).ToString(),
                 extensionDepartamento = store.GetValue(iter, 3).ToString(),
-                estado = store.GetValue(iter, 4).ToString(),
-
+                estado = (EntidadEstado) this.StringToInt(
+                        (string) store.GetValue(iter, 4)
+                        )
             };
 
             return dep;
