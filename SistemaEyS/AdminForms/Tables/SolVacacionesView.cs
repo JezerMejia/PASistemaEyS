@@ -33,7 +33,7 @@ namespace SistemaEyS.AdminForms.Tables
 
             this.ModelFilterFunc = new TreeModelFilterVisibleFunc(this.TreeModelFilterVisible);
 
-            this.viewTable.SearchEntry = this.SearchSolVacTxt;
+            this.viewTable.SearchEntry = this.TxtSearch;
             this.viewTable.SearchEqualFunc = new TreeViewSearchEqualFunc(this.ViewTableEqualFunc);
 
             StoreObject[] storeObjects = {
@@ -115,7 +115,12 @@ namespace SistemaEyS.AdminForms.Tables
                 if ((ResponseType)result != ResponseType.Yes) return;
 
                 this.NegSolVac.RemoveSolicitudVacaciones(solVac);
-                //this.ClearInput();
+
+                MessageDialog ms = new MessageDialog(this.parent,
+                    DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                    "Solicitud eliminada");
+                ms.Run();
+                ms.Destroy();
             }
             catch (Exception ex)
             {
@@ -148,7 +153,7 @@ namespace SistemaEyS.AdminForms.Tables
 
         protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)
         {
-            if (string.IsNullOrWhiteSpace(this.SearchSolVacTxt.Text))
+            if (string.IsNullOrWhiteSpace(this.TxtSearch.Text))
             {
                 return true;
             }
@@ -156,17 +161,12 @@ namespace SistemaEyS.AdminForms.Tables
             {
                 string value = (string)model.GetValue(iter, i);
                 if (string.IsNullOrEmpty(value)) return false;
-                if (value.ToLower().Contains(this.SearchSolVacTxt.Text.ToLower()))
+                if (value.ToLower().Contains(this.TxtSearch.Text.ToLower()))
                 {
                     return true;
                 }
             }
             return false;
-        }
-
-        protected void OnSearchHorTxtChanged(object sender, EventArgs e)
-        {
-            this.TreeData.Refilter();
         }
 
         protected bool ViewTableEqualFunc(TreeModel model, int column, string key, TreeIter iter)
@@ -184,6 +184,9 @@ namespace SistemaEyS.AdminForms.Tables
             return true;
         }
 
-
+        protected void TxtSearchOnChanged(object sender, EventArgs e)
+        {
+            this.TreeData.Refilter();
+        }
     }
 }

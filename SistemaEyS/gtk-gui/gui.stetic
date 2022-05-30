@@ -2132,12 +2132,12 @@ Seleccione su método de entrada al SistemaEyS</property>
                       </packing>
                     </child>
                     <child>
-                      <widget class="Gtk.Entry" id="SearchSolVacTxt">
+                      <widget class="Gtk.Entry" id="TxtSearch">
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
                         <property name="InvisibleChar">•</property>
-                        <signal name="Changed" handler="OnSearchHorTxtChanged" />
+                        <signal name="Changed" handler="TxtSearchOnChanged" />
                       </widget>
                       <packing>
                         <property name="Position">1</property>
