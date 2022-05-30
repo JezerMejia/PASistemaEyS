@@ -48,9 +48,12 @@ namespace SistemaEyS.DatosEyS.Negocio
                 throw e;
             }
             this.DtSolVac.InsertInto(
-                solVac.fechaSol.ToString(), solVac.descripcionSol,
-                solVac.idEmpleado.ToString(), solVac.fechaHoraInicio.ToString(),
-                solVac.fechaHoraFin.ToString()
+                solVac.fechaSol.ToString("yyy-MM-dd"),
+		        solVac.descripcionSol,
+                solVac.idEmpleado.ToString(),
+		        solVac.fechaHoraInicio.ToString("yyy-MM-dd HH:mm"),
+                solVac.fechaHoraFin.ToString("yyy-MM-dd HH:mm"),
+                ((int)solVac.estado).ToString()
                 );
         }
 
@@ -76,8 +79,9 @@ namespace SistemaEyS.DatosEyS.Negocio
                 solVac.fechaSol.ToString("yyyy-MM-dd"),
                 solVac.descripcionSol,
                 solVac.idEmpleado.ToString(),
-                solVac.fechaHoraInicio.ToString("yyyy-MM-dd"),
-                solVac.fechaHoraFin.ToString("yyyy-MM-dd")
+                solVac.fechaHoraInicio.ToString("yyyy-MM-dd HH:mm"),
+                solVac.fechaHoraFin.ToString("yyyy-MM-dd HH:mm"),
+                ((int)solVac.estado).ToString()
             );
         }
 
@@ -86,7 +90,12 @@ namespace SistemaEyS.DatosEyS.Negocio
             this.DtSolVac.DeleteFrom(solVac.idSolVacaciones.ToString());
         }
 
-
+        public int? StringToInt(string value)
+        {
+            if (!string.IsNullOrWhiteSpace(value))
+                return Int32.Parse(value);
+            return null;
+        }
         public Ent_SolicitudVacaciones SearchVacaciones(int idSolVacaciones)
         {
             ListStore store = this.DtSolVac.Search(
@@ -108,6 +117,9 @@ namespace SistemaEyS.DatosEyS.Negocio
                 fechaHoraInicio = DateTime.Parse(store.GetValue(iter, 3)?.ToString()),
                 fechaHoraFin = DateTime.Parse(store.GetValue(iter, 4)?.ToString()),
                 idEmpleado = Int32.Parse(store.GetValue(iter, 5)?.ToString()),
+                estado = (EntidadEstado) this.StringToInt(
+                        (string) store.GetValue(iter, 6)
+			            )
             };
 
             return SolVac;

@@ -89,7 +89,8 @@ namespace SistemaEyS.DatosEyS.Negocio
                 emp.idEmpleado.ToString(),
                 emp.primerNombre, emp.segundoNombre,
                 emp.primerApellido, emp.segundoApellido,
-                emp.pinEmpleado
+                emp.pinEmpleado,
+                ((int)emp.estado).ToString()
             );
         }
         public void EditEmpleado(Ent_Empleado emp)
@@ -128,13 +129,13 @@ namespace SistemaEyS.DatosEyS.Negocio
                 emp.emailEmpresarial,
                 emp.idCargo?.ToString() ?? "NULL",
                 emp.idDepartamento?.ToString() ?? "NULL",
-                emp.idHorario?.ToString() ?? "NULL"
+                emp.idHorario?.ToString() ?? "NULL",
+                ((int)emp.estado).ToString()
             );
         }
         public void RemoveEmpleado(Ent_Empleado emp)
         {
-            //this.DtEmp.DeleteFromUpdate(emp.idEmpleado.ToString());
-            this.DtEmp.DeleteFrom(emp.idEmpleado.ToString());
+            this.DtEmp.DeleteFromUpdate(emp.idEmpleado.ToString());
         }
 
         public DateTime? StringToDateTime(string value)
@@ -153,7 +154,8 @@ namespace SistemaEyS.DatosEyS.Negocio
         {
             ListStore store = this.DtEmp.Search(
                 "AND",
-                new DataTableParameter("idEmpleado", $"'{idEmpleado}'")
+                new DataTableParameter("idEmpleado", $"'{idEmpleado}'"),
+                new DataTableParameter("estado", $"'3'", "<>")
             );
             if (store == null) throw new NullReferenceException("El empleado no existe");
             TreeIter iter;
@@ -168,10 +170,10 @@ namespace SistemaEyS.DatosEyS.Negocio
                 primerApellido = store.GetValue(iter, 3)?.ToString() ?? "",
                 segundoApellido = store.GetValue(iter, 4)?.ToString() ?? "",
                 fechaIngreso = this.StringToDateTime(
-                        (string) store.GetValue(iter, 5)
+                        (string)store.GetValue(iter, 5)
                         ),
                 fechaNacimiento = this.StringToDateTime(
-                        (string) store.GetValue(iter, 6)
+                        (string)store.GetValue(iter, 6)
                         ),
                 cedulaEmpleado = store.GetValue(iter, 7)?.ToString() ?? "",
                 pinEmpleado = store.GetValue(iter, 8)?.ToString() ?? "",
@@ -179,14 +181,17 @@ namespace SistemaEyS.DatosEyS.Negocio
                 emailPersonal = store.GetValue(iter, 10)?.ToString() ?? "",
                 emailEmpresarial = store.GetValue(iter, 11)?.ToString() ?? "",
                 idCargo = this.StringToInt(
-                        (string) store.GetValue(iter, 12)
+                        (string)store.GetValue(iter, 12)
                         ),
                 idDepartamento = this.StringToInt(
-                        (string) store.GetValue(iter, 13)
+                        (string)store.GetValue(iter, 13)
                         ),
                 idHorario = this.StringToInt(
-                        (string) store.GetValue(iter, 14)
+                        (string)store.GetValue(iter, 14)
                         ),
+                estado = (EntidadEstado)this.StringToInt(
+                        (string)store.GetValue(iter, 15)
+                        )
             };
 
             return user;
