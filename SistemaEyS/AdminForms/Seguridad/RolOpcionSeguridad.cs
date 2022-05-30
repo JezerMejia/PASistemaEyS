@@ -86,39 +86,6 @@ namespace SistemaEyS.AdminForms.Seguridad
             this.opcionTxt.Entry.Completion.TextColumn = 0;
         }
 
-        protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)
-        {
-            if (string.IsNullOrWhiteSpace(this.TxtSearch.Text))
-            {
-                return true;
-            }
-            for (int i = 0; i < model.NColumns; i++)
-            {
-                string value = (string)model.GetValue(iter, i);
-                if (string.IsNullOrEmpty(value)) return false;
-                if (value.ToLower().Contains(this.TxtSearch.Text.ToLower()))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        protected bool ViewTableEqualFunc(TreeModel model, int column, string key, TreeIter iter)
-        {
-            for (int i = 0; i < model.NColumns; i++)
-            {
-                string value = (string)model.GetValue(iter, i);
-                if (string.IsNullOrWhiteSpace(value)) return true;
-                if (value.ToLower().Contains(key.ToLower()))
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
         protected void ClearInput()
         {
             this.SelectedID = -1;
@@ -370,6 +337,43 @@ namespace SistemaEyS.AdminForms.Seguridad
                 ms.Destroy();
             }
         }
+
+        protected bool ViewTableEqualFunc(TreeModel model, int column, string key, TreeIter iter)
+        {
+            for (int i = 0; i < model.NColumns; i++)
+            {
+                string value = (string)model.GetValue(iter, i);
+                if (string.IsNullOrWhiteSpace(value)) return true;
+                if (value.ToLower().Contains(key.ToLower()))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
        
+        protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)
+        {
+            if (string.IsNullOrWhiteSpace(this.TxtSearch.Text))
+            {
+                return true;
+            }
+            for (int i = 0; i < model.NColumns; i++)
+            {
+                string value = (string)model.GetValue(iter, i);
+                if (string.IsNullOrEmpty(value)) return false;
+                if (value.ToLower().Contains(this.TxtSearch.Text.ToLower()))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        protected void TxtSearchOnChanged(object sender, EventArgs e)
+        {
+            this.TreeData.Refilter();
+        }
     }
 }

@@ -49,39 +49,6 @@ namespace SistemaEyS.AdminForms.Seguridad
             this.viewTable.Model = this.TreeData;
         }
 
-        protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)
-        {
-            if (string.IsNullOrWhiteSpace(this.TxtSearch.Text))
-            {
-                return true;
-            }
-            for (int i = 0; i < model.NColumns; i++)
-            {
-                string value = (string)model.GetValue(iter, i);
-                if (string.IsNullOrEmpty(value)) return false;
-                if (value.ToLower().Contains(this.TxtSearch.Text.ToLower()))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        protected bool ViewTableEqualFunc(TreeModel model, int column, string key, TreeIter iter)
-        {
-            for (int i = 0; i < model.NColumns; i++)
-            {
-                string value = (string)model.GetValue(iter, i);
-                if (string.IsNullOrWhiteSpace(value)) return true;
-                if (value.ToLower().Contains(key.ToLower()))
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
         protected void ClearInput()
         {
             this.SelectedID = -1;
@@ -127,26 +94,6 @@ namespace SistemaEyS.AdminForms.Seguridad
             this.UpdateData();
         }
 
-        protected void SetEntryTextFromID(int id)
-        {
-            try
-            {
-                Ent_opcion EntOpc = this.NegOpc.SearchOpcion(id);
-
-                this.opcionTxt.Text = EntOpc.opcion;
-                this.desTxt.Buffer.Text = EntOpc.descripcion;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                MessageDialog ms = new MessageDialog(this,
-                    DialogFlags.Modal, MessageType.Info,
-                    ButtonsType.Ok, ex.Message);
-                ms.Run();
-                ms.Destroy();
-            }
-        }
-
         protected void OnBtnEditClicked(object sender, EventArgs e)
         {
             try
@@ -186,27 +133,6 @@ namespace SistemaEyS.AdminForms.Seguridad
             this.UpdateData();
         }
 
-        protected void OnViewTableRowActivated(object o, RowActivatedArgs args)
-        {
-            TreeSelection selection = this.viewTable.Selection;
-            TreeIter iter;
-            TreeModel model;
-
-            if (selection.GetSelected(out model, out iter))
-            {
-                string selectedID = model.GetValue(iter, 0).ToString();
-                try
-                {
-                    this.SelectedID = Int32.Parse(selectedID);
-                    this.SetEntryTextFromID(this.SelectedID);
-                }
-                catch (Exception)
-                {
-                    return;
-                }
-            }
-        }
-
         protected void OnBtnRemoveClicked(object sender, EventArgs e)
         {
             try
@@ -244,6 +170,85 @@ namespace SistemaEyS.AdminForms.Seguridad
                 ms.Destroy();
             }
             this.UpdateData();
+        }
+
+        protected void SetEntryTextFromID(int id)
+        {
+            try
+            {
+                Ent_opcion EntOpc = this.NegOpc.SearchOpcion(id);
+
+                this.opcionTxt.Text = EntOpc.opcion;
+                this.desTxt.Buffer.Text = EntOpc.descripcion;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageDialog ms = new MessageDialog(this,
+                    DialogFlags.Modal, MessageType.Info,
+                    ButtonsType.Ok, ex.Message);
+                ms.Run();
+                ms.Destroy();
+            }
+        }
+
+        protected bool ViewTableEqualFunc(TreeModel model, int column, string key, TreeIter iter)
+        {
+            for (int i = 0; i < model.NColumns; i++)
+            {
+                string value = (string)model.GetValue(iter, i);
+                if (string.IsNullOrWhiteSpace(value)) return true;
+                if (value.ToLower().Contains(key.ToLower()))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        protected void OnViewTableRowActivated(object o, RowActivatedArgs args)
+        {
+            TreeSelection selection = this.viewTable.Selection;
+            TreeIter iter;
+            TreeModel model;
+
+            if (selection.GetSelected(out model, out iter))
+            {
+                string selectedID = model.GetValue(iter, 0).ToString();
+                try
+                {
+                    this.SelectedID = Int32.Parse(selectedID);
+                    this.SetEntryTextFromID(this.SelectedID);
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+            }
+        }
+
+        protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)
+        {
+            if (string.IsNullOrWhiteSpace(this.TxtSearch.Text))
+            {
+                return true;
+            }
+            for (int i = 0; i < model.NColumns; i++)
+            {
+                string value = (string)model.GetValue(iter, i);
+                if (string.IsNullOrEmpty(value)) return false;
+                if (value.ToLower().Contains(this.TxtSearch.Text.ToLower()))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        protected void TxtSearchOnChanged(object sender, EventArgs e)
+        {
+            this.TreeData.Refilter();
         }
     }
 }
