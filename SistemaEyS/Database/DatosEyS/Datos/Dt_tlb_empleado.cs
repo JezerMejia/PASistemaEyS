@@ -14,12 +14,13 @@ namespace SistemaEyS.DatosEyS.Datos
         {
             this.conn = ConnectionEyS.OpenConnection();
             this.DBTable = "BDSistemaEyS.Empleado";
-            this.gTypes = new Type[15] {
+            this.gTypes = new Type[16] {
                 typeof(string), typeof(string), typeof(string),
                 typeof(string), typeof(string), typeof(string),
                 typeof(string), typeof(string), typeof(string),
                 typeof(string), typeof(string), typeof(string),
                 typeof(string), typeof(string), typeof(string),
+                typeof(string)
             };
             this.ModelView = new ListStore(this.gTypes);
             this.Model = new ListStore(this.gTypes);
@@ -80,7 +81,7 @@ namespace SistemaEyS.DatosEyS.Datos
             IDataReader idr = null;
             StringBuilder sb = new StringBuilder();
             sb.Clear();
-            sb.Append("SELECT * FROM BDSistemaEyS.Empleado;");
+            sb.Append("SELECT * FROM BDSistemaEyS.Empleado WHERE estado <> 3;");
             try
             {
                 idr = this.conn.Read(CommandType.Text, sb.ToString());
@@ -104,7 +105,8 @@ namespace SistemaEyS.DatosEyS.Datos
                         idr[11].ToString(), // Email empresarial
                         idr[12].ToString(), // idCargo
                         idr[13].ToString(), // idDepartamento
-                        idr[14].ToString() // idHorario
+                        idr[14].ToString(), // idHorario
+                        idr[15].ToString() // estado
                     );
                 }
             }
@@ -139,7 +141,7 @@ namespace SistemaEyS.DatosEyS.Datos
 
         public void InsertInto(string idEmpleado, string primerNombre,
             string segundoNombre, string primerApellido, string segundoApellido,
-            string pinEmpleado)
+            string pinEmpleado, string estado)
         {
             this.InsertInto(
                 new DataTableParameter("idEmpleado", $"'{idEmpleado}'"),
@@ -147,7 +149,8 @@ namespace SistemaEyS.DatosEyS.Datos
                 new DataTableParameter("segundoNombre", $"'{segundoNombre}'"),
                 new DataTableParameter("primerApellido", $"'{primerApellido}'"),
                 new DataTableParameter("segundoApellido", $"'{segundoApellido}'"),
-                new DataTableParameter("pinEmpleado", $"'{pinEmpleado}'")
+                new DataTableParameter("pinEmpleado", $"'{pinEmpleado}'"),
+                new DataTableParameter("estado", $"'{estado}'")
                 );
         }
 
@@ -157,7 +160,8 @@ namespace SistemaEyS.DatosEyS.Datos
             string pinEmpleado, string cedulaEmpleado,
             string fechaIngreso, string fechaNacimiento, string telefonoEmpleado,
             string emailPersonal, string emailEmpresarial,
-            string idCargo, string idDepartamento, string idHorario
+            string idCargo, string idDepartamento, string idHorario,
+            string estado
             )
         {
             this.UpdateSet(
@@ -217,6 +221,10 @@ namespace SistemaEyS.DatosEyS.Datos
                 new DataTableParameter(
                     !string.IsNullOrWhiteSpace(idHorario) ? "idHorario" : "",
                     $"{idHorario}"
+                    ),
+                new DataTableParameter(
+                    !string.IsNullOrWhiteSpace(estado) ? "estado" : "",
+                    $"{estado}"
                     )
                 );
         }
@@ -225,6 +233,13 @@ namespace SistemaEyS.DatosEyS.Datos
         {
             this.DeleteFrom(this.conn,
                 new DataTableParameter("idEmpleado", $"'{idEmpleado}'")
+                );
+        }
+        public void DeleteFromUpdate(string idEmpleado)
+        {
+            this.UpdateSet(
+                new DataTableParameter("idEmpleado", idEmpleado),
+                new DataTableParameter("estado", "3")
                 );
         }
     }
