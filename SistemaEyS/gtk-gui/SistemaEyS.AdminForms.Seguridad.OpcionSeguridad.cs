@@ -312,6 +312,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 			this.BtnAdd.Clicked += new global::System.EventHandler(this.OnBtnAddClicked);
 			this.BtnEdit.Clicked += new global::System.EventHandler(this.OnBtnEditClicked);
 			this.BtnRemove.Clicked += new global::System.EventHandler(this.OnBtnRemoveClicked);
+			this.TxtSearch.Changed += new global::System.EventHandler(this.TxtSearchOnChanged);
 			this.viewTable.RowActivated += new global::Gtk.RowActivatedHandler(this.OnViewTableRowActivated);
 		}
 	}

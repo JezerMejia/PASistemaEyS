@@ -113,7 +113,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 			global::Stetic.Gui.Initialize(this);
 			// Widget SistemaEyS.AdminForms.Tables.HorPanelBtn.AddDialogHor
 			this.Name = "SistemaEyS.AdminForms.Tables.HorPanelBtn.AddDialogHor";
-			this.Title = global::Mono.Unix.Catalog.GetString("AddDialogHor");
+			this.Title = global::Mono.Unix.Catalog.GetString("Añadir Horario");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 			// Container child SistemaEyS.AdminForms.Tables.HorPanelBtn.AddDialogHor.Gtk.Container+ContainerChild
 			this.alignment17 = new global::Gtk.Alignment(0.5F, 0.5F, 0F, 0F);
@@ -690,7 +690,7 @@ namespace SistemaEyS.AdminForms.Tables.HorPanelBtn
 				this.Child.ShowAll();
 			}
 			this.DefaultWidth = 550;
-			this.DefaultHeight = 434;
+			this.DefaultHeight = 452;
 			this.Show();
 			this.BtnSave.Clicked += new global::System.EventHandler(this.BtnSaveOnClicked);
 			this.BtnCancel.Clicked += new global::System.EventHandler(this.BtnCancelOnClicked);
