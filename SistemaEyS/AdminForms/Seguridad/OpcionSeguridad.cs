@@ -47,7 +47,6 @@ namespace SistemaEyS.AdminForms.Seguridad
             this.TreeData = new TreeModelFilter(DtOpc.GetData(), null);
             this.TreeData.VisibleFunc = this.ModelFilterFunc;
             this.viewTable.Model = this.TreeData;
-
         }
 
         protected bool TreeModelFilterVisible(TreeModel model, TreeIter iter)
@@ -107,7 +106,7 @@ namespace SistemaEyS.AdminForms.Seguridad
                 {
                     opcion = this.opcionTxt.Text,
                     descripcion = this.desTxt.Buffer.Text,
-                    //estado = EntidadEstado.Añadido
+                    estado = EntidadEstado.Añadido
                 };
                 this.NegOpc.AddOpcion(opc);
 
@@ -215,7 +214,7 @@ namespace SistemaEyS.AdminForms.Seguridad
                 if (this.SelectedID < 0)
                 {
                     throw new ArgumentException(
-                        "Seleccione un rol en la tabla"
+                        "Seleccione una opción en la tabla"
                         );
                 }
 
@@ -223,7 +222,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 
                 MessageDialog deletePrompt = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Question, ButtonsType.YesNo,
-                    $"¿Desea eliminar el rol \"{opc.id_opcion}\" ({this.SelectedID})?");
+                    $"¿Desea eliminar la opción \"{opc.opcion}\" ({this.SelectedID})?");
                 int result = deletePrompt.Run();
                 deletePrompt.Destroy();
 
@@ -231,7 +230,7 @@ namespace SistemaEyS.AdminForms.Seguridad
 
                 this.NegOpc.RemoveOpcion(opc);
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok, "Rol eliminado");
+                    MessageType.Info, ButtonsType.Ok, "Opción eliminada");
                 ms.Run();
                 ms.Destroy();
                 this.ClearInput();

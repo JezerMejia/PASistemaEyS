@@ -7349,6 +7349,7 @@ Base de Datos creada con MySQLWorkbench.</property>
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="ShowScrollbars">True</property>
+                            <signal name="RowActivated" handler="ViewTableOnRowActivated" />
                           </widget>
                         </child>
                       </widget>

@@ -25,7 +25,6 @@ namespace SistemaEyS.AdminForms.Seguridad
         public int SelectedRol = -1;
         public int SelectedOpcion = -1;
 
-
         public RolOpcionSeguridad() :
                 base(Gtk.WindowType.Toplevel)
         {
@@ -54,12 +53,13 @@ namespace SistemaEyS.AdminForms.Seguridad
 
         public void UpdateData()
         {
-            this.TreeData = new TreeModelFilter(DtRolOpc.GetData(), null);
+            this.TreeData = new TreeModelFilter(DtRolOpc.GetDataView(), null);
             this.TreeData.VisibleFunc = this.ModelFilterFunc;
             this.viewTable.Model = this.TreeData;
 
             this.DataRol = DtRol.GetDataCmbx();
             this.DataOpcion = DtOpc.GetDataCmbx();
+
             this.rolTxt.Model = this.DataRol;
             this.opcionTxt.Model = this.DataOpcion;
             this.FillCmbxRolModel();
@@ -145,14 +145,13 @@ namespace SistemaEyS.AdminForms.Seguridad
                 {
                     throw new ArgumentException("Seleccione una Opcion");
                 }
-                string idRol = this.rolTxt.ActiveText;
-                string idOpcion = this.opcionTxt.ActiveText;
+                string idRol = this.GetIdRol();
+                string idOpcion = this.GetIdOpcion();
 
                 Ent_rol_opcion RolOpcion = new Ent_rol_opcion()
                 {
                   id_rol = Int32.Parse(idRol),
                   id_opcion = Int32.Parse(idOpcion),
-
                 };
                 this.NegRolOpcion.AddRolOpcion(RolOpcion);
 
@@ -186,8 +185,8 @@ namespace SistemaEyS.AdminForms.Seguridad
                 {
                     throw new ArgumentException("No puede haber datos vacíos");
                 }
-                string idRol = this.rolTxt.ActiveText;
-                string idOpcion = this.opcionTxt.ActiveText;
+                string idRol = this.GetIdRol();
+                string idOpcion = this.GetIdOpcion();
 
                 Ent_rol_opcion rolOpcion = new Ent_rol_opcion()
                 {
@@ -224,10 +223,15 @@ namespace SistemaEyS.AdminForms.Seguridad
                 }
 
                 Ent_rol_opcion RolOpcion = this.NegRolOpcion.SearchRolOpcion(this.SelectedID);
+                Ent_opcion opcion = this.NegOpcion.SearchOpcion(RolOpcion.id_opcion);
+                Ent_rol rol = this.NegRol.SearchRol(RolOpcion.id_rol);
+
+                string opcionName = opcion.opcion;
+                string rolName = rol.rol;
 
                 MessageDialog deletePrompt = new MessageDialog(this, DialogFlags.Modal,
                     MessageType.Question, ButtonsType.YesNo,
-                    $"¿Desea eliminar el rol \"{RolOpcion.id_opcion}\" ({this.SelectedID})?");
+                    $"¿Desea eliminar la asignación \"{rolName} - {opcionName}\" ({this.SelectedID})?");
                 int result = deletePrompt.Run();
                 deletePrompt.Destroy();
 
@@ -235,7 +239,8 @@ namespace SistemaEyS.AdminForms.Seguridad
 
                 this.NegRolOpcion.RemoveRolOpcion(RolOpcion);
                 MessageDialog ms = new MessageDialog(this, DialogFlags.Modal,
-                    MessageType.Info, ButtonsType.Ok, "Rol eliminado");
+                    MessageType.Info, ButtonsType.Ok,
+		            "Asignación de Opción eliminada");
                 ms.Run();
                 ms.Destroy();
                 this.ClearInput();
@@ -251,7 +256,7 @@ namespace SistemaEyS.AdminForms.Seguridad
             this.UpdateData();
         }
 
-        protected string idRol()
+        protected string GetIdRol()
         {
             string idText = this.rolTxt.ActiveText;
             string userID = "";
@@ -273,7 +278,7 @@ namespace SistemaEyS.AdminForms.Seguridad
             return userID;
         }
 
-        protected string idOpcion()
+        protected string GetIdOpcion()
         {
             string idText = this.opcionTxt.ActiveText;
             string rolID = "";
@@ -307,8 +312,6 @@ namespace SistemaEyS.AdminForms.Seguridad
                 try
                 {
                     this.SelectedID = Int32.Parse(selectedID);
-                    this.SelectedRol = Int32.Parse(model.GetValue(iter, 1).ToString());
-                    this.SelectedOpcion = Int32.Parse(model.GetValue(iter, 2).ToString());
                     this.SetEntryTextFromID(this.SelectedID);
                 }
                 catch (Exception)
