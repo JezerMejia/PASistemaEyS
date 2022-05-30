@@ -838,16 +838,6 @@ Seleccione su método de entrada al SistemaEyS</property>
                     <node type="Menuitem" action="EntradasSalidasAction" />
                     <node type="Menuitem" action="SolicitudDeVacacionesAction" />
                   </node>
-                  <node type="Menu" action="ReportesAction">
-                    <node type="Menuitem" action="EntradasSalidasAction1" />
-                    <node type="Menuitem" action="AtrasosAction" />
-                    <node type="Menuitem" action="HorasTrabajadasAction" />
-                    <node type="Menuitem" action="HorasExtrasAction" />
-                    <node type="Menuitem" action="HorasSuplementariasAction" />
-                    <node type="Menuitem" action="AusenciasAction" />
-                    <node type="Menuitem" action="NovedadesAsistenciaAction" />
-                    <node type="Menuitem" action="PermisosAction" />
-                  </node>
                   <node type="Menu" action="AjustesAction">
                     <node type="Menuitem" action="CargosAction" />
                     <node type="Menuitem" action="DepartamentosAction" />
