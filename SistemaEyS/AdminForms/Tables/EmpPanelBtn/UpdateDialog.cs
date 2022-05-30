@@ -222,6 +222,7 @@ namespace SistemaEyS.AdminForms.Tables.EmpPanelBtn
                     idCargo = this.GetActiveID(this.CmbCargo),
                     idDepartamento = this.GetActiveID(this.CmbDep),
                     idHorario = this.GetActiveID(this.CmbHorario),
+                    estado = EntidadEstado.Modificado
                 };
                 this.NegEmp.EditEmpleado(emp);
 

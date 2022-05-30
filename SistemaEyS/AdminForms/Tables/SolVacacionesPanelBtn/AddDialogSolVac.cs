@@ -1,6 +1,8 @@
 ﻿using System;
 using Gtk;
 using SistemaEyS.DatosEyS.Datos;
+using SistemaEyS.DatosEyS.Negocio;
+using SistemaEyS.DatosEyS.Entidades;
 using SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn.Calendar;
 
 namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
@@ -9,6 +11,7 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
     {
         protected SolVacacionesView parent;
 
+        protected Neg_SolicitudVacaciones NegSolVac = new Neg_SolicitudVacaciones();
         protected Dt_tlb_SolVacaciones DtSolVac = new Dt_tlb_SolVacaciones();
         protected Dt_tlb_empleado dtEmp = new Dt_tlb_empleado();
 
@@ -157,37 +160,18 @@ namespace SistemaEyS.AdminForms.Tables.SolVacacionesPanelBtn
                     throw new ArgumentException("No puede haber datos vacíos");
                 }
 
-                DateTime now = DateTime.Now.Date;
-                DateTime fechaSol = Convert.ToDateTime(this.TxtFechaSol.Text);
-                DateTime fechaIni = Convert.ToDateTime(this.TxtFechaIni.Text);
-                DateTime fechaFin = Convert.ToDateTime(this.TxtFechaFin.Text);
-
-                if (fechaIni < now || fechaFin < now)
+                Ent_SolicitudVacaciones solVac = new Ent_SolicitudVacaciones()
                 {
-                    throw new ArgumentException(
-                        "Una de las fechas de solicitud es menor a la fecha actual, " +
-                        "ingrese una fecha mayor a la actual"
-                        );
-                }
+                    descripcionSol = this.justTxt.Buffer.Text,
+                    fechaSol = DateTime.Parse(this.TxtFechaSol.Text),
+                    fechaHoraInicio = DateTime.Parse(this.TxtFechaIni.Text),
+                    fechaHoraFin = DateTime.Parse(this.TxtFechaFin.Text),
+                    idEmpleado = Int32.Parse(this.CmbxIDEmp.ActiveText),
+                    estado = EntidadEstado.Añadido,
+                };
 
-                if (fechaIni == fechaFin)
-                {
-                    throw new ArgumentException(
-                        "Las fechas de las solicitudes no deben ser iguales"
-                        );
-                }
-                if (fechaIni > fechaFin)
-                {
-                    throw new ArgumentException(
-                        "La fecha de inicio no puede ser mayor a la de salida"
-                        );
-                }
+                this.NegSolVac.AddSolicitudVacaciones(solVac);
 
-                this.DtSolVac.InsertInto(
-                    this.TxtFechaSol.Text, this.justTxt.Buffer.Text,
-                    this.CmbxIDEmp.ActiveText, this.TxtFechaIni.Text,
-                    this.TxtFechaFin.Text
-                );
                 this.mensaje("Guardado");
                 this.ClearInput();
                 this.parent.UpdateData();

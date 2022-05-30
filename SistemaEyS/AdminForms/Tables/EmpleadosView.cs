@@ -183,7 +183,7 @@ namespace SistemaEyS.AdminForms.Tables
                     emp.idEmpleado.ToString()
                     );
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 this.CmbxIDEmpleado.Active = -1;
                 this.CmbxIDEmpleado.Entry.Text = "";
