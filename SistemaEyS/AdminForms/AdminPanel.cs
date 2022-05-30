@@ -163,5 +163,12 @@ namespace SistemaEyS.AdminForms
                 new Reports.DepartamentoReport();
             depReport.Show();
         }
+
+        protected void OnCargosAction1Activated(object sender, EventArgs e)
+        {
+            AdminForms.Reports.CargoReport cargoReport =
+                new Reports.CargoReport();
+            cargoReport.Show();
+        }
     }
 }

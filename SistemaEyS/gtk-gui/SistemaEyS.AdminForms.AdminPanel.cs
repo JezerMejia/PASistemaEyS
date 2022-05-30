@@ -329,6 +329,7 @@ namespace SistemaEyS.AdminForms
 			this.OpcionesAction.Activated += new global::System.EventHandler(this.OnOpcionesActionActivated);
 			this.EmpleadosReportAction.Activated += new global::System.EventHandler(this.EmpleadosReportActionOnActivated);
 			this.DepartamentosAction1.Activated += new global::System.EventHandler(this.OnDepartamentosAction1Activated);
+			this.CargosAction1.Activated += new global::System.EventHandler(this.OnCargosAction1Activated);
 		}
 	}
 }

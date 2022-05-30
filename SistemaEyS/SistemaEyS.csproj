@@ -191,6 +191,8 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Reports.EntradaSalida.cs" />
     <Compile Include="AdminForms\Reports\DepartamentoReport.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Reports.DepartamentoReport.cs" />
+    <Compile Include="AdminForms\Reports\CargoReport.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Reports.CargoReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
