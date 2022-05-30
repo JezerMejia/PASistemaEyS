@@ -862,7 +862,6 @@ Seleccione su método de entrada al SistemaEyS</property>
                     <node type="Menuitem" action="OpcionesAction" />
                   </node>
                   <node type="Menu" action="AyudaAction">
-                    <node type="Menuitem" action="dialogInfoAction" />
                     <node type="Menuitem" action="HelpSistemaEySAction" />
                   </node>
                 </node>

@@ -227,8 +227,7 @@ namespace SistemaEyS.AdminForms
 					"uitem name=\'RolesAction\' action=\'RolesAction\'/><menuitem name=\'OpcionesDeRolActi" +
 					"on\' action=\'OpcionesDeRolAction\'/><menuitem name=\'OpcionesAction\' action=\'Opcion" +
 					"esAction\'/></menu><menu name=\'AyudaAction\' action=\'AyudaAction\'><menuitem name=\'" +
-					"dialogInfoAction\' action=\'dialogInfoAction\'/><menuitem name=\'HelpSistemaEySActio" +
-					"n\' action=\'HelpSistemaEySAction\'/></menu></menubar></ui>");
+					"HelpSistemaEySAction\' action=\'HelpSistemaEySAction\'/></menu></menubar></ui>");
 			this.menuBar = ((global::Gtk.MenuBar)(this.UIManager.GetWidget("/menuBar")));
 			this.menuBar.Name = "menuBar";
 			this.vbox4.Add(this.menuBar);
