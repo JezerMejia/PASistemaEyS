@@ -211,14 +211,7 @@ namespace SistemaEyS.AdminForms
 					"uitem name=\'EmpleadosAction\' action=\'EmpleadosAction\'/><menuitem name=\'HorariosA" +
 					"ction\' action=\'HorariosAction\'/><menuitem name=\'EntradasSalidasAction\' action=\'E" +
 					"ntradasSalidasAction\'/><menuitem name=\'SolicitudDeVacacionesAction\' action=\'Soli" +
-					"citudDeVacacionesAction\'/></menu><menu name=\'ReportesAction\' action=\'ReportesAct" +
-					"ion\'><menuitem name=\'EntradasSalidasAction1\' action=\'EntradasSalidasAction1\'/><m" +
-					"enuitem name=\'AtrasosAction\' action=\'AtrasosAction\'/><menuitem name=\'HorasTrabaj" +
-					"adasAction\' action=\'HorasTrabajadasAction\'/><menuitem name=\'HorasExtrasAction\' a" +
-					"ction=\'HorasExtrasAction\'/><menuitem name=\'HorasSuplementariasAction\' action=\'Ho" +
-					"rasSuplementariasAction\'/><menuitem name=\'AusenciasAction\' action=\'AusenciasActi" +
-					"on\'/><menuitem name=\'NovedadesAsistenciaAction\' action=\'NovedadesAsistenciaActio" +
-					"n\'/><menuitem name=\'PermisosAction\' action=\'PermisosAction\'/></menu><menu name=\'" +
+					"citudDeVacacionesAction\'/></menu><menu name=\'" +
 					"AjustesAction\' action=\'AjustesAction\'><menuitem name=\'CargosAction\' action=\'Carg" +
 					"osAction\'/><menuitem name=\'DepartamentosAction\' action=\'DepartamentosAction\'/></" +
 					"menu><menu name=\'SeguridadAction\' action=\'SeguridadAction\'><menu name=\'UsuariosA" +
