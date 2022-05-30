@@ -66,6 +66,25 @@
     <Reference Include="Ubiety.Dns.Core">
       <HintPath>..\packages\Ubiety.Dns.Core.4.2.2\lib\netstandard2.0\Ubiety.Dns.Core.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus.Interfaces">
+      <HintPath>..\packages\EPPlus.Interfaces.6.0.0\lib\net452\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing">
+      <HintPath>..\packages\EPPlus.System.Drawing.6.0.0\lib\net452\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\packages\EPPlus.6.0.4\lib\net452\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -166,6 +185,8 @@
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Seguridad.RolOpcionSeguridad.cs" />
     <Compile Include="AdminForms\Seguridad\OpcionSeguridad.cs" />
     <Compile Include="gtk-gui\SistemaEyS.AdminForms.Seguridad.OpcionSeguridad.cs" />
+    <Compile Include="AdminForms\Reports\EmpleadosReport.cs" />
+    <Compile Include="gtk-gui\SistemaEyS.AdminForms.Reports.EmpleadosReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserForms\" />
@@ -189,6 +210,7 @@
     <Folder Include="Database\DatosEyS\Datos\" />
     <Folder Include="Database\DatosEyS\Entidades\" />
     <Folder Include="Database\DatosEyS\Negocio\" />
+    <Folder Include="AdminForms\Reports\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SistemaEySLibrary\SistemaEySLibrary.csproj">
