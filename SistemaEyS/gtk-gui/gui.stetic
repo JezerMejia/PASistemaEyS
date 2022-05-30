@@ -848,6 +848,17 @@ IT</property>
         <property name="ShortLabel" translatable="yes">Empleados</property>
         <signal name="Activated" handler="EmpleadosReportActionOnActivated" />
       </action>
+      <action id="DepartamentosAction1">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Departamentos</property>
+        <property name="ShortLabel" translatable="yes">Departamentos</property>
+        <signal name="Activated" handler="OnDepartamentosAction1Activated" />
+      </action>
+      <action id="CargosAction1">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Cargos</property>
+        <property name="ShortLabel" translatable="yes">Cargos</property>
+      </action>
     </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">Administrador | Panel</property>
@@ -884,6 +895,8 @@ IT</property>
                     <node type="Menuitem" action="NovedadesAsistenciaAction" />
                     <node type="Menuitem" action="PermisosAction" />
                     <node type="Menuitem" action="EmpleadosReportAction" />
+                    <node type="Menuitem" action="DepartamentosAction1" />
+                    <node type="Menuitem" action="CargosAction1" />
                   </node>
                   <node type="Menu" action="AjustesAction">
                     <node type="Menuitem" action="CargosAction" />
@@ -7874,6 +7887,139 @@ Base de Datos creada con MySQLWorkbench.</property>
                       <widget class="Gtk.Label" id="label1">
                         <property name="MemberName" />
                         <property name="LabelProp" translatable="yes">&lt;span weight="bold" size="large"&gt;Entrada y Salida&lt;/span&gt;</property>
+                        <property name="UseMarkup">True</property>
+                      </widget>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
+                    <property name="MemberName" />
+                    <property name="ShadowType">In</property>
+                    <child>
+                      <widget class="SistemaEySLibrary.ViewTableTemplate" id="viewTable">
+                        <property name="MemberName" />
+                        <property name="CanFocus">True</property>
+                        <property name="ShowScrollbars">True</property>
+                      </widget>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">True</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">0</property>
+                <property name="AutoSize">True</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.HBox" id="hbox1">
+                <property name="MemberName" />
+                <property name="Spacing">6</property>
+                <child>
+                  <widget class="Gtk.Button" id="BtnExit">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextAndIcon</property>
+                    <property name="Icon">stock:gtk-quit Menu</property>
+                    <property name="Label" translatable="yes">Salir</property>
+                    <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="OnBtnExitClicked" />
+                  </widget>
+                  <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Button" id="BtnSave">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextAndIcon</property>
+                    <property name="Icon">stock:gtk-save-as Menu</property>
+                    <property name="Label" translatable="yes">Guardar</property>
+                    <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="OnBtnSaveClicked" />
+                  </widget>
+                  <packing>
+                    <property name="PackType">End</property>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Button" id="BtnRefresh">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextAndIcon</property>
+                    <property name="Icon">stock:gtk-refresh Menu</property>
+                    <property name="Label" translatable="yes">Actualizar</property>
+                    <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="OnBtnRefreshClicked" />
+                  </widget>
+                  <packing>
+                    <property name="PackType">End</property>
+                    <property name="Position">2</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">1</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+          </widget>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="Gtk.Window" id="SistemaEyS.AdminForms.Reports.DepartamentoReport" design-size="400 300">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">DepartamentoReport</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <child>
+      <widget class="Gtk.Alignment" id="alignment1">
+        <property name="MemberName" />
+        <property name="LeftPadding">10</property>
+        <property name="TopPadding">10</property>
+        <property name="RightPadding">10</property>
+        <property name="BottomPadding">10</property>
+        <child>
+          <widget class="Gtk.VBox" id="vbox1">
+            <property name="MemberName" />
+            <property name="Spacing">6</property>
+            <child>
+              <widget class="Gtk.VBox" id="vbox2">
+                <property name="MemberName" />
+                <property name="Spacing">6</property>
+                <child>
+                  <widget class="Gtk.Alignment" id="alignment2">
+                    <property name="MemberName" />
+                    <property name="HeightRequest">50</property>
+                    <property name="Xscale">0</property>
+                    <property name="Yscale">0</property>
+                    <child>
+                      <widget class="Gtk.Label" id="label1">
+                        <property name="MemberName" />
+                        <property name="LabelProp" translatable="yes">&lt;span weight="bold" size="large"&gt;Departamentos&lt;/span&gt;</property>
                         <property name="UseMarkup">True</property>
                       </widget>
                     </child>
