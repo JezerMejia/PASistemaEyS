@@ -10,7 +10,7 @@ namespace SistemaEyS.AdminForms.Reports
 {
     public partial class EntradaSalida : Gtk.Window
     {
-        protected string TempFileName = "/tmp/SistemaEyS-Reporte-EntradaSalida.pdf";
+        protected string TempFileName = "/tmp/SistemaEyS-Reporte-EntradaSalida.xlsx";
 
         protected Dt_tlb_asistencia DtAsis = new Dt_tlb_asistencia();
 
@@ -65,7 +65,7 @@ namespace SistemaEyS.AdminForms.Reports
                    );
 
             fileChooserDialog.DoOverwriteConfirmation = true;
-            fileChooserDialog.CurrentName = "Reporte Entrada y Salida.pdf";
+            fileChooserDialog.CurrentName = "Reporte Entrada y Salida.xlsx";
 
             int result = fileChooserDialog.Run();
             string fileName = fileChooserDialog.Filename;
