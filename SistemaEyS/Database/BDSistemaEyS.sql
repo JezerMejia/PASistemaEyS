@@ -297,7 +297,7 @@ CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`vwUserRol` (`ID UserRol` INT, `Usuari
 -- -----------------------------------------------------
 -- Placeholder table for view `BDSistemaEyS`.`vwAsistencia`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`vwAsistencia` (`"ID"` INT, `"Fecha"` INT, `"Hora de Entrada"` INT, `"Hora de Salida"` INT, `"ID Empleado"` INT, `"Empleado"` INT);
+CREATE TABLE IF NOT EXISTS `BDSistemaEyS`.`vwAsistencia` (`"ID"` INT, `"ID Empleado"` INT, `"Empleado"` INT, `"Fecha"` INT, `"Hora de Entrada"` INT, `"Hora de Salida"` INT);
 
 -- -----------------------------------------------------
 -- Placeholder table for view `BDSistemaEyS`.`vwSolVacaciones`
@@ -382,11 +382,11 @@ USE `BDSistemaEyS`;
 CREATE  OR REPLACE VIEW `vwAsistencia` AS
 SELECT
 Asistencia.idAsistencia AS "ID",
+Asistencia.idEmpleado AS "ID Empleado",
+CONCAT(Empleado.Nombre, " ", Empleado.Apellido) As "Empleado",
 Asistencia.fechaAsistencia AS "Fecha",
 Asistencia.horaEntrada AS "Hora de Entrada",
-Asistencia.horaSalida AS "Hora de Salida",
-Asistencia.idEmpleado AS "ID Empleado",
-CONCAT(Empleado.Nombre, " ", Empleado.Apellido) As "Empleado"
+Asistencia.horaSalida AS "Hora de Salida"
 FROM
 BDSistemaEyS.Asistencia AS Asistencia
 LEFT JOIN
@@ -523,10 +523,24 @@ INSERT INTO tbl_user (
 id_user, user, pwd, nombres, apellidos,
 email, pwd_temp, estado
 )
-VALUES (
-1, "jimeneza", "uwu", "Alberto", "Jiménez",
+VALUES
+(
+1, "albertoj", "uwu", "Alberto", "Jiménez",
 "alberto.jimenez@google.com", "uwu_temp", 1
-);
+),
+(
+2, "jezerm", "uwu", "Jezer", "Mejía",
+"jezer.mejia@gmail.com", "", 1
+),
+(
+3, "roirev", "uwu", "Roire", "Villavicencio",
+"roire.villavicencio@gmail.com", "", 1
+),
+(
+4, "leoc", "uwu", "Leo", "Corea",
+"leo.corea@gmail.com", "", 1
+)
+;
 
 INSERT INTO tbl_rol (id_rol, rol, descripcion, estado)
 VALUES
