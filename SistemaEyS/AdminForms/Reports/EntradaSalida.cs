@@ -24,10 +24,10 @@ namespace SistemaEyS.AdminForms.Reports
 
             this.StoreObjects = new StoreObject[] {
                 new StoreObject("ID", typeof(string), "text", new Gtk.CellRendererText()),
+                new StoreObject("ID Empleado", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Fecha Asistencia", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Hora Entrada", typeof(string), "text", new Gtk.CellRendererText()),
                 new StoreObject("Hora Salida", typeof(string), "text", new Gtk.CellRendererText()),
-                new StoreObject("ID Empleado", typeof(string), "text", new Gtk.CellRendererText()),
             };
             this.viewTable.SetTreeViewColumns(this.StoreObjects);
 
